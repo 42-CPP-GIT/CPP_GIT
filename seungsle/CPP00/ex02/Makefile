@@ -6,17 +6,17 @@
 #    By: seungsle <seungsle@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/25 12:23:45 by seungsle          #+#    #+#              #
-#    Updated: 2022/10/25 20:17:57 by seungsle         ###   ########.fr        #
+#    Updated: 2022/10/25 20:19:56 by seungsle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = megaphone.cpp
+SRCS = Account.cpp test.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
-NAME = megaphone
+NAME = account
 
 all: $(NAME)
 
