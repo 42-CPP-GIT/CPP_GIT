@@ -46,6 +46,11 @@ _CPP와 GIT을 같이 함께 배우자!_
         </a>
       </td>
       <td align="center">
+        <a href="https://github.com/aLVINlEE9">
+          <img src="https://avatars.githubusercontent.com/u/74805318?v=4" alt="이승수 프로필" width=150 height=150 />
+        </a>
+      </td>
+      <td align="center">
         <a href="https://github.com/change-challenge">
           <img src="https://avatars.githubusercontent.com/u/59588256?v=4" alt="장호진 프로필" width=150 height=150 />
         </a>
@@ -65,6 +70,11 @@ _CPP와 GIT을 같이 함께 배우자!_
       <td align="center">
         <a href="https://github.com/sob2545">
           심성민(sesim)
+        </a>
+      </td>
+      <td align="center">
+        <a href="https://github.com/aLVINlEE9">
+          이승수(seungsle)
         </a>
       </td>
       <td align="center">
