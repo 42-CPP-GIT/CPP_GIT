@@ -1,7 +1,9 @@
 # CPP_GIT
+
 <div align="center">
-<img src = "https://user-images.githubusercontent.com/59588256/197656352-bc261dad-dfc4-41bb-8264-41e5e493930c.png" width="40%" height="40%">
+<img src = "https://user-images.githubusercontent.com/59588256/197657476-d17cc5e5-556e-4ff8-8ae3-f49110b64129.png" width="40%" height="40%">
 </div>
+
 
 ## 스터디 목표
 
