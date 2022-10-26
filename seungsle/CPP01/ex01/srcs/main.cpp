@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: seungsle <seungsle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/26 11:49:49 by seungsle          #+#    #+#             */
-/*   Updated: 2022/10/26 12:29:34 by seungsle         ###   ########.fr       */
+/*   Created: 2022/10/26 12:28:36 by seungsle          #+#    #+#             */
+/*   Updated: 2022/10/26 14:02:13 by seungsle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,13 @@
 
 int main()
 {
-	Zombie zombie;
-	
-	zombie.randomChump("Alvin");
-	zombie.randomChump("John");
-	zombie.announce();
+	Zombie	zombie;
+	Zombie	*zombies;
+
+	zombies = zombie.zombieHorde(4, "Foo");
+	for (int i = 0; i < 4; i++)
+	{
+		zombies[i].announce();
+	}
+	delete [] zombies;
 }

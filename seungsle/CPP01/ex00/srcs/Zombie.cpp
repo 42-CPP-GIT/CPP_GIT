@@ -6,11 +6,11 @@
 /*   By: seungsle <seungsle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 11:49:54 by seungsle          #+#    #+#             */
-/*   Updated: 2022/10/26 12:13:30 by seungsle         ###   ########.fr       */
+/*   Updated: 2022/10/26 12:29:38 by seungsle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./Zombie.hpp"
+#include "Zombie.hpp"
 
 void	Zombie::announce()
 {

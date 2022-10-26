@@ -6,11 +6,11 @@
 /*   By: seungsle <seungsle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 12:42:05 by seungsle          #+#    #+#             */
-/*   Updated: 2022/10/25 16:48:56 by seungsle         ###   ########.fr       */
+/*   Updated: 2022/10/26 12:30:04 by seungsle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incs/PhoneBook.hpp"
+#include "PhoneBook.hpp"
 
 void	PhoneBook::add(void)
 {

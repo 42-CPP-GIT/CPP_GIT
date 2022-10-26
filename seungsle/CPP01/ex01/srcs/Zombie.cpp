@@ -1,22 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Zombie.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seungsle <seungsle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/26 11:49:49 by seungsle          #+#    #+#             */
-/*   Updated: 2022/10/26 12:29:34 by seungsle         ###   ########.fr       */
+/*   Created: 2022/10/26 12:28:33 by seungsle          #+#    #+#             */
+/*   Updated: 2022/10/26 14:01:40 by seungsle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
 
-int main()
+void	Zombie::announce()
 {
-	Zombie zombie;
+	std::cout << _name << ": BraiiiiiiinnnzzzZ..." << std::endl;
+}
+
+void	Zombie::setName(std::string name)
+{
+	_name = name;
+}
+
+Zombie::~Zombie()
+{
 	
-	zombie.randomChump("Alvin");
-	zombie.randomChump("John");
-	zombie.announce();
+}
+
+Zombie::Zombie()
+{
+	
 }

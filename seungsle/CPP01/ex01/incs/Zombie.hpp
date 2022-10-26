@@ -1,22 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Zombie.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seungsle <seungsle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/26 11:49:49 by seungsle          #+#    #+#             */
-/*   Updated: 2022/10/26 12:29:34 by seungsle         ###   ########.fr       */
+/*   Created: 2022/10/26 12:28:38 by seungsle          #+#    #+#             */
+/*   Updated: 2022/10/26 14:00:12 by seungsle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#ifndef ZOMBIE_H
+# define ZOMBIE_H
 
-int main()
+#include <iostream>
+
+class Zombie
 {
-	Zombie zombie;
-	
-	zombie.randomChump("Alvin");
-	zombie.randomChump("John");
-	zombie.announce();
-}
+private:
+	std::string _name;
+public:
+	Zombie();
+	~Zombie();
+	void	setName(std::string name);
+	Zombie*	zombieHorde( int N, std::string name );
+	void	announce();
+};
+
+
+#endif

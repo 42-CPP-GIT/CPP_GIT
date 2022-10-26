@@ -6,11 +6,11 @@
 /*   By: seungsle <seungsle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 12:42:07 by seungsle          #+#    #+#             */
-/*   Updated: 2022/10/25 16:41:17 by seungsle         ###   ########.fr       */
+/*   Updated: 2022/10/26 12:30:04 by seungsle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incs/Contact.hpp"
+#include "Contact.hpp"
 
 void Contact::addContact(std::string firstName, std::string lastName, std::string nickName, std::string phoneNumber, std::string darkestSecret, int index)
 {
