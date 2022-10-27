@@ -32,27 +32,17 @@ _CPP와 GIT을 같이 함께 배우자!_
     <tr>
       <td align="center">
         <a href="https://github.com/Giromi">
-          <img src="https://avatars.githubusercontent.com/u/60354633?v=4" alt="김민수 프로필" width=150 height=150 />
+          <img src="https://avatars.githubusercontent.com/u/60354633?v=4" alt="김민수 프로필" width=200 height=200 />
         </a>
       </td>
       <td align="center">
         <a href="https://github.com/lopers-high">
-          <img src="https://avatars.githubusercontent.com/u/86358498?v=4" alt="박진영 프로필" width=150 height=120 />
+          <img src="https://avatars.githubusercontent.com/u/86358498?v=4" alt="박진영 프로필" width=200 height=200 />
         </a>
       </td>
       <td align="center">
         <a href="https://github.com/sob2545">
-          <img src="https://avatars.githubusercontent.com/u/96904906?v=4" alt="심성민 프로필" width=150 height=150 />
-        </a>
-      </td>
-      <td align="center">
-        <a href="https://github.com/aLVINlEE9">
-          <img src="https://avatars.githubusercontent.com/u/74805318?v=4" alt="이승수 프로필" width=150 height=150 />
-        </a>
-      </td>
-      <td align="center">
-        <a href="https://github.com/change-challenge">
-          <img src="https://avatars.githubusercontent.com/u/59588256?v=4" alt="장호진 프로필" width=150 height=150 />
+          <img src="https://avatars.githubusercontent.com/u/96904906?v=4" alt="심성민 프로필" width=200 height=200 />
         </a>
       </td>
     </tr>
@@ -72,6 +62,25 @@ _CPP와 GIT을 같이 함께 배우자!_
           심성민(sesim)
         </a>
       </td>
+    </tr>
+    <tr>
+      <td align="center">
+        <a href="https://github.com/aLVINlEE9">
+          <img src="https://avatars.githubusercontent.com/u/74805318?v=4" alt="이승수 프로필" width=200 height=200 />
+        </a>
+      </td>
+      <td align="center">
+        <a href="https://github.com/change-challenge">
+          <img src="https://avatars.githubusercontent.com/u/59588256?v=4" alt="장호진 프로필" width=200 height=200 />
+        </a>
+      </td>
+      <td align="center">
+        <a href="https://github.com/change-challenge">
+          <img src="https://avatars.githubusercontent.com/u/59588256?v=4" alt="장호진 프로필" width=200 height=200 />
+        </a>
+      </td>
+    </tr>
+    <tr>
       <td align="center">
         <a href="https://github.com/aLVINlEE9">
           이승수(seungsle)
@@ -82,6 +91,12 @@ _CPP와 GIT을 같이 함께 배우자!_
           장호진(hchang)
         </a>
       </td>
+       <td align="center">
+        <a href="https://github.com/change-challenge">
+          장호진(hchang)
+        </a>
+      </td>
     </tr>
   </table>
+  
 </div>
