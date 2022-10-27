@@ -6,7 +6,7 @@
 /*   By: seungsle <seungsle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 13:03:48 by seungsle          #+#    #+#             */
-/*   Updated: 2022/10/26 12:30:04 by seungsle         ###   ########.fr       */
+/*   Updated: 2022/10/27 15:23:15 by seungsle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,3 +39,4 @@ int main(void)
 // getline : string
 // cin.get 
 // gets #include <cstdio> array
+// endl

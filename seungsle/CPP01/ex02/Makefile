@@ -6,17 +6,17 @@
 #    By: seungsle <seungsle@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/25 12:23:45 by seungsle          #+#    #+#              #
-#    Updated: 2022/10/27 12:42:31 by seungsle         ###   ########.fr        #
+#    Updated: 2022/10/26 14:15:10 by seungsle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = megaphone.cpp
+SRCS = main.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
-NAME = megaphone
+NAME = HI_THIS_IS_BRAIN
 
 all: $(NAME)
 
@@ -29,8 +29,6 @@ clean:
 fclean: clean
 	rm -rf $(NAME)
 
-re: 
-	make fclean
-	make all
+re: fclean all
 
 .PHONY: all clean fclean re

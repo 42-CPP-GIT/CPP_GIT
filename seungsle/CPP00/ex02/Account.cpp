@@ -6,7 +6,7 @@
 /*   By: seungsle <seungsle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 17:18:15 by seungsle          #+#    #+#             */
-/*   Updated: 2022/10/25 20:16:24 by seungsle         ###   ########.fr       */
+/*   Updated: 2022/10/27 18:56:32 by seungsle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,3 +128,6 @@ Account::Account()
 {
 	
 }
+
+// https://yesarang.tistory.com/61
+// static

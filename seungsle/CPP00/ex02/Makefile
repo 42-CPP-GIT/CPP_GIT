@@ -6,7 +6,7 @@
 #    By: seungsle <seungsle@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/25 12:23:45 by seungsle          #+#    #+#              #
-#    Updated: 2022/10/25 20:19:56 by seungsle         ###   ########.fr        #
+#    Updated: 2022/10/27 12:42:50 by seungsle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,8 @@ clean:
 fclean: clean
 	rm -rf $(NAME)
 
-re: fclean all
+re: 
+	make fclean
+	make all
 
 .PHONY: all clean fclean re

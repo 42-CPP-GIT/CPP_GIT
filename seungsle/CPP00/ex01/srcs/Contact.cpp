@@ -6,7 +6,7 @@
 /*   By: seungsle <seungsle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 12:42:07 by seungsle          #+#    #+#             */
-/*   Updated: 2022/10/26 12:30:04 by seungsle         ###   ########.fr       */
+/*   Updated: 2022/10/27 18:54:58 by seungsle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 void Contact::addContact(std::string firstName, std::string lastName, std::string nickName, std::string phoneNumber, std::string darkestSecret, int index)
 {
-	Contact::_index = index;
-	Contact::_firstName = firstName;
-	Contact::_lastName = lastName;
-	Contact::_nickName = nickName;
-	Contact::_phoneNumber = phoneNumber;
-	Contact::_darkestSecret = darkestSecret;
+	this->_index = index;
+	this->_firstName = firstName;
+	this->_lastName = lastName;
+	this->_nickName = nickName;
+	this->_phoneNumber = phoneNumber;
+	this->_darkestSecret = darkestSecret;
 }
 
 void Contact::displayContact()
@@ -66,3 +66,5 @@ Contact::~Contact()
 {
 	
 }
+
+// this->
