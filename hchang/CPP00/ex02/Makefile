@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hojinjang <hojinjang@student.42.fr>        +#+  +:+       +#+         #
+#    By: hchang <hchang@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/21 15:09:06 by hchang            #+#    #+#              #
-#    Updated: 2022/10/26 23:01:11 by hojinjang        ###   ########.fr        #
+#    Updated: 2022/10/27 11:59:54 by hchang           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,5 +31,6 @@ fclean: clean
 
 re:
 	@make fclean
+	@make all
 
 .PHONY: all clean fclean re
