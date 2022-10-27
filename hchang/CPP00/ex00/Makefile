@@ -6,7 +6,7 @@
 #    By: hchang <hchang@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/21 15:09:06 by hchang            #+#    #+#              #
-#    Updated: 2022/10/21 16:44:14 by hchang           ###   ########.fr        #
+#    Updated: 2022/10/27 11:53:28 by hchang           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,5 +31,6 @@ fclean: clean
 
 re:
 	@make fclean
+	@make all
 
 .PHONY: all clean fclean re
