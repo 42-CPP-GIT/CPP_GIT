@@ -62,7 +62,24 @@ PR은 오프라인 평가를 1회 받은 뒤 올려야하니 평가해주신 분
 
 ## 👨‍👩‍👧‍👦 스터디 멤버
 
+
 <div align="center">
+  <table>
+      <tr>
+      <td align="center">
+        <a href="https://github.com/change-challenge">
+          <img src="https://avatars.githubusercontent.com/u/59588256?v=4" alt="장호진 프로필" width=200 height=200 />
+        </a>
+      </td>
+    </tr>
+    <tr>
+    <td align="center">
+      <a href="https://github.com/change-challenge">
+        장호진(hchang)
+      </a>
+    </td>
+  </tr>
+  </table>
   <table>
     <tr>
       <td align="center">
@@ -110,8 +127,8 @@ PR은 오프라인 평가를 1회 받은 뒤 올려야하니 평가해주신 분
         </a>
       </td>
       <td align="center">
-        <a href="https://github.com/change-challenge">
-          <img src="https://avatars.githubusercontent.com/u/59588256?v=4" alt="장호진 프로필" width=200 height=200 />
+        <a href="https://github.com/joonho0410">
+          <img src="https://avatars.githubusercontent.com/u/76806109?v=4" alt="전준호 프로필" width=200 height=200 />
         </a>
       </td>
     </tr>
@@ -127,8 +144,8 @@ PR은 오프라인 평가를 1회 받은 뒤 올려야하니 평가해주신 분
         </a>
       </td>
        <td align="center">
-        <a href="https://github.com/change-challenge">
-          장호진(hchang)
+        <a href="https://github.com/joonho0410">
+          전준호(junhjeon)
         </a>
       </td>
     </tr>
