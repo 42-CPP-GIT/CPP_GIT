@@ -6,7 +6,7 @@
 #    By: hchang <hchang@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/21 15:09:06 by hchang            #+#    #+#              #
-#    Updated: 2022/10/25 14:41:22 by hchang           ###   ########.fr        #
+#    Updated: 2022/10/27 11:53:14 by hchang           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME			=	PhoneBook
 RM 				=	rm -rf
 CFLAGS 			=	-Wall -Wextra -Werror -std=c++98 -pedantic-errors
 
-SRCS 	=	PhoneBook.cpp main.cpp
+SRCS 	=	PhoneBook.cpp main.cpp Contact.cpp
 OBJS 	=	$(SRCS:.cpp=.o)
 
 all: $(NAME)
@@ -31,5 +31,6 @@ fclean: clean
 
 re:
 	@make fclean
+	@make all
 
 .PHONY: all clean fclean re

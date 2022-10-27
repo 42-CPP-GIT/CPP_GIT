@@ -6,57 +6,120 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 16:05:00 by hchang            #+#    #+#             */
-/*   Updated: 2022/10/25 15:07:28 by hchang           ###   ########.fr       */
+/*   Updated: 2022/10/27 11:57:50 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 
+PhoneBook::PhoneBook()
+{
+	this->_addIdx = -1;
+	this->_searchIdx = -1;
+}
+
+PhoneBook::~PhoneBook()
+{
+	
+}
+
 void	PhoneBook::add(void)
 {
 	std::string	str;
-
+	
+	this->_searchIdx++;
+	if (this->_searchIdx > 7)
+		this->_searchIdx = 7;
+	this->_addIdx = (this->_addIdx + 1) % 8;
 	std::cout << " ● first name : ";	
 	std::getline(std::cin, str);
-	this->firstName = str;
+	this->contact[this->_addIdx].setFirstName(str);
 	std::cout << " ● last name : ";
 	std::getline(std::cin, str);
-	this->lastName = str;
+	this->contact[this->_addIdx].setLastName(str);
 	std::cout << " ● nickname : ";
 	std::getline(std::cin, str);
-	this->nickName = str;
+	this->contact[this->_addIdx].setNickName(str);
 	std::cout << " ● phone number : ";
 	std::getline(std::cin, str);
-	this->phoneNumber = str;
+	this->contact[this->_addIdx].setPhoneNumber(str);
 	std::cout << " ● darkest secret : ";
 	std::getline(std::cin, str);
-	this->darkestSecret = str;
+	this->contact[this->_addIdx].setDarketSecret(str);
 }
 
-void	PhoneBook::print(int idx)
+void	PhoneBook::print(void)
 {
 	std::string	str;
 
-	std::cout << std::setw(10) << idx;
-	std::cout << "|";
-	if (this->firstName.size() > 10)
-		std::cout << this->firstName.substr(0,9) << ".";
-	else
-		std::cout << std::setw(10) << this->firstName;
-	std::cout << "|";
-	if (this->lastName.size() > 10)
-		std::cout << this->lastName.substr(0,9) << ".";
-	else
-		std::cout << std::setw(10) << this->lastName;
-	std::cout << "|";
-	if (this->nickName.size() > 10)
-		std::cout << this->nickName.substr(0,9) << ".";
-	else
-		std::cout << std::setw(10) << this->nickName;
-	std::cout << "|" << std::endl;
+	for (int i = 0; i <= this->_searchIdx; i++)
+	{
+		std::cout << std::setw(10) << i;
+		std::cout << "|";
+		if (this->contact[i].getFirstName().size() > 10)
+			std::cout << this->contact[i].getFirstName().substr(0, 9) << ".";
+		else
+			std::cout << std::setw(10) << this->contact[i].getFirstName();
+		std::cout << "|";
+		if (this->contact[i].getLastName().size() > 10)
+			std::cout << this->contact[i].getLastName().substr(0, 9) << ".";
+		else
+			std::cout << std::setw(10) << this->contact[i].getLastName();
+		std::cout << "|";
+		if (this->contact[i].getNickName().size() > 10)
+			std::cout << this->contact[i].getNickName().substr(0, 9) << ".";
+		else
+			std::cout << std::setw(10) << this->contact[i].getNickName();
+		std::cout << "|" << std::endl;
+	}
+	searchprint();
 }
 
+void PhoneBook::searchprint(void)
+{
+	std::string	inputStirng;
+	int			searchIdx;
 
+	while (1)
+	{
+		std::cout << "PICK YOUR INDEX (9 will be end of SEARCH) : ";
+		std::getline(std::cin, inputStirng);
+		if (std::cin.eof())
+			return ;
+		if (inputStirng.size() != 1 || !std::isdigit(inputStirng[0]))
+		{
+			std::cout << "YOUR PUT WRONG INDEX!" << std::endl;
+			continue;
+		}
+		searchIdx = std::stoi(inputStirng);
+		if (searchIdx == 9)
+			return ;
+		else if(searchIdx < 0 || searchIdx > 7)
+		{
+			std::cout << "OUT OF INDEX" << std::endl;
+			continue;
+		}
+		else
+		{
+			if (searchIdx > this->_searchIdx)
+			{
+				std::cout << "THERE IS NO CONTACT" << std::endl;
+				continue;
+			}
+			else
+			{
+				std::cout << "--------------------------------------------" << std::endl;
+				std::cout << " ● first Name : " << this->contact[searchIdx].getFirstName() << std::endl;
+				std::cout << " ● last name : " << this->contact[searchIdx].getLastName() << std::endl;
+				std::cout << " ● nickname : " << this->contact[searchIdx].getNickName() << std::endl;
+				std::cout << " ● phone number : " << this->contact[searchIdx].getPhoneNumber() << std::endl;
+				std::cout << " ● darkest secret : " << this->contact[searchIdx].getDarketSecret() << std::endl;
+				std::cout << "--------------------------------------------" << std::endl;
+			}
+		}
+	}
+	std::cout << "--------------------------------------------" << std::endl;
+}
 
 void PhoneBook::exit(void)
 {
