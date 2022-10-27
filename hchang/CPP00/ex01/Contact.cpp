@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 10:39:26 by hchang            #+#    #+#             */
-/*   Updated: 2022/10/27 11:08:12 by hchang           ###   ########.fr       */
+/*   Updated: 2022/10/27 17:39:16 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,14 +60,4 @@ std::string	Contact::getPhoneNumber(void)
 std::string	Contact::getDarketSecret(void)
 {
 	return (this->_darkestSecret);
-}
-
-Contact::Contact()
-{
-
-}
-
-Contact::~Contact()
-{
-
 }

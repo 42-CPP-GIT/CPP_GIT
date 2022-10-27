@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 16:05:00 by hchang            #+#    #+#             */
-/*   Updated: 2022/10/27 11:57:50 by hchang           ###   ########.fr       */
+/*   Updated: 2022/10/27 17:54:01 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,6 @@ PhoneBook::PhoneBook()
 {
 	this->_addIdx = -1;
 	this->_searchIdx = -1;
-}
-
-PhoneBook::~PhoneBook()
-{
-	
 }
 
 void	PhoneBook::add(void)
@@ -33,19 +28,19 @@ void	PhoneBook::add(void)
 	this->_addIdx = (this->_addIdx + 1) % 8;
 	std::cout << " ● first name : ";	
 	std::getline(std::cin, str);
-	this->contact[this->_addIdx].setFirstName(str);
+	this->_contact[this->_addIdx].setFirstName(str);
 	std::cout << " ● last name : ";
 	std::getline(std::cin, str);
-	this->contact[this->_addIdx].setLastName(str);
+	this->_contact[this->_addIdx].setLastName(str);
 	std::cout << " ● nickname : ";
 	std::getline(std::cin, str);
-	this->contact[this->_addIdx].setNickName(str);
+	this->_contact[this->_addIdx].setNickName(str);
 	std::cout << " ● phone number : ";
 	std::getline(std::cin, str);
-	this->contact[this->_addIdx].setPhoneNumber(str);
+	this->_contact[this->_addIdx].setPhoneNumber(str);
 	std::cout << " ● darkest secret : ";
 	std::getline(std::cin, str);
-	this->contact[this->_addIdx].setDarketSecret(str);
+	this->_contact[this->_addIdx].setDarketSecret(str);
 }
 
 void	PhoneBook::print(void)
@@ -56,33 +51,33 @@ void	PhoneBook::print(void)
 	{
 		std::cout << std::setw(10) << i;
 		std::cout << "|";
-		if (this->contact[i].getFirstName().size() > 10)
-			std::cout << this->contact[i].getFirstName().substr(0, 9) << ".";
+		if (this->_contact[i].getFirstName().size() > 10)
+			std::cout << this->_contact[i].getFirstName().substr(0, 9) << ".";
 		else
-			std::cout << std::setw(10) << this->contact[i].getFirstName();
+			std::cout << std::setw(10) << this->_contact[i].getFirstName();
 		std::cout << "|";
-		if (this->contact[i].getLastName().size() > 10)
-			std::cout << this->contact[i].getLastName().substr(0, 9) << ".";
+		if (this->_contact[i].getLastName().size() > 10)
+			std::cout << this->_contact[i].getLastName().substr(0, 9) << ".";
 		else
-			std::cout << std::setw(10) << this->contact[i].getLastName();
+			std::cout << std::setw(10) << this->_contact[i].getLastName();
 		std::cout << "|";
-		if (this->contact[i].getNickName().size() > 10)
-			std::cout << this->contact[i].getNickName().substr(0, 9) << ".";
+		if (this->_contact[i].getNickName().size() > 10)
+			std::cout << this->_contact[i].getNickName().substr(0, 9) << ".";
 		else
-			std::cout << std::setw(10) << this->contact[i].getNickName();
+			std::cout << std::setw(10) << this->_contact[i].getNickName();
 		std::cout << "|" << std::endl;
 	}
-	searchprint();
+	searchPrint();
 }
 
-void PhoneBook::searchprint(void)
+void PhoneBook::searchPrint(void)
 {
 	std::string	inputStirng;
 	int			searchIdx;
 
 	while (1)
 	{
-		std::cout << "PICK YOUR INDEX (9 will be end of SEARCH) : ";
+		std::cout << "PICK YOUR INDEX (9 will be the end of SEARCH) : ";
 		std::getline(std::cin, inputStirng);
 		if (std::cin.eof())
 			return ;
@@ -109,11 +104,11 @@ void PhoneBook::searchprint(void)
 			else
 			{
 				std::cout << "--------------------------------------------" << std::endl;
-				std::cout << " ● first Name : " << this->contact[searchIdx].getFirstName() << std::endl;
-				std::cout << " ● last name : " << this->contact[searchIdx].getLastName() << std::endl;
-				std::cout << " ● nickname : " << this->contact[searchIdx].getNickName() << std::endl;
-				std::cout << " ● phone number : " << this->contact[searchIdx].getPhoneNumber() << std::endl;
-				std::cout << " ● darkest secret : " << this->contact[searchIdx].getDarketSecret() << std::endl;
+				std::cout << " ● first Name : " << this->_contact[searchIdx].getFirstName() << std::endl;
+				std::cout << " ● last name : " << this->_contact[searchIdx].getLastName() << std::endl;
+				std::cout << " ● nickname : " << this->_contact[searchIdx].getNickName() << std::endl;
+				std::cout << " ● phone number : " << this->_contact[searchIdx].getPhoneNumber() << std::endl;
+				std::cout << " ● darkest secret : " << this->_contact[searchIdx].getDarketSecret() << std::endl;
 				std::cout << "--------------------------------------------" << std::endl;
 			}
 		}
@@ -125,3 +120,6 @@ void PhoneBook::exit(void)
 {
 	std::exit(0);
 }
+
+
+// print에서 cin <- eof 받은 후 그냥 죽어버림

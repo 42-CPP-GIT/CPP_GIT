@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 15:18:04 by hchang            #+#    #+#             */
-/*   Updated: 2022/10/27 12:47:22 by hchang           ###   ########.fr       */
+/*   Updated: 2022/10/27 19:16:02 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ int	Account::_totalNbWithdrawals = 0;
 
 Account::Account(int initial_deposit)
 {
+	_nbDeposits = 0;
+	_nbWithdrawals = 0;
 	this->_accountIndex = _nbAccounts;	
 	this->_amount = initial_deposit;
 	_totalAmount += this->_amount;
@@ -125,7 +127,4 @@ void	Account::_displayTimestamp( void )
 
 	std::strftime(buffer, 26, "[%Y%m%d_%H%M%S]", t);
     std::cout << buffer;
-
-	//std::cout << "[" << t->tm_year + 1900 << t->tm_mon + 1 << t->tm_mday;
-	//std::cout << "_" << t->tm_hour << t->tm_min << t->tm_sec << "]";
 }

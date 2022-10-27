@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 16:28:41 by hchang            #+#    #+#             */
-/*   Updated: 2022/10/27 11:20:19 by hchang           ###   ########.fr       */
+/*   Updated: 2022/10/27 17:49:22 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,13 @@ class PhoneBook
     private:
         int		_addIdx;
 		int		_searchIdx;
-        Contact contact[8];
+        Contact _contact[8];
     public:
 		PhoneBook();
-		~PhoneBook();
 		void	print(void);
         void	add(void);
         void	search(void);
-		void	searchprint(void);
+		void	searchPrint(void);
 		void	exit(void);
 };
 

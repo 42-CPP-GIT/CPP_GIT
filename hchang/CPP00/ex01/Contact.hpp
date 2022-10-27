@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 10:29:13 by hchang            #+#    #+#             */
-/*   Updated: 2022/10/27 10:47:40 by hchang           ###   ########.fr       */
+/*   Updated: 2022/10/27 17:39:32 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,6 @@ public:
     std::string	getNickName(void);
     std::string	getPhoneNumber(void);
     std::string	getDarketSecret(void);
-    Contact();
-    ~Contact();
 };
 
 # endif
