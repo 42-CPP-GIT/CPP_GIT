@@ -6,14 +6,14 @@
 #    By: hchang <hchang@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/21 15:09:06 by hchang            #+#    #+#              #
-#    Updated: 2022/10/27 11:53:28 by hchang           ###   ########.fr        #
+#    Updated: 2022/10/28 11:24:21 by hchang           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CC 				=	c++
+CXX				=	c++
 NAME			=	megaphone
 RM 				=	rm -rf
-CFLAGS 			=	-Wall -Wextra -Werror -std=c++98 -pedantic-errors
+CPPFLAGS 		=	-Wall -Wextra -Werror -std=c++98 -pedantic-errors
 
 SRCS 	=	megaphone.cpp
 OBJS 	=	$(SRCS:.cpp=.o)
@@ -21,7 +21,7 @@ OBJS 	=	$(SRCS:.cpp=.o)
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	@$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
+	@$(CXX) $(CPPFLAGS) -o $(NAME) $(OBJS)
 
 clean:
 	@$(RM) $(OBJS)

@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 16:05:00 by hchang            #+#    #+#             */
-/*   Updated: 2022/10/27 17:54:01 by hchang           ###   ########.fr       */
+/*   Updated: 2022/10/28 11:33:45 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ void PhoneBook::searchPrint(void)
 
 	while (1)
 	{
-		std::cout << "PICK YOUR INDEX (9 will be the end of SEARCH) : ";
+		std::cout << "PICK YOUR INDEX (press 9 to end SEARCH) : ";
 		std::getline(std::cin, inputStirng);
 		if (std::cin.eof())
 			return ;
