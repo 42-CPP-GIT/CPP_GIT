@@ -6,7 +6,7 @@
 /*   By: jinypark <jinypark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 15:59:12 by jinypark          #+#    #+#             */
-/*   Updated: 2022/10/28 15:59:34 by jinypark         ###   ########.fr       */
+/*   Updated: 2022/10/28 19:42:48 by jinypark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #define PHONEBOOK_H
 
 # include <iostream>
+# include <sstream>
 # include <iomanip>
 # include <string>
 # include "Contact.hpp"
