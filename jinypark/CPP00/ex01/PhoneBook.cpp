@@ -6,7 +6,7 @@
 /*   By: jinypark <jinypark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 17:14:17 by jinypark          #+#    #+#             */
-/*   Updated: 2022/10/28 16:00:32 by jinypark         ###   ########.fr       */
+/*   Updated: 2022/10/28 20:07:58 by jinypark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,7 +128,11 @@ void	PhoneBook::searchInfo(void)
 
 void	PhoneBook::searchInfo(std::string str)
 {
-	int i = std::stoi(str);
+	int i = 0;
+	std::stringstream s(str);
+	s >> i;
+	if (s.fail())
+		return ;
 	{
 		if (i + 1 > contactCount)
 		{
