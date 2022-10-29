@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Account.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hojinjang <hojinjang@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 15:18:04 by hchang            #+#    #+#             */
-/*   Updated: 2022/10/27 19:16:02 by hchang           ###   ########.fr       */
+/*   Updated: 2022/10/29 20:02:47 by hojinjang        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ void	Account::displayAccountsInfos()
 {
 	Account::_displayTimestamp();
 
-	std::cout << " accounts:" << _nbAccounts << ";total:" << _totalAmount
-	<< ";deposits:" << _totalNbDeposits << ";withdrawals:" << _totalNbWithdrawals << std::endl;
+	std::cout << " accounts:" << getNbAccounts() << ";total:" << getTotalAmount()
+	<< ";deposits:" << getNbDeposits() << ";withdrawals:" << getNbWithdrawals() << std::endl;
 }
 
 void	Account::makeDeposit( int deposit )
@@ -97,7 +97,6 @@ void	Account::displayStatus( void ) const
 	std::cout << " index:" << this->_accountIndex << ";amount:" << this->_amount
 	<< ";deposits:" << this->_nbDeposits << ";withdrawals:" << this->_nbWithdrawals << std::endl;
 }
-
 
 int	Account::getNbAccounts( void )
 {
