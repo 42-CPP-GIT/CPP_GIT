@@ -6,7 +6,7 @@
 /*   By: seungsle <seungsle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 12:42:05 by seungsle          #+#    #+#             */
-/*   Updated: 2022/10/27 14:39:12 by seungsle         ###   ########.fr       */
+/*   Updated: 2022/10/29 15:36:43 by seungsle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	PhoneBook::add(void)
 	std::string darkestSecret;
 	Contact	newContact;
 
-	std::cout << "[Add Contact]\n";
+	std::cout << "[Add Contact]" << std::endl;
 	std::cout << "Enter (First Name) : ";
 	std::getline(std::cin, firstName);
 	if (std::cin.eof())
@@ -54,7 +54,8 @@ bool	PhoneBook::isNumber(const std::string& s)
 	if (*it == '-')
 	{
 		++it;
-		return (std::isdigit(*it));
+		if (it == s.end())
+			return (0);
 	}
     while (it != s.end() && std::isdigit(*it)) ++it;
     return !s.empty() && it == s.end();
@@ -72,7 +73,7 @@ void	PhoneBook::search(void)
 			break ;
 		_contact[i].displayContact();
 	}
-	std::cout << "[SEARCH CONTACT]\n" << std::endl;
+	std::cout << "[SEARCH CONTACT]" << std::endl;
 	while (1)
 	{
 		std::cout << "Enter index you want to search (if you want to exit enter `-1`) : ";
