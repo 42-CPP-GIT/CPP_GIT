@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   megaphone.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seungsle <seungsle@student.42.fr>          +#+  +:+       +#+        */
+/*   By: seungsle <seungsle@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 12:23:11 by seungsle          #+#    #+#             */
-/*   Updated: 2022/10/29 15:20:02 by seungsle         ###   ########.fr       */
+/*   Updated: 2022/10/29 21:00:26 by seungsle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	main(int argc, char **argv)
 		{
 			std::string argvString(argv[i]);
 			for (std::string::iterator it = argvString.begin(); it != argvString.end(); ++it)
-				*it = toupper(*it);
+				*it = std::toupper(*it);
 			std::cout << argvString;
 		}
 		std::cout << std::endl;
