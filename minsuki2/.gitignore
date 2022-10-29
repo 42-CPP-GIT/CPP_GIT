@@ -1,0 +1,9 @@
+.vscode
+.DS_Store
+.gitkeep
+README.md
+tags
+*.o
+*.d
+*.txt
+
