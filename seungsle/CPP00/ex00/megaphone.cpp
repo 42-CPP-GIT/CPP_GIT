@@ -6,7 +6,7 @@
 /*   By: seungsle <seungsle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 12:23:11 by seungsle          #+#    #+#             */
-/*   Updated: 2022/10/27 14:37:48 by seungsle         ###   ########.fr       */
+/*   Updated: 2022/10/29 15:20:02 by seungsle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,17 @@
 int	main(int argc, char **argv)
 {
 	if (argc == 1)
-		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *\n" ;
+		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
 	else
 	{
 		for (int i = 1; i < argc; i++)
 		{
-			for (int j = 0; j < (int)strlen(argv[i]); j++)
-			{
-				std::cout << (char)toupper(argv[i][j]);
-			}
+			std::string argvString(argv[i]);
+			for (std::string::iterator it = argvString.begin(); it != argvString.end(); ++it)
+				*it = toupper(*it);
+			std::cout << argvString;
 		}
-		std::cout << "\n";
+		std::cout << std::endl;
 	}
 	return (0);
 }
-
-// char * -> string
-// typecast
-// https://doitnow-man.tistory.com/215
