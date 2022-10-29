@@ -6,7 +6,7 @@
 /*   By: seungsle <seungsle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 12:41:30 by seungsle          #+#    #+#             */
-/*   Updated: 2022/10/25 16:16:06 by seungsle         ###   ########.fr       */
+/*   Updated: 2022/10/29 16:34:36 by seungsle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <iostream>
 #include <string>
 #include <iomanip>
+#include <sstream>
 
 class Contact
 {

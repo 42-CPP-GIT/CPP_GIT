@@ -6,7 +6,7 @@
 /*   By: seungsle <seungsle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 12:42:05 by seungsle          #+#    #+#             */
-/*   Updated: 2022/10/29 15:36:43 by seungsle         ###   ########.fr       */
+/*   Updated: 2022/10/29 16:48:47 by seungsle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,28 +80,30 @@ void	PhoneBook::search(void)
 		std::getline(std::cin, index);
 		if (std::cin.eof())
 			break ;
-		if (isNumber(index))
+		std::stringstream ssInt(index);
+		if (!ssInt.fail() && isNumber(index))
 		{
-			indexInt = std::stoi(index);
+			ssInt >> indexInt;
+			if (indexInt == -1)
+			{
+				std::cout << "[EXIT SEARCH]" << std::endl;
+				break ;
+			}
+			if (0 <= indexInt && indexInt < MAX_CAPACITY)
+			{
+				_contact[indexInt].displayContactBySearch(indexInt);
+			}
+			else
+			{
+				std::cout << "invalid value(out of bound)" << std::endl;
+			}
 		}
 		else
 		{
 			std::cout << "invalid value" << std::endl;
 			continue ;
 		}
-		if (indexInt == -1)
-		{
-			std::cout << "[EXIT SEARCH]" << std::endl;
-			break ;
-		}
-		if (0 <= indexInt && indexInt < MAX_CAPACITY)
-		{
-			_contact[indexInt].displayContactBySearch(indexInt);
-		}
-		else
-		{
-			std::cout << "invalid value(out of bound)" << std::endl;
-		}
+		
 	}
 }
 
