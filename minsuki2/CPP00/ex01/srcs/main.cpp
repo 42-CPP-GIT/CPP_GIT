@@ -6,7 +6,7 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 03:06:53 by minsuki2          #+#    #+#             */
-/*   Updated: 2022/10/30 06:34:15 by minsuki2         ###   ########.fr       */
+/*   Updated: 2022/10/30 14:47:53 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ std::string	myGetLine(const std::string &msg) {
 int	main(void) {
 	PhoneBook	phone;
 
+
+	std::cout << MSG_WELCOME << '\n';
 	while (true) {
 		std::string order;
 

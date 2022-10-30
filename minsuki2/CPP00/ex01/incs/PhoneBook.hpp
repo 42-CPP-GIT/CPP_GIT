@@ -6,13 +6,21 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 03:27:52 by minsuki2          #+#    #+#             */
-/*   Updated: 2022/10/30 06:42:04 by minsuki2         ###   ########.fr       */
+/*   Updated: 2022/10/30 20:41:48 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHONEBOOK_HPP
 # define PHONEBOOK_HPP
 # include "Contact.hpp"
+
+
+# define MSG_WELCOME	"\
+,------. ,--.                               ,-----.                ,--.		\n\
+|  .--. '|  ,---.  ,---. ,--,--,  ,---.    |  |) /_  ,---.  ,---. |  |,-.	\n\
+|  '--' ||  .-.  || .-. ||     \\| .-. :    |  .-.  \\| .-. || .-. ||     /	\n\
+|  | --' |  | |  |' '-' '|  ||  |\\  --.    |  '--' /' '-' '' '-' '|   \\ \\\n\
+`--'     `--' `--' `---' `--''--' `----'    `------' `---'  `---' `--''--'	\n"
 
 
 std::string	myGetLine(const std::string &msg);
@@ -25,7 +33,8 @@ class	PhoneBook {
 
 	private:
 		Contact _contact[8];
-		int		_idx;
+		int	_idx;
+		int	_full_cnt;
 };
 
 #endif

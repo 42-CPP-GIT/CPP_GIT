@@ -6,7 +6,7 @@
 #    By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/29 18:32:08 by minsuki2          #+#    #+#              #
-#    Updated: 2022/10/30 06:41:31 by minsuki2         ###   ########.fr        #
+#    Updated: 2022/10/30 17:17:41 by minsuki2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,7 +44,6 @@ $(OBJS_DIR)%.o: $(SRCS_DIR)%.cpp
 clean:
 	@echo
 	@echo ">>>>>>>>>>>>>>>> clean List <<<<<<<<<<<<<<<<<<<<"
-	@$(RM) $(OBJS) $(DEPS)
 	@$(RM) $(OBJS_DIR) $(DEPS_DIR)
 	@echo
 
