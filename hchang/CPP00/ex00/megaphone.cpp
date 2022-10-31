@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 16:18:04 by hchang            #+#    #+#             */
-/*   Updated: 2022/10/28 11:23:47 by hchang           ###   ########.fr       */
+/*   Updated: 2022/10/31 18:34:29 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int main(int argc, char** argv)
 	{
 		for (int i = 1; i < argc; i++)
 			str += std::string(argv[i]);
-		for (int j = 0; j < str.size(); j++)
+		for (int j = 0; j < (int)str.size(); j++)
 			str[j] = std::toupper(str[j]);
 		std::cout << str;
 	}
