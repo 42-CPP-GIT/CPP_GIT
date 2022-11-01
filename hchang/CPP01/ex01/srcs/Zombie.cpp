@@ -1,19 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   randomChump.cpp                                    :+:      :+:    :+:   */
+/*   Zombie.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/28 12:14:03 by hchang            #+#    #+#             */
-/*   Updated: 2022/10/28 12:15:33 by hchang           ###   ########.fr       */
+/*   Created: 2022/11/01 10:58:16 by hchang            #+#    #+#             */
+/*   Updated: 2022/11/01 12:43:57 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
 
-void		randomChump(std::string name)
-{
-    Zombie zombie(name);
-    zombie.announce();
+Zombie::Zombie() { std::cout << "hey" << std::endl; }
+
+Zombie::~Zombie() {
+  // reference 변수 좀 봐두기
+  // 콜론 초기화
+  std::cout << "[destructor] " << this->name_ << " will be back.. "
+            << std::endl;
+  delete[] Zombie
 }
