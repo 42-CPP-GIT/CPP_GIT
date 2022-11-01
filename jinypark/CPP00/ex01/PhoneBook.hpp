@@ -6,7 +6,7 @@
 /*   By: jinypark <jinypark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 15:59:12 by jinypark          #+#    #+#             */
-/*   Updated: 2022/10/28 19:42:48 by jinypark         ###   ########.fr       */
+/*   Updated: 2022/11/01 09:56:10 by jinypark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ public:
 	bool	search(void);
 	void	searchInfo(void);
 	void	searchInfo(std::string str);
-	int		getCurrIndex(void);
-	int		getContactCount(void);
-	bool	empty(void);
+	int		getCurrIndex(void) const;
+	int		getContactCount(void) const;
+	bool	empty(void) const;
 	PhoneBook();
 private:
 	Contact contact[8];

@@ -6,11 +6,12 @@
 /*   By: jinypark <jinypark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 17:14:17 by jinypark          #+#    #+#             */
-/*   Updated: 2022/10/28 20:14:22 by jinypark         ###   ########.fr       */
+/*   Updated: 2022/11/01 09:56:06 by jinypark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
+#include "Contact.hpp"
 
 void printPhoneBook(void)
 {
@@ -88,11 +89,11 @@ bool	PhoneBook::addAsk(void)
 
 void	PhoneBook::addInfo(std::string str[5])
 {
-	contact[currIndex].firstName = str[0];
-	contact[currIndex].lastName = str[1];
-	contact[currIndex].nickname = str[2];
-	contact[currIndex].phoneNumber = str[3];
-	contact[currIndex].darkestSecret = str[4];
+	contact[currIndex].setFirstName(str[0]);
+	contact[currIndex].setLastName(str[1]);
+	contact[currIndex].setNickname(str[2]);
+	contact[currIndex].setPhoneNumber(str[3]);
+	contact[currIndex].setDarkestSecret(str[4]);
 	currIndex = ++currIndex % 8;
 	if (contactCount < 8)
 		++contactCount;
@@ -120,9 +121,9 @@ void	PhoneBook::searchInfo(void)
 	for (int i = 0; i < contactCount; ++i)
 	{
 		std::cout << std::setw(10) << i << "|";
-		std::cout << std::setw(10) << simpleStr(contact[i].firstName).substr(0, 10) << "|";
-		std::cout << std::setw(10) << simpleStr(contact[i].lastName).substr(0, 10) << "|";
-		std::cout << std::setw(10) << simpleStr(contact[i].nickname).substr(0, 10) << "|" << std::endl;
+		std::cout << std::setw(10) << simpleStr(contact[i].getFirstName()).substr(0, 10) << "|";
+		std::cout << std::setw(10) << simpleStr(contact[i].getLastName()).substr(0, 10) << "|";
+		std::cout << std::setw(10) << simpleStr(contact[i].getNickname()).substr(0, 10) << "|" << std::endl;
 	}
 }
 
@@ -140,31 +141,29 @@ void	PhoneBook::searchInfo(std::string str)
 			return ;
 		}
 		std::cout << "Index: " << i << std::endl;
-		std::cout << "First name: " << contact[i].firstName << std::endl;
-		std::cout << "Last name: "  << contact[i].lastName << std::endl;
-		std::cout << "Nickname: " << contact[i].nickname << std::endl;
-		std::cout << "Phone number: " << contact[i].phoneNumber << std::endl;
-		std::cout << "Darkest secret: " << contact[i].darkestSecret << std::endl;
+		std::cout << "First name: " << contact[i].getFirstName() << std::endl;
+		std::cout << "Last name: "  << contact[i].getLastName() << std::endl;
+		std::cout << "Nickname: " << contact[i].getNickname() << std::endl;
+		std::cout << "Phone number: " << contact[i].getPhoneNumber() << std::endl;
+		std::cout << "Darkest secret: " << contact[i].getDarkestSecret() << std::endl;
 	}
 }
 
-int		PhoneBook::getCurrIndex(void)
+int		PhoneBook::getCurrIndex(void) const
 {
 	return (this->currIndex);
 }
 
-int		PhoneBook::getContactCount(void)
+int		PhoneBook::getContactCount(void) const
 {
 	return (this->contactCount);
 }
 
-bool	PhoneBook::empty(void)
+bool	PhoneBook::empty(void) const
 {
 	return (this->contactCount == 0);
 }
 
-PhoneBook::PhoneBook()
+PhoneBook::PhoneBook() : currIndex(0), contactCount(0)
 {
-	this->currIndex = 0;
-	this->contactCount = 0;
 }
