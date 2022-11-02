@@ -6,7 +6,7 @@
 /*   By: sesim <sesim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 14:17:06 by sesim             #+#    #+#             */
-/*   Updated: 2022/11/02 11:34:41 by sesim            ###   ########.fr       */
+/*   Updated: 2022/11/02 15:58:40 by sesim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define __CONTACT_HPP__
 
 # include <iostream>
+# include <iomanip>
 
 class Contact
 {
@@ -26,7 +27,8 @@ class Contact
 	public:
 		Contact(void);
 		void	AddBook(const std::string str[5]);
-		void	PrintInfo(void);
+		void	printSimpleInfo(int n);
+		void	printMoreInfo(int n);
 		~Contact();
 };
 

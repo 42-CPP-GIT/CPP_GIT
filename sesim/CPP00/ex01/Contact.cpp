@@ -6,13 +6,21 @@
 /*   By: sesim <sesim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 14:16:22 by sesim             #+#    #+#             */
-/*   Updated: 2022/11/02 11:38:13 by sesim            ###   ########.fr       */
+/*   Updated: 2022/11/02 16:04:38 by sesim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Contact.hpp"
 
-Contact()
+static void	printRange(std::string str)
+{
+	if (str.length() < 11)
+		std::cout << std::setw(10) << str << '|';
+	else
+		std::cout << std::setw(10) << str.substr(0, 9) + '.' << '|';
+}
+
+Contact::Contact(void)
 {
 }
 
@@ -25,7 +33,35 @@ void	Contact::AddBook(const std::string str[5])
 	this->darkest_secret_ = str[4];
 }
 
-void	PrintInfo(void)
+void	Contact::printSimpleInfo(int n)
 {
-	std::cout << 
+	if (n == 0)
+	{
+		std::cout << '|';
+		printRange("index");
+		printRange("first name");
+		printRange("last name");
+		printRange("nickname");
+		std::cout << std::endl;
+	}
+	std::cout << '|';
+	std::cout << std::setw(10) << n << '|';
+	printRange(this->first_name_);
+	printRange(this->last_name_);
+	printRange(this->nick_name_);
+	std::cout << std::endl;
+}
+
+void	Contact::printMoreInfo(int n)
+{
+	std::cout << "=====" << n << "index info=====" << std::endl;
+	std::cout << this->first_name_ << std::endl;
+	std::cout << this->last_name_ << std::endl;
+	std::cout << this->nick_name_ << std::endl;
+	std::cout << this->phone_number_ << std::endl;
+	std::cout << this->darkest_secret_ << std::endl;
+}
+
+Contact::~Contact()
+{
 }

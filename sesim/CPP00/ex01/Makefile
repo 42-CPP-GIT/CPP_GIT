@@ -6,7 +6,7 @@
 #    By: sesim <sesim@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/27 10:57:40 by sesim             #+#    #+#              #
-#    Updated: 2022/11/02 11:01:05 by sesim            ###   ########.fr        #
+#    Updated: 2022/11/02 16:00:49 by sesim            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME		=	phoneBook
 CPPFLAGS	=	-Wall -Wextra -Werror -std=c++98 -pedantic-errors
 RM			=	rm -f
 
-SRCS	=	megaphone.cpp
+SRCS	=	main.cpp PhoneBook.cpp Contact.cpp
 OBJS	=	$(SRCS:.cpp=.o)
 
 all : $(NAME)
