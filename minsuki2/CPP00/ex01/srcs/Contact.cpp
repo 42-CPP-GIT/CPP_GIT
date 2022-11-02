@@ -6,18 +6,19 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 06:26:18 by minsuki2          #+#    #+#             */
-/*   Updated: 2022/10/30 20:43:54 by minsuki2         ###   ########.fr       */
+/*   Updated: 2022/11/02 21:11:09 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/Contact.hpp"
 
 void printOffset10(const std::string &str) {
-
+	std::cout << std::setw(10);
 	if (str.length() <= 10)
-		std::cout << std::setw(10) << str << '|';
+		std::cout << str;
 	else
-		std::cout << std::setw(10) << str.substr(0, 9) + "." << '|';
+		std::cout << str.substr(0, 9) + ".";
+	std::cout << '|';
 }
 
 void Contact::display(const int &i) {

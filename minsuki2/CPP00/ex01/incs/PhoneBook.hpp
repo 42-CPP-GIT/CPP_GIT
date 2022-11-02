@@ -6,7 +6,7 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 03:27:52 by minsuki2          #+#    #+#             */
-/*   Updated: 2022/10/30 20:41:48 by minsuki2         ###   ########.fr       */
+/*   Updated: 2022/11/02 21:09:55 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,12 @@
 |  | --' |  | |  |' '-' '|  ||  |\\  --.    |  '--' /' '-' '' '-' '|   \\ \\\n\
 `--'     `--' `--' `---' `--''--' `----'    `------' `---'  `---' `--''--'	\n"
 
-
-std::string	myGetLine(const std::string &msg);
+std::string		myGetLine(const std::string &msg);
 
 class	PhoneBook {
 	public:
-		PhoneBook();
+		PhoneBook(void);
+		~PhoneBook(void);
 		void	addBook(void);
 		void	searchBook(void);
 

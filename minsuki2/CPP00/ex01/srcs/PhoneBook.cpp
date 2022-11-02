@@ -6,12 +6,27 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 03:06:21 by minsuki2          #+#    #+#             */
-/*   Updated: 2022/10/30 20:48:26 by minsuki2         ###   ########.fr       */
+/*   Updated: 2022/11/02 21:22:34 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 #include <sstream>
+
+std::string	myGetLine(const std::string &msg) {
+	std::string	str;
+
+	do {
+		std::cout << msg;
+		if (!std::getline(std::cin, str)) {
+			std::cout << "\nDO NOT EOF!!! Type Again!";
+			std::cin.clear();
+			std::clearerr(stdin);
+			std::cout << std::endl;
+		}
+	} while (str.empty());
+	return (str);
+}
 
 static bool	_isOnlyNumber(const std::string &str) {
 	for (std::string::const_iterator it = str.begin(); it != str.end(); it++)
@@ -20,6 +35,9 @@ static bool	_isOnlyNumber(const std::string &str) {
 	return (true);
 }
 
+static bool is_contact_index(char ch) {
+	return (std::isdigit(ch) && '0' <= ch && ch <= '7');
+}
 
 void	PhoneBook::addBook(void) {
 	std::string		input[INFO_N];
@@ -39,9 +57,6 @@ void	PhoneBook::addBook(void) {
 		_contact[i].display(i);
 }
 
-static bool is_contact_index(char ch) {
-	return (std::isdigit(ch) && '0' <= ch && ch <= '7');
-}
 
 void	PhoneBook::searchBook(void) {
 	if (this->_idx < 0) {
@@ -106,4 +121,8 @@ void	PhoneBook::searchBook(void) {
 PhoneBook::PhoneBook() {
 	this->_idx = -1;
 	this->_full_cnt = -1;
+}
+
+PhoneBook::~PhoneBook() {
+	std::cout << "\n@@@@@ Good Bye! @@@@@" << '\n';
 }

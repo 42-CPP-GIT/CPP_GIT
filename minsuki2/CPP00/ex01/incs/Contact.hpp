@@ -6,7 +6,7 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 03:37:00 by minsuki2          #+#    #+#             */
-/*   Updated: 2022/10/30 20:03:23 by minsuki2         ###   ########.fr       */
+/*   Updated: 2022/11/02 21:18:43 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,13 @@
 # include <iostream>
 # include <iomanip>
 
-
 # define	SUCCESS		0
 # define	INFO_N		5
 
 void	printOffset10(const std::string &str);
 void	displayColumns(void);
 
-enum infoData {
-	F_NAME, L_NAME, N_NAME, PH_NUM, D_SECRET
-};
+enum infoData { F_NAME, L_NAME, N_NAME, PH_NUM, D_SECRET };
 
 class Contact {
 	public:
