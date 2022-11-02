@@ -6,7 +6,7 @@
 /*   By: sesim <sesim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 08:01:59 by sesim             #+#    #+#             */
-/*   Updated: 2022/10/27 10:57:21 by sesim            ###   ########.fr       */
+/*   Updated: 2022/10/31 11:41:42 by sesim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 int	main(int ac, char **av)
 {
+	std::string	res;
+
 	if (ac == 1)
 		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *";
 	else
@@ -21,8 +23,9 @@ int	main(int ac, char **av)
 		for (int i = 1; i < ac; ++i)
 		{
 			for (int k = 0; k < (int)strlen(av[i]); ++k)
-				std::cout << (char)toupper(av[i][k]);
+				res += std::toupper(av[i][k]);
 		}
+		std::cout << res;
 	}
 	std::cout << std::endl;
 }
