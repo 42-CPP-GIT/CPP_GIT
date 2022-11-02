@@ -1,7 +1,7 @@
 #  🔥 CPP_GIT 🔥
 
 <div align="center">
-<img src = "https://user-images.githubusercontent.com/59588256/198200272-361837cd-861e-4352-84c2-8621ebad66e8.jpg" width="40%" height="40%">
+<img src = "https://user-images.githubusercontent.com/59588256/199416867-27a4ad2a-b437-4931-b05b-a4ad960f57b1.jpeg" width="40%" height="40%">
 </div>
 
 ## 📝 스터디 진도표 (AKA. 너 아직도 거기야?? 🤣😂😅 )
