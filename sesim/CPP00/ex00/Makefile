@@ -6,13 +6,13 @@
 #    By: sesim <sesim@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/27 08:01:54 by sesim             #+#    #+#              #
-#    Updated: 2022/10/27 14:15:00 by sesim            ###   ########.fr        #
+#    Updated: 2022/11/03 21:50:15 by sesim            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CXX			=	c++
 NAME		=	megaphone
-CPPFLAGS	=	-Wall -Wextra -Werror -std=c++98 -pedantic-errors
+CXXFLAGS	=	-Wall -Wextra -Werror -std=c++98 -pedantic-errors
 RM			=	rm -f
 
 SRCS	=	megaphone.cpp
@@ -21,7 +21,7 @@ OBJS	=	$(SRCS:.cpp=.o)
 all : $(NAME)
 
 $(NAME) : $(OBJS)
-	$(CXX) $(CPPFLAGS) $(OBJS) -o $(NAME)
+	$(CXX) $(CXXFLAGS) $< -o $@
 
 clean:
 	$(RM) $(OBJS)

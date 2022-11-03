@@ -6,7 +6,7 @@
 /*   By: sesim <sesim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 10:58:20 by sesim             #+#    #+#             */
-/*   Updated: 2022/11/02 16:04:39 by sesim            ###   ########.fr       */
+/*   Updated: 2022/11/03 21:28:16 by sesim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int	main(void)
 
 	do
 	{
+		std::cout << "Put right command(ADD, SEARCH, EXIT)" << std::endl;
 		if (!std::getline(std::cin, str))
 		{
 			std::cout << "err: EOF" << std::endl;
@@ -29,5 +30,6 @@ int	main(void)
 		else if (str == "SEARCH")
 			book.Search();
 	}
-	while (str != "EXIT");
+	while (str != "EXIT")
+		;
 }

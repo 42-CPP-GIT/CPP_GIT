@@ -6,31 +6,46 @@
 #    By: sesim <sesim@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/27 10:57:40 by sesim             #+#    #+#              #
-#    Updated: 2022/11/02 16:00:49 by sesim            ###   ########.fr        #
+#    Updated: 2022/11/03 22:12:34 by sesim            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+# Compile Macros
 CXX			=	c++
-NAME		=	phoneBook
-CPPFLAGS	=	-Wall -Wextra -Werror -std=c++98 -pedantic-errors
-RM			=	rm -f
+CXXFLAGS	=	-Wall -Wextra -Werror -std=c++98 -pedantic-errors
+RM			=	rm -rf
 
-SRCS	=	main.cpp PhoneBook.cpp Contact.cpp
-OBJS	=	$(SRCS:.cpp=.o)
+# Directories
+SRCS_DIR	:=	srcs/
+INCS_DIR	:=	incs/
+OBJS_DIR	:=	objs/
+DEPS_DIR	:=	deps/
 
-all : $(NAME)
+# Sources
+SRCS		:=	$(wildcard $(SRCS_DIR)*.cpp)
+OBJS		:=	$(addprefix $(OBJS_DIR), $(notdir $(SRCS:.cpp=.o)))
+DEPS		:=	$(addprefix $(DEPS_DIR), $(notdir $(SRCS:.cpp=.d)))
+NAME		:=	phoneBook
 
-$(NAME) : $(OBJS)
-	$(CXX) $(CPPFLAGS) $(OBJS) -o $(NAME)
+all: $(NAME)
+
+$(NAME): $(OBJS)
+	$(CXX) $(CXXFLAGS) $^ -o $@
+
+$(OBJS_DIR)%.o: $(SRCS_DIR)%.cpp
+	@mkdir -p $(dir $@)
+	@$(CXX) $(CXXFLAGS) -I$(INCS_DIR) -c $< -o $@ -MMD
+	@mkdir -p $(DEPS_DIR)
+	@mv $(@:.o=.d) $(DEPS_DIR)$(notdir $(@:.o=.d))
 
 clean:
-	$(RM) $(OBJS)
+	$(RM) $(OBJS_DIR) $(DEPS_DIR)
 
 fclean: clean
 	$(RM) $(NAME)
 
-re:
-	make fclean
-	make all
+re: | fclean all
+
+-include $(DEPS)
 
 .PHONY: all clean fclean re
