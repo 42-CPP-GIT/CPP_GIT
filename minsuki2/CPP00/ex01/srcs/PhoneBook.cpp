@@ -6,7 +6,7 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 03:06:21 by minsuki2          #+#    #+#             */
-/*   Updated: 2022/11/02 21:22:34 by minsuki2         ###   ########.fr       */
+/*   Updated: 2022/11/03 19:57:49 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,35 +88,6 @@ void	PhoneBook::searchBook(void) {
 		}
 	} while (1);
 }
-
-// void	PhoneBook::searchBook(void) {
-//
-//     if (this->_idx < 0)
-//     {
-//         std::cout << "Empty Contact!!!" << '\n';
-//         return ;
-//     }
-//     std::string	index;
-//     int idx = -1;
-//
-//     do {
-//         index = myGetLine("Which index do you want?(0 ~ 7) : ");
-//         if (index == "-1")
-//             return ;
-//         else if (index.length() > 1 || !std::isdigit(index[0]))
-//             std::cout << "Wrong index!!!(0 ~ 7) or end(-1)" << '\n';
-//         else
-//             break ;
-//         idx = -1;
-//     } while (idx < 0);
-//     std::stringstream	index_stream(index);
-//     if (index_stream.fail())
-//         return ;
-//     index_stream >> idx;
-//     if (this->_idx < idx)
-//         return ;
-//     _contact[idx].searchBook();
-// }
 
 PhoneBook::PhoneBook() {
 	this->_idx = -1;

@@ -6,7 +6,7 @@
 #    By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/29 18:32:08 by minsuki2          #+#    #+#              #
-#    Updated: 2022/10/30 02:14:56 by minsuki2         ###   ########.fr        #
+#    Updated: 2022/11/03 19:05:26 by minsuki2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,12 +17,9 @@ RM 			=		rm -rvf
 SRCS_DIR 	:=		./
 INCS_DIR 	:=		./
 OBJS_DIR 	:=		objs/
-DEPS_DIR 	:=		deps/
 
 SRCS 		:=		$(notdir $(wildcard $(SRC_DIR)*.cpp))
 OBJS 		:=		$(addprefix $(OBJS_DIR), $(SRCS:.cpp=.o))
-DEPS		:=		$(addprefix $(DEPS_DIR), $(SRCS:.cpp=.d))
-# DEPS 		:=		$(OBJS:.o=.d)
 NAME		:=		megaphone
 
 
@@ -38,9 +35,7 @@ $(NAME): $(OBJS)
 $(OBJS_DIR)%.o: $(SRCS_DIR)%.cpp
 	@mkdir -p $(dir $@)
 	@echo [$<] compiling...
-	$(CXX) $(CPPFLAGS) -I$(INCS_DIR) -c $< -o $@ -MMD
-	mkdir -p $(DEPS_DIR)
-	mv $(@:.o=.d) $(DEPS_DIR)$(notdir $(@:.o=.d))
+	$(CXX) $(CPPFLAGS) -I$(INCS_DIR) -c $< -o $@
 
 clean:
 	@echo
@@ -55,8 +50,5 @@ fclean: clean
 	@echo
 
 re: | fclean all
-
-# '-' means the error is ignored
--include $(DEPS)
 
 .PHONY: all clean fclean re

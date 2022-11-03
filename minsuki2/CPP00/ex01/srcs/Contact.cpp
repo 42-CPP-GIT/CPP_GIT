@@ -6,7 +6,7 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 06:26:18 by minsuki2          #+#    #+#             */
-/*   Updated: 2022/11/02 21:11:09 by minsuki2         ###   ########.fr       */
+/*   Updated: 2022/11/03 19:23:00 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ void displayColumns(void) {
 	printOffset10("nickname");
 	std::cout << std::endl;
 }
-
 
 void Contact::inputValue(std::string input[INFO_N]) {
 	this->_first_name = input[F_NAME];

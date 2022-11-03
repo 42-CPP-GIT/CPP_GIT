@@ -33,8 +33,8 @@ typedef Account		t;
 
 	void	makeDeposit( int deposit );
 	bool	makeWithdrawal( int withdrawal );
-	// int		checkAmount( void ) const;
-	// void	displayStatus( void ) const;
+	int		checkAmount( void ) const;
+	void	displayStatus( void ) const;
 
 
 private:
@@ -54,8 +54,6 @@ private:
 	Account( void );
 
 };
-
-
 
 // ************************************************************************** //
 // vim: set ts=4 sw=4 tw=80 noexpandtab:                                      //
