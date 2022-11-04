@@ -6,7 +6,7 @@
 #    By: sesim <sesim@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/27 08:01:54 by sesim             #+#    #+#              #
-#    Updated: 2022/11/03 21:50:15 by sesim            ###   ########.fr        #
+#    Updated: 2022/11/04 14:26:08 by sesim            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,8 +29,6 @@ clean:
 fclean: clean
 	$(RM) $(NAME)
 
-re:
-	make fclean
-	make all
+re: | fclean all
 
 .PHONY: all clean fclean re
