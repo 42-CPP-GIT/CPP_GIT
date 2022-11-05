@@ -1,20 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Zombie.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/01 10:58:12 by hchang            #+#    #+#             */
-/*   Updated: 2022/11/01 12:51:37 by hchang           ###   ########.fr       */
+/*   Created: 2022/11/01 10:58:16 by hchang            #+#    #+#             */
+/*   Updated: 2022/11/02 11:24:02 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
 
-int main() {
-  Zombie *z_horde = zombieHorde(5, "hchang");
+void	Zombie::announce(void)
+{
+	std::cout << this->name_ << " : BraiiiiiiinnnzzzZ..." << std::endl;
+}
 
-  z_horde[2].announce();
-  z_horde[3].announce();
+Zombie::Zombie()
+{ 
+	std::cout << "My life for Aiur!" << std::endl;
+}
+
+Zombie::~Zombie() {
+	// reference 변수 좀 봐두기
+	// 콜론 초기화
+	std::cout << "[destructor] " << this->name_ << " will be back.. " << std::endl;
+}
+
+void	Zombie::setZombieName(std::string name)
+{
+	this->name_ = name;
 }

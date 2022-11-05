@@ -1,23 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.cpp                                         :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/01 10:58:16 by hchang            #+#    #+#             */
-/*   Updated: 2022/11/01 12:43:57 by hchang           ###   ########.fr       */
+/*   Created: 2022/11/04 17:00:06 by hchang            #+#    #+#             */
+/*   Updated: 2022/11/05 15:19:06 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include "Harl.hpp"
 
-Zombie::Zombie() { std::cout << "hey" << std::endl; }
-
-Zombie::~Zombie() {
-  // reference 변수 좀 봐두기
-  // 콜론 초기화
-  std::cout << "[destructor] " << this->name_ << " will be back.. "
-            << std::endl;
-  delete[] Zombie
+int main(int argc, char** argv)
+{
+	Harl h;
+	if (argc != 2)
+		return (0);
+	std::string av(argv[1]);
+	h.complain(av);
 }

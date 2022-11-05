@@ -1,28 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Zombie.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/04 17:00:06 by hchang            #+#    #+#             */
-/*   Updated: 2022/11/05 15:21:01 by hchang           ###   ########.fr       */
+/*   Created: 2022/10/28 11:21:09 by hchang            #+#    #+#             */
+/*   Updated: 2022/11/05 15:29:58 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Harl.hpp"
+#ifndef ZOMBIE_HPP_
+#define ZOMBIE_HPP_
 
-int main()
+#include <string>
+#include <iostream>
+
+class Zombie
 {
-	Harl h;
-	std::cout << "=======DEBUG=======" << std::endl;
-	h.complain("DEBUG");
-	std::cout << "=======INFO=======" << std::endl;
-	h.complain("INFO");
-	std::cout << "=======WARNING=======" << std::endl;
-	h.complain("WARNING");
-	std::cout << "=======ERROR=======" << std::endl;
-	h.complain("ERROR");
-	std::cout << "=======TYPO=======" << std::endl;
-	h.complain("ERRORsdf");
-}
+private:
+    std::string _name;
+public:
+    void		announce(void);
+    Zombie(std::string name);
+    ~Zombie();
+};
+
+Zombie		*newZombie(std::string name);
+void		randomChump(std::string name);
+
+#endif

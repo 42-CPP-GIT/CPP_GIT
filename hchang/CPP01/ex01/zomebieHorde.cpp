@@ -1,28 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   zomebieHorde.cpp                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/04 17:00:06 by hchang            #+#    #+#             */
-/*   Updated: 2022/11/05 15:21:01 by hchang           ###   ########.fr       */
+/*   Created: 2022/11/01 10:58:16 by hchang            #+#    #+#             */
+/*   Updated: 2022/11/02 11:23:37 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Harl.hpp"
+#include "Zombie.hpp"
 
-int main()
+Zombie* zombieHorde(int N, std::string name)
 {
-	Harl h;
-	std::cout << "=======DEBUG=======" << std::endl;
-	h.complain("DEBUG");
-	std::cout << "=======INFO=======" << std::endl;
-	h.complain("INFO");
-	std::cout << "=======WARNING=======" << std::endl;
-	h.complain("WARNING");
-	std::cout << "=======ERROR=======" << std::endl;
-	h.complain("ERROR");
-	std::cout << "=======TYPO=======" << std::endl;
-	h.complain("ERRORsdf");
+	Zombie* z_horde = new Zombie[N];
+
+	for (int i = 0; i < N; i++)
+		z_horde[i].setZombieName(name);
+	return (z_horde);
 }

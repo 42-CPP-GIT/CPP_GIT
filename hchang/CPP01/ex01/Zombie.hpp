@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/28 11:21:09 by hchang            #+#    #+#             */
-/*   Updated: 2022/11/01 12:38:48 by hchang           ###   ########.fr       */
+/*   Created: 2022/11/01 10:58:14 by hchang            #+#    #+#             */
+/*   Updated: 2022/11/02 11:01:55 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,14 @@
 class Zombie
 {
 private:
-    std::string _name;
+    std::string name_;
 public:
-    void		announce(void);
-    Zombie(std::string name);
+    void	announce(void);
+    void	setZombieName(std::string name);
+    Zombie();
     ~Zombie();
 };
 
-Zombie		*newZombie(std::string name);
-void		randomChump(std::string name);
+Zombie* zombieHorde(int N, std::string name);
 
 #endif

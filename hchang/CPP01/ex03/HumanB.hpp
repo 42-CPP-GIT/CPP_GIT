@@ -1,28 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   HumanB.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/04 17:00:06 by hchang            #+#    #+#             */
-/*   Updated: 2022/11/05 15:21:01 by hchang           ###   ########.fr       */
+/*   Created: 2022/11/02 11:41:04 by hchang            #+#    #+#             */
+/*   Updated: 2022/11/03 11:01:55 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Harl.hpp"
+#ifndef HUMANB_H_
+#define HUMANB_H_
 
-int main()
+#include "Weapon.hpp"
+#include <iostream>
+
+class HumanB
 {
-	Harl h;
-	std::cout << "=======DEBUG=======" << std::endl;
-	h.complain("DEBUG");
-	std::cout << "=======INFO=======" << std::endl;
-	h.complain("INFO");
-	std::cout << "=======WARNING=======" << std::endl;
-	h.complain("WARNING");
-	std::cout << "=======ERROR=======" << std::endl;
-	h.complain("ERROR");
-	std::cout << "=======TYPO=======" << std::endl;
-	h.complain("ERRORsdf");
-}
+private:
+    std::string _name;
+    Weapon		*_weapon;
+    HumanB();
+public:
+	void	attack(void);
+    void    setWeapon(Weapon &weapon);
+    HumanB(std::string name);
+    ~HumanB();
+};
+
+#endif
