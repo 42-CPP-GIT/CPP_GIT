@@ -6,7 +6,7 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 03:06:21 by minsuki2          #+#    #+#             */
-/*   Updated: 2022/11/05 16:03:14 by minsuki2         ###   ########.fr       */
+/*   Updated: 2022/11/05 16:07:23 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,14 @@ static bool is_contact_index(char ch) {
 	return (std::isdigit(ch) && '0' <= ch && ch <= '7');
 }
 
+static void _displayColumns(void) {
+	printOffset10("index");
+	printOffset10("first name");
+	printOffset10("last name");
+	printOffset10("nickname");
+	std::cout << '\n';
+}
+
 void	PhoneBook::addBook(void) {
 	std::string		input[INFO_N];
 
@@ -52,17 +60,19 @@ void	PhoneBook::addBook(void) {
 	input[D_SECRET] = myGetLine("ㄴ[Darkest secret]\t: ");
 	this->_full_cnt += this->_full_cnt < 7;
 	_contact[++this->_idx %= 8].inputValue(input);
-	displayColumns();
+	_displayColumns();
 	for (int i = 0; i <= this->_full_cnt ; i++)
 		_contact[i].display(i);
 }
-
 
 void	PhoneBook::searchBook(void) {
 	if (this->_idx < 0) {
 		std::cout << "Empty Contact!!!" << '\n';
 		return ;
 	}
+	_displayColumns();
+	for (int i = 0; i <= this->_full_cnt ; i++)
+		_contact[i].display(i);
 	std::string	index;
 	do {
 		index = myGetLine("Which index do you want?(0 ~ 7) : ");

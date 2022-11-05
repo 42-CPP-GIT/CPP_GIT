@@ -6,11 +6,11 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 06:26:18 by minsuki2          #+#    #+#             */
-/*   Updated: 2022/11/05 16:02:28 by minsuki2         ###   ########.fr       */
+/*   Updated: 2022/11/05 16:09:00 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incs/Contact.hpp"
+#include "Contact.hpp"
 
 void printOffset10(const std::string &str) {
 	std::cout << std::setw(10);
@@ -21,6 +21,7 @@ void printOffset10(const std::string &str) {
 	std::cout << '|';
 }
 
+
 void Contact::display(const int &i) {
 	std::cout << std::setw(10) << i << '|';
 	printOffset10(this->_first_name);
@@ -29,13 +30,6 @@ void Contact::display(const int &i) {
 	std::cout << '\n';
 }
 
-void displayColumns(void) {
-	printOffset10("index");
-	printOffset10("first name");
-	printOffset10("last name");
-	printOffset10("nickname");
-	std::cout << '\n';
-}
 
 void Contact::inputValue(std::string input[INFO_N]) {
 	this->_first_name = input[F_NAME];

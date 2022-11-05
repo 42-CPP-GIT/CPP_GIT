@@ -6,7 +6,7 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 14:02:39 by minsuki2          #+#    #+#             */
-/*   Updated: 2022/11/05 16:01:11 by minsuki2         ###   ########.fr       */
+/*   Updated: 2022/11/05 16:08:33 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "Account.hpp"
@@ -45,7 +45,7 @@ void	Account::displayAccountsInfos(void){
 	std::cout << MSG_NB_ACCOU << Account::_nbAccounts << ';' \
 				<< MSG_TOTAL << Account::_totalAmount << ';' \
 				<< MSG_DEPOSS << Account::_totalNbDeposits << ';' \
-				<< MSG_WITHDS << Account::_totalNbWithdrawals << std::endl;
+				<< MSG_WITHDS << Account::_totalNbWithdrawals << '\n';
 }
 
 static void	_msg_exit(std::string msg) {
