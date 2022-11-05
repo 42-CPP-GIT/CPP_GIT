@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 10:58:16 by hchang            #+#    #+#             */
-/*   Updated: 2022/11/02 11:24:02 by hchang           ###   ########.fr       */
+/*   Updated: 2022/11/05 15:46:35 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,6 @@ Zombie::Zombie()
 }
 
 Zombie::~Zombie() {
-	// reference 변수 좀 봐두기
-	// 콜론 초기화
 	std::cout << "[destructor] " << this->name_ << " will be back.. " << std::endl;
 }
 

@@ -6,19 +6,11 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 17:00:45 by hchang            #+#    #+#             */
-/*   Updated: 2022/11/05 15:23:08 by hchang           ###   ########.fr       */
+/*   Updated: 2022/11/05 16:25:22 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Harl.hpp"
-
-Harl::Harl()
-{
-}
-
-Harl::~Harl()
-{
-}
 
 void Harl::debug(void)
 {

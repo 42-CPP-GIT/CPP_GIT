@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 11:41:11 by hchang            #+#    #+#             */
-/*   Updated: 2022/11/02 19:48:52 by hchang           ###   ########.fr       */
+/*   Updated: 2022/11/05 16:10:20 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,5 @@ void	HumanB::attack(void)
 
 void    HumanB::setWeapon(Weapon &weapon)
 {
-    std::cout << weapon.getType() <<  std::endl;
     this->_weapon = &weapon;
 }
