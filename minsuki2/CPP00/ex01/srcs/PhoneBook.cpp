@@ -6,7 +6,7 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 03:06:21 by minsuki2          #+#    #+#             */
-/*   Updated: 2022/11/03 19:57:49 by minsuki2         ###   ########.fr       */
+/*   Updated: 2022/11/05 16:03:14 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static bool is_contact_index(char ch) {
 void	PhoneBook::addBook(void) {
 	std::string		input[INFO_N];
 
-	std::cout << "\n< Contact List > " << std::endl;
+	std::cout << "\n< Contact List > " << '\n';
 	input[F_NAME] = myGetLine("ㄴ[First name]\t\t: ");
 	input[L_NAME] = myGetLine("ㄴ[Last name]\t\t: ");
 	input[N_NAME] = myGetLine("ㄴ[Nick name]\t\t: ");
@@ -95,5 +95,5 @@ PhoneBook::PhoneBook() {
 }
 
 PhoneBook::~PhoneBook() {
-	std::cout << "\n@@@@@ Good Bye! @@@@@" << '\n';
+	std::cout << "\n@@@@@ Good Bye! @@@@@" << std::endl;
 }

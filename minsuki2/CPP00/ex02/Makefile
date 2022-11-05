@@ -6,11 +6,11 @@
 #    By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/29 18:32:08 by minsuki2          #+#    #+#              #
-#    Updated: 2022/11/03 19:13:00 by minsuki2         ###   ########.fr        #
+#    Updated: 2022/11/05 16:01:46 by minsuki2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CPPFLAGS	=		-Wall -Werror -Wextra -std=c++98
+CPPFLAGS	=		-Wall -Werror -Wextra -std=c++98 -pedantic-errors
 RM 			=		rm -rvf
 
 # Directory
@@ -30,7 +30,7 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	@echo [$@] linking...
-	$(CXX) $(CPPFLAGS) $^ -o $@
+	@$(CXX) $(CPPFLAGS) $^ -o $@
 	@echo @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 	@echo ">>>>>>>>>> $@ Compiled! <<<<<<<<<<"
 	@echo @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -50,14 +50,8 @@ clean:
 
 fclean: clean
 	@echo ">>>>>>>>>>>>>>>> fclean List <<<<<<<<<<<<<<<<<<<<"
-	@$(RM) $(NAME) $(MY_LOG)
+	@$(RM) $(NAME) $(wildcard *.log)
 	@echo
-
-log: $(MY_LOG)
-	@head -n 51 $(MY_LOG) && tail -rn8 $(MY_LOG)
-
-$(MY_LOG): $(NAME)
-	@./account > $(MY_LOG)
 
 diff:
 	@make "CPPFLAGS	= -Wall -Werror -Wextra -std=c++98 -Ddiff" all
@@ -66,5 +60,7 @@ re: | fclean all
 
 -include $(DEPS)
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re diff
 
+# if you want reverse log, try this.
+# (head -n 51 (MY_LOG) && tail -rn8 (MY_LOG)) > my.log

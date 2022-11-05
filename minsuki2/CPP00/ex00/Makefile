@@ -6,11 +6,11 @@
 #    By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/29 18:32:08 by minsuki2          #+#    #+#              #
-#    Updated: 2022/11/03 19:05:26 by minsuki2         ###   ########.fr        #
+#    Updated: 2022/11/05 15:53:42 by minsuki2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CPPFLAGS	=		-Wall -Wextra -Werror -std=c++98
+CPPFLAGS	=		-Wall -Wextra -Werror -std=c++98 -pedantic-errors
 RM 			=		rm -rvf
 
 # Directory
@@ -33,15 +33,14 @@ $(NAME): $(OBJS)
 	@echo @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
 $(OBJS_DIR)%.o: $(SRCS_DIR)%.cpp
-	@mkdir -p $(dir $@)
-	@echo [$<] compiling...
+	mkdir -p $(dir $@)
+	echo [$<] compiling...
 	$(CXX) $(CPPFLAGS) -I$(INCS_DIR) -c $< -o $@
 
 clean:
 	@echo
 	@echo ">>>>>>>>>>>>>>>> clean List <<<<<<<<<<<<<<<<<<<<"
-	@$(RM) $(OBJS) $(DEPS)
-	@rmdir $(OBJS_DIR) $(DEPS_DIR)
+	@$(RM) $(OBJS_DIR)
 	@echo
 
 fclean: clean

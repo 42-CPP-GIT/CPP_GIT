@@ -6,7 +6,7 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 18:24:20 by minsuki2          #+#    #+#             */
-/*   Updated: 2022/10/30 02:08:14 by minsuki2         ###   ########.fr       */
+/*   Updated: 2022/11/05 16:02:07 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,6 @@ int	main(int argc, char *argv[]) {
 		}
 		std::cout << argvStr;
 	}
-	std::cout << '\n';
+	std::cout << std::endl;
 	return (0);
 }

@@ -6,11 +6,11 @@
 #    By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/29 18:32:08 by minsuki2          #+#    #+#              #
-#    Updated: 2022/10/30 17:17:41 by minsuki2         ###   ########.fr        #
+#    Updated: 2022/11/05 16:03:44 by minsuki2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-
-CPPFLAGS	=		-Wall -Wextra -Werror -std=c++98
+#
+CPPFLAGS	=		-Wall -Wextra -Werror -std=c++98 -pedantic-errors
 RM 			=		rm -rvf
 
 # Directory
