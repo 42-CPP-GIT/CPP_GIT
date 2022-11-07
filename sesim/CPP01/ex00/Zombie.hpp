@@ -1,35 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Zombie.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sesim <sesim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/27 10:58:20 by sesim             #+#    #+#             */
-/*   Updated: 2022/11/04 15:32:03 by sesim            ###   ########.fr       */
+/*   Created: 2022/11/07 11:58:19 by sesim             #+#    #+#             */
+/*   Updated: 2022/11/07 13:55:46 by sesim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "PhoneBook.hpp"
+#ifndef __ZOMBIE_H__
+# define __ZOMBIE_H__
 
-int	main(void)
+# include <iostream>
+
+class Zombie
 {
-	std::string str;
-	PhoneBook	book;
+	private:
+		std::string	name_;
+	public:
+		Zombie(std::string name);
+		void	announce(void);
+		~Zombie();
+};
 
-	do
-	{
-		std::cout << "Put right command(ADD, SEARCH, EXIT)" << std::endl;
-		if (!std::getline(std::cin, str))
-		{
-			std::cout << "err: EOF" << std::endl;
-			std::exit(1);
-		}
-		else if (str == "ADD")
-			book.Add();
-		else if (str == "SEARCH")
-			book.Search();
-	}
-	while (str != "EXIT")
-		;
-}
+Zombie*	newZombie(std::string name);
+void	randomChump(std::string name);
+
+#endif

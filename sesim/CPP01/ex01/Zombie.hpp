@@ -1,35 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Zombie.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sesim <sesim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/27 10:58:20 by sesim             #+#    #+#             */
-/*   Updated: 2022/11/04 15:32:03 by sesim            ###   ########.fr       */
+/*   Created: 2022/11/07 13:42:38 by sesim             #+#    #+#             */
+/*   Updated: 2022/11/07 14:39:48 by sesim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "PhoneBook.hpp"
+#ifndef ZOMBIE_HPP
+# define ZOMBIE_HPP
 
-int	main(void)
+# include <iostream>
+
+class Zombie
 {
-	std::string str;
-	PhoneBook	book;
+	private:
+		std::string	name_;
+	public:
+		Zombie();
+		void	announce(void);
+		void	Initialize(std::string name);
+		~Zombie();
+};
 
-	do
-	{
-		std::cout << "Put right command(ADD, SEARCH, EXIT)" << std::endl;
-		if (!std::getline(std::cin, str))
-		{
-			std::cout << "err: EOF" << std::endl;
-			std::exit(1);
-		}
-		else if (str == "ADD")
-			book.Add();
-		else if (str == "SEARCH")
-			book.Search();
-	}
-	while (str != "EXIT")
-		;
-}
+#endif

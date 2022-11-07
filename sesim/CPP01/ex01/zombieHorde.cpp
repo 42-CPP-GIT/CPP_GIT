@@ -1,35 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   zombieHorde.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sesim <sesim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/27 10:58:20 by sesim             #+#    #+#             */
-/*   Updated: 2022/11/04 15:32:03 by sesim            ###   ########.fr       */
+/*   Created: 2022/11/07 13:43:10 by sesim             #+#    #+#             */
+/*   Updated: 2022/11/07 14:47:27 by sesim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "PhoneBook.hpp"
+#include "Zombie.hpp"
 
-int	main(void)
+Zombie*	zombieHorde(int N, std::string name)
 {
-	std::string str;
-	PhoneBook	book;
+	if (N < 1)
+		return (NULL);
+	Zombie	*zombies = new Zombie[N];
 
-	do
+	for (int i = 0; i < N; ++i)
 	{
-		std::cout << "Put right command(ADD, SEARCH, EXIT)" << std::endl;
-		if (!std::getline(std::cin, str))
-		{
-			std::cout << "err: EOF" << std::endl;
-			std::exit(1);
-		}
-		else if (str == "ADD")
-			book.Add();
-		else if (str == "SEARCH")
-			book.Search();
+		std::cout << "[" << i + 1 << "] ";
+		zombies[i].Initialize(name);
+		zombies[i].announce();
 	}
-	while (str != "EXIT")
-		;
 }
