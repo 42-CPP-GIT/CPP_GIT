@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 11:41:04 by hchang            #+#    #+#             */
-/*   Updated: 2022/11/03 11:01:55 by hchang           ###   ########.fr       */
+/*   Updated: 2022/11/07 21:36:01 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ class HumanB
 private:
     std::string _name;
     Weapon		*_weapon;
-    HumanB();
 public:
 	void	attack(void);
     void    setWeapon(Weapon &weapon);
