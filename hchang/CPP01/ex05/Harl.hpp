@@ -1,20 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   newZombie.cpp                                      :+:      :+:    :+:   */
+/*   Harl.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/28 12:00:30 by hchang            #+#    #+#             */
-/*   Updated: 2022/11/07 14:33:31 by hchang           ###   ########.fr       */
+/*   Created: 2022/11/04 17:00:33 by hchang            #+#    #+#             */
+/*   Updated: 2022/11/05 16:24:54 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#ifndef HARL_HPP_
+#define HARL_HPP_
 
-Zombie		*newZombie(std::string name)
-{   
-    Zombie *zombie = new Zombie(name);
-	zombie->announce();
-    return (zombie);
-}
+#include <iostream>
+
+class Harl
+{
+  private:
+    void debug(void);
+    void info(void);
+    void warning(void);
+    void error(void);
+
+  public:
+  	void (Harl::*f[4])(void);
+    void complain(std::string level);
+};
+
+#endif

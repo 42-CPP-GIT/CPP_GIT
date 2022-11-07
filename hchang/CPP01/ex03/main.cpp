@@ -5,19 +5,30 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/28 12:22:06 by hchang            #+#    #+#             */
-/*   Updated: 2022/11/05 15:44:12 by hchang           ###   ########.fr       */
+/*   Created: 2022/11/02 11:41:14 by hchang            #+#    #+#             */
+/*   Updated: 2022/11/05 16:15:47 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include "Weapon.hpp"
+#include "HumanA.hpp"
+#include "HumanB.hpp"
 
 int main()
 {
-    Zombie *zombie_ptr;
-
-    zombie_ptr = newZombie("Heap Zombie");
-    randomChump("Stack Zombie");
-
-    delete zombie_ptr;
+    {
+        Weapon club = Weapon("crude spiked club");
+        HumanA bob("Bob", club);
+        bob.attack();
+        club.setType("some other type of club");
+        bob.attack();
+    }
+    {
+        Weapon club = Weapon("crude spiked club");
+        HumanB jim("Jim");
+        jim.setWeapon(club);
+        jim.attack();
+        club.setType("some other type of club");
+        jim.attack();
+    }
 }

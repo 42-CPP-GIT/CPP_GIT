@@ -1,20 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   newZombie.cpp                                      :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/28 12:00:30 by hchang            #+#    #+#             */
-/*   Updated: 2022/11/07 14:33:31 by hchang           ###   ########.fr       */
+/*   Created: 2022/11/04 17:00:06 by hchang            #+#    #+#             */
+/*   Updated: 2022/11/05 15:21:01 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include "Harl.hpp"
 
-Zombie		*newZombie(std::string name)
-{   
-    Zombie *zombie = new Zombie(name);
-	zombie->announce();
-    return (zombie);
+int main()
+{
+	Harl h;
+	std::cout << "=======DEBUG=======" << std::endl;
+	h.complain("DEBUG");
+	std::cout << "=======INFO=======" << std::endl;
+	h.complain("INFO");
+	std::cout << "=======WARNING=======" << std::endl;
+	h.complain("WARNING");
+	std::cout << "=======ERROR=======" << std::endl;
+	h.complain("ERROR");
+	std::cout << "=======TYPO=======" << std::endl;
+	h.complain("ERRORsdf");
 }

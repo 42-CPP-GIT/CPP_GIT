@@ -1,20 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   newZombie.cpp                                      :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/28 12:00:30 by hchang            #+#    #+#             */
-/*   Updated: 2022/11/07 14:33:31 by hchang           ###   ########.fr       */
+/*   Created: 2022/11/04 17:00:06 by hchang            #+#    #+#             */
+/*   Updated: 2022/11/05 15:19:06 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include "Harl.hpp"
 
-Zombie		*newZombie(std::string name)
-{   
-    Zombie *zombie = new Zombie(name);
-	zombie->announce();
-    return (zombie);
+int main(int argc, char** argv)
+{
+	Harl h;
+	if (argc != 2)
+		return (0);
+	std::string av(argv[1]);
+	h.complain(av);
 }

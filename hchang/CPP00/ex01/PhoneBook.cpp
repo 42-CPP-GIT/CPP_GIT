@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 16:05:00 by hchang            #+#    #+#             */
-/*   Updated: 2022/10/28 11:33:45 by hchang           ###   ########.fr       */
+/*   Updated: 2022/10/31 18:45:33 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void	PhoneBook::print(void)
 void PhoneBook::searchPrint(void)
 {
 	std::string	inputStirng;
-	int			searchIdx;
+	int			searchIdx(0);
 
 	while (1)
 	{
@@ -86,7 +86,8 @@ void PhoneBook::searchPrint(void)
 			std::cout << "YOUR PUT WRONG INDEX!" << std::endl;
 			continue;
 		}
-		searchIdx = std::stoi(inputStirng);
+		std::stringstream ssIdx(inputStirng);
+		ssIdx >> searchIdx;
 		if (searchIdx == 9)
 			return ;
 		else if(searchIdx < 0 || searchIdx > 7)
@@ -120,6 +121,3 @@ void PhoneBook::exit(void)
 {
 	std::exit(0);
 }
-
-
-// print에서 cin <- eof 받은 후 그냥 죽어버림
