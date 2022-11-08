@@ -6,7 +6,7 @@
 /*   By: sesim <sesim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 23:20:33 by sesim             #+#    #+#             */
-/*   Updated: 2022/11/08 23:42:15 by sesim            ###   ########.fr       */
+/*   Updated: 2022/11/09 00:02:16 by sesim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,8 @@ void Harl::error(void)
 
 void Harl::complain(std::string level)
 {
+	void (Harl::*f[4])(void) = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
 	std::string	checker("[DEBUG][INFO][WARNING][ERROR]");
-	f[0] = &Harl::debug;
-	f[1] = &Harl::info;
-	f[2] = &Harl::warning;
-	f[3] = &Harl::error;
 
 	level.insert(0, "[");
 	level += "]";

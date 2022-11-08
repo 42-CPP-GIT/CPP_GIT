@@ -6,7 +6,7 @@
 /*   By: sesim <sesim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 23:20:08 by sesim             #+#    #+#             */
-/*   Updated: 2022/11/08 23:48:10 by sesim            ###   ########.fr       */
+/*   Updated: 2022/11/09 00:03:21 by sesim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ class Harl
 		void warning(void);
 		void error(void);
 	public:
-		void (Harl::*f[4])(void);
 		void complain(std::string level);
 };
 
