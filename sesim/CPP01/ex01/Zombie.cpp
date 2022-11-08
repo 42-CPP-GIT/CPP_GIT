@@ -6,7 +6,7 @@
 /*   By: sesim <sesim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 13:42:50 by sesim             #+#    #+#             */
-/*   Updated: 2022/11/07 14:40:27 by sesim            ###   ########.fr       */
+/*   Updated: 2022/11/08 09:50:06 by sesim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,4 +28,5 @@ Zombie::Zombie()
 
 Zombie::~Zombie()
 {
+	std::cout << this->name_ << ": is dead" << std::endl;
 }

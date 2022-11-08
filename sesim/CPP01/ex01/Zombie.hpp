@@ -6,7 +6,7 @@
 /*   By: sesim <sesim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 13:42:38 by sesim             #+#    #+#             */
-/*   Updated: 2022/11/07 14:39:48 by sesim            ###   ########.fr       */
+/*   Updated: 2022/11/08 09:51:27 by sesim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,7 @@ class Zombie
 		void	Initialize(std::string name);
 		~Zombie();
 };
+
+Zombie*	zombieHorde(int N, std::string name);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: sesim <sesim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 08:01:59 by sesim             #+#    #+#             */
-/*   Updated: 2022/11/04 15:04:24 by sesim            ###   ########.fr       */
+/*   Updated: 2022/11/08 10:03:24 by sesim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,4 +28,5 @@ int	main(int ac, char **av)
 		std::cout << res;
 	}
 	std::cout << std::endl;
+	return (0);
 }

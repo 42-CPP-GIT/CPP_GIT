@@ -5,19 +5,25 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: sesim <sesim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/07 11:57:59 by sesim             #+#    #+#             */
-/*   Updated: 2022/11/08 10:03:13 by sesim            ###   ########.fr       */
+/*   Created: 2022/11/08 10:05:37 by sesim             #+#    #+#             */
+/*   Updated: 2022/11/08 10:07:42 by sesim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
-
-int	main(void)
+int main()
 {
-	Zombie	*heap_zombie;
-
-	heap_zombie = newZombie("Heap");
-	randomChump("Stack");
-	delete heap_zombie;
+	{
+		Weapon club = Weapon("crude spiked club");
+		HumanA bob("Bob", club);
+		bob.attack();
+		club.setType("some other type of club"); bob.attack();
+	}
+	{
+		Weapon club = Weapon("crude spiked club");
+		HumanB jim("Jim");
+		jim.setWeapon(club);
+		jim.attack();
+		club.setType("some other type of club"); jim.attack();
+	}
 	return (0);
 }

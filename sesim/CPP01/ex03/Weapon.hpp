@@ -1,23 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Weapon.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sesim <sesim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/07 11:57:59 by sesim             #+#    #+#             */
-/*   Updated: 2022/11/08 10:03:13 by sesim            ###   ########.fr       */
+/*   Created: 2022/11/08 10:07:50 by sesim             #+#    #+#             */
+/*   Updated: 2022/11/08 10:39:42 by sesim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#ifndef WEAPON_HPP
+# define WEAPON_HPP
 
-int	main(void)
+# include <iostream>
+
+class Weapon
 {
-	Zombie	*heap_zombie;
+	private:
+		std::string type;
+	public:
+		Weapon();
+		const std::string&	getType() const;
+		void				setType(std::string type);
+		~Weapon();
+};
 
-	heap_zombie = newZombie("Heap");
-	randomChump("Stack");
-	delete heap_zombie;
-	return (0);
-}
+#endif

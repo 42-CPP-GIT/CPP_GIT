@@ -6,7 +6,7 @@
 /*   By: sesim <sesim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 13:43:10 by sesim             #+#    #+#             */
-/*   Updated: 2022/11/07 14:47:27 by sesim            ###   ########.fr       */
+/*   Updated: 2022/11/08 09:49:23 by sesim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,4 +24,5 @@ Zombie*	zombieHorde(int N, std::string name)
 		zombies[i].Initialize(name);
 		zombies[i].announce();
 	}
+	return (zombies);
 }

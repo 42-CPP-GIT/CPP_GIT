@@ -1,23 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   HumanA.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sesim <sesim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/07 11:57:59 by sesim             #+#    #+#             */
-/*   Updated: 2022/11/08 10:03:13 by sesim            ###   ########.fr       */
+/*   Created: 2022/11/08 10:37:07 by sesim             #+#    #+#             */
+/*   Updated: 2022/11/08 10:39:48 by sesim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#ifndef HUMANA_HPP
+# define HUMANA_HPP
 
-int	main(void)
+# include "Weapon.hpp"
+
+class HumanA
 {
-	Zombie	*heap_zombie;
+	private:
+		std::string	name;
+		Weapon		
+	public:
+		HumanA();
+		~HumanA();
+};
 
-	heap_zombie = newZombie("Heap");
-	randomChump("Stack");
-	delete heap_zombie;
-	return (0);
-}
+#endif

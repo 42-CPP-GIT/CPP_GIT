@@ -1,2 +1,4 @@
+/.vscode
 .DS_Store
-.vs_code
+*/.gitkeep
+README.md
