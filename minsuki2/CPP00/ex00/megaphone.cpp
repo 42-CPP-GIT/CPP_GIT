@@ -6,7 +6,7 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 18:24:20 by minsuki2          #+#    #+#             */
-/*   Updated: 2022/11/05 16:02:07 by minsuki2         ###   ########.fr       */
+/*   Updated: 2022/11/08 18:53:17 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,8 @@ int	main(int argc, char *argv[]) {
 		std::cout << MSG_NOISE;
 	for (int i = 1; i < argc; i++) {
 		std::string	argvStr = argv[i];
-		for (std::string::iterator it(argvStr.begin()); it != argvStr.end(); it++) {
-			*it = std::toupper(*it);
-		}
+		for (size_t len = argvStr.length(); len; len--)
+			argvStr.at(len - 1) = std::toupper(argvStr.at(len - 1));
 		std::cout << argvStr;
 	}
 	std::cout << std::endl;

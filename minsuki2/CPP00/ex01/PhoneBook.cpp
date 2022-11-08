@@ -6,7 +6,7 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 03:06:21 by minsuki2          #+#    #+#             */
-/*   Updated: 2022/11/05 16:07:23 by minsuki2         ###   ########.fr       */
+/*   Updated: 2022/11/08 18:54:25 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ std::string	myGetLine(const std::string &msg) {
 }
 
 static bool	_isOnlyNumber(const std::string &str) {
-	for (std::string::const_iterator it = str.begin(); it != str.end(); it++)
-		if (!std::isdigit(*it))
+	for (size_t len = str.length(); len; len--)
+		if (!std::isdigit(str.at(len - 1)))
 			return (false);
 	return (true);
 }
@@ -74,8 +74,8 @@ void	PhoneBook::searchBook(void) {
 	for (int i = 0; i <= this->_full_cnt ; i++)
 		_contact[i].display(i);
 	std::string	index;
-	do {
-		index = myGetLine("Which index do you want?(0 ~ 7) : ");
+	while (true) {
+		index = myGetLine("Which index do you want?(0 ~ 7) or end(-1) : ");
 		if (index == "-1") {
 			do
 				index = myGetLine("Really want?(Y / N) : ");
@@ -91,12 +91,12 @@ void	PhoneBook::searchBook(void) {
 				return ;
 			int idx;
 			index_stream >> idx;
-			if (this->_idx < idx)
+			if (this->_full_cnt < idx)
 				std::cout << "Index Out of Range!!! or end(-1)" << '\n';
 			else
 				_contact[idx].searchBook();
 		}
-	} while (1);
+	}
 }
 
 PhoneBook::PhoneBook() {

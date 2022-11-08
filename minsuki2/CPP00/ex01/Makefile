@@ -6,22 +6,22 @@
 #    By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/29 18:32:08 by minsuki2          #+#    #+#              #
-#    Updated: 2022/11/05 16:03:44 by minsuki2         ###   ########.fr        #
+#    Updated: 2022/11/08 16:07:23 by minsuki2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 #
-CPPFLAGS	=		-Wall -Wextra -Werror -std=c++98 -pedantic-errors
+CPPFLAGS	=		-Wall -Wextra -Werror -std=c++98
 RM 			=		rm -rvf
 
 # Directory
-SRCS_DIR 	:=		srcs/
-INCS_DIR 	:=		incs/
+SRCS_DIR 	:=		./
+INCS_DIR 	:=		./
 OBJS_DIR 	:=		objs/
 DEPS_DIR 	:=		deps/
 
 SRCS 		:=		$(wildcard $(SRCS_DIR)*.cpp)
-OBJS 		:=		$(addprefix $(OBJS_DIR), $(notdir $(SRCS:.cpp=.o)))
-DEPS		:=		$(addprefix $(DEPS_DIR), $(notdir $(SRCS:.cpp=.d)))
+OBJS 		:=		$(addprefix $(OBJS_DIR), $(SRCS:.cpp=.o))
+DEPS		:=		$(addprefix $(DEPS_DIR), $(SRCS:.cpp=.d))
 NAME		:=		phonebook
 
 
