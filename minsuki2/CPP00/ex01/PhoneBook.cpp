@@ -6,7 +6,7 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 03:06:21 by minsuki2          #+#    #+#             */
-/*   Updated: 2022/11/08 19:10:23 by minsuki2         ###   ########.fr       */
+/*   Updated: 2022/11/08 21:46:51 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ std::string	myGetLine(const std::string &msg) {
 		std::cout << msg;
 		if (!std::getline(std::cin, str)) {
 			std::cout << "\nDO NOT EOF!!! Type Again!";
-			std::cin.clear();			// 버퍼 안에 비워주기  
+			std::cin.clear();			// 버퍼 안에 비워주기
 			std::clearerr(stdin);		//error bit 재설정해준다.
 			std::cout << std::endl;
 		}

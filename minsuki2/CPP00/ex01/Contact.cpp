@@ -6,7 +6,7 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 06:26:18 by minsuki2          #+#    #+#             */
-/*   Updated: 2022/11/08 19:13:46 by minsuki2         ###   ########.fr       */
+/*   Updated: 2022/11/08 21:47:57 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void printOffset10(const std::string &str) {
 	std::cout << '|';
 }
 
-
 void Contact::display(const int &i) {
 	std::cout << std::setw(10) << i << '|';
 	printOffset10(this->_first_name);
@@ -29,7 +28,6 @@ void Contact::display(const int &i) {
 	printOffset10(this->_nick_name);
 	std::cout << '\n';
 }
-
 
 void Contact::inputValue(std::string input[INFO_N]) {
 	this->_first_name = input[F_NAME];

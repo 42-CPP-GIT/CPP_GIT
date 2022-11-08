@@ -6,7 +6,7 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 14:02:39 by minsuki2          #+#    #+#             */
-/*   Updated: 2022/11/08 21:45:31 by minsuki2         ###   ########.fr       */
+/*   Updated: 2022/11/08 23:06:52 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "Account.hpp"
@@ -67,7 +67,6 @@ static bool checkError(const int target) {
 	return (true);
 }
 
-
 Account::Account(int initial_deposit) {
 	this->_displayTimestamp();
 	this->_accountIndex = Account::_nbAccounts++;
@@ -105,7 +104,6 @@ Account::~Account(void) {
 }
 
 void	Account::makeDeposit(int deposit) {
-
 	this->_displayTimestamp();
 
 	std::cout << MSG_INDEX;
@@ -177,7 +175,7 @@ bool	Account::makeWithdrawal(int withdrawal) {
 }
 
 void	Account::displayStatus(void) const {
-	this->_displayTimestamp();
+	Account::_displayTimestamp();
 
 	std::cout << MSG_INDEX;
 	if (checkError(this->_accountIndex) == false)
@@ -236,4 +234,3 @@ void	Account::_displayTimestamp(void) {
 	std::cout << std::setw(BUFFER_SIZE) << std::left << "[19920104_091532]";
 #endif
 }
-
