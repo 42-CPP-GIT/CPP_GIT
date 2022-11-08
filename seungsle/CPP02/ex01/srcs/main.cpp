@@ -6,12 +6,11 @@
 /*   By: seungsle <seungsle@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 18:31:49 by seungsle          #+#    #+#             */
-/*   Updated: 2022/11/02 19:07:28 by seungsle         ###   ########.fr       */
+/*   Updated: 2022/11/04 16:42:52 by seungsle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
-#include <iostream>
 
 int main( void ) {
 	Fixed a;
