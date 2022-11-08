@@ -6,7 +6,7 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 14:02:39 by minsuki2          #+#    #+#             */
-/*   Updated: 2022/11/08 18:56:20 by minsuki2         ###   ########.fr       */
+/*   Updated: 2022/11/08 21:45:31 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "Account.hpp"
@@ -42,10 +42,12 @@ int	Account::getTotalAmount(void) { return (_totalAmount); }
 int	Account::getNbDeposits(void) { return (_totalNbDeposits); }
 int	Account::getNbWithdrawals(void) { return (_totalNbWithdrawals); }
 
+Account::Account(void) {}
+
 int		Account::checkAmount( void ) const {
 	if (this->_amount < 0)
 		return (ERROR);
-	return (SUCCESS);
+	return (this->_amount);
 }
 
 static void	_msgExit(std::string msg) {
@@ -65,11 +67,12 @@ static bool checkError(const int target) {
 	return (true);
 }
 
+
 Account::Account(int initial_deposit) {
 	this->_displayTimestamp();
 	this->_accountIndex = Account::_nbAccounts++;
-	if (Account::_nbAccounts < 1)					// 여기 밑으로 1 보다 작으면 무조건 에러임
-		Account::_nbAccounts = ERROR; 
+	if (Account::_nbAccounts < 1)
+		Account::_nbAccounts = ERROR;
 	this->_amount = initial_deposit;
 	if (this->_amount > 0)
 		this->_totalAmount += initial_deposit;
@@ -101,8 +104,6 @@ Account::~Account(void) {
 	std::cout << MSG_CLOSE << MSG_ENDL;
 }
 
-
-
 void	Account::makeDeposit(int deposit) {
 
 	this->_displayTimestamp();
@@ -116,7 +117,7 @@ void	Account::makeDeposit(int deposit) {
 	if (checkError(this->_amount) == false)
 		return ;
 	std::cout << this->_amount << MSG_END;
-		
+
 	std::cout << MSG_DEPOS;
 	if (checkError(deposit) == false \
 		|| checkError(this->_amount + deposit) == false)
@@ -151,7 +152,7 @@ bool	Account::makeWithdrawal(int withdrawal) {
 	if (checkError(this->_amount) == false)
 		return (false);
 	std::cout << this->_amount << MSG_END;
-		
+
 	std::cout << MSG_WITHD;
 	if (checkError(withdrawal) == false \
 		|| checkError(this->_amount - withdrawal) == false)
@@ -205,7 +206,7 @@ void	Account::displayAccountsInfos(void) {
 	std::cout << MSG_NB_ACCOU;
 	if (checkError(Account::_nbAccounts) == false)
 		return ;
-	std::cout << Account::_nbAccounts << MSG_END; 
+	std::cout << Account::_nbAccounts << MSG_END;
 
 	std::cout << MSG_TOTAL;
 	if (checkError(Account::_totalAmount) == false)

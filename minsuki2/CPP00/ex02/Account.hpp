@@ -20,8 +20,10 @@ class Account {
 
 
 public:
-typedef Account		t;
 
+	typedef Account		t;
+
+	// static Account getAccount() { return Account(); }
 	static int	getNbAccounts( void );
 	static int	getTotalAmount( void );
 	static int	getNbDeposits( void );
@@ -54,6 +56,8 @@ private:
 	Account( void );
 
 };
+
+
 
 // ************************************************************************** //
 // vim: set ts=4 sw=4 tw=80 noexpandtab:                                      //
