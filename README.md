@@ -1,17 +1,36 @@
 #  🔥 CPP_GIT 🔥
 
 <div align="center">
-<img src = "https://user-images.githubusercontent.com/59588256/198200272-361837cd-861e-4352-84c2-8621ebad66e8.jpg" width="40%" height="40%">
+<img src = "https://user-images.githubusercontent.com/59588256/200358302-51c02452-95e7-4199-a722-b13c062e7935.jpeg" width="40%" height="40%">
 </div>
 
+<br/>
 
 ## 💪 스터디 목표
 _CPP와 GIT을 같이 함께 배우자!_  
 <br/>
 
+## 📝 스터디 진도표
+
+
+|이름|CPP00|CPP01|CPP02|CPP03|CPP04|CPP05|CPP06|CPP07|CPP08|
+|:------|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+|장호진</br>(hchang)| ✅</br>(10/31) | ✅</br>(11/7) | 🔥 | - | - | - | - | - | - |
+|김민수</br>(minsuki2)| 🔥 | - | - | - | - | - | - | - | - |
+|박진영</br>(jinypark)| ✅</br>(11/2) | 🔥 | - | - | - | - | - | - | - | - |
+|심성민</br>(sesim)| ✅</br>(11/8) | 🔥 | - | - | - | - | - | - | - | - |
+|이승수</br>(seungsle)| ✅</br>(10/29) | 🔥 | - | - | - | - | - | - |
+|오정민</br>(junoh)| 🔥 | - | - | - | - | - | - | - | - |
+|전준호</br>(junhjeon)| ✅</br>(11/8) | 🔥 | - | - | - | - | - | - | - |
+
+> ✅ : **Merge 완료** <br/>
+> ⚠️  : **PR 중 (코드 리뷰 필요)** <br/>
+> 🔥 : **공부하는 ING** <br/>
+
+
 
 ## 📅 스터디 기한
-10월 15일까지!
+11월 15일까지!
 <br/>
 
 
@@ -62,7 +81,24 @@ PR은 오프라인 평가를 1회 받은 뒤 올려야하니 평가해주신 분
 
 ## 👨‍👩‍👧‍👦 스터디 멤버
 
+
 <div align="center">
+  <table>
+      <tr>
+      <td align="center">
+        <a href="https://github.com/change-challenge">
+          <img src="https://avatars.githubusercontent.com/u/59588256?v=4" alt="장호진 프로필" width=200 height=200 />
+        </a>
+      </td>
+    </tr>
+    <tr>
+    <td align="center">
+      <a href="https://github.com/change-challenge">
+        장호진(hchang)
+      </a>
+    </td>
+  </tr>
+  </table>
   <table>
     <tr>
       <td align="center">
@@ -110,8 +146,8 @@ PR은 오프라인 평가를 1회 받은 뒤 올려야하니 평가해주신 분
         </a>
       </td>
       <td align="center">
-        <a href="https://github.com/change-challenge">
-          <img src="https://avatars.githubusercontent.com/u/59588256?v=4" alt="장호진 프로필" width=200 height=200 />
+        <a href="https://github.com/joonho0410">
+          <img src="https://avatars.githubusercontent.com/u/76806109?v=4" alt="전준호 프로필" width=200 height=200 />
         </a>
       </td>
     </tr>
@@ -127,8 +163,8 @@ PR은 오프라인 평가를 1회 받은 뒤 올려야하니 평가해주신 분
         </a>
       </td>
        <td align="center">
-        <a href="https://github.com/change-challenge">
-          장호진(hchang)
+        <a href="https://github.com/joonho0410">
+          전준호(junhjeon)
         </a>
       </td>
     </tr>
