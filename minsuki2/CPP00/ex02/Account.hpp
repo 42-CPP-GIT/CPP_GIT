@@ -23,7 +23,6 @@ public:
 
 	typedef Account		t;
 
-	// static Account getAccount() { return Account(); }
 	static int	getNbAccounts( void );
 	static int	getTotalAmount( void );
 	static int	getNbDeposits( void );
