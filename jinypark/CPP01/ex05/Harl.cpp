@@ -6,7 +6,7 @@
 /*   By: jinypark <jinypark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 09:18:19 by jinypark          #+#    #+#             */
-/*   Updated: 2022/11/03 16:48:44 by jinypark         ###   ########.fr       */
+/*   Updated: 2022/11/09 15:55:08 by jinypark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	Harl::debug(void)
 }
 void	Harl::info(void)
 {
-    std::cout << "I cannot believe adding extra bacon costs more money. You didn't put enough bacon in my burger! If you did, I wouldn't be asking for more!";
+    std::cout << "I cannot believe adding extra bacon costs more money. You didn't put enough bacon in my burger! If you did, I wouldn't be asking for more!\n";
 }
 void	Harl::warning(void)
 {
@@ -28,19 +28,18 @@ void	Harl::error(void)
 {
     std::cout << "This is unacceptable! I want to speak to the manager now.\n";
 }
-void	Harl::none(void)
+void	Harl::exception(void)
 {
-    std::cout << "none\n";
 }
 
 void    Harl::complain(std::string level)
 {
 	void		(Harl::*func[5])(void) = {&Harl::debug, &Harl::info, 
-										&Harl::warning, &Harl::error, &Harl::none};
-	std::string	command[5] = {"DEBUG", "INFO", "WARNING", "ERROR", ""};
+										&Harl::warning, &Harl::error, &Harl::exception};
+	std::string	command[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
 						
 	int	i = 0;
-	while (level != command[i] && i < 4)
+	while (i < 4 && level != command[i])
 		++i;
 	(this->*func[i])();
 }

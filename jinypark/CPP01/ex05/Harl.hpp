@@ -6,7 +6,7 @@
 /*   By: jinypark <jinypark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 09:18:37 by jinypark          #+#    #+#             */
-/*   Updated: 2022/11/02 16:18:11 by jinypark         ###   ########.fr       */
+/*   Updated: 2022/11/09 16:07:58 by jinypark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ private:
     void    info(void);
     void    warning(void);
     void    error(void);
-    void    none(void);
+    void    exception(void);
 public:
     void    complain(std::string level);
 };
