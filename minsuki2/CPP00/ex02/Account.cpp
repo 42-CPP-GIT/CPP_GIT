@@ -6,7 +6,7 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 14:02:39 by minsuki2          #+#    #+#             */
-/*   Updated: 2022/11/08 23:06:52 by minsuki2         ###   ########.fr       */
+/*   Updated: 2022/11/09 13:31:48 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "Account.hpp"
@@ -41,8 +41,6 @@ int	Account::getNbAccounts(void) { return (_nbAccounts); }
 int	Account::getTotalAmount(void) { return (_totalAmount); }
 int	Account::getNbDeposits(void) { return (_totalNbDeposits); }
 int	Account::getNbWithdrawals(void) { return (_totalNbWithdrawals); }
-
-Account::Account(void) {}
 
 int		Account::checkAmount( void ) const {
 	if (this->_amount < 0)
@@ -174,8 +172,9 @@ bool	Account::makeWithdrawal(int withdrawal) {
 	return (true);
 }
 
+
 void	Account::displayStatus(void) const {
-	Account::_displayTimestamp();
+	this->_displayTimestamp();
 
 	std::cout << MSG_INDEX;
 	if (checkError(this->_accountIndex) == false)
