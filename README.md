@@ -1,10 +1,9 @@
 #  🔥 CPP_GIT 🔥
 
 <div align="center">
-<img src = "https://user-images.githubusercontent.com/59588256/199416867-27a4ad2a-b437-4931-b05b-a4ad960f57b1.jpeg" width="70%" height="70%">
+<img src = "https://user-images.githubusercontent.com/59588256/200358302-51c02452-95e7-4199-a722-b13c062e7935.jpeg" width="40%" height="40%">
 </div>
-
-## 📝 스터디 진도표 (AKA. 너 아직도 거기야?? 🤣😂😅 )
+<br/>
 
 
 |이름|CPP00|CPP01|CPP03|CPP04|CPP05|CPP06|CPP07|CPP08|RANK|
@@ -24,6 +23,24 @@
 ## 💪 스터디 목표
 _CPP와 GIT을 같이 함께 배우자!_  
 <br/>
+
+## 📝 스터디 진도표
+
+
+|이름|CPP00|CPP01|CPP02|CPP03|CPP04|CPP05|CPP06|CPP07|CPP08|
+|:------|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+|장호진</br>(hchang)| ✅</br>(10/31) | ✅</br>(11/7) | 🔥 | - | - | - | - | - | - |
+|김민수</br>(minsuki2)| 🔥 | - | - | - | - | - | - | - | - |
+|박진영</br>(jinypark)| ✅</br>(11/2) | 🔥 | - | - | - | - | - | - | - | - |
+|심성민</br>(sesim)| ✅</br>(11/8) | 🔥 | - | - | - | - | - | - | - | - |
+|이승수</br>(seungsle)| ✅</br>(10/29) | 🔥 | - | - | - | - | - | - |
+|오정민</br>(junoh)| 🔥 | - | - | - | - | - | - | - | - |
+|전준호</br>(junhjeon)| ✅</br>(11/8) | 🔥 | - | - | - | - | - | - | - |
+
+> ✅ : **Merge 완료** <br/>
+> ⚠️  : **PR 중 (코드 리뷰 필요)** <br/>
+> 🔥 : **공부하는 ING** <br/>
+
 
 
 ## 📅 스터디 기한
