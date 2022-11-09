@@ -6,7 +6,7 @@
 /*   By: sesim <sesim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 12:01:31 by sesim             #+#    #+#             */
-/*   Updated: 2022/11/08 12:26:51 by sesim            ###   ########.fr       */
+/*   Updated: 2022/11/09 15:28:27 by sesim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static void	_stringReplace(std::string &str, std::string s1, std::string s2)
 
 int main(int argc, char **argv)
 {
-    if (argc != 4 || argv[1][0] == '\0')
+    if (argc != 4 || argv[1][0] == '\0' || argv[2][0] == '\0')
 	{
 		std::cout << "error: Wrong number of arguments" << std::endl;
         return (1);

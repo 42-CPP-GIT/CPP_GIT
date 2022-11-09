@@ -6,7 +6,7 @@
 /*   By: sesim <sesim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 11:58:35 by sesim             #+#    #+#             */
-/*   Updated: 2022/11/07 13:08:29 by sesim            ###   ########.fr       */
+/*   Updated: 2022/11/09 14:19:21 by sesim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,4 +15,6 @@
 void	randomChump(std::string name)
 {
 	Zombie	stack_zombie(name);
+
+	stack_zombie.announce();
 }

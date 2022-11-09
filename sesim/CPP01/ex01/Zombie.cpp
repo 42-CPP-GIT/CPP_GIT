@@ -6,7 +6,7 @@
 /*   By: sesim <sesim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 13:42:50 by sesim             #+#    #+#             */
-/*   Updated: 2022/11/08 09:50:06 by sesim            ###   ########.fr       */
+/*   Updated: 2022/11/09 14:26:31 by sesim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	Zombie::announce(void)
 	std::cout << this->name_ << ": BraiiiiiiinnnzzzZ..." << std::endl;
 }
 
-void	Zombie::Initialize(std::string name)
+void	Zombie::initialize(std::string name)
 {
 	this->name_ = name;
 }

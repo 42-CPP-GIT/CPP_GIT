@@ -6,7 +6,7 @@
 /*   By: sesim <sesim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 13:42:38 by sesim             #+#    #+#             */
-/*   Updated: 2022/11/08 09:51:27 by sesim            ###   ########.fr       */
+/*   Updated: 2022/11/09 14:31:27 by sesim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ class Zombie
 	public:
 		Zombie();
 		void	announce(void);
-		void	Initialize(std::string name);
+		void	initialize(std::string name);
 		~Zombie();
 };
 

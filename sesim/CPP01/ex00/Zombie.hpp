@@ -6,7 +6,7 @@
 /*   By: sesim <sesim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 11:58:19 by sesim             #+#    #+#             */
-/*   Updated: 2022/11/07 13:55:46 by sesim            ###   ########.fr       */
+/*   Updated: 2022/11/09 14:16:18 by sesim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ class Zombie
 		~Zombie();
 };
 
-Zombie*	newZombie(std::string name);
 void	randomChump(std::string name);
+Zombie*	newZombie(std::string name);
 
 #endif
