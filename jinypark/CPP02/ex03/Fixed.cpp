@@ -6,48 +6,47 @@
 /*   By: jinypark <jinypark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 10:04:22 by jinypark          #+#    #+#             */
-/*   Updated: 2022/11/05 12:19:37 by jinypark         ###   ########.fr       */
+/*   Updated: 2022/11/10 15:49:29 by jinypark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Fixed.hpp"
-#include "iostream"
-#include <cmath>
+# include "Fixed.hpp"
 
-Fixed::Fixed()
+Fixed::Fixed(void)
 {
-	std::cout << "Default constructor called\n";
-	this->numVal = 0;
+	// std::cout << "Default constructor called\n";
+	setRawBits(0);
 }
 
-Fixed::~Fixed()
+Fixed::~Fixed(void)
 {
-	std::cout << "Destructor called\n";
+	// std::cout << "Destructor called\n";
 }
 
 Fixed::Fixed(const Fixed &obj)
 {
-	std::cout << "Copy constructor called\n";
-	*this = obj;
+	// std::cout << "Copy constructor called\n";
+	if (this != &obj)
+		*this = obj;
 }
 
 Fixed::Fixed(const int num)
 {
-	std::cout << "Int constructor called\n";
+	// std::cout << "Int constructor called\n";
 	this->setRawBits(num << fracBits);
 }
 
 Fixed::Fixed(const float num)
 {
-	std::cout << "Float constructor called\n";
+	// std::cout << "Float constructor called\n";
 	this->setRawBits(std::roundf(num * (1 << fracBits)));
 }
 
 Fixed	&Fixed::operator=(Fixed const &obj)
 {
-	std::cout << "Copy assignment operator called\n";
+	// std::cout << "Copy assignment operator called\n";
 	if (this != &obj)
-		this->setRawBits(obj.getRawBits());
+		setRawBits(obj.getRawBits());
 	return (*this);
 }
 
@@ -125,7 +124,6 @@ Fixed	Fixed::operator++(int dummy)
 Fixed	&Fixed::operator++(void)
 {
 	this->numVal += 1;
-
 	return (*this);
 }
 
@@ -141,7 +139,6 @@ Fixed	Fixed::operator--(int dummy)
 Fixed	&Fixed::operator--(void)
 {
 	this->numVal -= 1;
-
 	return (*this);
 }
 
@@ -152,7 +149,7 @@ Fixed	&Fixed::min(Fixed &a, Fixed &b)
 
 Fixed	&Fixed::max(Fixed &a, Fixed &b)
 {
-	return ((a.numVal < b.numVal) ? a : b);
+	return ((a.numVal > b.numVal) ? a : b);
 }
 
 Fixed	&Fixed::min(Fixed const &a, Fixed const &b)
@@ -189,10 +186,10 @@ void	Fixed::setRawBits( int const raw )
 
 float	Fixed::toFloat( void ) const
 {
-	return (static_cast<float>(this->getRawBits()) / (1 << fracBits));
+	return (static_cast<float>(numVal) / (1 << fracBits));
 }
 
 int		Fixed::toInt( void ) const
 {
-	return (this->getRawBits() >> fracBits);
+	return (numVal >> fracBits);
 }

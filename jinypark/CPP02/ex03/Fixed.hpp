@@ -6,11 +6,15 @@
 /*   By: jinypark <jinypark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 09:33:26 by jinypark          #+#    #+#             */
-/*   Updated: 2022/11/05 12:10:13 by jinypark         ###   ########.fr       */
+/*   Updated: 2022/11/10 15:48:53 by jinypark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
+#ifndef FIXED_HPP
+#define FIXED_HPP
+
+# include <iostream>
+# include <cmath>
 
 class Fixed
 {
@@ -50,3 +54,4 @@ public:
 
 std::ostream	&operator<<(std::ostream &out, Fixed const &obj);
 
+#endif
