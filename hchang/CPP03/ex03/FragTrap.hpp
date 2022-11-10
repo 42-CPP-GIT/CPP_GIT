@@ -1,32 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   HumanB.cpp                                         :+:      :+:    :+:   */
+/*   FragTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/02 11:41:11 by hchang            #+#    #+#             */
-/*   Updated: 2022/11/08 16:19:43 by hchang           ###   ########.fr       */
+/*   Created: 2022/11/10 14:24:49 by hchang            #+#    #+#             */
+/*   Updated: 2022/11/10 15:58:31 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "HumanB.hpp"
+#ifndef FRAGTRAP_HPP
+# define FRAGTRAP_HPP
 
-HumanB::HumanB(std::string name)
-{
-    this->_name = name;
-}
+#include "ClapTrap.hpp"
 
-HumanB::~HumanB()
+class FragTrap : virtual public ClapTrap
 {
-}
+	private:
+		/* data */
 
-void	HumanB::attack(void)
-{
-    std::cout << this->_name << " attacks with their " << this->_weapon->getType() << std::endl;
-}
+	public:
+		FragTrap();
+		FragTrap(std::string name);
+		FragTrap(const FragTrap& obj);
+		FragTrap& operator=(const FragTrap& obj);
+		void highFivesGuys(void);
+		void printTrapInfo(void);
+		~FragTrap();
+};
 
-void    HumanB::setWeapon(Weapon &weapon)
-{
-    this->_weapon = &weapon;
-}
+#endif

@@ -1,22 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   DiamondTrap.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/08 22:02:58 by hojinjang         #+#    #+#             */
-/*   Updated: 2022/11/09 17:10:13 by hchang           ###   ########.fr       */
+/*   Created: 2022/11/10 14:38:20 by hchang            #+#    #+#             */
+/*   Updated: 2022/11/10 15:32:01 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef DIAMONDTRAP_HPP
+# define DIAMONDTRAP_HPP
+
 #include "ClapTrap.hpp"
+#include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 
-int main()
+class DiamondTrap : public FragTrap, public ScavTrap
 {
-	ClapTrap A("hchang");
+	private:
+		std::string _name;
 
-	A.attack("Monster");
-	A.takeDamage(5);
-	A.beRepaired(10);
-}
+	public:
+		DiamondTrap();
+		DiamondTrap(std::string name);
+		DiamondTrap(const DiamondTrap& obj);
+		DiamondTrap& operator=(const DiamondTrap& obj);
+		~DiamondTrap();
+		void	whoAmI();
+		void	printTrapInfo();
+};
+
+
+#endif

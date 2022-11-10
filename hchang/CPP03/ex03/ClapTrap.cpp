@@ -6,27 +6,34 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 22:03:11 by hojinjang         #+#    #+#             */
-/*   Updated: 2022/11/09 17:46:12 by hchang           ###   ########.fr       */
+/*   Updated: 2022/11/10 16:04:49 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap(void) : _hitPoint(10), _energyPoint(10), _attackDamage(0)
+ClapTrap::ClapTrap(void) :  _hitPoint(10), _energyPoint(10), _attackDamage(0)
 {
-	std::cout << "[default constructor called]" << std::endl;
+	std::cout << "[ClapTrap default constructor called]" << std::endl;
 	this->_name = "default";
 }
 
 ClapTrap::ClapTrap(std::string name) : _hitPoint(10), _energyPoint(10), _attackDamage(0)
 {
-	std::cout << "[string constructor called]" << std::endl;
+	std::cout << "[ClapTrap string constructor called]" << std::endl;
 	this->_name = name;
 }
 
+ClapTrap::ClapTrap(std::string name, unsigned int hitPoint, unsigned int energyPoint, unsigned int attackDamge) \
+		: _name(name), _hitPoint(hitPoint), _energyPoint(energyPoint), _attackDamage(attackDamge)
+{
+	std::cout << "[ClapTrap All Parameter constructor called]" << std::endl;
+}
+
+
 ClapTrap::ClapTrap(const ClapTrap& obj)
 {
-	std::cout << "[copy constructor called]" << std::endl;
+	std::cout << "[ClapTrap copy constructor called]" << std::endl;
 	*this = obj;
 }
 
@@ -43,7 +50,7 @@ ClapTrap& ClapTrap::operator=(const ClapTrap& obj)
 
 ClapTrap::~ClapTrap()
 {
-	std::cout << "[destructor called]" << std::endl;
+	std::cout << "[ClapTrap destructor called]" << std::endl;
 }
 
 void ClapTrap::attack(const std::string &target)
