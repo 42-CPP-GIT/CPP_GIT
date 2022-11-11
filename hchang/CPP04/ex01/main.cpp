@@ -5,17 +5,51 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/10 18:29:34 by hojinjang         #+#    #+#             */
-/*   Updated: 2022/11/11 12:08:00 by hchang           ###   ########.fr       */
+/*   Created: 2022/11/11 14:31:51 by hchang            #+#    #+#             */
+/*   Updated: 2022/11/11 16:28:02 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cat.hpp"
 #include "Dog.hpp"
 
+void a()
+{
+	system("leaks Animal");
+}
+
 int main()
 {
+	// atexit(a);
+	int cnt = 4;
 
+	Animal *x[cnt];
+	
+	for (int i = 0; i < cnt; i++)
+	{
+		std::cout << "i = " << i << std::endl;
+		if (i % 2 == 0)
+			x[i] = new Dog();
+		else
+			x[i] = new Cat();
+		std::cout << " ▶︎ type : " << x[i]->getType() << std::endl;
+		x[i]->makeSound();
+		std::cout << "================== " << std::endl;
+	}
+	
+	for (int i = 0; i < cnt; i++)
+		delete x[i];
+	// Animal *y[cnt];
+	// y[0] = new Dog();
+	// const Animal* j = new Dog();
+	// const Animal* i = new Cat();
+
+
+	// delete j;//should not create a leak
+	// delete i;
+
+	
+	return 0;
 	// Anin
 
 
@@ -47,21 +81,21 @@ int main()
 	// why->makeSound();
 
 	// const Dog* hey = new Animal();
-	const Animal* meta = new Animal();
-	const Animal* j = new Dog();
-	const Animal* i = new Cat();
+	// const Animal* meta = new Animal();
+	// const Animal* j = new Dog();
+	// const Animal* i = new Cat();
 	
-	std::cout << j->getType() << " " << std::endl;
-	std::cout << i->getType() << " " << std::endl;
-	std::cout << meta->getType() << " " << std::endl;
+	// std::cout << j->getType() << " " << std::endl;
+	// std::cout << i->getType() << " " << std::endl;
+	// std::cout << meta->getType() << " " << std::endl;
 	
-	i->makeSound(); //will output the cat sound!
-	j->makeSound();
-	meta->makeSound();
+	// i->makeSound(); //will output the cat sound!
+	// j->makeSound();
+	// meta->makeSound();
 
-	delete i;
-	delete j;
-	delete meta;
+	// delete i;
+	// delete j;
+	// delete meta;
 
-	return 0;	
+	// return 0;	
 }

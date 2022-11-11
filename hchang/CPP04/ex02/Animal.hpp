@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 18:44:14 by hojinjang         #+#    #+#             */
-/*   Updated: 2022/11/11 11:59:38 by hchang           ###   ########.fr       */
+/*   Updated: 2022/11/11 16:25:23 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,9 @@
 
 #include <iostream>
 
+// class Dog;
+// class Cat;
+
 class Animal
 {
 protected:
@@ -30,7 +33,7 @@ public:
 	Animal(const Animal& obj);
 	Animal& operator=(const Animal& obj);
 	virtual ~Animal();
-	virtual void	makeSound(void) const;
+	virtual void	makeSound(void) const = 0;
 	std::string		getType(void) const;
 };
 

@@ -1,37 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   Dog.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/10 18:44:14 by hojinjang         #+#    #+#             */
-/*   Updated: 2022/11/11 11:59:38 by hchang           ###   ########.fr       */
+/*   Created: 2022/11/10 18:51:15 by hojinjang         #+#    #+#             */
+/*   Updated: 2022/11/11 14:13:59 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ANIMAL_HPP
-#define ANIMAL_HPP
+#ifndef DOG_HPP
+#define DOG_HPP
 
-# define RESET "\033[0m"
-# define IT "\e[0;3m"
-# define RED "\e[0;31m"
-# define GRN "\e[0;33m"
+#include "Animal.hpp"
+#include "Brain.hpp"
 
-#include <iostream>
-
-class Animal
+class Dog : public Animal
 {
-protected:
-	std::string	_type;
+private:
+	std::string	_name;
+	Brain		*brain;
 
 public:
-	Animal();
-	Animal(const Animal& obj);
-	Animal& operator=(const Animal& obj);
-	virtual ~Animal();
-	virtual void	makeSound(void) const;
-	std::string		getType(void) const;
+	Dog();
+	Dog(const Dog& obj);
+	Dog& operator=(const Dog& obj);
+	~Dog();
+	void		makeSound(void) const;
+	std::string	getName() const;
 };
 
 #endif
