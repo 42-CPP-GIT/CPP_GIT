@@ -6,7 +6,7 @@
 /*   By: seungsle <seungsle@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 14:16:19 by seungsle          #+#    #+#             */
-/*   Updated: 2022/11/02 16:09:24 by seungsle         ###   ########.fr       */
+/*   Updated: 2022/11/14 17:38:20 by seungsle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,19 +48,26 @@ Harl::~Harl()
 
 void	Harl::complain(std::string level)
 {
-	std::string levels[] = {
-		"DEBUG",
-		"INFO",
-		"WARNING",
-		"ERROR"
-	};
-	void (Harl::* funcptr[]) (void) = {
-		&Harl::debug,
-		&Harl::info,
-		&Harl::warning,
-		&Harl::error
-	};
-	for (int i = 0; i < 4; i++)
-		if (levels[i] == level)
-			(this->*funcptr[i]) ();
+	std::string levels("[DEBUG][INFO][WARNING][ERROR]");
+	void (Harl::* f[]) (void) = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
+	
+	level.insert(0, "[");
+	level += "]";
+	switch (levels.find(level))
+	{
+	case 0:
+		(this->*f[0]) ();
+		break ;
+	case 7:
+		(this->*f[1]) ();
+		break ;
+	case 13:
+		(this->*f[2]) ();
+		break ;
+	case 22:
+		(this->*f[3]) ();
+		break ;
+	default:
+		break ;
+	}
 }
