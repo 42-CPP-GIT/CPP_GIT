@@ -6,7 +6,7 @@
 /*   By: seungsle <seungsle@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 11:49:54 by seungsle          #+#    #+#             */
-/*   Updated: 2022/11/12 18:29:50 by seungsle         ###   ########.fr       */
+/*   Updated: 2022/11/14 16:15:48 by seungsle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,20 @@
 
 void	Zombie::announce()
 {
-	std::cout << _name << ": BraiiiiiiinnnzzzZ..." << std::endl;
+	std::cout << this->_name << ": BraiiiiiiinnnzzzZ..." << std::endl;
 }
 
 Zombie::Zombie(std::string name)
 {
-	_name = name;
+	this->_name = name;
 }
 
 Zombie::~Zombie()
 {
-	std::cout << _name << " is destructed" << std::endl;
+	std::cout << this->_name << " is destructed" << std::endl;
 }
 
 Zombie::Zombie()
 {
-	_name = "Foo";
+	this->_name = "Foo";
 }
