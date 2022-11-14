@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 10:57:58 by hchang            #+#    #+#             */
-/*   Updated: 2022/11/08 15:56:55 by hchang           ###   ########.fr       */
+/*   Updated: 2022/11/14 20:16:14 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,25 +74,25 @@ std::ostream& operator<<(std::ostream& out, const Fixed& fixed)
 	return out;
 }
 
-Fixed Fixed::operator+(const Fixed& fixed) const
+Fixed Fixed::operator+(const Fixed& fixed)
 {
 	Fixed res(this->toFloat() + fixed.toFloat());
 	return res;
 }
 
-Fixed Fixed::operator-(const Fixed& fixed) const
+Fixed Fixed::operator-(const Fixed& fixed)
 {
 	Fixed res(this->toFloat() - fixed.toFloat());
 	return res;
 }
 
-Fixed Fixed::operator*(const Fixed& fixed) const
+Fixed Fixed::operator*(const Fixed& fixed)
 {
 	Fixed res(this->toFloat() * fixed.toFloat());
 	return res;
 }
 
-Fixed Fixed::operator/(const Fixed& fixed) const
+Fixed Fixed::operator/(const Fixed& fixed)
 {
 	Fixed res(this->toFloat() / fixed.toFloat());
 	return res;

@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 16:00:50 by hchang            #+#    #+#             */
-/*   Updated: 2022/11/08 17:45:38 by hchang           ###   ########.fr       */
+/*   Updated: 2022/11/14 20:32:54 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ bool	bsp( Point const a, Point const b, Point const c, Point const point)
 	Fixed totalArea = triangleArea(a.getPointX().toFloat(), a.getPointY().toFloat(), \
 				b.getPointX().toFloat(), b.getPointY().toFloat(), \
 				c.getPointX().toFloat(), c.getPointY().toFloat());
+
 	Fixed ABPointArea = triangleArea(a.getPointX().toFloat(), a.getPointY().toFloat(), \
 				b.getPointX().toFloat(), b.getPointY().toFloat(), \
 				point.getPointX().toFloat(), point.getPointY().toFloat());

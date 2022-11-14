@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 10:27:37 by hchang            #+#    #+#             */
-/*   Updated: 2022/11/08 15:57:10 by hchang           ###   ########.fr       */
+/*   Updated: 2022/11/14 20:11:46 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@ public:
 	Fixed(const float fixed);
 	Fixed(const Fixed &fixed);
 	Fixed&	operator=(const Fixed& fixed);
-	Fixed	operator+(const Fixed& fixed) const;
-	Fixed	operator-(const Fixed& fixed) const;
-	Fixed	operator*(const Fixed& fixed) const;
-	Fixed	operator/(const Fixed& fixed) const;
+	Fixed	operator+(const Fixed& fixed);
+	Fixed	operator-(const Fixed& fixed);
+	Fixed	operator*(const Fixed& fixed);
+	Fixed	operator/(const Fixed& fixed);
 	bool	operator==(const Fixed& fixed) const;
 	bool	operator!=(const Fixed& fixed) const;
 	bool	operator>(const Fixed& fixed) const;
