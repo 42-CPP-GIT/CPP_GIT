@@ -6,22 +6,21 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 15:51:39 by minsuki2          #+#    #+#             */
-/*   Updated: 2022/11/09 17:26:46 by minsuki2         ###   ########.fr       */
+/*   Updated: 2022/11/14 22:03:25 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
 
 int main(void) {
-	Zombie *heap_zom(newZombie("h_zom"));
-	Zombie stack_zom;
+	Zombie *heap_z(newZombie("heap_zom"));
+	Zombie stack_z;
 
 
-	heap_zom->announce();
-	stack_zom.announce();
+	heap_z->announce();
+	stack_z.announce();
+	randomChump("random_zom");
 
-	randomChump("r_zom");
-
-	delete heap_zom;
+	delete heap_z;
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 15:52:13 by minsuki2          #+#    #+#             */
-/*   Updated: 2022/11/09 19:11:28 by minsuki2         ###   ########.fr       */
+/*   Updated: 2022/11/14 22:01:43 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ class Zombie {
 		std::string name_;
 };
 
-Zombie	*zombieHorde(int N, std::string name);
+Zombie	*newZombie(std::string name);
+void	randomChump(std::string name);
 
 #endif
