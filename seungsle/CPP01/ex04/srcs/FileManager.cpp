@@ -6,7 +6,7 @@
 /*   By: seungsle <seungsle@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 16:55:14 by seungsle          #+#    #+#             */
-/*   Updated: 2022/11/02 14:00:14 by seungsle         ###   ########.fr       */
+/*   Updated: 2022/11/14 17:20:37 by seungsle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,12 +52,12 @@ void	FileManager::setContent(std::string content)
 	this->_content = content;
 }
 
-std::string FileManager::getFileName()
+const std::string FileManager::getFileName()
 {
 	return (this->_fileName);
 }
 
-std::string FileManager::getContent()
+const std::string FileManager::getContent()
 {
 	return (this->_content);
 }

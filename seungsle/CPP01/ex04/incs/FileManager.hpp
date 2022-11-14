@@ -6,7 +6,7 @@
 /*   By: seungsle <seungsle@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 16:53:48 by seungsle          #+#    #+#             */
-/*   Updated: 2022/11/02 13:23:43 by seungsle         ###   ########.fr       */
+/*   Updated: 2022/11/14 17:20:52 by seungsle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ public:
 	void	writeFile(void);
 	void	setFileName(std::string fileName);
 	void	setContent(std::string content);
-	std::string	getFileName(void);
-	std::string getContent(void);
+	const std::string	getFileName(void);
+	const std::string getContent(void);
 };
 
 #endif
