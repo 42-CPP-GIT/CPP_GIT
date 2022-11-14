@@ -1,28 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   zombieHorde.cpp                                    :+:      :+:    :+:   */
+/*   HumanB.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sesim <sesim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/07 13:43:10 by sesim             #+#    #+#             */
-/*   Updated: 2022/11/09 14:45:27 by sesim            ###   ########.fr       */
+/*   Created: 2022/11/08 11:14:33 by sesim             #+#    #+#             */
+/*   Updated: 2022/11/09 14:59:08 by sesim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#ifndef HUMANB_HPP
+# define HUMANB_HPP
 
-Zombie*	zombieHorde(int N, std::string name)
+# include "Weapon.hpp"
+
+class HumanB
 {
-	if (N < 1)
-		return (NULL);
-	Zombie	*zombies(new Zombie[N]);
+	private:
+		std::string	name_;
+		Weapon		*weapon_;
+	public:
+		HumanB(std::string name);
+		void	setWeapon(Weapon &weapon);
+		void	attack(void);
+		~HumanB();
+};
 
-	for (int i = 0; i < N; ++i)
-	{
-		std::cout << "[" << i + 1 << "] ";
-		zombies[i].initialize(name);
-		zombies[i].announce();
-	}
-	return (zombies);
-}
+#endif

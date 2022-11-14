@@ -6,7 +6,7 @@
 /*   By: sesim <sesim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 10:37:07 by sesim             #+#    #+#             */
-/*   Updated: 2022/11/08 10:39:48 by sesim            ###   ########.fr       */
+/*   Updated: 2022/11/09 15:20:14 by sesim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,11 @@
 class HumanA
 {
 	private:
-		std::string	name;
-		Weapon		
+		std::string	name_;
+		Weapon		&weapon_;
 	public:
-		HumanA();
+		HumanA(std::string name, Weapon &weapon);
+		void	attack(void);
 		~HumanA();
 };
 

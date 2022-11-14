@@ -6,7 +6,7 @@
 /*   By: sesim <sesim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 13:42:12 by sesim             #+#    #+#             */
-/*   Updated: 2022/11/08 10:03:07 by sesim            ###   ########.fr       */
+/*   Updated: 2022/11/10 13:43:54 by sesim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,7 @@
 
 int	main(void)
 {
-	Zombie	*zombies;
-
-	zombies = zombieHorde(10, "Heap");
+	Zombie	*zombies(zombieHorde(10, "Heap"));
 	delete[] zombies;
 	return (0);
 }

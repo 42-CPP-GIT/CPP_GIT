@@ -6,7 +6,7 @@
 /*   By: sesim <sesim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 10:07:50 by sesim             #+#    #+#             */
-/*   Updated: 2022/11/08 10:39:42 by sesim            ###   ########.fr       */
+/*   Updated: 2022/11/08 11:57:47 by sesim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@
 class Weapon
 {
 	private:
-		std::string type;
+		std::string type_;
 	public:
-		Weapon();
-		const std::string&	getType() const;
+		Weapon(std::string type);
+		const std::string&	getType(void) const;
 		void				setType(std::string type);
 		~Weapon();
 };

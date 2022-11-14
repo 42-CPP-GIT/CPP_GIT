@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   zombieHorde.cpp                                    :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sesim <sesim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/07 13:43:10 by sesim             #+#    #+#             */
-/*   Updated: 2022/11/09 14:45:27 by sesim            ###   ########.fr       */
+/*   Created: 2022/11/08 23:42:29 by sesim             #+#    #+#             */
+/*   Updated: 2022/11/08 23:49:38 by sesim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include "Harl.hpp"
 
-Zombie*	zombieHorde(int N, std::string name)
+int	main(int ac, char **av)
 {
-	if (N < 1)
-		return (NULL);
-	Zombie	*zombies(new Zombie[N]);
+	if (ac != 2)
+		return (0);
+	Harl		black_consumer;
+	std::string	str(av[1]);
 
-	for (int i = 0; i < N; ++i)
-	{
-		std::cout << "[" << i + 1 << "] ";
-		zombies[i].initialize(name);
-		zombies[i].announce();
-	}
-	return (zombies);
+	black_consumer.complain(str);
 }

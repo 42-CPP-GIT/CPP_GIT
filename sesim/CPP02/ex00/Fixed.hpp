@@ -1,28 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   zombieHorde.cpp                                    :+:      :+:    :+:   */
+/*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sesim <sesim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/07 13:43:10 by sesim             #+#    #+#             */
-/*   Updated: 2022/11/09 14:45:27 by sesim            ###   ########.fr       */
+/*   Created: 2022/11/10 12:01:32 by sesim             #+#    #+#             */
+/*   Updated: 2022/11/10 13:13:57 by sesim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#ifndef FIXED_HPP
+# define FIXED_HPP
 
-Zombie*	zombieHorde(int N, std::string name)
+class Fixed
 {
-	if (N < 1)
-		return (NULL);
-	Zombie	*zombies(new Zombie[N]);
+	private:
+		int					fixed_point_num_;
+		static const int	fractional_bits_ = 8;
+	public:
+		Fixed();
+		Fixed(const Fixed& obj);
+		Fixed&	operator=(const Fixed& obj);
+		int		getRawBits(void) const;
+		void	setRawBits(int const raw);
+		~Fixed();
+};
 
-	for (int i = 0; i < N; ++i)
-	{
-		std::cout << "[" << i + 1 << "] ";
-		zombies[i].initialize(name);
-		zombies[i].announce();
-	}
-	return (zombies);
-}
+#endif
