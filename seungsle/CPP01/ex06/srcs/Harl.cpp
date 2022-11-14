@@ -6,7 +6,7 @@
 /*   By: seungsle <seungsle@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 14:16:19 by seungsle          #+#    #+#             */
-/*   Updated: 2022/11/02 18:22:26 by seungsle         ###   ########.fr       */
+/*   Updated: 2022/11/14 17:42:15 by seungsle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,26 +48,24 @@ Harl::~Harl()
 
 void	Harl::complain(std::string level)
 {
-	std::string levels[] = {
-		"DEBUG",
-		"INFO",
-		"WARNING",
-		"ERROR"
-	};
-	void (Harl::* funcptr[]) (void) = {
-		&Harl::debug,
-		&Harl::info,
-		&Harl::warning,
-		&Harl::error
-	};
-	bool flag = false;
-	for (int i = 0; i < 4; i++)
+	std::string levels("[DEBUG][INFO][WARNING][ERROR]");
+	void (Harl::* f[]) (void) = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
+	
+	level.insert(0, "[");
+	level += "]";
+	switch (levels.find(level))
 	{
-		if (levels[i] == level)
-			flag = true;
-		if (flag == true)
-			(this->*funcptr[i]) ();
-	}
-	if (flag == false)
+	case 0:
+		(this->*f[0]) ();
+	case 7:
+		(this->*f[1]) ();
+	case 13:
+		(this->*f[2]) ();
+	case 22:
+		(this->*f[3]) ();
+		break ;
+	default:
 		std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
+		break ;
+	}
 }
