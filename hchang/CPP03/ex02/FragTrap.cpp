@@ -15,17 +15,22 @@
 FragTrap::FragTrap() : ClapTrap("default", 100, 100, 30)
 {
 	std::cout << "[FragTrap default constructor called]" << std::endl;
+
 }
 
 FragTrap::FragTrap(std::string name) : ClapTrap(name, 100, 100, 30)
 {
 	std::cout << "[FragTrap string constructor called]" << std::endl;
+		{
+		this->_name = name;
+	}
 }
 
 FragTrap::FragTrap(const FragTrap& obj)
 {
 	std::cout << "[FragTrap copy constructor called]" << std::endl;
 	*this = obj;
+
 }
 
 FragTrap& FragTrap::operator=(const FragTrap& obj)

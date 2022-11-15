@@ -15,18 +15,23 @@
 #include "FragTrap.hpp"
 #include "DiamondTrap.hpp"
 
+
+// 100
+// 50
+// 30
 int main()
 {
 
-	FragTrap A("hchang");
-	A.attack("Monster");
-	A.printTrapInfo();
+	// FragTrap A("hchang");
+	// A.attack("Monster");
+	// A.printTrapInfo();
 
-	ScavTrap B("sesim");
-	B.attack("human");
-	B.printTrapInfo();
+	// ScavTrap B("sesim");
+	// B.attack("human");
+	// B.printTrapInfo();
 	
 	DiamondTrap C("jinypark");
 	C.attack("42 cadet");
 	C.printTrapInfo();
+	// C.whoAmI();
 }

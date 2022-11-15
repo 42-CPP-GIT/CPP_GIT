@@ -17,9 +17,6 @@
 
 class FragTrap : virtual public ClapTrap
 {
-	private:
-		/* data */
-
 	public:
 		FragTrap();
 		FragTrap(std::string name);

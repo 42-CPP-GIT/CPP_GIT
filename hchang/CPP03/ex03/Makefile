@@ -11,7 +11,7 @@
 # **************************************************************************** #
 
 CXX				=	c++
-NAME			=	ClapTrap
+NAME			=	DiamondTrap
 RM 				=	rm -rf
 CPPFLAGS 		=	-Wall -Wextra -Werror -std=c++98
 

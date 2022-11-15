@@ -23,10 +23,10 @@
 class ClapTrap
 {
 protected:
-	std::string		_name;
-	unsigned int 	_hitPoint;
-	unsigned int 	_energyPoint;
-	unsigned int 	_attackDamage;
+	std::string	_name;
+	int 		_hitPoint;
+	int 		_energyPoint;
+	int 		_attackDamage;
 
 public:
 	ClapTrap();

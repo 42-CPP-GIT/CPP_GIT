@@ -11,9 +11,9 @@
 # **************************************************************************** #
 
 CXX				=	c++
-NAME			=	ClapTrap
+NAME			=	ScavTrap
 RM 				=	rm -rf
-CPPFLAGS 		=	-Wall -Wextra -Werror -std=c++98
+CPPFLAGS 		=	-Wall -Wextra -Werror -std=c++98 -g
 
 SRCS 			=	$(wildcard *.cpp)
 OBJS 			=	$(SRCS:.cpp=.o)

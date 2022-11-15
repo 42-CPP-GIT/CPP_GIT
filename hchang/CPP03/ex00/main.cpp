@@ -18,5 +18,12 @@ int main()
 
 	A.attack("Monster");
 	A.takeDamage(5);
+	A.takeDamage(5);
 	A.beRepaired(10);
+	A.attack("Monster");
+	A.printTrapInfo();
+	A.takeDamage(5);
+	A.attack("Monster");
+	A.printTrapInfo();
+
 }

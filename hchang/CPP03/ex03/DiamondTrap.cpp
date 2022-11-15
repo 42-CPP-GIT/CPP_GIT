@@ -21,13 +21,13 @@ DiamondTrap::DiamondTrap() : FragTrap(), ScavTrap()
 	this->_attackDamage = 30;	
 }
 
-DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name), FragTrap(name), ScavTrap(name)
+DiamondTrap::DiamondTrap(std::string name) :  FragTrap(name), ScavTrap(name)
 {
 	std::cout << "[DiamondTrap string constructor called]" << std::endl;
 	
 	_name = name;
-	this->_attackDamage = 30;
 	ClapTrap::_name = name + "_clap_name";
+	this->_attackDamage = 30;
 }
 
 DiamondTrap::DiamondTrap(const DiamondTrap& obj) : FragTrap(obj), ScavTrap(obj)

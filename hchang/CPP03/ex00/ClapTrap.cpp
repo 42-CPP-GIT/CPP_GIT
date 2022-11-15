@@ -58,7 +58,7 @@ void ClapTrap::attack(const std::string &target)
 		<< " because not enongh energy Point"RESET<< std::endl;
 		return ;
 	}
-	else if (!this->_hitPoint)
+	else if (this->_hitPoint <= 0)
 	{
 		std::cout << "ClapTrap " << this->_name << " can't attack." \
 		<< " because not enongh hit Point" RESET<< std::endl;
@@ -90,7 +90,7 @@ void ClapTrap::beRepaired(unsigned int amount)
 		<< " because not enongh energy Point" RESET<< std::endl;
 		return ;
 	}
-	else if (!this->_hitPoint)
+	else if (this->_hitPoint <= 0)
 	{
 		std::cout << "ClapTrap " << this->_name << " can't repaire." \
 		<< " because not enongh hit Point" RESET<< std::endl;
@@ -100,4 +100,14 @@ void ClapTrap::beRepaired(unsigned int amount)
 	<< "ClapTrap " << this->_name << "'s hit points " << amount << " up!" RESET << std::endl;
 	this->_hitPoint += amount;
 	this->_energyPoint--;
+}
+
+void	ClapTrap::printTrapInfo(void)
+{
+	std::cout << "=====================[ClapTrap Trap Info]=====================" IT<< std::endl;
+	std::cout << "    ► Name          : " << this->_name << std::endl;
+	std::cout << "    ► Hit Point     : " << this->_hitPoint << std::endl;
+	std::cout << "    ► Energy Point  : " << this->_energyPoint << std::endl;
+	std::cout << "    ► Attack Damage : " << this->_attackDamage << std::endl;
+	std::cout <<RESET "=============================================================" << std::endl;
 }

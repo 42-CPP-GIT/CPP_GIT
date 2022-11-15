@@ -65,7 +65,7 @@ void ClapTrap::attack(const std::string &target)
 		<< " because not enongh energy Point"RESET<< std::endl;
 		return ;
 	}
-	else if (!this->_hitPoint)
+	else if (this->_hitPoint <= 0)
 	{
 		std::cout << "ClapTrap " << this->_name << " can't attack." \
 		<< " because not enongh hit Point" RESET<< std::endl;
@@ -97,7 +97,7 @@ void ClapTrap::beRepaired(unsigned int amount)
 		<< " because not enongh energy Point" RESET<< std::endl;
 		return ;
 	}
-	else if (!this->_hitPoint)
+	else if (this->_hitPoint <= 0)
 	{
 		std::cout << "ClapTrap " << this->_name << " can't repaire." \
 		<< " because not enongh hit Point" RESET<< std::endl;
