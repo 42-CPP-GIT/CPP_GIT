@@ -6,7 +6,7 @@
 /*   By: seungsle <seungsle@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 18:31:55 by seungsle          #+#    #+#             */
-/*   Updated: 2022/11/12 18:09:09 by seungsle         ###   ########.fr       */
+/*   Updated: 2022/11/15 22:29:58 by seungsle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,25 +28,29 @@ public:
 	Fixed(const Fixed &Fixed);
 	~Fixed();
 	Fixed& operator = (const Fixed &source);
-	bool operator > (const Fixed &source);
-	bool operator < (const Fixed &source);
-	bool operator >= (const Fixed &source);
-	bool operator <= (const Fixed &source);
-	bool operator == (const Fixed &source);
-	bool operator != (const Fixed &source);
+	bool operator > (const Fixed &source) const;
+	bool operator < (const Fixed &source) const;
+	bool operator >= (const Fixed &source) const;
+	bool operator <= (const Fixed &source) const;
+	bool operator == (const Fixed &source) const;
+	bool operator != (const Fixed &source) const;
 	Fixed operator + (const Fixed &source);
 	Fixed operator - (const Fixed &source);
 	Fixed operator * (const Fixed &source);
 	Fixed operator / (const Fixed &source);
-	Fixed operator ++ (int dummy);
+	const Fixed operator ++ (int);
 	Fixed& operator ++ (void);
-	Fixed operator -- (int dummy);
+	const Fixed operator -- (int);
 	Fixed& operator -- (void);
 	int	getRawBits(void) const;
 	void	setRawBits(int const raw);
 	float	toFloat( void ) const;
 	int	toInt( void ) const;
-	friend std::ostream& operator<<(std::ostream& out, const Fixed& fixed);
+	static Fixed& min(Fixed &a, Fixed &b);
+	const static Fixed& min(const Fixed &a, const Fixed &b);
+	static Fixed& max(Fixed &a, Fixed &n);
+	const static Fixed& max(const Fixed &a, const Fixed &b);
 };
+std::ostream& operator<<(std::ostream& out, const Fixed& fixed);
 
 #endif
