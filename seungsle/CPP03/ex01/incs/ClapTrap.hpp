@@ -6,18 +6,17 @@
 /*   By: seungsle <seungsle@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 12:22:07 by seungsle          #+#    #+#             */
-/*   Updated: 2022/11/16 19:24:25 by seungsle         ###   ########.fr       */
+/*   Updated: 2022/11/17 00:17:42 by seungsle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CLAP_TRAP_HPP
 # define CLAP_TRAP_HPP
-
-#include <iostream>
+# include <iostream>
 
 class ClapTrap
 {
-private:
+protected:
 	int _health;
 	int _energyPoint;
 	int _attackDamage;
@@ -29,6 +28,7 @@ private:
 public:
 	ClapTrap(/* args */);
 	ClapTrap(std::string name);
+	ClapTrap(std::string name, int health, int energy, int damage);
 	ClapTrap(const ClapTrap &clapTrap);
 	~ClapTrap();
 	ClapTrap& operator = (const ClapTrap &source);
