@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 22:02:05 by hojinjang         #+#    #+#             */
-/*   Updated: 2022/11/09 17:18:43 by hchang           ###   ########.fr       */
+/*   Updated: 2022/11/16 08:55:19 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 #define IT "\e[0;3m"
 #define RED "\e[0;31m"
 #define GRN "\e[0;33m"
+#define C_HP 10
 
 class ClapTrap
 {
@@ -34,11 +35,10 @@ public:
 	ClapTrap(const ClapTrap& obj);
 	ClapTrap& operator=(const ClapTrap& obj);
 	~ClapTrap();
-	void	attack(const std::string& target);
-	void	takeDamage(unsigned int amount);
-	void	beRepaired(unsigned int amount);
-	void	printTrapInfo(void);
-
+	void		attack(const std::string& target);
+	void		takeDamage(unsigned int amount);
+	void		beRepaired(unsigned int amount);
+	void		printTrapInfo(void);
 };
 
 #endif

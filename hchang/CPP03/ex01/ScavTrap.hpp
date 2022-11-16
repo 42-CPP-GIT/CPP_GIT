@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:57:00 by hchang            #+#    #+#             */
-/*   Updated: 2022/11/10 14:22:37 by hchang           ###   ########.fr       */
+/*   Updated: 2022/11/16 09:01:31 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ class ScavTrap : public ClapTrap
 		void attack(const std::string& target);
 		~ScavTrap();
 		void guardGate();
+		void printTrapInfo(void);
 };
 
 #endif

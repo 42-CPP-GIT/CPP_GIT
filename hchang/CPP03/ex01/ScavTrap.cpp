@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:56:58 by hchang            #+#    #+#             */
-/*   Updated: 2022/11/10 14:24:16 by hchang           ###   ########.fr       */
+/*   Updated: 2022/11/16 09:19:39 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void ScavTrap::attack(const std::string &target)
 		<< " because not enongh energy Point"RESET<< std::endl;
 		return ;
 	}
-	else if (!this->_hitPoint)
+	else if (this->_hitPoint <= 0)
 	{
 		std::cout << "ScavTrap " << this->_name << " can't attack." \
 		<< " because not enongh hit Point" RESET<< std::endl;
@@ -70,4 +70,14 @@ void ScavTrap::attack(const std::string &target)
 	std::cout << "ScavTrap " << this->_name << " attacks " << target \
 	<< ", causing " << this->_attackDamage << " points of damage!" RESET << std::endl;
 	this->_energyPoint--;
+}
+
+void	ScavTrap::printTrapInfo(void)
+{
+	std::cout << "=====================[ScavTrap Trap Info]=====================" IT<< std::endl;
+	std::cout << "    ► Name          : " << this->_name << std::endl;
+	std::cout << "    ► Hit Point     : " << this->_hitPoint << std::endl;
+	std::cout << "    ► Energy Point  : " << this->_energyPoint << std::endl;
+	std::cout << "    ► Attack Damage : " << this->_attackDamage << std::endl;
+	std::cout <<RESET "=============================================================" << std::endl;
 }

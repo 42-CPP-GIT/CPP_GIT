@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 22:02:05 by hojinjang         #+#    #+#             */
-/*   Updated: 2022/11/10 14:21:12 by hchang           ###   ########.fr       */
+/*   Updated: 2022/11/16 09:21:47 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,9 @@
 #define IT "\e[0;3m"
 #define RED "\e[0;31m"
 #define GRN "\e[0;33m"
+#define C_HP 10
+#define S_HP 100
+#define F_HP 100
 
 class ClapTrap
 {
@@ -34,8 +37,8 @@ public:
 	ClapTrap(std::string name, unsigned int hitPoint, unsigned int energyPoint, unsigned int attackDamge);
 	ClapTrap(const ClapTrap& obj);
 	ClapTrap& operator=(const ClapTrap& obj);
-	~ClapTrap();
-	void attack(const std::string& target);
+	virtual ~ClapTrap();
+	virtual void attack(const std::string& target);
 	void takeDamage(unsigned int amount);
 	void beRepaired(unsigned int amount);
 };
