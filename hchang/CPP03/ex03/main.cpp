@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 22:02:58 by hojinjang         #+#    #+#             */
-/*   Updated: 2022/11/16 09:25:52 by hchang           ###   ########.fr       */
+/*   Updated: 2022/11/16 13:15:54 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,5 @@ int main()
 	C.printTrapInfo();
 	C.beRepaired(2);
 	C.printTrapInfo();
-	// C.whoAmI();
+	C.whoAmI();
 }

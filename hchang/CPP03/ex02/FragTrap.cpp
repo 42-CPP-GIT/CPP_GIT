@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 14:24:43 by hchang            #+#    #+#             */
-/*   Updated: 2022/11/10 15:59:04 by hchang           ###   ########.fr       */
+/*   Updated: 2022/11/16 13:13:57 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,22 +15,18 @@
 FragTrap::FragTrap() : ClapTrap("default", 100, 100, 30)
 {
 	std::cout << "[FragTrap default constructor called]" << std::endl;
-
 }
 
 FragTrap::FragTrap(std::string name) : ClapTrap(name, 100, 100, 30)
 {
 	std::cout << "[FragTrap string constructor called]" << std::endl;
-		{
-		this->_name = name;
-	}
+	this->_name = name;
 }
 
 FragTrap::FragTrap(const FragTrap& obj)
 {
 	std::cout << "[FragTrap copy constructor called]" << std::endl;
 	*this = obj;
-
 }
 
 FragTrap& FragTrap::operator=(const FragTrap& obj)
