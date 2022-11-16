@@ -6,7 +6,7 @@
 /*   By: seungsle <seungsle@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 18:31:52 by seungsle          #+#    #+#             */
-/*   Updated: 2022/11/12 15:15:34 by seungsle         ###   ########.fr       */
+/*   Updated: 2022/11/16 14:01:59 by seungsle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ Fixed::Fixed(const float fixedPointNum)
 Fixed::Fixed(const Fixed &Fixed)
 {
 	std::cout << "Copy constructor called" << std::endl;
-	this->_fixedPointNum = Fixed.getRawBits();
+	*this = Fixed;
+	// this->_fixedPointNum = Fixed.getRawBits();
 }
 
 Fixed& Fixed::operator = (const Fixed &source)
