@@ -6,7 +6,7 @@
 /*   By: seungsle <seungsle@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 18:31:55 by seungsle          #+#    #+#             */
-/*   Updated: 2022/11/04 16:50:32 by seungsle         ###   ########.fr       */
+/*   Updated: 2022/11/16 13:54:06 by seungsle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,6 @@ public:
 	Fixed(Fixed &Fixed);
 	~Fixed();
 	Fixed& operator = (const Fixed &source);
-	float toFloat( void ) const;
-	int toInt( void ) const;
 	int	getRawBits(void) const;
 	void	setRawBits(int const raw);
 };
