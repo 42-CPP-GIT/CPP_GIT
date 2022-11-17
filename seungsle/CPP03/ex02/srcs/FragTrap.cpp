@@ -6,7 +6,7 @@
 /*   By: seungsle <seungsle@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 19:16:08 by seungsle          #+#    #+#             */
-/*   Updated: 2022/11/17 11:13:05 by seungsle         ###   ########.fr       */
+/*   Updated: 2022/11/17 11:21:23 by seungsle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 
 FragTrap::FragTrap(): ClapTrap("default", 100, 100, 30)
 {
-	std::cout << "[FragTrap Default construct called]" << std::endl;
+	std::cout << "[FragTrap constructor called]" << std::endl;
 }
 
 FragTrap::FragTrap(std::string name): ClapTrap(name, 100, 100, 30)
 {
-	std::cout << "[FragTrap Default construct called]" << std::endl;
+	std::cout << "[FragTrap constructor called]" << std::endl;
 }
 
 FragTrap::FragTrap(const FragTrap &FragTrap)

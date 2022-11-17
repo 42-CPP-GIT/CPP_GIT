@@ -6,7 +6,7 @@
 /*   By: seungsle <seungsle@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 12:22:05 by seungsle          #+#    #+#             */
-/*   Updated: 2022/11/17 00:22:09 by seungsle         ###   ########.fr       */
+/*   Updated: 2022/11/17 11:21:04 by seungsle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,19 @@
 
 ClapTrap::ClapTrap(): _health(10), _energyPoint(10), _attackDamage(0)
 {
-	std::cout << "[ClapTrap Default construct called]" << std::endl;
+	std::cout << "[ClapTrap Constructor called]" << std::endl;
 	setName("default");
 }
 
 ClapTrap::ClapTrap(std::string name): _health(10), _energyPoint(10), _attackDamage(0)
 {
-	std::cout << "[ClapTrap Default construct called]" << std::endl;
+	std::cout << "[ClapTrap Constructor called]" << std::endl;
 	setName(name);
 }
 
 ClapTrap::ClapTrap(std::string name, int health, int energy, int damage): _health(health), _energyPoint(energy), _attackDamage(damage), _name(name)
 {
-	std::cout << "[ClapTrap Default construct called]" << std::endl;
+	std::cout << "[ClapTrap Constructor called]" << std::endl;
 }
 
 ClapTrap::ClapTrap(const ClapTrap &clapTrap)
@@ -81,6 +81,7 @@ void ClapTrap::beRepaired(unsigned int amount)
 	if (!this->actionIsValid("beRepaired"))
 		return ;
 	this->_health += amount;
+	this->_energyPoint--;
 	std::cout << ">> ClapTrap " << this->getName() << " repaired " << amount << " HP!" << std::endl;
 }
 
@@ -112,7 +113,7 @@ bool ClapTrap::errorPrint(std::string action, int flag)
 		std::cout << ">> [!!] not enough HP(";
 	else
 		std::cout << ">> [!!] not enough Energy(";
-	std::cout << action << "is dinied)" << std::endl;
+	std::cout << action << " is dinied)" << std::endl;
 	return false;
 }
 

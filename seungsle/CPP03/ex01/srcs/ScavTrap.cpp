@@ -6,7 +6,7 @@
 /*   By: seungsle <seungsle@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 19:16:08 by seungsle          #+#    #+#             */
-/*   Updated: 2022/11/17 00:20:00 by seungsle         ###   ########.fr       */
+/*   Updated: 2022/11/17 11:19:15 by seungsle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 
 ScavTrap::ScavTrap(): ClapTrap("default", 100, 50, 20), _isGateKeeperMode(false)
 {
-	std::cout << "[ScavTrap Default construct called]" << std::endl;
+	std::cout << "[ScavTrap Constructor called]" << std::endl;
 }
 
 ScavTrap::ScavTrap(std::string name): ClapTrap(name, 100, 50, 20), _isGateKeeperMode(false)
 {
-	std::cout << "[ScavTrap Default construct called]" << std::endl;
+	std::cout << "[ScavTrap Constructor called]" << std::endl;
 }
 
 ScavTrap::ScavTrap(const ScavTrap &scavTrap)
