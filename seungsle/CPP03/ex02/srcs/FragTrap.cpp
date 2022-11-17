@@ -6,7 +6,7 @@
 /*   By: seungsle <seungsle@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 19:16:08 by seungsle          #+#    #+#             */
-/*   Updated: 2022/11/17 00:39:20 by seungsle         ###   ########.fr       */
+/*   Updated: 2022/11/17 11:13:05 by seungsle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,15 +52,15 @@ FragTrap& FragTrap::operator = (const FragTrap &source)
 	return (*this);
 }
 
-void FragTrap::printStatus(void)
-{
-	std::cout << "===status=============================" << std::endl;
-	std::cout << "name : " << this->getName() << std::endl;
-	std::cout << "HP : " << this->getHealth() << std::endl;
-	std::cout << "Energy : " << this->getEnergy() << std::endl;
-	std::cout << "AttackDamage : " << this->getAttackDamage() << std::endl;
-	std::cout << "======================================" << std::endl;
-}
+// void FragTrap::printStatus(void)
+// {
+// 	std::cout << "===status=============================" << std::endl;
+// 	std::cout << "name : " << this->getName() << std::endl;
+// 	std::cout << "HP : " << this->getHealth() << std::endl;
+// 	std::cout << "Energy : " << this->getEnergy() << std::endl;
+// 	std::cout << "AttackDamage : " << this->getAttackDamage() << std::endl;
+// 	std::cout << "======================================" << std::endl;
+// }
 
 void FragTrap::highFivesGuys(void)
 {

@@ -6,7 +6,7 @@
 /*   By: seungsle <seungsle@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 19:16:12 by seungsle          #+#    #+#             */
-/*   Updated: 2022/11/17 00:34:22 by seungsle         ###   ########.fr       */
+/*   Updated: 2022/11/17 11:12:55 by seungsle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ public:
 	~FragTrap();
 	FragTrap& operator = (const FragTrap &source);
 
-	void printStatus(void);
+	// void printStatus(void);
 
 	void highFivesGuys(void);
 };
