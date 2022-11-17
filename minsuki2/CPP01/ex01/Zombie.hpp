@@ -6,7 +6,7 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 15:52:13 by minsuki2          #+#    #+#             */
-/*   Updated: 2022/11/17 12:34:39 by minsuki2         ###   ########.fr       */
+/*   Updated: 2022/11/17 13:42:13 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <iostream>
 # include <sstream>
 # define	MSG_SOUND		"BraiiiiiiinnnzzzZ..."
+# define	MSG_CREATE		"is created"
 # define	MSG_DESTROY		"is gone"
 # define	MSG_ENDL		'\n'
 
