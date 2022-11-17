@@ -6,7 +6,7 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 15:52:13 by minsuki2          #+#    #+#             */
-/*   Updated: 2022/11/09 20:16:03 by minsuki2         ###   ########.fr       */
+/*   Updated: 2022/11/17 12:34:39 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ class Zombie {
 		Zombie(std::string name);
 		~Zombie(void);
 		void	announce(void);
-		setZombieName();
+		void	setZombieName(const std::string& name);
 	private:
 		std::string name_;
 };

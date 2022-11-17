@@ -6,7 +6,7 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 19:10:45 by minsuki2          #+#    #+#             */
-/*   Updated: 2022/11/09 20:09:49 by minsuki2         ###   ########.fr       */
+/*   Updated: 2022/11/17 12:35:01 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,12 @@ Zombie	*zombieHorde(int N, std::string name) {
 	Zombie *array_zom = new Zombie[N];
 
 	for (int i = 0; i < N ; i++) {
-		stringstream index_ss(i);
-		if (index_ss.fail())
-			return ;
-		int idx;
-		index_stream >> idx;
+		std::stringstream index_ss;
+		// if (index_ss.fail())
+		//     return ;
+		index_ss << i;
+		std::string index_str = index_ss.str();
+		array_zom[i].setZombieName(name + index_str);
 	}
-
 	return (array_zom);
 }
-int a = 10;
-ss << a;
-string str = ss.str();
