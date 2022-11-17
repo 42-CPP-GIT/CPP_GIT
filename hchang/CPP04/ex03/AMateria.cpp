@@ -6,11 +6,16 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:45:02 by hchang            #+#    #+#             */
-/*   Updated: 2022/11/16 14:58:20 by hchang           ###   ########.fr       */
+/*   Updated: 2022/11/17 17:53:09 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "AMateria.hpp"
+
+AMateria::AMateria()
+{
+	std::cout << "AMateria new"<< std::endl;
+}
 
 AMateria::AMateria(std::string const & type)
 {
@@ -24,10 +29,13 @@ std::string const&	AMateria::getType() const
 	return (this->_type);
 }
 
+AMateria::~AMateria()
+{
+	std::cout << "AMateria delete\n";
+}
+
 void	AMateria::use(ICharacter& target)
 {
-	if (this->_type == "Ice")
-		std::cout << "* shoots an ice bolt at " << target._name << " *" << std::cout;
-	else if (this->_type == "Cure")
-		std::cout << "* heals " << target._name << "'s wounds *" << std::cout;
+	(void)target;
+	std::cout << "AMateria use\n";
 }

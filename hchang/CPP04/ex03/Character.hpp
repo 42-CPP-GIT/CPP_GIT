@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 16:32:47 by hchang            #+#    #+#             */
-/*   Updated: 2022/11/16 15:49:17 by hchang           ###   ########.fr       */
+/*   Updated: 2022/11/17 17:33:22 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,15 @@
 # define CHARACTER_HPP
 
 #include <iostream>
-#include "ICharacter.hpp"
+#include "AMateria.hpp"
 
-class AMateria;
 
 class Character : public ICharacter
 {
 	private:
 		std::string	_name;
+		int			_slotIdx;
+		AMateria	*_slot[4];
 	public:
 		Character(std::string name);
 		Character(const Character& obj);
@@ -30,7 +31,7 @@ class Character : public ICharacter
 		virtual std::string const & getName() const;
 		virtual void equip(AMateria* m);
 		virtual void unequip(int idx);
-		virtual void use(int idx, Character& target);
+		virtual void use(int idx, ICharacter& target);
 };
 
 #endif

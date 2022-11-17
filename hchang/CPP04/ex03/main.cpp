@@ -6,12 +6,14 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 16:34:11 by hchang            #+#    #+#             */
-/*   Updated: 2022/11/11 16:37:01 by hchang           ###   ########.fr       */
+/*   Updated: 2022/11/17 17:57:28 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "IMateriaSource.hpp"
-#include "ICharacter.hpp"
+#include "Ice.hpp"
+#include "Cure.hpp"
+#include "MateriaSource.hpp"
+#include "Character.hpp"
 
 int main()
 {
