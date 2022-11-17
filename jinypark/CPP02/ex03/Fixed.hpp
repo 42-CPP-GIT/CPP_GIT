@@ -6,7 +6,7 @@
 /*   By: jinypark <jinypark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 09:33:26 by jinypark          #+#    #+#             */
-/*   Updated: 2022/11/10 15:48:53 by jinypark         ###   ########.fr       */
+/*   Updated: 2022/11/17 14:54:59 by jinypark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ class Fixed
 {
 private:
 	int					numVal;
-	static const int	fracBits = 8;
+	static const int	fracBits = 16;
 public:
 	Fixed();
 	Fixed(const Fixed &obj);

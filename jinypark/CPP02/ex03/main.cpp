@@ -6,7 +6,7 @@
 /*   By: jinypark <jinypark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/05 11:01:57 by jinypark          #+#    #+#             */
-/*   Updated: 2022/11/10 16:19:39 by jinypark         ###   ########.fr       */
+/*   Updated: 2022/11/17 14:55:07 by jinypark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int main(void)
 	Point a(-2.8f, -1.3f);
 	Point b(-5.3f, -7.4f);
 	Point c(3.9f, -7.4f);
-	Point p(1.7f, -7.39f);
+	Point p(1.7f, -7.4f);
 	std::cout << (bsp(a, b, c, p) ? "True" : "False") << std::endl;
 	return 0;
 }
