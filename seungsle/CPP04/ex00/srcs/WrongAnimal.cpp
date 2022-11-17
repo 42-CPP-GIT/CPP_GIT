@@ -6,7 +6,7 @@
 /*   By: seungsle <seungsle@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 00:49:57 by seungsle          #+#    #+#             */
-/*   Updated: 2022/11/17 18:16:03 by seungsle         ###   ########.fr       */
+/*   Updated: 2022/11/17 18:49:24 by seungsle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,17 +48,17 @@ WrongAnimal& WrongAnimal::operator=(const WrongAnimal &source)
 
 void WrongAnimal::makeSound(void) const
 {
-	std::cout << this->getType() << "(" << this->getName() << ") is making sound [" << this->getName() << " : "<< this->getSound() << "]" << std::endl;
+	std::cout << "..........." << std::endl;
 }
 
 void WrongAnimal::drinkWater(void) const
 {
-	std::cout << this->getType() << "(" << this->getName() << ") is drinking water" << std::endl;
+	std::cout << "i don't have mouth" << std::endl;
 }
 
 void WrongAnimal::eatTreat(void) const
 {
-	std::cout << this->getType() << "(" << this->getName() << ") is eating treat" << std::endl;
+	std::cout << "i don't have mouth" << std::endl;
 }
 
 void WrongAnimal::who(void) const

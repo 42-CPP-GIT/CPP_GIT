@@ -6,7 +6,7 @@
 /*   By: seungsle <seungsle@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 00:49:57 by seungsle          #+#    #+#             */
-/*   Updated: 2022/11/17 17:35:57 by seungsle         ###   ########.fr       */
+/*   Updated: 2022/11/17 18:49:42 by seungsle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,17 +48,17 @@ Animal& Animal::operator=(const Animal &source)
 
 void Animal::makeSound(void) const
 {
-	std::cout << this->getType() << "(" << this->getName() << ") is making sound [" << this->getName() << " : "<< this->getSound() << "]" << std::endl;
+	std::cout << "..........." << std::endl;
 }
 
 void Animal::drinkWater(void) const
 {
-	std::cout << this->getType() << "(" << this->getName() << ") is drinking water" << std::endl;
+	std::cout << "i don't have mouth" << std::endl;
 }
 
 void Animal::eatTreat(void) const
 {
-	std::cout << this->getType() << "(" << this->getName() << ") is eating treat" << std::endl;
+	std::cout << "i don't have mouth" << std::endl;
 }
 
 void Animal::who(void) const

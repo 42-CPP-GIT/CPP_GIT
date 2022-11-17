@@ -6,7 +6,7 @@
 /*   By: seungsle <seungsle@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 00:51:26 by seungsle          #+#    #+#             */
-/*   Updated: 2022/11/17 14:48:21 by seungsle         ###   ########.fr       */
+/*   Updated: 2022/11/17 18:45:28 by seungsle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,12 @@ Dog& Dog::operator=(const Dog &source)
 	this->_name = source.getName();
 	return (*this);
 }
+
+void Dog::makeSound(void) const
+{
+	std::cout << this->getType() << "(" << this->getName() << ") is making sound [" << this->getName() << " : "<< this->getSound() << "]" << std::endl;
+}
+
 
 void Dog::playWithBall(void)
 {

@@ -6,7 +6,7 @@
 /*   By: seungsle <seungsle@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 00:51:26 by seungsle          #+#    #+#             */
-/*   Updated: 2022/11/17 18:22:41 by seungsle         ###   ########.fr       */
+/*   Updated: 2022/11/17 18:44:49 by seungsle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,3 +44,10 @@ Rabit& Rabit::operator=(const Rabit &source)
 	this->_name = source.getName();
 	return (*this);
 }
+
+
+void Rabit::makeSound(void) const
+{
+	std::cout << this->getType() << "(" << this->getName() << ") is making sound [" << this->getName() << " : "<< this->getSound() << "]" << std::endl;
+}
+

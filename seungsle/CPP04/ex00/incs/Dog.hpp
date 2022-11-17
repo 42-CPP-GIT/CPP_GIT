@@ -6,7 +6,7 @@
 /*   By: seungsle <seungsle@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 00:51:10 by seungsle          #+#    #+#             */
-/*   Updated: 2022/11/17 17:48:02 by seungsle         ###   ########.fr       */
+/*   Updated: 2022/11/17 18:45:25 by seungsle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ public:
 	~Dog();
 	Dog& operator = (const Dog &source);
 
+	void makeSound(void) const;
+	
 	void playWithBall(void);
 	void waggingTail(void);
 };

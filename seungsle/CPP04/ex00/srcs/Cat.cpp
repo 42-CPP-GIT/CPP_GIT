@@ -6,7 +6,7 @@
 /*   By: seungsle <seungsle@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 00:51:19 by seungsle          #+#    #+#             */
-/*   Updated: 2022/11/17 17:46:16 by seungsle         ###   ########.fr       */
+/*   Updated: 2022/11/17 18:45:14 by seungsle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,11 @@ Cat& Cat::operator=(const Cat &source)
 	this->_sound = source.getSound();
 	this->_name = source.getName();
 	return (*this);
+}
+
+void Cat::makeSound(void) const
+{
+	std::cout << this->getType() << "(" << this->getName() << ") is making sound [" << this->getName() << " : "<< this->getSound() << "]" << std::endl;
 }
 
 void Cat::grooming(void)
