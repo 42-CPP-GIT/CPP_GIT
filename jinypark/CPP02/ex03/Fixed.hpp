@@ -6,7 +6,7 @@
 /*   By: jinypark <jinypark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 09:33:26 by jinypark          #+#    #+#             */
-/*   Updated: 2022/11/17 14:54:59 by jinypark         ###   ########.fr       */
+/*   Updated: 2022/11/18 17:12:59 by jinypark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ class Fixed
 {
 private:
 	int					numVal;
-	static const int	fracBits = 16;
+	static const int	fracBits = 8;
 public:
 	Fixed();
 	Fixed(const Fixed &obj);
@@ -44,12 +44,13 @@ public:
 	Fixed	operator--(int dummy);
 	static Fixed	&min(Fixed &a, Fixed &b);
 	static Fixed	&max(Fixed &a, Fixed &b);
-	static Fixed	&min(Fixed const &a, Fixed const &b);
-	static Fixed	&max(Fixed const &a, Fixed const &b);
+	static const Fixed	&min(Fixed const &a, Fixed const &b);
+	static const Fixed	&max(Fixed const &a, Fixed const &b);
 	int		getRawBits( void ) const;
 	void	setRawBits( int const raw );
 	float	toFloat( void ) const;
 	int		toInt( void ) const;
+	void	printBit(void) const;
 };
 
 std::ostream	&operator<<(std::ostream &out, Fixed const &obj);
