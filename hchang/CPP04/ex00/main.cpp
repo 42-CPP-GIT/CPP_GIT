@@ -6,15 +6,28 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 18:29:34 by hojinjang         #+#    #+#             */
-/*   Updated: 2022/11/16 11:41:40 by hchang           ###   ########.fr       */
+/*   Updated: 2022/11/18 18:09:14 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cat.hpp"
 #include "Dog.hpp"
+#include "WrongCat.hpp"
 
+
+void a()
+{
+	system("leaks Animal");
+}
 int main()
 {
+
+	atexit(a);
+	// Animal *h = new Dog();
+
+	// delete h; 
+	// 다형성 
+
 
 	// Anin
 
@@ -51,6 +64,8 @@ int main()
 	const Animal* j = new Dog();
 	const Animal* i = new Cat();
 	
+	const WrongAnimal* t = new WrongCat();
+
 	std::cout << j->getType() << " " << std::endl;
 	std::cout << i->getType() << " " << std::endl;
 	std::cout << meta->getType() << " " << std::endl;
@@ -59,9 +74,13 @@ int main()
 	j->makeSound();
 	meta->makeSound();
 
+	std::cout << t->getType() << " " << std::endl;
+	t->makeSound();
+
 	delete i;
 	delete j;
 	delete meta;
-
+	delete t; // 왜 animal만 delete but no leaks
+	
 	return 0;	
 }

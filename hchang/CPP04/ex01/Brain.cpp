@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 12:08:32 by hchang            #+#    #+#             */
-/*   Updated: 2022/11/11 15:36:38 by hchang           ###   ########.fr       */
+/*   Updated: 2022/11/18 18:56:45 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 Brain::Brain()
 {
 	std::cout << "[Brain Default Constructor Called]\n";
-	this->ideas = new std::string[100];
+	for (int i = 0; i < 100; i++)
+		this->_ideas[i] = "hello";
 }
 
 Brain::Brain(const Brain& obj)
@@ -26,21 +27,28 @@ Brain::Brain(const Brain& obj)
 
 Brain& Brain::operator=(const Brain& obj)
 {
+	std::cout << "1" << std::endl;
 	if (this == &obj)
 		return (*this);
-	if (this->ideas)
-	{
-		delete [] this->ideas;
-		this->ideas = NULL;
-	}
-	this->ideas = new std::string[100];
+	std::cout << "2" << std::endl;
 	for (int i = 0; i < 100; i++)
-		this->ideas[i] = obj.ideas[i];
+		this->_ideas[i] = obj._ideas[i];
 	return (*this);
 }
 
 Brain::~Brain()
 {
 	std::cout << "[Brain Destructor Called]\n";
-	delete [] this->ideas;
+}
+
+void	Brain::getIdeas(void)
+{
+	for (int i = 0; i < 100; i++)
+	{
+		std::cout << this->_ideas[i] << " ";
+		// std::cout << sizeof(this->_ideas[i]);
+		// std::cout << std::endl;
+
+	}
+	std::cout << std::endl;
 }

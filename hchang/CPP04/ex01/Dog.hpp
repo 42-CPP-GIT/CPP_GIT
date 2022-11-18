@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 18:51:15 by hojinjang         #+#    #+#             */
-/*   Updated: 2022/11/11 14:13:59 by hchang           ###   ########.fr       */
+/*   Updated: 2022/11/18 18:48:24 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,17 @@ class Dog : public Animal
 {
 private:
 	std::string	_name;
-	Brain		*brain;
+	Brain		*_brain;
 
 public:
+	Dog(Brain *brain); // gotta delete
+
 	Dog();
 	Dog(const Dog& obj);
 	Dog& operator=(const Dog& obj);
 	~Dog();
 	void		makeSound(void) const;
+	void		noBrain(void);
 	std::string	getName() const;
 };
 

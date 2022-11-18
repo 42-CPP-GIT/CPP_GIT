@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 14:31:51 by hchang            #+#    #+#             */
-/*   Updated: 2022/11/11 16:26:29 by hchang           ###   ########.fr       */
+/*   Updated: 2022/11/18 16:57:49 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,21 +23,27 @@ int main()
 	// atexit(a);
 	int cnt = 4;
 
-	// Animal *x[cnt];
-	Dog *x[cnt];
-
-	
+	Animal *x[cnt];
+	// Animal qq;
+	// Animal *qq = new Animal();
 	for (int i = 0; i < cnt; i++)
 	{
 		std::cout << "i = " << i << std::endl;
-		// if (i % 2 == 0)
+		if (i % 2 == 0)
 			x[i] = new Dog();
-		// else
-			// x[i] = new Cat();
+		else
+			x[i] = new Cat();
 		std::cout << " ▶︎ type : " << x[i]->getType() << std::endl;
 		x[i]->makeSound();
 		std::cout << "================== " << std::endl;
 	}
+	Brain *myBrain = new Brain();
+	Animal *y = new Dog(myBrain);
+	delete x[0];
+	x[0] = y;
+
+	std::cout << "our test : " << x[0]->getType() << std::endl;
+	x[0]->noBrain();
 	
 	for (int i = 0; i < cnt; i++)
 		delete x[i];
@@ -50,7 +56,6 @@ int main()
 	// delete j;//should not create a leak
 	// delete i;
 
-	
 	return 0;
 	// Anin
 
@@ -99,5 +104,5 @@ int main()
 	// delete j;
 	// delete meta;
 
-	return 0;	
+	// return 0;	
 }

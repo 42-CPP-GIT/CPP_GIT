@@ -1,64 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.cpp                                            :+:      :+:    :+:   */
+/*   WrongCat.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hojinjang <hojinjang@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 18:50:59 by hojinjang         #+#    #+#             */
-/*   Updated: 2022/11/18 18:50:18 by hchang           ###   ########.fr       */
+/*   Updated: 2022/11/10 19:37:38 by hojinjang        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Cat.hpp"
+#include "WrongCat.hpp"
 
-Cat::Cat() : _name("Cat")
+WrongCat::WrongCat() : _name("WrongCat")
 {
-	std::cout << "[Cat Default Constructor Called]\n";
-	_type = "Cat";
-	this->_brain = new Brain();
+	std::cout << "[WrongCat Default Constructor Called]\n";
+	_type = "WrongCat";
 }
 
-Cat::Cat(const Cat& obj)
+WrongCat::WrongCat(const WrongCat& obj)
 {
-	std::cout << "[Cat Copy Constructor Called]\n";
+	std::cout << "[WrongCat Copy Constructor Called]\n";
 	*this = obj;
 }
 
-Cat& Cat::operator=(const Cat& obj)
+WrongCat& WrongCat::operator=(const WrongCat& obj)
 {
 	if (this == &obj)
 		return (*this);
 	this->_name = obj._name;
 	this->_type = obj._type;
-	std::cout << "hey1\n";
-	if (this->_brain)
-		delete this->_brain;
-	// this->_brain = new Brain(*obj._brain);
-	std::cout << "hey\n";
-	this->_brain = obj._brain;
-	std::cout << "hey2\n";
-
 	return (*this);
 }
 
-Cat::~Cat()
+WrongCat::~WrongCat()
 {
-	std::cout << "[Cat Destructor Called]\n";
-	delete	this->_brain;
+	std::cout << "[WrongCat Destructor Called]\n";
 }
 
-void	Cat::makeSound(void) const
+void	WrongCat::makeSound(void) const
 {
 	std::cout << "[😻" << this->_name << "(" << this->_type << ")] : " IT<< "야옹 야옹 야야옹 ~\n" RESET;
 }
 
-std::string	Cat::getName() const
+std::string	WrongCat::getName() const
 {
 	return (this->_name);
-}
-
-void	Cat::noBrain()
-{
-	_brain->getIdeas();
 }

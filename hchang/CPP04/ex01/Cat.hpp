@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 18:51:01 by hojinjang         #+#    #+#             */
-/*   Updated: 2022/11/11 14:13:40 by hchang           ###   ########.fr       */
+/*   Updated: 2022/11/18 18:48:28 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ class Cat : public Animal
 {
 private:
 	std::string	_name;
-	Brain		*brain;
+	Brain		*_brain;
 
 public:
 	Cat();
@@ -29,6 +29,8 @@ public:
 	~Cat();
 	void		makeSound(void) const;
 	std::string	getName() const;
+	void		noBrain(void);
+
 };
 
 #endif

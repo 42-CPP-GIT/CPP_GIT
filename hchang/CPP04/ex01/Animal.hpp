@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 18:44:14 by hojinjang         #+#    #+#             */
-/*   Updated: 2022/11/11 16:20:44 by hchang           ###   ########.fr       */
+/*   Updated: 2022/11/18 16:46:54 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ public:
 	virtual ~Animal();
 	virtual void	makeSound(void) const;
 	std::string		getType(void) const;
+	virtual void	noBrain(void);
 };
 
 #endif

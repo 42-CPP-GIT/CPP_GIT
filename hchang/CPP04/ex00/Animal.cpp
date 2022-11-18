@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 18:44:12 by hojinjang         #+#    #+#             */
-/*   Updated: 2022/11/11 16:20:47 by hchang           ###   ########.fr       */
+/*   Updated: 2022/11/18 16:15:24 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,6 @@ std::string	Animal::getType(void) const
 
 void	Animal::makeSound(void) const
 {
+	std::cout << "~That Is the Animal Sound~" << std::endl;
 }
 

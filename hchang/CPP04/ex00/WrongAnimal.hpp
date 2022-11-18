@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   WrongAnimal.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 18:44:14 by hojinjang         #+#    #+#             */
-/*   Updated: 2022/11/18 17:33:37 by hchang           ###   ########.fr       */
+/*   Updated: 2022/11/18 16:12:48 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ANIMAL_HPP
-#define ANIMAL_HPP
+#ifndef WRONGANIMAL_HPP
+#define WRONGANIMAL_HPP
 
 # define RESET "\033[0m"
 # define IT "\e[0;3m"
@@ -20,22 +20,18 @@
 
 #include <iostream>
 
-// class Dog;
-// class Cat;
-
-class Animal
+class WrongAnimal
 {
 protected:
 	std::string	_type;
 
 public:
-	Animal();
-	Animal(const Animal& obj);
-	Animal& operator=(const Animal& obj);
-	virtual ~Animal();
-	virtual void	makeSound(void) const = 0;
-	std::string		getType(void) const;
-	void	noBrain(void){};
+	WrongAnimal();
+	WrongAnimal(const WrongAnimal& obj);
+	WrongAnimal& operator=(const WrongAnimal& obj);
+	~WrongAnimal();
+	void		makeSound(void) const;
+	std::string	getType(void) const;
 };
 
 #endif

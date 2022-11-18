@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 18:50:59 by hojinjang         #+#    #+#             */
-/*   Updated: 2022/11/11 15:36:02 by hchang           ###   ########.fr       */
+/*   Updated: 2022/11/18 18:16:32 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ Cat::Cat() : _name("Cat")
 {
 	std::cout << "[Cat Default Constructor Called]\n";
 	_type = "Cat";
-	this->brain = new Brain();
+	this->_brain = new Brain();
 }
 
 Cat::Cat(const Cat& obj)
@@ -31,13 +31,16 @@ Cat& Cat::operator=(const Cat& obj)
 		return (*this);
 	this->_name = obj._name;
 	this->_type = obj._type;
+	if (this->_brain)
+		delete this->_brain;
+	this->_brain = new Brain(*obj._brain);
 	return (*this);
 }
 
 Cat::~Cat()
 {
 	std::cout << "[Cat Destructor Called]\n";
-	delete	this->brain;
+	delete	this->_brain;
 }
 
 void	Cat::makeSound(void) const
@@ -48,4 +51,9 @@ void	Cat::makeSound(void) const
 std::string	Cat::getName() const
 {
 	return (this->_name);
+}
+
+void	Cat::noBrain()
+{
+	_brain->getIdeas();
 }

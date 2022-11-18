@@ -1,41 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   WrongCat.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/10 18:44:14 by hojinjang         #+#    #+#             */
-/*   Updated: 2022/11/18 17:33:37 by hchang           ###   ########.fr       */
+/*   Created: 2022/11/10 18:51:01 by hojinjang         #+#    #+#             */
+/*   Updated: 2022/11/18 16:13:08 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ANIMAL_HPP
-#define ANIMAL_HPP
+#ifndef WRONGCAT_HPP
+#define WRONGCAT_HPP
 
-# define RESET "\033[0m"
-# define IT "\e[0;3m"
-# define RED "\e[0;31m"
-# define GRN "\e[0;33m"
+#include "WrongAnimal.hpp"
 
-#include <iostream>
-
-// class Dog;
-// class Cat;
-
-class Animal
+class WrongCat : public WrongAnimal
 {
-protected:
-	std::string	_type;
+private:
+	std::string	_name;
 
 public:
-	Animal();
-	Animal(const Animal& obj);
-	Animal& operator=(const Animal& obj);
-	virtual ~Animal();
-	virtual void	makeSound(void) const = 0;
-	std::string		getType(void) const;
-	void	noBrain(void){};
+	WrongCat();
+	WrongCat(const WrongCat& obj);
+	WrongCat& operator=(const WrongCat& obj);
+	~WrongCat();
+	void		makeSound(void) const;
+	std::string	getName() const;
 };
 
 #endif

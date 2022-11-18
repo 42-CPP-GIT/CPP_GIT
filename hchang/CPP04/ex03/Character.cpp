@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 15:37:23 by hchang            #+#    #+#             */
-/*   Updated: 2022/11/18 14:43:59 by hchang           ###   ########.fr       */
+/*   Updated: 2022/11/18 18:27:47 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	Character::unequip(int idx)
 
 void	Character::use(int idx, ICharacter& target)
 {
-	if (_slotIdx < 0)
+	if (_slotIdx < 0 || _slotIdx < idx)
 		return ;
 	else if (_slot[idx] == 0)
 	{

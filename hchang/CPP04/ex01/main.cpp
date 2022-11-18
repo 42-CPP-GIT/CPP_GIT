@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 14:31:51 by hchang            #+#    #+#             */
-/*   Updated: 2022/11/11 16:28:02 by hchang           ###   ########.fr       */
+/*   Updated: 2022/11/18 18:51:47 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void a()
 
 int main()
 {
-	// atexit(a);
+	atexit(a);
 	int cnt = 4;
 
 	Animal *x[cnt];
@@ -36,9 +36,27 @@ int main()
 		x[i]->makeSound();
 		std::cout << "================== " << std::endl;
 	}
-	
+	// Brain *myBrain = new Brain();
+	// Animal *y = new Dog(myBrain);
+	// // delete x[0];
+	// x[0] = y;
+
+	// std::cout << "our test : " << x[0]->getType() << std::endl;
+	// x[0]->noBrain();
+
+
 	for (int i = 0; i < cnt; i++)
 		delete x[i];
+		std::cout << "================== " << std::endl;
+
+	Cat *A = new Cat();
+	Cat *B = new Cat(*A);
+	Cat *C = new Cat();
+	*C = *A;
+
+	delete A;
+	delete B;
+	delete C;
 	// Animal *y[cnt];
 	// y[0] = new Dog();
 	// const Animal* j = new Dog();
@@ -48,7 +66,6 @@ int main()
 	// delete j;//should not create a leak
 	// delete i;
 
-	
 	return 0;
 	// Anin
 
