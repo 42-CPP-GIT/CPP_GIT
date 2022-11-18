@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 15:37:23 by hchang            #+#    #+#             */
-/*   Updated: 2022/11/17 17:57:17 by hchang           ###   ########.fr       */
+/*   Updated: 2022/11/18 11:47:58 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ std::string const & Character::getName() const
 
 void	Character::equip(AMateria* m)
 {
+	std::cout << "equiped" << std::endl;
 	_slotIdx++;
 	if (_slotIdx > 3)
 	{
@@ -53,13 +54,14 @@ void	Character::equip(AMateria* m)
 		return ;
 	}
 	_slot[_slotIdx] = m;
+	std::cout << _slot[0]->getType() << std::endl;
 }
 
 void	Character::unequip(int idx)
 {
 	if (_slotIdx < 0)
 		return ;
-	else if (_slotIdx < idx)
+	else if (_slot[idx] == 0)
 		return ;
 	_slot[idx] = 0;
 }
@@ -68,7 +70,8 @@ void	Character::use(int idx, ICharacter& target)
 {
 	if (_slotIdx < 0)
 		return ;
-	else if (_slotIdx < idx)
+	else if (_slot[idx] == 0)
 		return ;
-	_slot[--idx]->use(target);
+	std::cout << "[ " <<  this->getName() << " use!]\n";
+	_slot[idx]->use(target);
 }
