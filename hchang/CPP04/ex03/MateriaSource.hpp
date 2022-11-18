@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 16:33:43 by hchang            #+#    #+#             */
-/*   Updated: 2022/11/16 17:49:18 by hchang           ###   ########.fr       */
+/*   Updated: 2022/11/18 13:41:57 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ class MateriaSource : public IMateriaSource
 		virtual ~MateriaSource();
 		virtual void learnMateria(AMateria*);
 		virtual AMateria* createMateria(std::string const & type);
-		int		getItemIdx(void) const;
 };
 
 #endif

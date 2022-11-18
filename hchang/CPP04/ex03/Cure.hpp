@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 16:31:45 by hchang            #+#    #+#             */
-/*   Updated: 2022/11/17 17:47:23 by hchang           ###   ########.fr       */
+/*   Updated: 2022/11/18 13:57:30 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,7 @@ class ICharacter;
 
 class Cure : public AMateria
 {
-	private:
-		std::string	_type;
+
 	public:
 		Cure();
 		Cure(const Cure& obj);

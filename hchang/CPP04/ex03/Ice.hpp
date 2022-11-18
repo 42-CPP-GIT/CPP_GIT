@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 16:31:45 by hchang            #+#    #+#             */
-/*   Updated: 2022/11/17 17:47:21 by hchang           ###   ########.fr       */
+/*   Updated: 2022/11/18 13:57:06 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@ class ICharacter;
 
 class Ice : public AMateria
 {
-	private:
-		std::string	_type;
 	public:
 		Ice();
 		Ice(const Ice& obj);

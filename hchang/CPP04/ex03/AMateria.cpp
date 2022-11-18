@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:45:02 by hchang            #+#    #+#             */
-/*   Updated: 2022/11/17 17:53:09 by hchang           ###   ########.fr       */
+/*   Updated: 2022/11/18 14:31:05 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ AMateria::AMateria(std::string const & type)
 
 std::string const&	AMateria::getType() const
 {
-	std::cout << "AMateria getType called" << std::endl;
+	// std::cout << "AMateria getType called" << std::endl;
 	return (this->_type);
 }
 
