@@ -6,7 +6,7 @@
 /*   By: seungsle <seungsle@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 00:51:28 by seungsle          #+#    #+#             */
-/*   Updated: 2022/11/18 11:41:36 by seungsle         ###   ########.fr       */
+/*   Updated: 2022/11/18 16:46:07 by seungsle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "WrongAnimal.hpp"
 #include "Cat.hpp"
 #include "Dog.hpp"
-#include "Rabit.hpp"
+#include "WrongCat.hpp"
 
 int main()
 {

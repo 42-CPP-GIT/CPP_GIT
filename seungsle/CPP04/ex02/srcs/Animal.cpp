@@ -6,7 +6,7 @@
 /*   By: seungsle <seungsle@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 00:49:57 by seungsle          #+#    #+#             */
-/*   Updated: 2022/11/17 18:49:42 by seungsle         ###   ########.fr       */
+/*   Updated: 2022/11/18 16:45:58 by seungsle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,6 @@ Animal& Animal::operator=(const Animal &source)
 	this->_sound = source.getSound();
 	this->_name = source.getName();
 	return (*this);
-}
-
-void Animal::makeSound(void) const
-{
-	std::cout << "..........." << std::endl;
 }
 
 void Animal::drinkWater(void) const
