@@ -6,7 +6,7 @@
 /*   By: jinypark <jinypark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 17:42:29 by jinypark          #+#    #+#             */
-/*   Updated: 2022/11/10 18:51:13 by jinypark         ###   ########.fr       */
+/*   Updated: 2022/11/18 17:50:03 by jinypark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,4 +92,14 @@ unsigned int	ClapTrap::getEnergyPoint(void) const
 unsigned int	ClapTrap::getAttackDamage(void) const
 {
 	return (this->attackDamage_);
+}
+
+void			ClapTrap::printStat(void)
+{
+	std::cout << "-------------------------------\n";
+	std::cout << "NAME: " << this->name_ << "\n";
+	std::cout << "HP  : " << this->hitPoint_ << "\n";
+	std::cout << "EP  : " << this->energyPoint_ << "\n";
+	std::cout << "AD  : " << this->attackDamage_ << "\n";
+	std::cout << "-------------------------------\n";
 }

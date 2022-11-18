@@ -6,7 +6,7 @@
 /*   By: jinypark <jinypark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 17:42:29 by jinypark          #+#    #+#             */
-/*   Updated: 2022/11/10 19:34:53 by jinypark         ###   ########.fr       */
+/*   Updated: 2022/11/18 17:48:25 by jinypark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ ClapTrap::ClapTrap(void)
 	std::cout << "ClapTrap: default has been constructed.\n";
 }
 
-ClapTrap::ClapTrap(std::string name) : name_(name), hitPoint_(10), energyPoint_(10), attackDamage_(0)
+ClapTrap::ClapTrap(std::string name) : name_(name), hitPoint_(CLAP_HP), energyPoint_(CLAP_EP), attackDamage_(CLAP_AD)
 {
 	std::cout << "ClapTrap: " + this->name_ + " has been constructed.\n";
 }
@@ -93,4 +93,14 @@ unsigned int	ClapTrap::getEnergyPoint(void) const
 unsigned int	ClapTrap::getAttackDamage(void) const
 {
 	return (this->attackDamage_);
+}
+
+void			ClapTrap::printStat(void)
+{
+	std::cout << "-------------------------------\n";
+	std::cout << "NAME: " << this->name_ << "\n";
+	std::cout << "HP  : " << this->hitPoint_ << "\n";
+	std::cout << "EP  : " << this->energyPoint_ << "\n";
+	std::cout << "AD  : " << this->attackDamage_ << "\n";
+	std::cout << "-------------------------------\n";
 }

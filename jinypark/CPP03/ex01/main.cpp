@@ -6,7 +6,7 @@
 /*   By: jinypark <jinypark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 18:40:01 by jinypark          #+#    #+#             */
-/*   Updated: 2022/11/11 15:12:14 by jinypark         ###   ########.fr       */
+/*   Updated: 2022/11/18 17:49:03 by jinypark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@
 
 int main()
 {
-	// ScavTrap a("A");
+	ScavTrap a("A");
 	// ScavTrap b("B");
-	ClapTrap* c;
+	ClapTrap* c(new ClapTrap("C"));
 	ScavTrap* d(new ScavTrap("D"));
 
 	c = d;
@@ -30,6 +30,7 @@ int main()
 	// a.guardGate();
 	// b.guardGate();
 	c->attack("something");
+	// d->attack("dd");
 	delete c;
 	return (0);
 }

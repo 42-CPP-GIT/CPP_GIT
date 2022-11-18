@@ -25,7 +25,7 @@ DiamondTrap::~DiamondTrap()
 	std::cout << "DiamondTrap: " + this->name_ + " has been destructed.\n";
 }
 
-DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name + "_clap_trap"), ScavTrap(name), FragTrap(name)
+DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name), ScavTrap(name), FragTrap(name)
 {
 	// ClapTrap::name_ = name + "_clap_trap";
 	this->name_ = name;
