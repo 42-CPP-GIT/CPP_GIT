@@ -6,7 +6,7 @@
 /*   By: seungsle <seungsle@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 00:51:28 by seungsle          #+#    #+#             */
-/*   Updated: 2022/11/17 18:21:23 by seungsle         ###   ########.fr       */
+/*   Updated: 2022/11/18 16:19:12 by seungsle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "WrongAnimal.hpp"
 #include "Cat.hpp"
 #include "Dog.hpp"
-#include "Rabit.hpp"
+#include "WrongCat.hpp"
 
 int main()
 {
@@ -22,7 +22,7 @@ int main()
 	const Animal* j = new Dog();
 	const Animal* i = new Cat();
 
-	const WrongAnimal* k = new Rabit();
+	const WrongAnimal* k = new WrongCat();
 	
 
 	std::cout << j->getType() << " " << std::endl;
