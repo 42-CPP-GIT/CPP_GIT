@@ -6,11 +6,11 @@
 #    By: seungsle <seungsle@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/25 16:49:27 by seungsle          #+#    #+#              #
-#    Updated: 2022/11/17 23:59:44 by seungsle         ###   ########.fr        #
+#    Updated: 2022/11/18 16:28:35 by seungsle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = main.cpp Animal.cpp Cat.cpp Dog.cpp Rabit.cpp WrongAnimal.cpp Brain.cpp
+SRCS = main.cpp Animal.cpp Cat.cpp Dog.cpp WrongCat.cpp WrongAnimal.cpp Brain.cpp
 SRCS := $(addprefix $(SRC_DIR), $(SRCS))
 OBJS =  $(addprefix $(OBJ_DIR), $(SRCS:.cpp=.o))
 

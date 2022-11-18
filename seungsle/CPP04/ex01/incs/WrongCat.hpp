@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Rabit.hpp                                          :+:      :+:    :+:   */
+/*   WrongCat.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seungsle <seungsle@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 00:51:10 by seungsle          #+#    #+#             */
-/*   Updated: 2022/11/17 18:44:56 by seungsle         ###   ########.fr       */
+/*   Updated: 2022/11/18 16:27:46 by seungsle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RABIT_HPP
-# define RABIT_HPP
+#ifndef WRONG_CAT_HPP
+# define WRONG_CAT_HPP
 
 #include "WrongAnimal.hpp"
 
-class Rabit: public WrongAnimal
+class WrongCat: public WrongAnimal
 {
 private:
 	/* data */
 public:
-	Rabit(/* args */);
-	Rabit(std::string name);
-	Rabit(const Rabit &Rabit);
-	~Rabit();
-	Rabit& operator = (const Rabit &source);
+	WrongCat(/* args */);
+	WrongCat(std::string name);
+	WrongCat(const WrongCat &WrongCat);
+	~WrongCat();
+	WrongCat& operator = (const WrongCat &source);
 
 	void makeSound(void) const;
 };

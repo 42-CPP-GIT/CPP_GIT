@@ -6,7 +6,7 @@
 /*   By: seungsle <seungsle@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 00:51:26 by seungsle          #+#    #+#             */
-/*   Updated: 2022/11/18 11:03:42 by seungsle         ###   ########.fr       */
+/*   Updated: 2022/11/18 16:34:52 by seungsle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,8 @@ Dog::Dog(std::string name): Animal("Dog", "Whoaph", name)
 
 Dog::Dog(const Dog &Dog)
 {
-	this->_type = Dog.getType();
-	this->_sound = Dog.getSound();
-	this->_name = Dog.getName();
-	if (this->brain)
-		delete this->brain;
-	this->brain = Dog.brain;
+	std::cout << "[Dog Copy constructor called]" << std::endl;
+	*this = Dog;
 }
 
 Dog::~Dog()
@@ -45,6 +41,7 @@ Dog::~Dog()
 
 Dog& Dog::operator=(const Dog &source)
 {
+	std::cout << "[Dog Copy assignment oprator called]" << std::endl;
 	if (this == &source)
 		return (*this);
 	this->_type = source.getType();
@@ -52,7 +49,7 @@ Dog& Dog::operator=(const Dog &source)
 	this->_name = source.getName();
 	if (this->brain)
 		delete this->brain;
-	this->brain = source.brain;
+	this->brain = new Brain(*source.brain);
 	return (*this);
 }
 

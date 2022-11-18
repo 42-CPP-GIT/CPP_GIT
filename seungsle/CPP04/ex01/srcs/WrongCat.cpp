@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Rabit.cpp                                          :+:      :+:    :+:   */
+/*   WrongCat.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seungsle <seungsle@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -11,31 +11,31 @@
 /* ************************************************************************** */
 
 #include "WrongAnimal.hpp"
-#include "Rabit.hpp"
+#include "WrongCat.hpp"
 
-Rabit::Rabit(): WrongAnimal("Rabit", "...", "STREET Rabit")
+WrongCat::WrongCat(): WrongAnimal("WrongCat", "...", "STREET WrongCat")
 {
-	std::cout << "[Rabit Constructor called]" << std::endl;
+	std::cout << "[WrongCat Constructor called]" << std::endl;
 }
 
-Rabit::Rabit(std::string name): WrongAnimal("Rabit", "...", name)
+WrongCat::WrongCat(std::string name): WrongAnimal("WrongCat", "...", name)
 {
-	std::cout << "[Rabit Constructor called]" << std::endl;
+	std::cout << "[WrongCat Constructor called]" << std::endl;
 }
 
-Rabit::Rabit(const Rabit &Rabit)
+WrongCat::WrongCat(const WrongCat &WrongCat)
 {
-	this->_type = Rabit.getType();
-	this->_sound = Rabit.getSound();
-	this->_name = Rabit.getName();
+	this->_type = WrongCat.getType();
+	this->_sound = WrongCat.getSound();
+	this->_name = WrongCat.getName();
 }
 
-Rabit::~Rabit()
+WrongCat::~WrongCat()
 {
-	std::cout << "[Rabit destructor called]" << std::endl;
+	std::cout << "[WrongCat destructor called]" << std::endl;
 }
 
-Rabit& Rabit::operator=(const Rabit &source)
+WrongCat& WrongCat::operator=(const WrongCat &source)
 {
 	if (this == &source)
 		return (*this);
@@ -46,7 +46,7 @@ Rabit& Rabit::operator=(const Rabit &source)
 }
 
 
-void Rabit::makeSound(void) const
+void WrongCat::makeSound(void) const
 {
 	std::cout << this->getType() << "(" << this->getName() << ") is making sound [" << this->getName() << " : "<< this->getSound() << "]" << std::endl;
 }
