@@ -6,7 +6,7 @@
 /*   By: seungsle <seungsle@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 00:51:19 by seungsle          #+#    #+#             */
-/*   Updated: 2022/11/17 23:58:25 by seungsle         ###   ########.fr       */
+/*   Updated: 2022/11/18 11:03:29 by seungsle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ Cat::Cat(const Cat &cat)
 Cat:: ~Cat()
 {
 	std::cout << "[Cat destructor called]" << std::endl;
+	if (this->brain)
+		delete this->brain;
 }
 
 Cat& Cat::operator=(const Cat &source)

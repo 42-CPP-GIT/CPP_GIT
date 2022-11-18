@@ -6,7 +6,7 @@
 /*   By: seungsle <seungsle@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 00:51:26 by seungsle          #+#    #+#             */
-/*   Updated: 2022/11/17 23:59:34 by seungsle         ###   ########.fr       */
+/*   Updated: 2022/11/18 11:03:42 by seungsle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ Dog::Dog(const Dog &Dog)
 Dog::~Dog()
 {
 	std::cout << "[Dog destructor called]" << std::endl;
+	if (this->brain)
+		delete this->brain;
 }
 
 Dog& Dog::operator=(const Dog &source)
