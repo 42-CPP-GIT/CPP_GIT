@@ -6,7 +6,7 @@
 /*   By: seungsle <seungsle@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 14:11:05 by seungsle          #+#    #+#             */
-/*   Updated: 2022/11/19 18:37:02 by seungsle         ###   ########.fr       */
+/*   Updated: 2022/11/19 21:49:56 by seungsle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define BUREAUCRAT_HPP
 
 #include <iostream>
-#include "Exception.hpp"
 
 class Bureaucrat
 {
@@ -23,6 +22,36 @@ private:
 	int _grade;
 	// Exception *_exception;
 public:
+	// class MyException: public std::exception
+	// {
+	// private:
+	// 	std::string _errorMessage;
+	// public:
+	// 	MyException();
+	// 	MyException(std::string errorMessage);
+	// 	const char * what() const throw();
+	// 	// ~MyException();
+
+	// 	const std::string& getErrorMessage(void) const;
+	// 	void setErrorMessage(std::string errorMessage);
+
+	// 	std::string printException(void) const;
+	// };
+	class GradeTooHighException: public std::exception
+	{
+	public:
+		const char * what() const throw();
+	};
+	class GradeTooLowException: public std::exception
+	{
+	public:
+		const char * what() const throw();
+	};
+	class GradeOutOfRange: public std::exception
+	{
+	public:
+		const char * what() const throw();
+	};
 	Bureaucrat(/* args */);
 	Bureaucrat(std::string name, int grade);
 	Bureaucrat(const Bureaucrat &Bureaucrat);
@@ -36,9 +65,9 @@ public:
 	void increment(void);
 	void decrement(void);
 
-	Exception *GradeTooHighException(void);
-	Exception *GradeTooLowException(void);
-	Exception *GradeOutOfRange(void);
+	// MyException *GradeTooHighException(void);
+	// MyException *GradeTooLowException(void);
+	// MyException *GradeOutOfRange(void);
 
 	const std::string& getName(void) const;
 	const int& getGrade(void) const;

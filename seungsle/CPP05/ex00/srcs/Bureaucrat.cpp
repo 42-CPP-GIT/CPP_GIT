@@ -6,7 +6,7 @@
 /*   By: seungsle <seungsle@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 14:11:03 by seungsle          #+#    #+#             */
-/*   Updated: 2022/11/19 18:37:14 by seungsle         ###   ########.fr       */
+/*   Updated: 2022/11/19 21:49:41 by seungsle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ Bureaucrat::Bureaucrat(std::string name, int grade): _name(name)//, _exception(0
 {
 	std::cout << "[Bureaucrat Constructor called]" << std::endl;
 	if (this->isInvalidGrade(grade))
-		throw (this->GradeOutOfRange());
+		throw (GradeOutOfRange());
 	setGrade(grade);
 }
 
@@ -34,10 +34,6 @@ Bureaucrat::Bureaucrat(const Bureaucrat &Bureaucrat)
 Bureaucrat::~Bureaucrat()
 {
 	std::cout << "[Bureaucrat destructor called]" << std::endl;
-	// if (this->_exception)
-	// {
-	// 	delete this->_exception;
-	// }
 }
 
 Bureaucrat& Bureaucrat::operator=(const Bureaucrat &source)
@@ -79,7 +75,7 @@ void Bureaucrat::increment(void)
 
 	incremented = this->_grade - 1;
 	if (isTooHigh(incremented))
-		throw (this->GradeTooHighException());
+		throw (GradeTooHighException());
 	setGrade(this->_grade - 1);
 }
 
@@ -89,29 +85,8 @@ void Bureaucrat::decrement(void)
 
 	decremented = this->_grade + 1;
 	if (isTooLow(decremented))
-		throw (this->GradeTooLowException());
+		throw (GradeTooLowException());
 	setGrade(this->_grade + 1);
-}
-
-Exception *Bureaucrat::GradeTooHighException(void)
-{
-	Exception *e = new Exception("grade too high");
-	// this->_exception = e;
-	return e;
-}
-
-Exception *Bureaucrat::GradeTooLowException(void)
-{
-	Exception *e = new Exception("grade too low");
-	// this->_exception = e;
-	return e;
-}
-
-Exception *Bureaucrat::GradeOutOfRange(void)
-{
-	Exception *e = new Exception("grade out of range");
-	// this->_exception = e;
-	return e;
 }
 
 const std::string& Bureaucrat::getName(void) const
@@ -132,6 +107,21 @@ const int& Bureaucrat::getGrade(void) const
 void Bureaucrat::setGrade(const int grade)
 {
 	this->_grade = grade;
+}
+
+const char * Bureaucrat::GradeTooHighException::what() const throw()
+{
+	return "grade too high";
+}
+
+const char * Bureaucrat::GradeTooLowException::what() const throw()
+{
+	return "grade too low";
+}
+
+const char * Bureaucrat::GradeOutOfRange::what() const throw()
+{
+	return "grade out of range";
 }
 
 std::ostream& operator<<(std::ostream& out, const Bureaucrat& Bureaucrat)

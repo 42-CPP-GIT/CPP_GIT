@@ -6,12 +6,11 @@
 /*   By: seungsle <seungsle@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 14:11:12 by seungsle          #+#    #+#             */
-/*   Updated: 2022/11/19 18:42:16 by seungsle         ###   ########.fr       */
+/*   Updated: 2022/11/19 21:43:53 by seungsle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-#include "Exception.hpp"
 
 int main(void)
 {
@@ -23,20 +22,29 @@ int main(void)
 		Bureaucrat c;
 		std::cout << c << std::endl;
 	}
-	catch(Exception *e)
+	// catch(Bureaucrat::MyException *e)
+	// {
+	// 	std::cout << e->printException() << '\n';
+	// 	e->what();
+	// 	delete e;
+	// }
+	catch(std::exception &e)
 	{
-		std::cout << e->printException() << '\n';
-		delete e;
+		std::cout << e.what() << std::endl;
 	}
 	try
 	{
 		Bureaucrat b("seungsle", 151);
 		std::cout << b << std::endl;
 	}
-	catch(Exception *e)
+	// catch(Bureaucrat::MyException *e)
+	// {
+	// 	std::cout << e->printException() << '\n';
+	// 	delete e;
+	// }
+	catch (std::exception &e)
 	{
-		std::cout << e->printException() << '\n';
-		delete e;
+		std::cout << e.what() << std::endl;
 	}
 	try
 	{
@@ -47,10 +55,14 @@ int main(void)
 		b.increment();
 		std::cout << b << std::endl;
 	}
-	catch(Exception *e)
+	// catch(Bureaucrat::MyException *e)
+	// {
+	// 	std::cout << e->printException() << '\n';
+	// 	delete e;
+	// }
+	catch(std::exception &e)
 	{
-		std::cout << e->printException() << '\n';
-		delete e;
+		std::cout << e.what() << std::endl;
 	}
 	
 }
