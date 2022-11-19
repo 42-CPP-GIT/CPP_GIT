@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jinypark <jinypark@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jinypark <jinypark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 17:43:08 by jinypark          #+#    #+#             */
-/*   Updated: 2022/11/18 17:50:30 by jinypark         ###   ########.fr       */
+/*   Updated: 2022/11/19 20:35:45 by jinypark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,10 @@
 #define CLAPTRAP_HPP
 
 # include <iostream>
+
+# define CLAP_HP 10
+# define CLAP_EP 10
+# define CLAP_AD 0
 
 class ClapTrap
 {

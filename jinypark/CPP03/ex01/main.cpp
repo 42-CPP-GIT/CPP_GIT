@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jinypark <jinypark@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jinypark <jinypark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 18:40:01 by jinypark          #+#    #+#             */
-/*   Updated: 2022/11/18 17:49:03 by jinypark         ###   ########.fr       */
+/*   Updated: 2022/11/19 23:46:39 by jinypark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,20 +17,15 @@
 int main()
 {
 	ScavTrap a("A");
-	// ScavTrap b("B");
-	ClapTrap* c(new ClapTrap("C"));
-	ScavTrap* d(new ScavTrap("D"));
+	ScavTrap b("B");
 
-	c = d;
-	// a.attack(b.getName());
-	// b.takeDamage(a.getAttackDamage());
-	// b.attack(a.getName());
-	// a.takeDamage(b.getAttackDamage());
-	// a.beRepaired(1);
-	// a.guardGate();
-	// b.guardGate();
-	c->attack("something");
-	// d->attack("dd");
-	delete c;
+	a.printStat();
+	a.attack(b.getName());
+	b.takeDamage(a.getAttackDamage());
+	b.attack(a.getName());
+	a.takeDamage(b.getAttackDamage());
+	a.beRepaired(1);
+	a.guardGate();
+	b.guardGate();
 	return (0);
 }

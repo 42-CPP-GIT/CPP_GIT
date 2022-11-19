@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jinypark <jinypark@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jinypark <jinypark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 17:43:08 by jinypark          #+#    #+#             */
-/*   Updated: 2022/11/18 17:48:43 by jinypark         ###   ########.fr       */
+/*   Updated: 2022/11/19 23:46:32 by jinypark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ protected:
 public:
 	ClapTrap(void);
 	ClapTrap(std::string name);
-	virtual ~ClapTrap(void);
+	~ClapTrap(void);
 	ClapTrap(const ClapTrap &obj);
 	ClapTrap		&operator=(ClapTrap const &obj);
 	void			attack(const std::string& target);
@@ -39,7 +39,7 @@ public:
 	unsigned int	getHitPoint(void) const;
 	unsigned int	getEnergyPoint(void) const;
 	unsigned int	getAttackDamage(void) const;
-	void			ClapTrap::printStat(void);
+	void			printStat(void);
 };
 
 #endif

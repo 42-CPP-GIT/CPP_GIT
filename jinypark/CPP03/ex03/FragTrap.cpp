@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   FragTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jinypark <jinypark@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jinypark <jinypark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 18:53:49 by jinypark          #+#    #+#             */
-/*   Updated: 2022/11/11 11:17:01 by jinypark         ###   ########.fr       */
+/*   Updated: 2022/11/20 00:04:44 by jinypark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,75 +15,41 @@
 
 FragTrap::FragTrap()
 {
-	std::cout << "FragTrap: default has been constructed.\n";
+	std::cout << "[FragTrap] default constructor has been called.\n";
 }
 
 FragTrap::~FragTrap()
 {
-	std::cout << "FragTrap: " + this->name_ + " has been destructed.\n";
+	std::cout << "[FragTrap] " + this->name_ + " destructor has been called.\n";
 }
 
 FragTrap::FragTrap(std::string name)
 {
 	this->name_ = name;
-	this->hitPoint_ = 100;
-	this->energyPoint_ = 100;
-	this->attackDamage_ = 30;
-	std::cout << "FragTrap: " + this->name_ + " has been constructed.\n";
+	this->hitPoint_ = FRAG_HP;
+	this->energyPoint_ = FRAG_EP;
+	this->attackDamage_ = FRAG_AD;
+	std::cout << "[FragTrap] " + this->name_ + " constructor has been called.\n";
 }
 
-void			FragTrap::attack(const std::string& target)
+FragTrap::FragTrap(const FragTrap &obj)
 {
-	if (this->energyPoint_ > 0)
+	*this = obj;
+}
+
+FragTrap	&FragTrap::operator=(FragTrap const &obj)
+{
+	if (this != &obj)
 	{
-		--this->energyPoint_;
-		std::cout << "FragTrap: " + name_ + " attacks " + target + ", causing "
-		<< attackDamage_ << " points of damage!\n";
+		this->name_ = obj.name_;
+		this->hitPoint_ = obj.hitPoint_;
+		this->energyPoint_ = obj.energyPoint_;
+		this->attackDamage_ = obj.attackDamage_;
 	}
-	else
-		std::cout << "FragTrap: Not enough energy...\n";
+	return (*this);
 }
-
-void			FragTrap::takeDamage(unsigned int amount)
-{
-	if (this->hitPoint_ > 0)
-	{
-		this->hitPoint_ -= amount;
-		std::cout << "FragTrap: " + this->name_ + " takes " << amount << " damage!\n";
-	}
-}
-
-void			FragTrap::beRepaired(unsigned int amount)
-{
-	if (this->energyPoint_ > 0 && this->hitPoint_ > 0)
-	{
-		this->hitPoint_ += amount;
-		--this->energyPoint_;
-		std::cout << "FragTrap: " + name_ + " is repaired " << amount << " hits point!\n" ;
-	}
-}
-
-std::string		FragTrap::getName(void) const
-{
-	return (this->name_);
-}
-unsigned int	FragTrap::getHitPoint(void) const
-{
-	return (this->hitPoint_);
-}
-
-unsigned int	FragTrap::getEnergyPoint(void) const
-{
-	return (this->energyPoint_);
-}
-
-unsigned int	FragTrap::getAttackDamage(void) const
-{
-	return (this->attackDamage_);
-}
-
 
 void FragTrap::highFivesGuys(void)
 {
-	std::cout << "FragTrap: " + this->name_ + " HIGHFIVE!\n";
+	std::cout << "[FragTrap] " + this->name_ + ": Gimme five!\n";
 }

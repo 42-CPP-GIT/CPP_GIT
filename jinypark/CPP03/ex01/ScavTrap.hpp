@@ -3,20 +3,20 @@
 
 # include <iostream>
 
+# define SCAV_HP 100
+# define SCAV_EP 50
+# define SCAV_AD 20
+
 class ScavTrap : public ClapTrap
 {
 public:
 	ScavTrap(std::string name);
 	ScavTrap(void);
 	~ScavTrap();
-	void			attack(const std::string& target);
-	void			takeDamage(unsigned int amount);
-	void			beRepaired(unsigned int amount);
-	std::string		getName(void) const;
-	unsigned int	getHitPoint(void) const;
-	unsigned int	getEnergyPoint(void) const;
-	unsigned int	getAttackDamage(void) const;
-	void guardGate();
+	ScavTrap(const ScavTrap &obj);
+	ScavTrap	&operator=(ScavTrap const &obj);
+	void		attack(const std::string& target);
+	void		guardGate();
 };
 
 #endif

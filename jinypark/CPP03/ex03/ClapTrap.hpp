@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jinypark <jinypark@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jinypark <jinypark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 17:43:08 by jinypark          #+#    #+#             */
-/*   Updated: 2022/11/11 15:05:55 by jinypark         ###   ########.fr       */
+/*   Updated: 2022/11/19 23:49:23 by jinypark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,10 @@
 #define CLAPTRAP_HPP
 
 # include <iostream>
+
+# define CLAP_HP 10
+# define CLAP_EP 10
+# define CLAP_AD 0
 
 class ClapTrap
 {
@@ -27,7 +31,7 @@ public:
 	ClapTrap(std::string name);
 	virtual ~ClapTrap(void);
 	ClapTrap(const ClapTrap &obj);
-	ClapTrap	&operator=(ClapTrap const &obj);
+	ClapTrap		&operator=(ClapTrap const &obj);
 	void			attack(const std::string& target);
 	void			takeDamage(unsigned int amount);
 	void			beRepaired(unsigned int amount);
@@ -35,6 +39,7 @@ public:
 	unsigned int	getHitPoint(void) const;
 	unsigned int	getEnergyPoint(void) const;
 	unsigned int	getAttackDamage(void) const;
+	void			printStat(void);
 };
 
 #endif

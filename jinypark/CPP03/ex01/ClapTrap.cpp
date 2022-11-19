@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jinypark <jinypark@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jinypark <jinypark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 17:42:29 by jinypark          #+#    #+#             */
-/*   Updated: 2022/11/18 17:48:25 by jinypark         ###   ########.fr       */
+/*   Updated: 2022/11/20 00:16:20 by jinypark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,17 @@
 
 ClapTrap::ClapTrap(void)
 {
-	std::cout << "ClapTrap: default has been constructed.\n";
+	std::cout << "[ClapTrap] default constructor has been called.\n";
 }
 
 ClapTrap::ClapTrap(std::string name) : name_(name), hitPoint_(CLAP_HP), energyPoint_(CLAP_EP), attackDamage_(CLAP_AD)
 {
-	std::cout << "ClapTrap: " + this->name_ + " has been constructed.\n";
+	std::cout << "[ClapTrap] " + this->name_ + " constructor has been called.\n";
 }
 
 ClapTrap::~ClapTrap()
 {
-	std::cout << "ClapTrap: " + this->name_ + " has been destructed.\n";
+	std::cout << "[ClapTrap] " + this->name_ + " destructor has been called.\n";
 }
 
 ClapTrap::ClapTrap(const ClapTrap &obj)
@@ -61,7 +61,7 @@ void	ClapTrap::takeDamage(unsigned int amount)
 	if (this->hitPoint_ > 0)
 	{
 		this->hitPoint_ -= amount;
-		std::cout << this->name_ + " takes " << amount << " damage!\n";
+		std::cout << "[ClapTrap] " + this->name_ + " takes " << amount << " damage!\n";
 	}
 }
 
@@ -72,7 +72,7 @@ void	ClapTrap::beRepaired(unsigned int amount)
 	{
 		this->hitPoint_ += amount;
 		--this->energyPoint_;
-		std::cout << name_ + " is repaired " << amount << " hits point!\n" ;
+		std::cout << "[ClapTrap] " + this->name_ + " is repaired " << amount << " hits point!\n";
 	}
 }
 

@@ -3,20 +3,19 @@
 
 # include <iostream>
 
+# define FRAG_HP 100
+# define FRAG_EP 100
+# define FRAG_AD 30
+
 class FragTrap : virtual public ClapTrap
 {
 public:
-	FragTrap(std::string name);
 	FragTrap(void);
-	virtual ~FragTrap();
-	void			attack(const std::string& target);
-	void			takeDamage(unsigned int amount);
-	void			beRepaired(unsigned int amount);
-	std::string		getName(void) const;
-	unsigned int	getHitPoint(void) const;
-	unsigned int	getEnergyPoint(void) const;
-	unsigned int	getAttackDamage(void) const;
-	void			highFivesGuys(void);
+	FragTrap(std::string name);
+	~FragTrap();
+	FragTrap(const FragTrap &obj);
+	FragTrap	&operator=(FragTrap const &obj);
+	void		highFivesGuys(void);
 };
 
 #endif
