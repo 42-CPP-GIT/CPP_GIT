@@ -6,7 +6,7 @@
 /*   By: jinypark <jinypark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 18:53:49 by jinypark          #+#    #+#             */
-/*   Updated: 2022/11/20 00:10:49 by jinypark         ###   ########.fr       */
+/*   Updated: 2022/11/20 00:33:25 by jinypark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,7 @@ void	ScavTrap::attack(const std::string& target)
 		std::cout << "[ScavTrap] Not enough energy...\n";
 }
 
-//TODO : change script
 void ScavTrap::guardGate(void)
 {
-	std::cout << "[ScavTrap] " + this->name_ + " [GATE GUARD..]\n";
+	std::cout << "[ScavTrap] " + this->name_ + ": Guarding gates is FUN!\n";
 }
