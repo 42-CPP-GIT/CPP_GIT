@@ -6,7 +6,7 @@
 /*   By: seungsle <seungsle@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 14:11:05 by seungsle          #+#    #+#             */
-/*   Updated: 2022/11/20 16:23:55 by seungsle         ###   ########.fr       */
+/*   Updated: 2022/11/21 00:03:11 by seungsle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 #include <iostream>
 
+class Form;
 class Bureaucrat
 {
 private:
@@ -31,11 +32,23 @@ public:
 	public:
 		const char * what() const throw();
 	};
+	class FormsAreFullException: public std::exception
+	{
+	public:
+		const char * what() const throw();	
+	};
+	class InvalidIndexForm: public std::exception
+	{
+	public:
+		const char * what() const throw();	
+	};
 	Bureaucrat(/* args */);
 	Bureaucrat(std::string name, int grade);
 	Bureaucrat(const Bureaucrat &Bureaucrat);
 	~Bureaucrat();
 	Bureaucrat& operator = (const Bureaucrat &source);
+
+	void executeForm(Form const & form);
 
 	bool isTooHigh(int grade);
 	bool isTooLow(int grade);
