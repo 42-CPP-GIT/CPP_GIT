@@ -6,7 +6,7 @@
 /*   By: seungsle <seungsle@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 14:11:03 by seungsle          #+#    #+#             */
-/*   Updated: 2022/11/20 13:44:28 by seungsle         ###   ########.fr       */
+/*   Updated: 2022/11/20 13:54:51 by seungsle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,12 @@ Bureaucrat::Bureaucrat(): _name("anonymous"), _grade(150)
 Bureaucrat::Bureaucrat(std::string name, int grade): _name(name)
 {
 	std::cout << "[Bureaucrat Constructor called]" << std::endl;
-	if (this->isInvalidGrade(grade))
-		throw (GradeOutOfRange());
-	setGrade(grade);
+	if (this->isInvalidGrade(grade) == 0)
+		setGrade(grade);
+	else if (this->isInvalidGrade(grade) == 1)
+		throw (GradeTooHighException());
+	else if (this->isInvalidGrade(grade) == 2)
+		throw (GradeTooLowException());
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat &Bureaucrat)
@@ -111,11 +114,6 @@ const char * Bureaucrat::GradeTooHighException::what() const throw()
 const char * Bureaucrat::GradeTooLowException::what() const throw()
 {
 	return "grade too low";
-}
-
-const char * Bureaucrat::GradeOutOfRange::what() const throw()
-{
-	return "grade out of range";
 }
 
 std::ostream& operator<<(std::ostream& out, const Bureaucrat& Bureaucrat)

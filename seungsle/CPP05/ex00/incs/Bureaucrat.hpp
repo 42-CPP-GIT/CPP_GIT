@@ -6,7 +6,7 @@
 /*   By: seungsle <seungsle@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 14:11:05 by seungsle          #+#    #+#             */
-/*   Updated: 2022/11/20 13:46:09 by seungsle         ###   ########.fr       */
+/*   Updated: 2022/11/20 13:54:00 by seungsle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,6 @@ public:
 		const char * what() const throw();
 	};
 	class GradeTooLowException: public std::exception
-	{
-	public:
-		const char * what() const throw();
-	};
-	class GradeOutOfRange: public std::exception
 	{
 	public:
 		const char * what() const throw();
