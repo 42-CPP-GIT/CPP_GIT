@@ -6,13 +6,14 @@
 /*   By: seungsle <seungsle@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 14:11:12 by seungsle          #+#    #+#             */
-/*   Updated: 2022/11/21 00:58:30 by seungsle         ###   ########.fr       */
+/*   Updated: 2022/11/21 01:03:22 by seungsle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
 #include "Form.hpp"
 
 int main(void)
@@ -74,8 +75,25 @@ int main(void)
 	{
 		Bureaucrat A("seungsle", 1);
 		Bureaucrat B("alvin", 150);
-		Form *form1 = new RobotomyRequestForm("target4");
-		Form *form2 = new RobotomyRequestForm("target5");
+		Form *form1 = new RobotomyRequestForm("target6");
+		Form *form2 = new RobotomyRequestForm("target7");
+		form1->sign(A);
+		A.executeForm(*form1);
+		form2->sign(B);
+		// A.executeForm(*form1);
+		B.executeForm(*form2);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	std::cout << "---------------------------" << std::endl;
+	try
+	{
+		Bureaucrat A("seungsle", 1);
+		Bureaucrat B("alvin", 150);
+		Form *form1 = new PresidentialPardonForm("target8");
+		Form *form2 = new PresidentialPardonForm("target9");
 		form1->sign(A);
 		A.executeForm(*form1);
 		form2->sign(B);
