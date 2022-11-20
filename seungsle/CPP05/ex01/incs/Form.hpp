@@ -6,7 +6,7 @@
 /*   By: seungsle <seungsle@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 18:43:47 by seungsle          #+#    #+#             */
-/*   Updated: 2022/11/20 16:37:42 by seungsle         ###   ########.fr       */
+/*   Updated: 2022/11/20 17:23:31 by seungsle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,10 @@ public:
 	Form& operator=(const Form &source);
 
 	void beSigned(Bureaucrat &Bureaucrat);
+
+	bool isTooHigh(int grade);
+	bool isTooLow(int grade);
+	int isInvalidGrade(int grade);
 
 	const std::string& getName(void) const;
 	bool& getIsSigned(void);

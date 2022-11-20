@@ -6,7 +6,7 @@
 /*   By: seungsle <seungsle@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 14:11:05 by seungsle          #+#    #+#             */
-/*   Updated: 2022/11/20 16:52:08 by seungsle         ###   ########.fr       */
+/*   Updated: 2022/11/20 18:11:53 by seungsle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,9 @@ public:
 	{
 	private:
 		Form &_form;
+		Bureaucrat &_bureaucrat;
 	public:
-		MyException(Form &Form);
+		MyException(Form &Form, Bureaucrat &bureaucrat);
 		~MyException();
 		void printException();
 	};
@@ -68,6 +69,8 @@ public:
 
 	void signForm(Form &form);
 	void signForm(int idx);
+
+	bool isExistInDB(Form &form);
 
 	const std::string& getName(void) const;
 	const int& getGrade(void) const;

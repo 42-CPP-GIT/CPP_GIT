@@ -6,7 +6,7 @@
 /*   By: seungsle <seungsle@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 18:43:45 by seungsle          #+#    #+#             */
-/*   Updated: 2022/11/20 16:54:57 by seungsle         ###   ########.fr       */
+/*   Updated: 2022/11/20 18:12:41 by seungsle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,23 +15,43 @@
 
 Form::Form(): _name("document"), _isSigned(false), _gradeToSign(150), _gradeToExecute(150)
 {
-	std::cout << "[Form Constructor called]" << std::endl;
+	// std::cout << "[Form Constructor called]" << std::endl;
 }
 
 Form::Form(std::string name, int gradeToSign, int gradeToExecute): _name(name), _isSigned(false), _gradeToSign(gradeToSign), _gradeToExecute(gradeToExecute)
 {
-	std::cout << "[Form Constructor called]" << std::endl;
+	if (this->isInvalidGrade(gradeToSign) == 1)
+	{
+		std::cout << "gradeToSign is ";
+		throw(Form::GradeTooHighException());
+	}
+	else if (this->isInvalidGrade(gradeToSign) == 2)
+	{
+		std::cout << "gradeToSign is ";
+		throw(Form::GradeTooLowException());
+	}
+	if (this->isInvalidGrade(gradeToExecute) == 1)
+	{
+		std::cout << "gradeToExecute is ";
+		throw(Form::GradeTooHighException());
+	}
+	else if (this->isInvalidGrade(gradeToExecute) == 2)
+	{
+		std::cout << "gradeToExecute is ";
+		throw(Form::GradeTooLowException());
+	}
+	// std::cout << "[Form Constructor called]" << std::endl;
 }
 
 Form::Form(const Form &source): _gradeToSign(150), _gradeToExecute(150)
 {
-	std::cout << "[Form Copy Constructor called]" << std::endl;
+	// std::cout << "[Form Copy Constructor called]" << std::endl;
 	*this = source;
 }
 
 Form::~Form()
 {
-	std::cout << "[Form destructor called]" << std::endl;
+	// std::cout << "[Form destructor called]" << std::endl;
 }
 
 Form& Form::operator=(const Form &source)
@@ -52,8 +72,31 @@ void Form::beSigned(Bureaucrat &bureaucrat)
 	else
 	{
 		std::cout << bureaucrat.getName() << " couldn't sign " << this->getName() << " because, ";
-		throw(*(new Bureaucrat::MyException(*this)));
+		throw(new Bureaucrat::MyException(*this, bureaucrat));
 	}
+}
+
+int Form::isInvalidGrade(int grade)
+{
+	if (this->isTooHigh(grade)) // invalid value
+		return (1);
+	if (this->isTooLow(grade)) // invalid value
+		return (2);
+	return (0); // valid value
+}
+
+bool Form::isTooHigh(int grade)
+{
+	if (grade < 1)
+		return (true);
+	return (false);
+}
+
+bool Form::isTooLow(int grade)
+{
+	if (grade > 150)
+		return (true);
+	return (false);
 }
 
 const std::string& Form::getName(void) const

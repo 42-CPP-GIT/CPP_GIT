@@ -6,7 +6,7 @@
 #    By: seungsle <seungsle@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/25 16:49:27 by seungsle          #+#    #+#              #
-#    Updated: 2022/11/20 16:15:35 by seungsle         ###   ########.fr        #
+#    Updated: 2022/11/20 17:43:35 by seungsle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ SRCS = main.cpp Bureaucrat.cpp Form.cpp
 SRCS := $(addprefix $(SRC_DIR), $(SRCS))
 OBJS =  $(addprefix $(OBJ_DIR), $(SRCS:.cpp=.o))
 
-CXX = c++
+CXX = c++ -g
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 INCFLAGS = -I$(INC_DIR)
 

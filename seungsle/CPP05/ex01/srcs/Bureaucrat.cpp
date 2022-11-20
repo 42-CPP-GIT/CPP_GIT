@@ -6,7 +6,7 @@
 /*   By: seungsle <seungsle@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 14:11:03 by seungsle          #+#    #+#             */
-/*   Updated: 2022/11/20 17:08:50 by seungsle         ###   ########.fr       */
+/*   Updated: 2022/11/20 18:12:21 by seungsle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,36 +15,36 @@
 
 Bureaucrat::Bureaucrat(): _name("anonymous"), _grade(150), _size(0)
 {
-	std::cout << "[Bureaucrat Constructor called]" << std::endl;
+	// std::cout << "[Bureaucrat Constructor called]" << std::endl;
 }
 
 Bureaucrat::Bureaucrat(std::string name, int grade): _name(name), _size(0)
 {
-	std::cout << "[Bureaucrat Constructor called]" << std::endl;
+	// std::cout << "[Bureaucrat Constructor called]" << std::endl;
 	if (this->isInvalidGrade(grade) == 0)
 		setGrade(grade);
 	else if (this->isInvalidGrade(grade) == 1)
-		throw (GradeTooHighException());
+		throw (Bureaucrat::GradeTooHighException());
 	else if (this->isInvalidGrade(grade) == 2)
-		throw (GradeTooLowException());
+		throw (Bureaucrat::GradeTooLowException());
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat &Bureaucrat): _size(0)
 {
-	std::cout << "[Bureaucrat Copy Constructor called]" << std::endl;
+	// std::cout << "[Bureaucrat Copy Constructor called]" << std::endl;
 	*this = Bureaucrat;
 }
 
 Bureaucrat::~Bureaucrat()
 {
-	std::cout << "[Bureaucrat destructor called]" << std::endl;
+	// std::cout << "[Bureaucrat destructor called]" << std::endl;
 	for (int i = 0; i < this->_size; i++)
 		delete this->_form[i];
 }
 
 Bureaucrat& Bureaucrat::operator=(const Bureaucrat &source)
 {
-	std::cout << "[Bureaucrat Copy assignment oprator called]" << std::endl;
+	// std::cout << "[Bureaucrat Copy assignment oprator called]" << std::endl;
 	if (this == &source)
 		return (*this);
 	this->_grade = source.getGrade();
@@ -105,6 +105,16 @@ void Bureaucrat::signForm(int idx)
 	delete &this->getFormByIndex(idx);
 }
 
+bool Bureaucrat::isExistInDB(Form &form)
+{
+	for (int i = 0; i < 100; i++)
+	{
+		if (this->_form[i] && (&form) == this->_form[i])
+			return (true);
+	}
+	return (false);
+}
+
 const std::string& Bureaucrat::getName(void) const
 {
 	return (this->_name);
@@ -136,6 +146,7 @@ int Bureaucrat::setForm(Form &form)// const
 		throw (Bureaucrat::FormsAreFullException());
 	}
 	this->_form[this->_size++] = &form;
+	std::cout << form.getName() << " is saved to index : " << this->_size - 1 << std::endl;
 	return (this->_size - 1);
 }
 
@@ -165,19 +176,21 @@ std::ostream& operator<<(std::ostream& out, const Bureaucrat& Bureaucrat)
 	return out;
 }
 
-Bureaucrat::MyException::MyException(Form &form): _form(form)
+Bureaucrat::MyException::MyException(Form &form, Bureaucrat &bureaucrat): _form(form), _bureaucrat(bureaucrat)
 {
-	std::cout << "[Bureaucrat::MyException Constructor called]" << std::endl;
+	// std::cout << "[Bureaucrat::MyException Constructor called]" << std::endl;
 }
 
 Bureaucrat::MyException::~MyException()
 {
-	std::cout << "[Bureaucrat::MyException Destructor called]" << std::endl;
+	// std::cout << "[Bureaucrat::MyException Destructor called]" << std::endl;
+	if (this->_bureaucrat.isExistInDB(this->_form))
+		return ;
 	delete &this->_form;
 }
 
 void Bureaucrat::MyException::printException()
 {
-	std::cout << "[Bureaucrat::MyException printException called]" << std::endl;
+	// std::cout << "[Bureaucrat::MyException printException called]" << std::endl;
 	std::cerr << "grade too low" << std::endl;
 }
