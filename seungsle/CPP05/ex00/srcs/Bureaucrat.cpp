@@ -6,18 +6,18 @@
 /*   By: seungsle <seungsle@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 14:11:03 by seungsle          #+#    #+#             */
-/*   Updated: 2022/11/19 21:49:41 by seungsle         ###   ########.fr       */
+/*   Updated: 2022/11/20 13:44:28 by seungsle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat(): _name("anonymous"), _grade(150)//, _exception(0)
+Bureaucrat::Bureaucrat(): _name("anonymous"), _grade(150)
 {
 	std::cout << "[Bureaucrat Constructor called]" << std::endl;
 }
 
-Bureaucrat::Bureaucrat(std::string name, int grade): _name(name)//, _exception(0)
+Bureaucrat::Bureaucrat(std::string name, int grade): _name(name)
 {
 	std::cout << "[Bureaucrat Constructor called]" << std::endl;
 	if (this->isInvalidGrade(grade))
@@ -41,7 +41,6 @@ Bureaucrat& Bureaucrat::operator=(const Bureaucrat &source)
 	std::cout << "[Bureaucrat Copy assignment oprator called]" << std::endl;
 	if (this == &source)
 		return (*this);
-	// this->_name = source.getName();
 	this->_grade = source.getGrade();
 	return (*this);
 }
@@ -98,11 +97,6 @@ const int& Bureaucrat::getGrade(void) const
 {
 	return (this->_grade);
 }
-
-// void Bureaucrat::setName(const std::string name)
-// {
-// 	this->_name = name;
-// }
 
 void Bureaucrat::setGrade(const int grade)
 {

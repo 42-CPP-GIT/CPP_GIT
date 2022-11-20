@@ -6,7 +6,7 @@
 /*   By: seungsle <seungsle@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 14:11:05 by seungsle          #+#    #+#             */
-/*   Updated: 2022/11/19 21:49:56 by seungsle         ###   ########.fr       */
+/*   Updated: 2022/11/20 13:46:09 by seungsle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,23 +20,7 @@ class Bureaucrat
 private:
 	const std::string _name;
 	int _grade;
-	// Exception *_exception;
 public:
-	// class MyException: public std::exception
-	// {
-	// private:
-	// 	std::string _errorMessage;
-	// public:
-	// 	MyException();
-	// 	MyException(std::string errorMessage);
-	// 	const char * what() const throw();
-	// 	// ~MyException();
-
-	// 	const std::string& getErrorMessage(void) const;
-	// 	void setErrorMessage(std::string errorMessage);
-
-	// 	std::string printException(void) const;
-	// };
 	class GradeTooHighException: public std::exception
 	{
 	public:
@@ -64,10 +48,6 @@ public:
 	
 	void increment(void);
 	void decrement(void);
-
-	// MyException *GradeTooHighException(void);
-	// MyException *GradeTooLowException(void);
-	// MyException *GradeOutOfRange(void);
 
 	const std::string& getName(void) const;
 	const int& getGrade(void) const;
