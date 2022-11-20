@@ -6,7 +6,7 @@
 /*   By: seungsle <seungsle@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 18:50:13 by seungsle          #+#    #+#             */
-/*   Updated: 2022/11/21 00:40:02 by seungsle         ###   ########.fr       */
+/*   Updated: 2022/11/21 00:53:51 by seungsle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ class Bureaucrat;
 class RobotomyRequestForm: public Form
 {
 private:
-	std::string target;
+	std::string _target;
 public:
 	RobotomyRequestForm(/* args */);
 	RobotomyRequestForm(std::string target);

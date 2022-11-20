@@ -63,8 +63,14 @@ void RobotomyRequestForm::execute(Bureaucrat const &executor) const
 				std::cout << this->getTarget() << " robotomy failed." << std::endl;
 		}
 		else
+		{
+			std::cout << "execute failed(RobotomyRequestForm) : ";
 			throw(Form::NotExecutableException());
+		}
 	}
 	else
+	{
+		std::cout << "execute failed(RobotomyRequestForm) : ";
 		throw(Form::GradeTooLowException());
+	}
 }

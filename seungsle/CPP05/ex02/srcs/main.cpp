@@ -6,12 +6,13 @@
 /*   By: seungsle <seungsle@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 14:11:12 by seungsle          #+#    #+#             */
-/*   Updated: 2022/11/21 00:41:18 by seungsle         ###   ########.fr       */
+/*   Updated: 2022/11/21 00:58:30 by seungsle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 #include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
 #include "Form.hpp"
 
 int main(void)
@@ -52,16 +53,38 @@ int main(void)
 	{
 		std::cerr << e.what() << '\n';
 	}
-	// try
-	// {
-	// 	Bureaucrat A("seungsle", 150);
-	// 	Form *form1 = new ShrubberyCreationForm("target3");
-	// 	form1->sign(A);
-	// 	A.executeForm(*form1);
-	// }
-	// catch(const std::exception& e)
-	// {
-	// 	std::cerr << e.what() << '\n';
-	// }
-		// system("leaks Bureaucrat");
+	std::cout << "---------------------------" << std::endl;
+	try
+	{
+		Bureaucrat A("seungsle", 150);
+		Bureaucrat B("alvin", 1);
+		Form *form1 = new RobotomyRequestForm("target4");
+		Form *form2 = new RobotomyRequestForm("target5");
+		form1->sign(A);
+		form2->sign(B);
+		A.executeForm(*form1);
+		B.executeForm(*form2);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	std::cout << "---------------------------" << std::endl;
+	try
+	{
+		Bureaucrat A("seungsle", 1);
+		Bureaucrat B("alvin", 150);
+		Form *form1 = new RobotomyRequestForm("target4");
+		Form *form2 = new RobotomyRequestForm("target5");
+		form1->sign(A);
+		A.executeForm(*form1);
+		form2->sign(B);
+		// A.executeForm(*form1);
+		B.executeForm(*form2);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	// system("leaks Bureaucrat");
 }
