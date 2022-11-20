@@ -6,7 +6,7 @@
 /*   By: seungsle <seungsle@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 18:50:21 by seungsle          #+#    #+#             */
-/*   Updated: 2022/11/21 00:09:17 by seungsle         ###   ########.fr       */
+/*   Updated: 2022/11/21 00:18:40 by seungsle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,14 @@ void ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 	if (executor.getGrade() <= this->getGradeToSign() && \
 		executor.getGrade() <= this->getGradeToSign())
 	{
-		std::ofstream file(this->_target + "_shrubbery");
-		std::string my_string = "       _-_\n    /~~   ~~\\\n /~~         ~~\\\n{               }\n \\  _-     -_  /\n   ~  \\\\ //  ~\n_- -   | | _- _\n  _ -  | |   -_\n      // \\\\\n";
-		file << my_string;
+		if (this->getIsSigned())
+		{
+			std::ofstream file(this->_target + "_shrubbery");
+			std::string my_string = "       _-_\n    /~~   ~~\\\n /~~         ~~\\\n{               }\n \\  _-     -_  /\n   ~  \\\\ //  ~\n_- -   | | _- _\n  _ -  | |   -_\n      // \\\\\n";
+			file << my_string;
+		}
+		else
+			throw(Form::NotExecutableException());
 	}
 	else
 		throw(Form::GradeTooLowException());

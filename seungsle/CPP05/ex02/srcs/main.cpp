@@ -6,7 +6,7 @@
 /*   By: seungsle <seungsle@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 14:11:12 by seungsle          #+#    #+#             */
-/*   Updated: 2022/11/21 00:11:22 by seungsle         ###   ########.fr       */
+/*   Updated: 2022/11/21 00:20:36 by seungsle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,78 +27,17 @@ int main(void)
 	{
 		std::cerr << e.what() << '\n';
 	}
-	// std::cout << "---------------------------" << std::endl;
-	// try
-	// {
-	// 	Bureaucrat A("seungsle", 10);
-	// 	Form *form1 = new Form("form1", 5, 5);
-	// 	A.signForm(*form1);
-	// }
-	// catch(const std::exception& e)
-	// {
-	// 	std::cerr << e.what() << '\n';
-	// }
-	// catch(Bureaucrat::MyException *e)
-	// {
-	// 	e->printException();
-	// 	delete e;
-	// }
-	// std::cout << "---------------------------" << std::endl;
-	// try
-	// {
-	// 	Bureaucrat A("seungsle", 151);
-	// 	Form *form1 = new Form("form1", 5, 5);
-	// 	A.signForm(*form1);
-	// }
-	// catch(const std::exception& e)
-	// {
-	// 	std::cerr << e.what() << '\n';
-	// }
-	// catch(Bureaucrat::MyException *e)
-	// {
-	// 	e->printException();
-	// 	delete e;
-	// }
-	// std::cout << "---------------------------" << std::endl;
-	// try
-	// {
-	// 	Bureaucrat A("seungsle", 15);
-	// 	Form *form1 = new Form("form1", 1, 151);
-	// 	A.signForm(*form1);
-	// }
-	// catch(const std::exception& e)
-	// {
-	// 	std::cerr << e.what() << '\n';
-	// }
-	// catch(Bureaucrat::MyException *e)
-	// {
-	// 	e->printException();
-	// 	delete e;
-	// }
-	// std::cout << "---------------------------" << std::endl;
-	// try
-	// {
-	// 	Bureaucrat A("seungsle", 8);
-	// 	Form *form1 = new Form("form1", 1, 15);
-	// 	Form *form2 = new Form("form2", 10, 15);
-	// 	Form *form3 = new Form("form3", 5, 15);
-	// 	A.setForm(*form1);
-	// 	A.setForm(*form2);
-	// 	A.setForm(*form3);
-	// 	// A.signForm(0);
-	// 	// A.signForm(1);
-	// 	A.signForm(1);
-	// 	A.signForm(2);
-	// 	A.signForm(0);
-	// }
-	// catch(const std::exception& e)
-	// {
-	// 	std::cerr << e.what() << '\n';
-	// }
-	// catch(Bureaucrat::MyException *e)
-	// {
-	// 	e->printException();
-	// 	delete e;
-	// }
-	// system("leaks Bureaucrat");
+	std::cout << "---------------------------" << std::endl;
+	try
+	{
+		Bureaucrat A("seungsle", 10);
+		Form *form1 = new ShrubberyCreationForm("target");
+		form1->sign(A);
+		A.executeForm(*form1);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+		// system("leaks Bureaucrat");
 }

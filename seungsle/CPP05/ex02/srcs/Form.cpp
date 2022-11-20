@@ -6,7 +6,7 @@
 /*   By: seungsle <seungsle@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 18:43:45 by seungsle          #+#    #+#             */
-/*   Updated: 2022/11/21 00:03:54 by seungsle         ###   ########.fr       */
+/*   Updated: 2022/11/21 00:20:06 by seungsle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ const std::string& Form::getName(void) const
 	return (this->_name);
 }
 
-bool& Form::getIsSigned(void)
+const bool& Form::getIsSigned(void) const
 {
 	return (this->_isSigned);
 }
@@ -136,4 +136,9 @@ const char *Form::GradeTooHighException::what(void) const throw()
 const char *Form::GradeTooLowException::what(void) const throw()
 {
 	return "grade too low";
+}
+
+const char *Form::NotExecutableException::what(void) const throw()
+{
+	return "not signed";
 }

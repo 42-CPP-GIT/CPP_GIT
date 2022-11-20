@@ -6,7 +6,7 @@
 /*   By: seungsle <seungsle@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 18:43:47 by seungsle          #+#    #+#             */
-/*   Updated: 2022/11/21 00:04:06 by seungsle         ###   ########.fr       */
+/*   Updated: 2022/11/21 00:19:59 by seungsle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,11 @@ public:
 	public:
 		const char* what() const throw();
 	};
+	class NotExecutableException: public std::exception
+	{
+	public:
+		const char* what() const throw();
+	};
 	Form(/* args */);
 	Form(std::string name, int gradeToSign, int gradeToExecute);
 	Form(const Form &source);
@@ -51,7 +56,7 @@ public:
 	int isInvalidGrade(int grade);
 
 	const std::string& getName(void) const;
-	bool& getIsSigned(void);
+	const bool& getIsSigned(void) const;
 	const int& getGradeToSign(void) const;
 	const int& getGradeToExecute(void) const;
 
