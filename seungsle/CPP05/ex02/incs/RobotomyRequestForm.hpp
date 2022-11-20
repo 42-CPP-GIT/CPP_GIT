@@ -6,20 +6,30 @@
 /*   By: seungsle <seungsle@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 18:50:13 by seungsle          #+#    #+#             */
-/*   Updated: 2022/11/20 18:52:06 by seungsle         ###   ########.fr       */
+/*   Updated: 2022/11/21 00:40:02 by seungsle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ROBOTOMY_REQUEST_FORM_HPP
 # define ROBOTOMY_REQUEST_FORM_HPP
 
-class RobotomyRequestForm
+#include <random>
+#include "Form.hpp"
+class Bureaucrat;
+class RobotomyRequestForm: public Form
 {
 private:
-	/* data */
+	std::string target;
 public:
 	RobotomyRequestForm(/* args */);
+	RobotomyRequestForm(std::string target);
+	RobotomyRequestForm(const RobotomyRequestForm& source);
 	~RobotomyRequestForm();
+	RobotomyRequestForm& operator=(const RobotomyRequestForm &source);
+
+	const std::string& getTarget(void) const;
+
+	virtual void execute(Bureaucrat const & executor) const;
 };
 
 

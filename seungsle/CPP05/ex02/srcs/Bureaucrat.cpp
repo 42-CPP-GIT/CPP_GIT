@@ -6,7 +6,7 @@
 /*   By: seungsle <seungsle@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 14:11:03 by seungsle          #+#    #+#             */
-/*   Updated: 2022/11/21 00:03:33 by seungsle         ###   ########.fr       */
+/*   Updated: 2022/11/21 00:50:08 by seungsle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,15 @@ Bureaucrat::Bureaucrat(std::string name, int grade): _name(name)
 	if (this->isInvalidGrade(grade) == 0)
 		setGrade(grade);
 	else if (this->isInvalidGrade(grade) == 1)
+	{
+		std::cout << "grade is ";
 		throw (Bureaucrat::GradeTooHighException());
+	}
 	else if (this->isInvalidGrade(grade) == 2)
+	{
+		std::cout << "grade is ";
 		throw (Bureaucrat::GradeTooLowException());
+	}
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat &Bureaucrat)
@@ -87,7 +93,10 @@ void Bureaucrat::increment(void)
 
 	incremented = this->_grade - 1;
 	if (isTooHigh(incremented))
+	{
+		std::cout << "increment failed : ";
 		throw (Bureaucrat::GradeTooHighException());
+	}
 	setGrade(this->_grade - 1);
 }
 
@@ -97,7 +106,10 @@ void Bureaucrat::decrement(void)
 
 	decremented = this->_grade + 1;
 	if (isTooLow(decremented))
+	{
+		std::cout << "decrement failed : ";
 		throw (Bureaucrat::GradeTooLowException());
+	}
 	setGrade(this->_grade + 1);
 }
 

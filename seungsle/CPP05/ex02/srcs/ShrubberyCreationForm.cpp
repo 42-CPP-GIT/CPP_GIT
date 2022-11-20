@@ -6,10 +6,11 @@
 /*   By: seungsle <seungsle@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 18:50:21 by seungsle          #+#    #+#             */
-/*   Updated: 2022/11/21 00:18:40 by seungsle         ###   ########.fr       */
+/*   Updated: 2022/11/21 00:51:19 by seungsle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "Form.hpp"
 #include "Bureaucrat.hpp"
 #include "ShrubberyCreationForm.hpp"
 
@@ -49,7 +50,7 @@ const std::string& ShrubberyCreationForm::getTarget(void) const
 void ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 {
 	if (executor.getGrade() <= this->getGradeToSign() && \
-		executor.getGrade() <= this->getGradeToSign())
+		executor.getGrade() <= this->getGradeToExecute())
 	{
 		if (this->getIsSigned())
 		{
@@ -58,8 +59,14 @@ void ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 			file << my_string;
 		}
 		else
+		{
+			std::cout << "execute failed(ShrubberyCreationForm) : ";
 			throw(Form::NotExecutableException());
+		}
 	}
 	else
+	{
+		std::cout << "execute failed(ShrubberyCreationForm) : ";
 		throw(Form::GradeTooLowException());
+	}
 }

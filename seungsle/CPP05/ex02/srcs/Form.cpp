@@ -6,7 +6,7 @@
 /*   By: seungsle <seungsle@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 18:43:45 by seungsle          #+#    #+#             */
-/*   Updated: 2022/11/21 00:20:06 by seungsle         ###   ########.fr       */
+/*   Updated: 2022/11/21 00:51:28 by seungsle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,10 @@ void Form::sign(Bureaucrat &bureaucrat)
 	if (bureaucrat.getGrade() <= this->getGradeToSign())
 		this->setIsSigned(true);
 	else
+	{
+		std::cout << "sign failed : ";
 		throw(Form::GradeTooLowException());
+	}
 }
 
 int Form::isInvalidGrade(int grade)
