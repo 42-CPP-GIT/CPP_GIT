@@ -6,7 +6,7 @@
 /*   By: seungsle <seungsle@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 18:43:45 by seungsle          #+#    #+#             */
-/*   Updated: 2022/11/20 18:12:41 by seungsle         ###   ########.fr       */
+/*   Updated: 2022/11/20 18:41:45 by seungsle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void Form::beSigned(Bureaucrat &bureaucrat)
 	if (bureaucrat.getGrade() <= this->getGradeToSign())
 	{
 		this->setIsSigned(true);
-		std::cout << bureaucrat.getName() << " signed " << this->getName() << " [this form is copied at " << bureaucrat.getName() << "'s DB (index: " << bureaucrat.setForm(*this) << ")]" << std::endl;
+		std::cout << bureaucrat.getName() << " signed " << this->getName() << " [this form is copied at " << bureaucrat.getName() << "'s DB (index: " << bureaucrat.setForm(*(new Form(*this))) << ")]" << std::endl;
 	}
 	else
 	{

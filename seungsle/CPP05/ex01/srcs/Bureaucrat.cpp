@@ -6,7 +6,7 @@
 /*   By: seungsle <seungsle@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 14:11:03 by seungsle          #+#    #+#             */
-/*   Updated: 2022/11/20 18:12:21 by seungsle         ###   ########.fr       */
+/*   Updated: 2022/11/20 18:46:56 by seungsle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,10 @@ Bureaucrat::~Bureaucrat()
 {
 	// std::cout << "[Bureaucrat destructor called]" << std::endl;
 	for (int i = 0; i < this->_size; i++)
+	{
+		// std::cout << "delete form " << i << std::endl;
 		delete this->_form[i];
+	}
 }
 
 Bureaucrat& Bureaucrat::operator=(const Bureaucrat &source)
@@ -102,7 +105,7 @@ void Bureaucrat::signForm(Form &form)
 void Bureaucrat::signForm(int idx)
 {
 	this->getFormByIndex(idx).beSigned(*this);
-	delete &this->getFormByIndex(idx);
+	// delete &this->getFormByIndex(idx);
 }
 
 bool Bureaucrat::isExistInDB(Form &form)
