@@ -54,11 +54,9 @@ void RobotomyRequestForm::execute(Bureaucrat const &executor) const
 	{
 		if (this->getIsSigned())
 		{
-			std::random_device rd;
-			std::mt19937 gen(rd());
-			std::uniform_int_distribution<int> dis(0, 99);
-			if (dis(gen) >= 50)
-				std::cout << this->getTarget() << " has been robotomized" << std::endl;
+			std::srand(time(NULL));
+			if (std::rand() % 2)
+				std::cout << this->getTarget() << " has been robotomized BRRRRRRRRRRRR" << std::endl;
 			else
 				std::cout << this->getTarget() << " robotomy failed." << std::endl;
 		}
