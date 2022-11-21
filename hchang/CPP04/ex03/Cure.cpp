@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 16:31:45 by hchang            #+#    #+#             */
-/*   Updated: 2022/11/17 17:42:00 by hchang           ###   ########.fr       */
+/*   Updated: 2022/11/21 21:46:43 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,6 @@ AMateria* Cure::clone() const
 
 void Cure::use(ICharacter& target)
 {
-	std::cout << "* heals " << target.getName() << "'s wounds *" << std::endl;
+	std::cout <<GRN "* heals " << target.getName() << "'s wounds *" RESET<< std::endl;
 }
 // 일단 가자

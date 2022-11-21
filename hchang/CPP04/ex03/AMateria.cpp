@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:45:02 by hchang            #+#    #+#             */
-/*   Updated: 2022/11/18 14:31:05 by hchang           ###   ########.fr       */
+/*   Updated: 2022/11/21 21:48:29 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 AMateria::AMateria()
 {
-	std::cout << "AMateria new"<< std::endl;
+	std::cout << "[AMateria new]" << std::endl;
 }
 
 AMateria::AMateria(std::string const & type)
 {
 	this->_type = type;
-	std::cout << "AMateria Constructor called" << std::endl;
+	std::cout << "[AMateria Constructor called]" << std::endl;
 }
 
 std::string const&	AMateria::getType() const
@@ -31,11 +31,11 @@ std::string const&	AMateria::getType() const
 
 AMateria::~AMateria()
 {
-	std::cout << "AMateria delete\n";
+	std::cout << "[AMateria delete]" << std::endl;;
 }
 
 void	AMateria::use(ICharacter& target)
 {
 	(void)target;
-	std::cout << "AMateria use\n";
+	std::cout << "[AMateria use]" << std::endl;;
 }

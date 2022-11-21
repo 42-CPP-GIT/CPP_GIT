@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 16:33:43 by hchang            #+#    #+#             */
-/*   Updated: 2022/11/18 14:41:11 by hchang           ###   ########.fr       */
+/*   Updated: 2022/11/21 21:48:43 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,20 @@
 
 MateriaSource::MateriaSource() : _idx(0)
 {
-	std::cout << "[MateriaSource Constructor called]\n";
+	std::cout << "[MateriaSource Constructor called]" << std::endl;
 }
 
 MateriaSource::~MateriaSource()
 {
-	std::cout << "[MateriaSource Destructor called]\n";
+	std::cout << "[MateriaSource Destructor called]" << std::endl;
 	for (int i = 0; i <= _idx; i++)
 		delete _item[i];
 }
 
 void MateriaSource::learnMateria(AMateria* skill)
 {
+	if (!skill)
+		return ;
 	if (this->_idx > 3)
 	{
 		std::cout << "You Already mastered all the skills. You should Level up to learn more skills\n";
@@ -40,7 +42,7 @@ AMateria* MateriaSource::createMateria(std::string const & type)
 {
 	if (this->_idx > 3)
 		this->_idx = 3;
-	if (_idx < 0 || _item[_idx] == 0)
+	if (_idx < 0 || _item[_idx - 1] == 0)
 		return (0);
 	for (int i = 0; i <= _idx; i++)
 	{
