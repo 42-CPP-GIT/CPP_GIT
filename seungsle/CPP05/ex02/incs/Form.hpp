@@ -6,7 +6,7 @@
 /*   By: seungsle <seungsle@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 18:43:47 by seungsle          #+#    #+#             */
-/*   Updated: 2022/11/21 00:19:59 by seungsle         ###   ########.fr       */
+/*   Updated: 2022/11/21 17:32:13 by seungsle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ public:
 	virtual void execute(Bureaucrat const & executor) const = 0;
 
 	bool beSigned(void);
-	void sign(Bureaucrat &bureaucrat);
+	void signForm(Bureaucrat &bureaucrat);
 
 	bool isTooHigh(int grade);
 	bool isTooLow(int grade);

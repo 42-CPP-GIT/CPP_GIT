@@ -6,7 +6,7 @@
 /*   By: seungsle <seungsle@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 18:43:45 by seungsle          #+#    #+#             */
-/*   Updated: 2022/11/21 00:58:38 by seungsle         ###   ########.fr       */
+/*   Updated: 2022/11/21 17:32:45 by seungsle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ bool Form::beSigned(void)
 	return (this->getIsSigned());
 }
 
-void Form::sign(Bureaucrat &bureaucrat)
+void Form::signForm(Bureaucrat &bureaucrat)
 {
 	if (bureaucrat.getGrade() <= this->getGradeToSign())
 		this->setIsSigned(true);

@@ -6,7 +6,7 @@
 /*   By: seungsle <seungsle@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 14:11:12 by seungsle          #+#    #+#             */
-/*   Updated: 2022/11/21 01:03:22 by seungsle         ###   ########.fr       */
+/*   Updated: 2022/11/21 17:32:33 by seungsle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int main(void)
 	{
 		Bureaucrat A("seungsle", 10);
 		Form *form1 = new ShrubberyCreationForm("target2");
-		form1->sign(A);
+		form1->signForm(A);
 		A.executeForm(*form1);
 	}
 	catch(const std::exception& e)
@@ -47,7 +47,7 @@ int main(void)
 		// Bureaucrat A("seungsle", 150);
 		Bureaucrat A("seungsle", 142);
 		Form *form1 = new ShrubberyCreationForm("target3");
-		form1->sign(A);
+		form1->signForm(A);
 		A.executeForm(*form1);
 	}
 	catch(const std::exception& e)
@@ -61,8 +61,8 @@ int main(void)
 		Bureaucrat B("alvin", 1);
 		Form *form1 = new RobotomyRequestForm("target4");
 		Form *form2 = new RobotomyRequestForm("target5");
-		form1->sign(A);
-		form2->sign(B);
+		form1->signForm(A);
+		form2->signForm(B);
 		A.executeForm(*form1);
 		B.executeForm(*form2);
 	}
@@ -77,9 +77,9 @@ int main(void)
 		Bureaucrat B("alvin", 150);
 		Form *form1 = new RobotomyRequestForm("target6");
 		Form *form2 = new RobotomyRequestForm("target7");
-		form1->sign(A);
+		form1->signForm(A);
 		A.executeForm(*form1);
-		form2->sign(B);
+		form2->signForm(B);
 		// A.executeForm(*form1);
 		B.executeForm(*form2);
 	}
@@ -94,9 +94,9 @@ int main(void)
 		Bureaucrat B("alvin", 150);
 		Form *form1 = new PresidentialPardonForm("target8");
 		Form *form2 = new PresidentialPardonForm("target9");
-		form1->sign(A);
+		form1->signForm(A);
 		A.executeForm(*form1);
-		form2->sign(B);
+		form2->signForm(B);
 		// A.executeForm(*form1);
 		B.executeForm(*form2);
 	}
