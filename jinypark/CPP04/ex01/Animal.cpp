@@ -1,37 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Ice.cpp                                            :+:      :+:    :+:   */
+/*   Animal.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jinypark <jinypark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/20 23:57:10 by jinypark          #+#    #+#             */
-/*   Updated: 2022/11/21 14:55:20 by jinypark         ###   ########.fr       */
+/*   Created: 2022/11/15 21:59:52 by jinypark          #+#    #+#             */
+/*   Updated: 2022/11/21 15:32:22 by jinypark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Ice.hpp"
+#include "Animal.hpp"
 
-Ice::Ice(void) : AMateria("ice")
+Animal::Animal(void)
 {
-	#ifdef DEBUG
-	std::cout << "[Ice] default constructor has been called.\n";
-	#endif
+	this->type = "Animal";
 }
 
-Ice::~Ice()
+Animal::~Animal(void)
 {
-	#ifdef DEBUG
-	std::cout << "[Ice] default destructor has been called.\n";
-	#endif
 }
 
-AMateria* Ice::clone() const
+Animal::Animal(const Animal &obj)
 {
-	return (new Ice());
+	*this = obj;
 }
 
-void Ice::use(ICharacter& target)
+Animal	&Animal::operator=(Animal const &obj)
 {
-	std::cout << "* shoots an ice bolt at " + target.getName() + " *\n";
+	if (this != &obj)
+		this->type = obj.type;
+	return (*this);
 }
+
+void	Animal::makeSound(void) const
+{
+	std::cout << "animal sound\n";
+}
+
+std::string	Animal::getType(void) const
+{
+	return (this->type);
+}
+

@@ -1,37 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Ice.cpp                                            :+:      :+:    :+:   */
+/*   Cat.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jinypark <jinypark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/20 23:57:10 by jinypark          #+#    #+#             */
-/*   Updated: 2022/11/21 14:55:20 by jinypark         ###   ########.fr       */
+/*   Created: 2022/11/15 22:13:19 by jinypark          #+#    #+#             */
+/*   Updated: 2022/11/16 13:05:50 by jinypark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Ice.hpp"
+#ifndef CAT_HPP
+#define CAT_HPP
 
-Ice::Ice(void) : AMateria("ice")
-{
-	#ifdef DEBUG
-	std::cout << "[Ice] default constructor has been called.\n";
-	#endif
-}
+#include <iostream>
+#include "Animal.hpp"
 
-Ice::~Ice()
+class Cat : public Animal
 {
-	#ifdef DEBUG
-	std::cout << "[Ice] default destructor has been called.\n";
-	#endif
-}
+protected:
+public:
+	Cat(void);
+	~Cat(void);
+	Cat(const Cat &obj);
+	Cat	&operator=(Cat const &obj);
+	virtual void	makeSound(void) const;
+};
 
-AMateria* Ice::clone() const
-{
-	return (new Ice());
-}
-
-void Ice::use(ICharacter& target)
-{
-	std::cout << "* shoots an ice bolt at " + target.getName() + " *\n";
-}
+#endif

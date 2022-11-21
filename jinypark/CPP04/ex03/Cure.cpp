@@ -14,14 +14,14 @@
 
 Cure::Cure(void) : AMateria("cure")
 {
-	#ifdef EVAL
+	#ifdef DEBUG
 	std::cout << "[Cure] default constructor has been called.\n";
 	#endif
 }
 
 Cure::~Cure()
 {
-	#ifdef EVAL
+	#ifdef DEBUG
 	std::cout << "[Cure] default destructor has been called.\n";
 	#endif
 }

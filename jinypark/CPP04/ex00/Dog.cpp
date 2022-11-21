@@ -1,37 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Ice.cpp                                            :+:      :+:    :+:   */
+/*   Dog.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jinypark <jinypark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/20 23:57:10 by jinypark          #+#    #+#             */
-/*   Updated: 2022/11/21 14:55:20 by jinypark         ###   ########.fr       */
+/*   Created: 2022/11/15 22:26:18 by jinypark          #+#    #+#             */
+/*   Updated: 2022/11/15 23:21:48 by jinypark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Ice.hpp"
+#include "Dog.hpp"
 
-Ice::Ice(void) : AMateria("ice")
+Dog::Dog(/* args */)
 {
-	#ifdef DEBUG
-	std::cout << "[Ice] default constructor has been called.\n";
-	#endif
+	this->type = "Dog";
 }
 
-Ice::~Ice()
+Dog::~Dog()
 {
-	#ifdef DEBUG
-	std::cout << "[Ice] default destructor has been called.\n";
-	#endif
 }
 
-AMateria* Ice::clone() const
+Dog::Dog(const Dog &obj)
 {
-	return (new Ice());
+	*this = obj;
 }
 
-void Ice::use(ICharacter& target)
+Dog	&Dog::operator=(Dog const &obj)
 {
-	std::cout << "* shoots an ice bolt at " + target.getName() + " *\n";
+	if (this != &obj)
+		this->type = obj.type;
+	return (*this);
+}
+
+void	Dog::makeSound(void) const
+{
+	std::cout << "WANG...!\n";
 }

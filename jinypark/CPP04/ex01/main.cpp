@@ -5,45 +5,48 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jinypark <jinypark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/21 00:08:35 by jinypark          #+#    #+#             */
-/*   Updated: 2022/11/21 14:46:20 by jinypark         ###   ########.fr       */
+/*   Created: 2022/11/16 12:46:33 by jinypark          #+#    #+#             */
+/*   Updated: 2022/11/21 18:44:38 by jinypark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Ice.hpp"
-#include "Cure.hpp"
-#include "Character.hpp"
-#include "MateriaSource.hpp"
+#include "Cat.hpp"
+#include "Dog.hpp"
 
 void a()
 {
 	system("leaks a.out");
 }
-
 int main()
 {
 	// atexit(a);
-	IMateriaSource* src = new MateriaSource();
-	src->learnMateria(new Ice());
-	src->learnMateria(new Cure());
-	ICharacter* me = new Character("me");
-	AMateria* tmp;
-	tmp = src->createMateria("ice");
-	me->equip(tmp);
-	tmp = src->createMateria("cure");
-	me->equip(tmp);
-	ICharacter* bob = new Character("bob");
-	ICharacter* sam = new Character("sam");
-	me->use(0, *bob);
-	me->use(1, *bob);
-	me->use(1, *sam);
-	sam->use(0, *me);
-	sam->equip(tmp);
-	sam->use(0, *me);
+	// // const Animal* j = new Dog();
+	// const Animal* i = new Cat();
+	
+	// i->getBrain()->showIdeas();
+	// i->getBrain()->setIdeas("hi");
+	// i->getBrain()->showIdeas();
+	// // delete j;//should not create a leak
+	// delete i;
 
-	delete tmp;
-	delete bob;
-	delete me;
-	delete src;
-	return 0;
+	Animal *a[100];
+
+	int i = 0;
+	int j = 0;
+	for (; i < 50; i++)
+		a[i] = new Cat();
+	for (; i < 100; i++)
+		a[i] = new Cat();
+
+	
+	for (; j < 100; j++)
+		delete a[j];
+	Cat *A = new Cat();
+	Cat *B = new Cat(*A);
+	Cat *C = new Cat();
+	*C = *A;
+	delete C;
+	delete B;
+	delete A;
+	return (0);
 }

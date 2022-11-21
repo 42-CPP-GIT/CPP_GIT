@@ -1,37 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Ice.cpp                                            :+:      :+:    :+:   */
+/*   Animal.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jinypark <jinypark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/20 23:57:10 by jinypark          #+#    #+#             */
-/*   Updated: 2022/11/21 14:55:20 by jinypark         ###   ########.fr       */
+/*   Created: 2022/11/15 22:13:19 by jinypark          #+#    #+#             */
+/*   Updated: 2022/11/21 18:44:49 by jinypark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Ice.hpp"
+#ifndef ANIMAL_HPP
+#define ANIMAL_HPP
 
-Ice::Ice(void) : AMateria("ice")
-{
-	#ifdef DEBUG
-	std::cout << "[Ice] default constructor has been called.\n";
-	#endif
-}
+#include <iostream>
 
-Ice::~Ice()
-{
-	#ifdef DEBUG
-	std::cout << "[Ice] default destructor has been called.\n";
-	#endif
-}
+class Brain;
 
-AMateria* Ice::clone() const
+class Animal
 {
-	return (new Ice());
-}
+protected:
+	std::string type;
+public:
+	Animal(void);
+	virtual	~Animal(void);
+	Animal(const Animal &obj);
+	Animal	&operator=(Animal const &obj);
+	std::string	getType(void) const;
+	virtual void	makeSound(void) const;
+	virtual Brain*	getBrain(void) const = 0;
+};
 
-void Ice::use(ICharacter& target)
-{
-	std::cout << "* shoots an ice bolt at " + target.getName() + " *\n";
-}
+#endif
