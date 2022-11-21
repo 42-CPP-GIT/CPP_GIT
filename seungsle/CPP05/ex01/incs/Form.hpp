@@ -6,7 +6,7 @@
 /*   By: seungsle <seungsle@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 18:43:47 by seungsle          #+#    #+#             */
-/*   Updated: 2022/11/20 17:23:31 by seungsle         ###   ########.fr       */
+/*   Updated: 2022/11/21 17:58:08 by seungsle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,11 @@ public:
 	{
 	public:
 		const char* what() const throw();
+	};
+	class AlreadySigned: public std::exception
+	{
+	public:
+		const char *what() const throw();
 	};
 	Form(/* args */);
 	Form(std::string name, int gradeToSign, int gradeToExecute);

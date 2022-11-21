@@ -6,7 +6,7 @@
 /*   By: seungsle <seungsle@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 14:11:05 by seungsle          #+#    #+#             */
-/*   Updated: 2022/11/20 18:11:53 by seungsle         ###   ########.fr       */
+/*   Updated: 2022/11/21 17:52:15 by seungsle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ public:
 	class InvalidIndexForm: public std::exception
 	{
 	public:
-		const char * what() const throw();	
+		const char * what() const throw();
 	};
 	class MyException
 	{

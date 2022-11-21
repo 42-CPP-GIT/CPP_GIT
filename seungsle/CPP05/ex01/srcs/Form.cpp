@@ -6,7 +6,7 @@
 /*   By: seungsle <seungsle@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 18:43:45 by seungsle          #+#    #+#             */
-/*   Updated: 2022/11/20 18:41:45 by seungsle         ###   ########.fr       */
+/*   Updated: 2022/11/21 18:26:49 by seungsle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,8 @@ void Form::beSigned(Bureaucrat &bureaucrat)
 {
 	if (bureaucrat.getGrade() <= this->getGradeToSign())
 	{
+		if (this->getIsSigned() == true)
+			throw(Form::AlreadySigned());
 		this->setIsSigned(true);
 		std::cout << bureaucrat.getName() << " signed " << this->getName() << " [this form is copied at " << bureaucrat.getName() << "'s DB (index: " << bureaucrat.setForm(*(new Form(*this))) << ")]" << std::endl;
 	}
@@ -132,4 +134,9 @@ const char *Form::GradeTooHighException::what(void) const throw()
 const char *Form::GradeTooLowException::what(void) const throw()
 {
 	return "grade too low";
+}
+
+const char *Form::AlreadySigned::what(void) const throw()
+{
+	return "already signed";
 }
