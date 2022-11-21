@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 18:51:09 by hojinjang         #+#    #+#             */
-/*   Updated: 2022/11/18 16:40:44 by hchang           ###   ########.fr       */
+/*   Updated: 2022/11/21 14:38:45 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ Dog::Dog() : _name("Dog")
 }
 
 
-Dog::Dog(Brain *brain)
+Dog::Dog(Brain *brain) : _brain(0)
 {
 	std::cout << "[Dog Default Constructor Called]\n";
 	_type = "Dog";
@@ -42,13 +42,15 @@ Dog& Dog::operator=(const Dog& obj)
 	if (this->_brain)
 		delete this->_brain;
 	this->_brain = new Brain(*obj._brain);
+
 	return (*this);
 }
 
 Dog::~Dog()
 {
-	delete	this->_brain;
 	std::cout << "[Dog Destructor Called]\n";
+	if (this->_brain)
+		delete	this->_brain;
 }
 
 void	Dog::makeSound(void) const

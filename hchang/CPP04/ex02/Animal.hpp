@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 18:44:14 by hojinjang         #+#    #+#             */
-/*   Updated: 2022/11/18 17:33:37 by hchang           ###   ########.fr       */
+/*   Updated: 2022/11/21 22:30:29 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@
 
 #include <iostream>
 
-// class Dog;
-// class Cat;
 
 class Animal
 {
@@ -35,7 +33,7 @@ public:
 	virtual ~Animal();
 	virtual void	makeSound(void) const = 0;
 	std::string		getType(void) const;
-	void	noBrain(void){};
+	virtual void	noBrain(void);
 };
 
 #endif
