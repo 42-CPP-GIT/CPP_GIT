@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 16:31:45 by hchang            #+#    #+#             */
-/*   Updated: 2022/11/21 21:46:43 by hchang           ###   ########.fr       */
+/*   Updated: 2022/11/21 22:12:20 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ Cure& Cure::operator=(const Cure& obj)
 
 Cure::~Cure()
 {
-	std::cout << "cure delete\n";
+	std::cout << "[cure delete]\n";
 }
 
 Cure::Cure(std::string const & type)

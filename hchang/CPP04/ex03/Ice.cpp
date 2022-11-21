@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 16:31:45 by hchang            #+#    #+#             */
-/*   Updated: 2022/11/21 21:46:54 by hchang           ###   ########.fr       */
+/*   Updated: 2022/11/21 22:12:16 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ Ice& Ice::operator=(const Ice& obj)
 
 Ice::~Ice()
 {
-	std::cout << "ice delete\n";
+	std::cout << "[ice delete]\n";
 }
 
 Ice::Ice(std::string const & type)

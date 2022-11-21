@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 16:34:11 by hchang            #+#    #+#             */
-/*   Updated: 2022/11/21 21:49:16 by hchang           ###   ########.fr       */
+/*   Updated: 2022/11/21 22:25:57 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,10 +73,8 @@ void test1(void)
 	delete src;
 }
 
-int main()
+void test2(void)
 {
-	// atexit(a);
-
 	IMateriaSource* src = new MateriaSource();
 	src->learnMateria(new Ice());
 	src->learnMateria(new Cure());
@@ -104,6 +102,33 @@ int main()
 	// hchang->use(3, *me);
 
 	
+	delete me;
+	delete src;
+}
+
+
+int main()
+{
+	// atexit(a);
+	IMateriaSource* src = new MateriaSource();
+	src->learnMateria(new Ice());
+	src->learnMateria(new Cure());
+
+	ICharacter* me = new Character("me");
+	
+	AMateria* tmp;
+	tmp = src->createMateria("ice");
+	me->equip(tmp);
+	tmp = src->createMateria("cure");
+	me->equip(tmp);
+
+	tmp = src->createMateria("hi");
+
+	me->use(0, *me);
+	me->use(1, *me);
+	me->use(2, *me);
+
+
 	delete me;
 	delete src;
 
