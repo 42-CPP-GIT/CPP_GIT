@@ -1,31 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   HumanB.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/09 15:51:39 by minsuki2          #+#    #+#             */
-/*   Updated: 2022/11/21 14:40:29 by minsuki2         ###   ########.fr       */
+/*   Created: 2022/11/21 15:16:47 by minsuki2          #+#    #+#             */
+/*   Updated: 2022/11/21 18:28:57 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
-# define N_ZOM		5
+#ifndef HUMANB_HPP
+# define HUMANB_HPP
 
-int main(void) {
+#include "Weapon.hpp"
+# define MSG_HUMAN_B	"[HumanB] "
 
-	Zombie *heap_zom = zombieHorde(N_ZOM, "HeapZom");
-	Zombie *null_zom = NULL;
-	Zombie name_zom("NameZom");
-	Zombie stack_zom;
+class HumanB {
+	public:
+		HumanB(const std::string& name);
+		~HumanB(void);
+		void	attack(void);
+		void	setWeapon(Weapon& weapon);
 
-	for (int i = 0; i < N_ZOM; i++)
-		heap_zom[i].announce();
+	private:
+		HumanB(void);
+		std::string		name_;
+		Weapon			*weapon_;
+};
 
-	name_zom.announce();
-	stack_zom.announce();
-	delete[] heap_zom;
-	delete[] null_zom;
-	return (0);
-}
+#endif

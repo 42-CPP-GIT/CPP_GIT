@@ -1,31 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   HumanA.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/09 15:51:39 by minsuki2          #+#    #+#             */
-/*   Updated: 2022/11/21 14:40:29 by minsuki2         ###   ########.fr       */
+/*   Created: 2022/11/21 15:11:39 by minsuki2          #+#    #+#             */
+/*   Updated: 2022/11/21 18:08:44 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
-# define N_ZOM		5
 
-int main(void) {
+#ifndef HUMANA_HPP
+# define HUMANA_HPP
 
-	Zombie *heap_zom = zombieHorde(N_ZOM, "HeapZom");
-	Zombie *null_zom = NULL;
-	Zombie name_zom("NameZom");
-	Zombie stack_zom;
+#include "Weapon.hpp"
+# define MSG_HUMAN_A	"[HumanA] "
 
-	for (int i = 0; i < N_ZOM; i++)
-		heap_zom[i].announce();
+class HumanA {
+	public:
+		HumanA(const std::string& name, Weapon& weapon);
+		~HumanA(void);
 
-	name_zom.announce();
-	stack_zom.announce();
-	delete[] heap_zom;
-	delete[] null_zom;
-	return (0);
-}
+		void	attack(void);
+
+	private:
+		HumanA(void);
+
+		std::string name_;
+		Weapon &weapon_;
+};
+
+#endif

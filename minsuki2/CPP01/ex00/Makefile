@@ -6,7 +6,7 @@
 #    By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/29 18:32:08 by minsuki2          #+#    #+#              #
-#    Updated: 2022/11/09 15:51:05 by minsuki2         ###   ########.fr        #
+#    Updated: 2022/11/21 15:01:01 by minsuki2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,12 +43,12 @@ $(OBJS_DIR)%.o: $(SRCS_DIR)%.cpp
 clean:
 	@echo
 	@echo ">>>>>>>>>>>>>>>> clean List <<<<<<<<<<<<<<<<<<<<"
-	@$(RM) $(basename $(OBJS_DIR)) $(DEPS_DIR)
+	@$(RM) $(OBJS_DIR) $(DEPS_DIR)
 	@echo
 
 fclean: clean
 	@echo ">>>>>>>>>>>>>>>> fclean List <<<<<<<<<<<<<<<<<<<<"
-	@$(RM) $(NAME) $(wildcard *.log)
+	@$(RM) $(NAME)
 	@echo
 
 re: | fclean all

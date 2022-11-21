@@ -6,7 +6,7 @@
 #    By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/29 18:32:08 by minsuki2          #+#    #+#              #
-#    Updated: 2022/11/21 15:00:46 by minsuki2         ###   ########.fr        #
+#    Updated: 2022/11/21 18:41:12 by minsuki2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ DEPS_DIR 	:=		deps/
 SRCS 		:=		$(wildcard $(SRCS_DIR)*.cpp)
 OBJS 		:=		$(addprefix $(OBJS_DIR), $(notdir $(SRCS:.cpp=.o)))
 DEPS		:=		$(addprefix $(DEPS_DIR), $(notdir $(SRCS:.cpp=.d)))
-NAME		:=		zombie
+NAME		:=		weapon
 
 all: $(NAME)
 
@@ -53,6 +53,10 @@ fclean: clean
 
 re: | fclean all
 
+debug: fclean
+	@echo "<<< debug >>>"
+	@make "CPPFLAGS	= -Wall -Werror -Wextra -std=c++98 -Ddebug -g3" all
+
 -include $(DEPS)
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re debug

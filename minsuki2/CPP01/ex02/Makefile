@@ -6,7 +6,7 @@
 #    By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/29 18:32:08 by minsuki2          #+#    #+#              #
-#    Updated: 2022/11/21 15:00:46 by minsuki2         ###   ########.fr        #
+#    Updated: 2022/11/21 15:00:19 by minsuki2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ DEPS_DIR 	:=		deps/
 SRCS 		:=		$(wildcard $(SRCS_DIR)*.cpp)
 OBJS 		:=		$(addprefix $(OBJS_DIR), $(notdir $(SRCS:.cpp=.o)))
 DEPS		:=		$(addprefix $(DEPS_DIR), $(notdir $(SRCS:.cpp=.d)))
-NAME		:=		zombie
+NAME		:=		brain
 
 all: $(NAME)
 
