@@ -6,7 +6,7 @@
 /*   By: seungsle <seungsle@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 01:24:23 by seungsle          #+#    #+#             */
-/*   Updated: 2022/11/21 18:28:53 by seungsle         ###   ########.fr       */
+/*   Updated: 2022/11/22 21:40:07 by seungsle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ class Convert
 private:
 	std::string _input;
 	double _literal;
-	int _type; // char 0 int 1 float 2 double 3
+	int _type; // char 0 int 1 float 2 double 3 Nan 4 Inf 5
 public:
 	class UndefinedTypeException: public std::exception
 	{
@@ -34,8 +34,6 @@ public:
 	Convert& operator=(const Convert &source);
 
 	void setType(void);
-
-	bool iterateStinrgCheckDigit(std::string str);
 
 	void toChar(void);
 	void toInt(void);

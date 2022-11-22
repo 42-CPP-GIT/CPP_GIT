@@ -6,7 +6,7 @@
 /*   By: seungsle <seungsle@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 01:22:03 by seungsle          #+#    #+#             */
-/*   Updated: 2022/11/21 03:32:45 by seungsle         ###   ########.fr       */
+/*   Updated: 2022/11/22 21:27:42 by seungsle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,17 @@ int main(int argc, char **argv)
 {
 	if (argc == 2)
 	{
-		Convert cvt(argv[1]);
-		cvt.toChar();
-		cvt.toInt();
-		cvt.toFloat();
-		cvt.toDouble();
+		try
+		{
+			Convert cvt(argv[1]);
+			cvt.toChar();
+			cvt.toInt();
+			cvt.toFloat();
+			cvt.toDouble();
+		}
+		catch(const std::exception& e)
+		{
+			std::cerr << e.what() << '\n';
+		}
 	}
 }
