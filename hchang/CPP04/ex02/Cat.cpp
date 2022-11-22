@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 18:50:59 by hojinjang         #+#    #+#             */
-/*   Updated: 2022/11/21 14:37:48 by hchang           ###   ########.fr       */
+/*   Updated: 2022/11/22 14:10:16 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ Cat::Cat() : _name("Cat")
 Cat::Cat(const Cat& obj) : _brain(0)
 {
 	std::cout << "[Cat Copy Constructor Called]\n";
+	this->_brain = NULL;
 	*this = obj;
 }
 

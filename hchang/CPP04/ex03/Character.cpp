@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 15:37:23 by hchang            #+#    #+#             */
-/*   Updated: 2022/11/21 22:03:28 by hchang           ###   ########.fr       */
+/*   Updated: 2022/11/22 14:23:17 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ Character::Character(const Character& obj)
 
 Character& Character::operator=(const Character& obj)
 {
+	std::cout << "[Character copy Assignmet called]" << std::endl;
 	if (this == &obj)
 		return (*this);
 	this->_name = obj._name;

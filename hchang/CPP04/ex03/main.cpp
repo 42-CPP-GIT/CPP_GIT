@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 16:34:11 by hchang            #+#    #+#             */
-/*   Updated: 2022/11/21 22:25:57 by hchang           ###   ########.fr       */
+/*   Updated: 2022/11/22 15:12:07 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void test1(void)
 	// src->learnMateria(new Cure()); // <- 못들어감
 
 	
-	ICharacter* me = new Character("me");
+	Character* me = new Character("me");
 	
 	AMateria* tmp;
 	AMateria* tmp1;
@@ -57,7 +57,7 @@ void test1(void)
 	// tmp = src->createMateria("whatthe");
 	// me->equip(tmp);
 
-	ICharacter* bob = new Character("sesim");
+	Character* bob = new Character("sesim");
 	me->use(0, *bob);
 	me->use(1, *bob);
 	me->use(2, *bob);
@@ -79,7 +79,7 @@ void test2(void)
 	src->learnMateria(new Ice());
 	src->learnMateria(new Cure());
 
-	ICharacter* me = new Character("me");
+	Character* me = new Character("me");
 
 	AMateria* tmp;
 	
@@ -88,7 +88,7 @@ void test2(void)
 	tmp = src->createMateria("cure");
 	me->equip(tmp);
 
-	ICharacter* hchang = me;
+	Character* hchang = me;
 
 	hchang->use(0, *me);
 	hchang->use(1, *me);
@@ -110,27 +110,38 @@ void test2(void)
 int main()
 {
 	// atexit(a);
-	IMateriaSource* src = new MateriaSource();
+	MateriaSource* src = new MateriaSource();
 	src->learnMateria(new Ice());
 	src->learnMateria(new Cure());
 
-	ICharacter* me = new Character("me");
+	Character* me = new Character("me");
 	
+	MateriaSource* src2 = new MateriaSource();
+
+	*src2 = *src;
+
 	AMateria* tmp;
-	tmp = src->createMateria("ice");
+	tmp = src2->createMateria("ice");
 	me->equip(tmp);
-	tmp = src->createMateria("cure");
+	tmp = src2->createMateria("cure");
 	me->equip(tmp);
 
-	tmp = src->createMateria("hi");
+	Character* hchang = new Character("hchang");
+	std::cout << "bro\n";
+	*hchang = *me;
+	std::cout << "bro1\n";
 
-	me->use(0, *me);
-	me->use(1, *me);
-	me->use(2, *me);
+	tmp = src2->createMateria("hi");
+
+	hchang->use(0, *me);
+	hchang->use(1, *me);
+	hchang->use(2, *me);
 
 
 	delete me;
 	delete src;
+	delete src2;
+
 
 	return 0;
 }

@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 18:51:09 by hojinjang         #+#    #+#             */
-/*   Updated: 2022/11/21 14:38:45 by hchang           ###   ########.fr       */
+/*   Updated: 2022/11/22 14:11:18 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ Dog::Dog(Brain *brain) : _brain(0)
 Dog::Dog(const Dog& obj)
 {
 	std::cout << "[Dog Copy Constructor Called]\n";
+	this->_brain = NULL;
 	*this = obj;
 }
 
