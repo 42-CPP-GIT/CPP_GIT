@@ -6,7 +6,7 @@
 /*   By: jinypark <jinypark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 12:46:33 by jinypark          #+#    #+#             */
-/*   Updated: 2022/11/22 12:07:13 by jinypark         ###   ########.fr       */
+/*   Updated: 2022/11/22 12:13:43 by jinypark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,9 @@
 
 int main()
 {
-
-	Animal *a[100];
+	AAnimal ani;
+	
+	AAnimal *a[100];
 
 	int i = 0;
 	// int j = 0;
@@ -25,7 +26,7 @@ int main()
 	for (; i < 100; i++)
 		a[i] = new Cat();
 
-	Animal* newAnimal = new Dog(*(dynamic_cast<Dog *>(a[0])));
+	AAnimal* newAnimal = new Dog(*(dynamic_cast<Dog *>(a[0])));
 
 	a[0]->getBrain()->showIdeas();
 	newAnimal->getBrain()->showIdeas();

@@ -6,7 +6,7 @@
 /*   By: jinypark <jinypark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 00:08:35 by jinypark          #+#    #+#             */
-/*   Updated: 2022/11/21 14:46:20 by jinypark         ###   ########.fr       */
+/*   Updated: 2022/11/22 12:34:14 by jinypark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ int main()
 	me->equip(tmp);
 	tmp = src->createMateria("cure");
 	me->equip(tmp);
+	tmp = src->createMateria("fire");
 	ICharacter* bob = new Character("bob");
 	ICharacter* sam = new Character("sam");
 	me->use(0, *bob);

@@ -1,30 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   MateriaSource.hpp                                  :+:      :+:    :+:   */
+/*   AAnimal.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jinypark <jinypark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/20 22:59:05 by jinypark          #+#    #+#             */
-/*   Updated: 2022/11/22 12:26:04 by jinypark         ###   ########.fr       */
+/*   Created: 2022/11/15 22:13:19 by jinypark          #+#    #+#             */
+/*   Updated: 2022/11/21 18:44:49 by jinypark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MATERIASOURCE_HPP
-#define MATERIASOURCE_HPP
+#ifndef AANIMAL_HPP
+#define AANIMAL_HPP
 
-#include "IMateriaSource.hpp"
+#include <iostream>
 
-class MateriaSource : public IMateriaSource
+class Brain;
+
+class AAnimal
 {
-private:
-	AMateria*		slots[4];
-	unsigned int	slotCnt;
+protected:
+	std::string type;
 public:
-	MateriaSource();
-	~MateriaSource();
-	virtual void learnMateria(AMateria* m);
-	virtual AMateria* createMateria(std::string const & type);
+	AAnimal(void);
+	virtual	~AAnimal(void);
+	AAnimal(const AAnimal &obj);
+	AAnimal	&operator=(AAnimal const &obj);
+	std::string	getType(void) const;
+	virtual void	makeSound(void) const = 0;
+	virtual Brain*	getBrain(void) const = 0;
 };
 
 #endif

@@ -1,30 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   MateriaSource.hpp                                  :+:      :+:    :+:   */
+/*   Cat.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jinypark <jinypark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/20 22:59:05 by jinypark          #+#    #+#             */
-/*   Updated: 2022/11/22 12:26:04 by jinypark         ###   ########.fr       */
+/*   Created: 2022/11/15 22:13:19 by jinypark          #+#    #+#             */
+/*   Updated: 2022/11/22 12:13:05 by jinypark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MATERIASOURCE_HPP
-#define MATERIASOURCE_HPP
+#ifndef CAT_HPP
+#define CAT_HPP
 
-#include "IMateriaSource.hpp"
+#include <iostream>
+#include "AAnimal.hpp"
+#include "Brain.hpp"
 
-class MateriaSource : public IMateriaSource
+class Cat : public AAnimal
 {
 private:
-	AMateria*		slots[4];
-	unsigned int	slotCnt;
+	Brain* brain;
 public:
-	MateriaSource();
-	~MateriaSource();
-	virtual void learnMateria(AMateria* m);
-	virtual AMateria* createMateria(std::string const & type);
+	Cat(void);
+	~Cat(void);
+	Cat(const Cat &obj);
+	Cat	&operator=(Cat const &obj);
+	virtual void	makeSound(void) const;
+	Brain*			getBrain(void) const;
 };
 
 #endif

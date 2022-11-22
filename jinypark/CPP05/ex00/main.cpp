@@ -1,30 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   MateriaSource.hpp                                  :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jinypark <jinypark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/20 22:59:05 by jinypark          #+#    #+#             */
-/*   Updated: 2022/11/22 12:26:04 by jinypark         ###   ########.fr       */
+/*   Created: 2022/11/22 13:59:42 by jinypark          #+#    #+#             */
+/*   Updated: 2022/11/22 14:43:35 by jinypark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MATERIASOURCE_HPP
-#define MATERIASOURCE_HPP
+#include "Bureaucrat.hpp"
 
-#include "IMateriaSource.hpp"
-
-class MateriaSource : public IMateriaSource
+int main()
 {
-private:
-	AMateria*		slots[4];
-	unsigned int	slotCnt;
-public:
-	MateriaSource();
-	~MateriaSource();
-	virtual void learnMateria(AMateria* m);
-	virtual AMateria* createMateria(std::string const & type);
-};
+	try
+	{
+		Bureaucrat c(-2);
+		Bureaucrat b(150);
+		Bureaucrat a(200);
+		std::cout << b;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
 
-#endif
+	try
+	{
+		Bureaucrat a(3);
+		while(1)
+		{
+			std::cout << a << "\n";
+			a.increment(1);
+		}
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	
+	return (0);
+}

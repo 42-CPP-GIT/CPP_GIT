@@ -6,7 +6,7 @@
 /*   By: jinypark <jinypark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 00:57:56 by jinypark          #+#    #+#             */
-/*   Updated: 2022/11/21 14:55:20 by jinypark         ###   ########.fr       */
+/*   Updated: 2022/11/22 12:34:05 by jinypark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 void MateriaSource::learnMateria(AMateria* m)
 {
-	static int i = -1;
-	if (++i < 4)
-		this->slots[i] = m;
-}
+	if (this->slotCnt < 4)
+		this->slots[this->slotCnt] = m;
+	++this->slotCnt;
+}	
 
 AMateria* MateriaSource::createMateria(std::string const & type)
 {
-	for (int i = 0; i < 4; ++i)
+	for (unsigned int i = 0; i < slotCnt; ++i)
 	{
 		if (this->slots[i]->getType() == type)
 			return (this->slots[i]->clone());
@@ -34,6 +34,9 @@ MateriaSource::MateriaSource()
 	#ifdef DEBUG
 	std::cout << "[MaterialSource] default constructor has been called.\n";
 	#endif
+	this->slotCnt = 0;
+	for (int i = 0; i < 4; ++i)
+		slots[i] = NULL;
 }
 
 MateriaSource::~MateriaSource()

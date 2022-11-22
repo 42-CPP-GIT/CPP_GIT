@@ -1,30 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   MateriaSource.hpp                                  :+:      :+:    :+:   */
+/*   AAnimal.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jinypark <jinypark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/20 22:59:05 by jinypark          #+#    #+#             */
-/*   Updated: 2022/11/22 12:26:04 by jinypark         ###   ########.fr       */
+/*   Created: 2022/11/15 21:59:52 by jinypark          #+#    #+#             */
+/*   Updated: 2022/11/21 15:32:22 by jinypark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MATERIASOURCE_HPP
-#define MATERIASOURCE_HPP
+#include "AAnimal.hpp"
 
-#include "IMateriaSource.hpp"
-
-class MateriaSource : public IMateriaSource
+AAnimal::AAnimal(void)
 {
-private:
-	AMateria*		slots[4];
-	unsigned int	slotCnt;
-public:
-	MateriaSource();
-	~MateriaSource();
-	virtual void learnMateria(AMateria* m);
-	virtual AMateria* createMateria(std::string const & type);
-};
+	this->type = "Abstract Animal";
+}
 
-#endif
+AAnimal::~AAnimal(void)
+{
+}
+
+AAnimal::AAnimal(const AAnimal &obj)
+{
+	*this = obj;
+}
+
+AAnimal	&AAnimal::operator=(AAnimal const &obj)
+{
+	if (this != &obj)
+		this->type = obj.type;
+	return (*this);
+}
+
+std::string	AAnimal::getType(void) const
+{
+	return (this->type);
+}
+
