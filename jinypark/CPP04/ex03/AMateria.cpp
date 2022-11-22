@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Amateria.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jinypark <jinypark@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jinypark <jinypark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/05 11:01:57 by jinypark          #+#    #+#             */
-/*   Updated: 2022/11/18 17:31:02 by jinypark         ###   ########.fr       */
+/*   Created: 2022/11/20 23:58:58 by jinypark          #+#    #+#             */
+/*   Updated: 2022/11/21 09:12:26 by jinypark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Fixed.hpp"
-#include "Point.hpp"
+#include "AMateria.hpp"
 
-int main(void)
+AMateria::AMateria(std::string const & type)
 {
-	Point a(-2.8f, -1.3f);
-	Point b(-5.3f, -7.4f);
-	Point c(3.9f, -7.4f);
-	Point p(1.7f, -6.7f);
-	
-	std::cout << (bsp(a, b, c, p) ? "True" : "False") << std::endl;
-	return (0);
+	this->type_ = type;
+}
+
+std::string const & AMateria::getType() const
+{
+	return (this->type_);
+}
+
+void AMateria::use(ICharacter& target)
+{
+	std::cout << target.getName();
 }

@@ -6,7 +6,7 @@
 /*   By: jinypark <jinypark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 17:47:05 by jinypark          #+#    #+#             */
-/*   Updated: 2022/11/06 21:18:13 by jinypark         ###   ########.fr       */
+/*   Updated: 2022/11/10 09:40:24 by jinypark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,17 +36,4 @@ void	Zombie::announce(void)
 	std::cout << this->_name << ": BraiiiiiiinnnzzzZ..." << std::endl;
 }
 
-Zombie*	Zombie::zombieHorde(int N, std::string name)
-{
-	Zombie*				paZombie = new Zombie[N];
-	std::stringstream	num;
-
-	for (int i = 0; i < N; ++i)
-	{
-		num.str(std::string());
-		num << i;
-		paZombie[i].setName(name + num.str());
-	}
-	return (paZombie);
-}
 

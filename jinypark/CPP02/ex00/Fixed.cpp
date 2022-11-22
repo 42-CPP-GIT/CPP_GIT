@@ -6,7 +6,7 @@
 /*   By: jinypark <jinypark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 10:04:22 by jinypark          #+#    #+#             */
-/*   Updated: 2022/11/10 12:26:00 by jinypark         ###   ########.fr       */
+/*   Updated: 2022/11/18 17:15:14 by jinypark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,6 @@ int	Fixed::getRawBits( void ) const
 
 void	Fixed::setRawBits( int const raw )
 {
-	std::cout << "setRawBits member function called\n";
+	// std::cout << "setRawBits member function called\n";
 	this->numVal = raw;
 }

@@ -1,25 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Dog.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jinypark <jinypark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/05 11:01:57 by jinypark          #+#    #+#             */
-/*   Updated: 2022/11/18 17:31:02 by jinypark         ###   ########.fr       */
+/*   Created: 2022/11/15 22:13:19 by jinypark          #+#    #+#             */
+/*   Updated: 2022/11/16 13:05:52 by jinypark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Fixed.hpp"
-#include "Point.hpp"
+#ifndef DOG_HPP
+#define DOG_HPP
 
-int main(void)
+#include <iostream>
+#include "Animal.hpp"
+
+class Dog : public Animal
 {
-	Point a(-2.8f, -1.3f);
-	Point b(-5.3f, -7.4f);
-	Point c(3.9f, -7.4f);
-	Point p(1.7f, -6.7f);
-	
-	std::cout << (bsp(a, b, c, p) ? "True" : "False") << std::endl;
-	return (0);
-}
+protected:
+public:
+	Dog(void);
+	~Dog(void);
+	Dog(const Dog &obj);
+	Dog	&operator=(Dog const &obj);
+	virtual void	makeSound(void) const;
+};
+
+#endif

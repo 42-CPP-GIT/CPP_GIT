@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Fixed.cpp                                          :+:      :+:    :+:   */
+/*   Fixed copy.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jinypark <jinypark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 10:04:22 by jinypark          #+#    #+#             */
-/*   Updated: 2022/11/10 15:49:29 by jinypark         ###   ########.fr       */
+/*   Updated: 2022/11/18 17:11:16 by jinypark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "Fixed.hpp"
+#include "Fixed.hpp"
 
 Fixed::Fixed(void)
 {
@@ -26,8 +26,7 @@ Fixed::~Fixed(void)
 Fixed::Fixed(const Fixed &obj)
 {
 	// std::cout << "Copy constructor called\n";
-	if (this != &obj)
-		*this = obj;
+	*this = obj;
 }
 
 Fixed::Fixed(const int num)
@@ -99,16 +98,18 @@ Fixed	Fixed::operator-(Fixed const &obj)
 Fixed	Fixed::operator*(Fixed const &obj)
 {
 	Fixed	tmp;
-	
-	tmp.setRawBits((this->numVal * obj.numVal) >> fracBits);
+
+	tmp.setRawBits((int)(((long long)this->numVal * (long long)obj.numVal) >> fracBits));
 	return (tmp);
 }
+
+
 
 Fixed	Fixed::operator/(Fixed const &obj)
 {
 	Fixed	tmp;
 	
-	tmp.setRawBits(this->numVal / obj.numVal);
+	tmp.setRawBits((int)(((long long)this->numVal << fracBits) / (long long)obj.numVal));
 	return (tmp);
 }
 
@@ -152,20 +153,14 @@ Fixed	&Fixed::max(Fixed &a, Fixed &b)
 	return ((a.numVal > b.numVal) ? a : b);
 }
 
-Fixed	&Fixed::min(Fixed const &a, Fixed const &b)
-{
-	Fixed *pa = const_cast<Fixed *>(&a);  
-	Fixed *pb = const_cast<Fixed *>(&b);
-	
-	return ((pa->numVal < pb->numVal) ? *pa : *pb);	
+const Fixed	&Fixed::min(Fixed const &a, Fixed const &b)
+{	
+	return ((a.numVal < b.numVal) ? a : b);	
 }
 
-Fixed	&Fixed::max(Fixed const &a, Fixed const &b)
-{
-	Fixed *pa = const_cast<Fixed *>(&a);  
-	Fixed *pb = const_cast<Fixed *>(&b);
-	
-	return ((pa->numVal > pb->numVal) ? *pa : *pb);		
+const Fixed	&Fixed::max(Fixed const &a, Fixed const &b)
+{	
+	return ((a.numVal > b.numVal) ? a : b);		
 }
 
 std::ostream	&operator<<(std::ostream &os, Fixed const &obj)
@@ -193,3 +188,12 @@ int		Fixed::toInt( void ) const
 {
 	return (numVal >> fracBits);
 }
+
+void	Fixed::printBit(void) const
+{
+	std::cout << std::bitset<8>(this->numVal >> 24) << "  ";
+	std::cout << std::bitset<8>(this->numVal >> 16) << "  ";
+	std::cout << std::bitset<8>(this->numVal >> 8) << "  ";
+	std::cout << std::bitset<8>(this->numVal) << "\n";
+}
+

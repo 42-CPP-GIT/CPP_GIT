@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Ice.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jinypark <jinypark@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jinypark <jinypark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/05 11:01:57 by jinypark          #+#    #+#             */
-/*   Updated: 2022/11/18 17:31:02 by jinypark         ###   ########.fr       */
+/*   Created: 2022/11/20 23:51:34 by jinypark          #+#    #+#             */
+/*   Updated: 2022/11/21 03:08:21 by jinypark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Fixed.hpp"
-#include "Point.hpp"
+#ifndef ICE_HPP
+#define ICE_HPP
 
-int main(void)
+#include "AMateria.hpp"
+
+class Ice : public AMateria
 {
-	Point a(-2.8f, -1.3f);
-	Point b(-5.3f, -7.4f);
-	Point c(3.9f, -7.4f);
-	Point p(1.7f, -6.7f);
-	
-	std::cout << (bsp(a, b, c, p) ? "True" : "False") << std::endl;
-	return (0);
-}
+private:
+public:
+	Ice();
+	virtual ~Ice();
+	virtual AMateria* clone() const;
+	virtual void use(ICharacter& target);
+};
+
+#endif

@@ -3,23 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jinypark <jinypark@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jinypark <jinypark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/05 11:01:57 by jinypark          #+#    #+#             */
-/*   Updated: 2022/11/18 17:31:02 by jinypark         ###   ########.fr       */
+/*   Created: 2022/11/10 18:40:01 by jinypark          #+#    #+#             */
+/*   Updated: 2022/11/19 23:48:30 by jinypark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Fixed.hpp"
-#include "Point.hpp"
+#include "ClapTrap.hpp"
+#include "FragTrap.hpp"
 
-int main(void)
+int main()
 {
-	Point a(-2.8f, -1.3f);
-	Point b(-5.3f, -7.4f);
-	Point c(3.9f, -7.4f);
-	Point p(1.7f, -6.7f);
-	
-	std::cout << (bsp(a, b, c, p) ? "True" : "False") << std::endl;
+	FragTrap a("A");
+	FragTrap b("B");
+
+	a.printStat();
+	a.attack(b.getName());
+	b.takeDamage(a.getAttackDamage());
+	b.attack(a.getName());
+	a.takeDamage(b.getAttackDamage());
+	a.beRepaired(1);
+	a.highFivesGuys();
+	b.highFivesGuys();
 	return (0);
 }

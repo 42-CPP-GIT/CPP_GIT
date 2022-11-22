@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   zombiehorde.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jinypark <jinypark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/05 11:01:57 by jinypark          #+#    #+#             */
-/*   Updated: 2022/11/18 17:31:02 by jinypark         ###   ########.fr       */
+/*   Created: 2022/11/10 09:40:27 by jinypark          #+#    #+#             */
+/*   Updated: 2022/11/10 09:54:01 by jinypark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Fixed.hpp"
-#include "Point.hpp"
+#include "Zombie.hpp"
 
-int main(void)
+Zombie*	Zombie::zombieHorde(int N, std::string name)
 {
-	Point a(-2.8f, -1.3f);
-	Point b(-5.3f, -7.4f);
-	Point c(3.9f, -7.4f);
-	Point p(1.7f, -6.7f);
-	
-	std::cout << (bsp(a, b, c, p) ? "True" : "False") << std::endl;
-	return (0);
+	Zombie*				paZombie = new Zombie[N];
+	std::stringstream	num;
+
+	for (int i = 0; i < N; ++i)
+	{
+		num.str(std::string());
+		num << i;
+		paZombie[i].setName(name + num.str());
+	}
+	return (paZombie);
 }

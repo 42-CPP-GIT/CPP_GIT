@@ -1,25 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Dog.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jinypark <jinypark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/05 11:01:57 by jinypark          #+#    #+#             */
-/*   Updated: 2022/11/18 17:31:02 by jinypark         ###   ########.fr       */
+/*   Created: 2022/11/15 22:26:18 by jinypark          #+#    #+#             */
+/*   Updated: 2022/11/15 23:21:48 by jinypark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Fixed.hpp"
-#include "Point.hpp"
+#include "Dog.hpp"
 
-int main(void)
+Dog::Dog(/* args */)
 {
-	Point a(-2.8f, -1.3f);
-	Point b(-5.3f, -7.4f);
-	Point c(3.9f, -7.4f);
-	Point p(1.7f, -6.7f);
-	
-	std::cout << (bsp(a, b, c, p) ? "True" : "False") << std::endl;
-	return (0);
+	this->type = "Dog";
+}
+
+Dog::~Dog()
+{
+}
+
+Dog::Dog(const Dog &obj)
+{
+	*this = obj;
+}
+
+Dog	&Dog::operator=(Dog const &obj)
+{
+	if (this != &obj)
+		this->type = obj.type;
+	return (*this);
+}
+
+void	Dog::makeSound(void) const
+{
+	std::cout << "WANG...!\n";
 }

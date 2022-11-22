@@ -6,15 +6,16 @@
 #    By: jinypark <jinypark@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/24 17:01:08 by jinypark          #+#    #+#              #
-#    Updated: 2022/11/10 09:41:56 by jinypark         ###   ########.fr        #
+#    Updated: 2022/11/21 14:53:23 by jinypark         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CXX 		=	c++
-NAME		=	Zombie
+NAME		=	a.out
 RM 			=	rm -rvf
 CPPFLAGS 	=	-Wall -Wextra -Werror -std=c++98
-SRCS		=	main.cpp Zombie.cpp zombieHorde.cpp
+SRCS		=	main.cpp AMateria.cpp Character.cpp \
+				Ice.cpp Cure.cpp MateriaSource.cpp
 OBJS		=	$(SRCS:.cpp=.o)
 
 all: $(NAME)
@@ -37,5 +38,8 @@ fclean: clean
 re:
 	@make fclean
 	@make all
+
+debug:
+	make "CPPFLAGS = -Wall -Wextra -Werror -std=c++98 -DEVAL" all
 
 .PHONY: all clean fclean re

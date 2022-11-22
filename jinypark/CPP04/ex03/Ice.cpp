@@ -1,25 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Ice.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jinypark <jinypark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/05 11:01:57 by jinypark          #+#    #+#             */
-/*   Updated: 2022/11/18 17:31:02 by jinypark         ###   ########.fr       */
+/*   Created: 2022/11/20 23:57:10 by jinypark          #+#    #+#             */
+/*   Updated: 2022/11/21 14:55:20 by jinypark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Fixed.hpp"
-#include "Point.hpp"
+#include "Ice.hpp"
 
-int main(void)
+Ice::Ice(void) : AMateria("ice")
 {
-	Point a(-2.8f, -1.3f);
-	Point b(-5.3f, -7.4f);
-	Point c(3.9f, -7.4f);
-	Point p(1.7f, -6.7f);
-	
-	std::cout << (bsp(a, b, c, p) ? "True" : "False") << std::endl;
-	return (0);
+	#ifdef DEBUG
+	std::cout << "[Ice] default constructor has been called.\n";
+	#endif
+}
+
+Ice::~Ice()
+{
+	#ifdef DEBUG
+	std::cout << "[Ice] default destructor has been called.\n";
+	#endif
+}
+
+AMateria* Ice::clone() const
+{
+	return (new Ice());
+}
+
+void Ice::use(ICharacter& target)
+{
+	std::cout << "* shoots an ice bolt at " + target.getName() + " *\n";
 }

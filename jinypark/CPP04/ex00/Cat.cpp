@@ -1,25 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Cat.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jinypark <jinypark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/05 11:01:57 by jinypark          #+#    #+#             */
-/*   Updated: 2022/11/18 17:31:02 by jinypark         ###   ########.fr       */
+/*   Created: 2022/11/15 22:19:56 by jinypark          #+#    #+#             */
+/*   Updated: 2022/11/15 23:21:58 by jinypark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Fixed.hpp"
-#include "Point.hpp"
+#include "Cat.hpp"
 
-int main(void)
+Cat::Cat(/* args */)
 {
-	Point a(-2.8f, -1.3f);
-	Point b(-5.3f, -7.4f);
-	Point c(3.9f, -7.4f);
-	Point p(1.7f, -6.7f);
-	
-	std::cout << (bsp(a, b, c, p) ? "True" : "False") << std::endl;
-	return (0);
+	this->type = "Cat";
+}
+
+Cat::~Cat()
+{
+}
+
+Cat::Cat(const Cat &obj)
+{
+	*this = obj;
+}
+
+Cat	&Cat::operator=(Cat const &obj)
+{
+	if (this != &obj)
+		this->type = obj.type;
+	return (*this);
+}
+
+void	Cat::makeSound(void) const
+{
+	std::cout << "MEOW~\n";
 }
