@@ -6,7 +6,7 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 15:11:39 by minsuki2          #+#    #+#             */
-/*   Updated: 2022/11/21 18:08:44 by minsuki2         ###   ########.fr       */
+/*   Updated: 2022/11/22 15:26:17 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #ifndef HUMANA_HPP
 # define HUMANA_HPP
 
-#include "Weapon.hpp"
+# include "Weapon.hpp"
 # define MSG_HUMAN_A	"[HumanA] "
 
 class HumanA {

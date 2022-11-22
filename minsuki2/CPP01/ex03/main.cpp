@@ -6,7 +6,7 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 14:43:54 by minsuki2          #+#    #+#             */
-/*   Updated: 2022/11/21 18:52:07 by minsuki2         ###   ########.fr       */
+/*   Updated: 2022/11/22 14:58:31 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 #include "HumanB.hpp"
 
 int main(void) {
-	std::string& test = "hello";
-	std::cout << test << std::endl;
 	{
 		Weapon club = Weapon("crude spiked club");
 
