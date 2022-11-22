@@ -6,7 +6,7 @@
 /*   By: seungsle <seungsle@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 18:43:45 by seungsle          #+#    #+#             */
-/*   Updated: 2022/11/21 17:34:27 by seungsle         ###   ########.fr       */
+/*   Updated: 2022/11/22 20:19:17 by seungsle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,4 +144,10 @@ const char *Form::GradeTooLowException::what(void) const throw()
 const char *Form::NotExecutableException::what(void) const throw()
 {
 	return "not signed";
+}
+
+std::ostream& operator<<(std::ostream& out, const Form& Form)
+{
+	out << Form.getName() << " form, gradeToSign : " << Form.getGradeToSign() << ", gradeToExecute : " << Form.getGradeToExecute(); // for example
+	return out;
 }

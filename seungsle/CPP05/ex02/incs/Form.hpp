@@ -6,7 +6,7 @@
 /*   By: seungsle <seungsle@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 18:43:47 by seungsle          #+#    #+#             */
-/*   Updated: 2022/11/21 17:32:13 by seungsle         ###   ########.fr       */
+/*   Updated: 2022/11/22 20:19:23 by seungsle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ public:
 	void setIsSigned(bool isSigned);
 	void setIsExecuted(bool isExecuted);
 };
+std::ostream& operator<<(std::ostream& out, const Form& Form);
 
 
 #endif
