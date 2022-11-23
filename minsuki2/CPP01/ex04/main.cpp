@@ -6,7 +6,7 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 14:43:54 by minsuki2          #+#    #+#             */
-/*   Updated: 2022/11/22 20:16:38 by minsuki2         ###   ########.fr       */
+/*   Updated: 2022/11/23 16:32:42 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,13 +72,13 @@ static std::string _makeFileString(std::ifstream& ifs) {
 int main(int argc, char *argv[]) {
 	std::cout << MSG_SED << "  by minsuki2" << std::endl;
 	if (argc != 4) {
-		std::cerr << "[Error] Number of arguments is wrong" << std::endl;
+		std::cerr << "[Error] Number of arguments is wrong" << MSG_ENDL;
 		return 1;
 	}
 	Sed	target(argv[1], argv[2], argv[3]);
 	if (target.getFileName().empty()
 		|| target.getFileName().empty()) {
-		std::cerr << "[Error] Something is Empty" << std::endl;
+		std::cerr << "[Error] Something is Empty" << MSG_ENDL;
 		return 1;
 	}
 std::ifstream ifs;
@@ -93,7 +93,7 @@ std::ifstream ifs;
 	ifs.close();
 	if (!askIsOkay())
 		return std::cout << "\n~Good Bye~" << std::endl, 0;		// Error는 아니라고 생각
-	
+
 	std::ofstream ofs;
 	ofs.open (target.getFileName() + ".replace", std::ofstream::out);
 	if (!checkOfstream(ofs, target))

@@ -6,7 +6,7 @@
 #    By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/29 18:32:08 by minsuki2          #+#    #+#              #
-#    Updated: 2022/11/21 15:00:19 by minsuki2         ###   ########.fr        #
+#    Updated: 2022/11/23 18:00:37 by minsuki2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,7 +51,10 @@ fclean: clean
 	@$(RM) $(NAME)
 	@echo
 
-re: | fclean all
+re:
+	@make fclean
+	@make all
+
 
 -include $(DEPS)
 
