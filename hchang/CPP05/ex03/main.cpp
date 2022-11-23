@@ -6,43 +6,27 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 17:31:31 by hchang            #+#    #+#             */
-/*   Updated: 2022/11/23 16:04:59 by hchang           ###   ########.fr       */
+/*   Updated: 2022/11/23 16:35:39 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "PresidentialPardonForm.hpp"
-#include "ShrubberyCreationForm.hpp"
-#include "RobotomyRequestForm.hpp"
+#include "Intern.hpp"
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
 
 int	main()
 {
 	try
 	{
-		Bureaucrat	A("Test", 135);
-		ShrubberyCreationForm B("Hi"); // 145 137
-		// A.signForm(B);
-		A.signForm(B);
-		A.executeForm(B);
-		std::cout << A << std::endl;
-		std::cout << B << std::endl;
-		
-		// Bureaucrat A("test", 40);
-		// RobotomyRequestForm B("hi");
+		Bureaucrat	C("Test", 135);
 
-		// A.signForm(B);
-		// A.executeForm(B);
-		// std::cout << A << std::endl;
-		// std::cout << B << std::endl;
+		Intern	A;
 
-		// Bureaucrat A("test", 6);
-		// PresidentialPardonForm B("hi");
+		Form *B = A.makeForm("shrubbery creation", "test");
 
-		// A.signForm(B);
-		// A.executeForm(B);
-		// std::cout << A << std::endl;
-		// std::cout << B << std::endl;
+		C.signForm(*B);
+		C.executeForm(*B);
+		std::cout << *B << std::endl;
+
 	}
 	catch(const std::exception& e)
 	{

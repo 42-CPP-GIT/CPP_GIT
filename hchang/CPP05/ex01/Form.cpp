@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 16:20:25 by hchang            #+#    #+#             */
-/*   Updated: 2022/11/22 16:37:44 by hchang           ###   ########.fr       */
+/*   Updated: 2022/11/23 16:02:47 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ Form& Form::operator=(const Form& obj)
 bool	Form::beSigned(Bureaucrat bureaucrat)
 {
 	if (bureaucrat.getGrade() > _signGrade)
-		throw Form::GradeTooLowException();
+		return (false);
 	else if (this->getIsSigned())
 		throw Form::AlreadySignedException();
 	return (true);

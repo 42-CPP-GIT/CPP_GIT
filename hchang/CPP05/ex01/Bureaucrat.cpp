@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 17:31:34 by hchang            #+#    #+#             */
-/*   Updated: 2022/11/22 17:00:01 by hchang           ###   ########.fr       */
+/*   Updated: 2022/11/23 15:59:49 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ void	Bureaucrat::signForm(Form &form)
 	}
 	else
 	{
-		std::cout << this->_name << " couldn't sign " << form.getName() << " because ";
+		std::cerr << this->_name << " couldn't sign " << form.getName() << " because ";
 		throw Bureaucrat::GradeTooLowException();
 	}
 }
