@@ -46,6 +46,7 @@ class Form
 		Form(const Form& obj);
 		Form& operator=(const Form& obj);
 		bool	beSigned(Bureaucrat bureaucrat);
+		void			setIsSigned(bool otherSign);
 		std::string	getName() const;
 		bool		getIsSigned() const;
 		int			getSignGrade() const;

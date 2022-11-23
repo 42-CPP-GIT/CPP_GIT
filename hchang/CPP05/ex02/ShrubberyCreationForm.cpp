@@ -6,14 +6,13 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 17:40:49 by hchang            #+#    #+#             */
-/*   Updated: 2022/11/22 17:01:16 by hchang           ###   ########.fr       */
+/*   Updated: 2022/11/23 15:23:49 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 #include "ShrubberyCreationForm.hpp"
 #include <fstream>
-
 
 const char*	ShrubberyCreationForm::FileNotOpenException::what() const throw()
 {
@@ -49,7 +48,7 @@ ShrubberyCreationForm::~ShrubberyCreationForm()
 	std::cout << "[ShrubberyCreationForm Destructor Called]" << std::endl;
 }
 
-bool		ShrubberyCreationForm::execute(Bureaucrat const & executor) const
+void	ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 {
 	if (!this->getIsSigned())
 		throw NotSignedException();
@@ -91,16 +90,19 @@ bool		ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 		"	.-' '        '-._______.-'     '  .\n"
 		"			.      ~, \n"
 		"		.       .   |\\   .    ' '-.\n"
-		"	 _____________/  \\____________\n"
-		"	/   ShrubberyCreationForm     \\ \n"
-		"	|       Constructor Called    |\n"
+		"	  _____________/  \\____________\n"
+		"  	 /   ShrubberyCreationForm     \\ \n"
+		"	 |       Excute       Called   |\n"
 		"	 \\____________________________/\n";
 	}
 	out.close();
-	return (true);
 }
 
-
+std::ostream&	operator<<(std::ostream& out, const ShrubberyCreationForm& sh)
+{
+	out << GRN << sh.getName() << ", ShrubberyCreationForm Sign Grade " << sh.getSignGrade() << ", shrubberyCreationForm Execute Grade " << sh.getExecuteGrade() << "\n▶︎ Signed Check : " << sh.getIsSigned() << RESET;
+	return out;
+}
 
 
 

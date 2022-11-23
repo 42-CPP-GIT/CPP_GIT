@@ -6,7 +6,7 @@
 #    By: hchang <hchang@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/21 15:09:06 by hchang            #+#    #+#              #
-#    Updated: 2022/11/22 16:56:28 by hchang           ###   ########.fr        #
+#    Updated: 2022/11/23 15:30:33 by hchang           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,8 +15,7 @@ NAME			=	Form
 RM 				=	rm -rf
 CPPFLAGS 		=	-Wall -Wextra -Werror -std=c++98
 
-# SRCS 			=	$(wildcard *.cpp)
-SRCS 			=	main.cpp Form.cpp Bureaucrat.cpp ShrubberyCreationForm.cpp
+SRCS 			=	$(wildcard *.cpp)
 OBJS 			=	$(SRCS:.cpp=.o)
 
 all: $(NAME)
@@ -32,6 +31,7 @@ clean:
 
 fclean: clean
 	@$(RM) $(NAME)
+	@$(RM) $(wildcard *_shrubbery)
 
 re:
 	@make fclean

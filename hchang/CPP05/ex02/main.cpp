@@ -6,11 +6,13 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 17:31:31 by hchang            #+#    #+#             */
-/*   Updated: 2022/11/22 17:00:11 by hchang           ###   ########.fr       */
+/*   Updated: 2022/11/23 15:30:51 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "PresidentialPardonForm.hpp"
 #include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
 #include "Bureaucrat.hpp"
 #include "Form.hpp"
 
@@ -18,17 +20,29 @@ int	main()
 {
 	try
 	{
-		Bureaucrat	A("Test", 76);
-		ShrubberyCreationForm B("Hi");
-
-
+		Bureaucrat	A("Test", 130);
+		ShrubberyCreationForm B("Hi"); // 145 137
+		// A.signForm(B);
 		A.signForm(B);
 		B.execute(A);
+		std::cout << A << std::endl;
+		std::cout << B << std::endl;
+		
+		// Bureaucrat A("test", 40);
+		// RobotomyRequestForm B("hi");
 
+		// A.signForm(B);
+		// B.execute(A);
+		// std::cout << A << std::endl;
+		// std::cout << B << std::endl;
 
+		// Bureaucrat A("test", 6);
+		// PresidentialPardonForm B("hi");
 
-		std::cout << B;
-
+		// A.signForm(B);
+		// B.execute(A);
+		// std::cout << A << std::endl;
+		// std::cout << B << std::endl;
 	}
 	catch(const std::exception& e)
 	{

@@ -18,7 +18,7 @@ int	main()
 	{
 		Bureaucrat	A("Test", 150);
 		A.downGrade();
-		std::cout << A;
+		std::cout << A << std::endl;
 	}
 	catch(const std::exception& e)
 	{

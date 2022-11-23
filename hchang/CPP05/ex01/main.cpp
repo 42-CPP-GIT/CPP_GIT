@@ -18,12 +18,12 @@ int	main()
 	try
 	{
 		Bureaucrat	A("Test", 76);
-		// A.upGrade();
-		A.downGrade();
-		Form		B("sesim", true, 75, 100);
+		A.upGrade();
+		// A.downGrade();
+		Form		B("sesim", false, 75, 100);
 		A.signForm(B);
-		std::cout << A;
-		std::cout << B;
+		std::cout << A << std::endl;
+		std::cout << B << std::endl;
 	}
 	catch(const std::exception& e)
 	{

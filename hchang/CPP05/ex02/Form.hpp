@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 16:20:30 by hchang            #+#    #+#             */
-/*   Updated: 2022/11/22 16:49:33 by hchang           ###   ########.fr       */
+/*   Updated: 2022/11/23 15:24:25 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ class Form
 		bool			getIsSigned() const;
 		int				getSignGrade() const;
 		int				getExecuteGrade() const;
-		virtual bool	execute(Bureaucrat const & executor) const = 0;
+		virtual void	execute(Bureaucrat const & executor) const = 0;
 		virtual ~Form();
 };
 

@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 17:41:01 by hchang            #+#    #+#             */
-/*   Updated: 2022/11/22 16:55:48 by hchang           ###   ########.fr       */
+/*   Updated: 2022/11/23 15:24:04 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,21 @@
 
 class RobotomyRequestForm : public Form
 {
-	private:
-		/* data */
-
 	public:
+		class	NotSignedException : public std::exception
+		{
+			public :
+				const char * what() const throw();
+		};
 		RobotomyRequestForm();
+		RobotomyRequestForm(std::string name);
 		RobotomyRequestForm(const RobotomyRequestForm& obj);
 		RobotomyRequestForm& operator=(const RobotomyRequestForm& obj);
 		~RobotomyRequestForm();
-		virtual bool		execute(Bureaucrat const & executor) const;
-
+		virtual void	execute(Bureaucrat const & executor) const;
 };
+
+std::ostream&	operator<<(std::ostream& out, const RobotomyRequestForm& rb);
+
 
 #endif

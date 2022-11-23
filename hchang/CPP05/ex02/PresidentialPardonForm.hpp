@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 17:40:35 by hchang            #+#    #+#             */
-/*   Updated: 2022/11/22 16:45:12 by hchang           ###   ########.fr       */
+/*   Updated: 2022/11/23 15:25:49 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,19 @@
 class PresidentialPardonForm : public Form
 {
 	public:
-		PresidentialPardonForm(Form form);
+		class	NotSignedException : public std::exception
+		{
+			public :
+				const char * what() const throw();
+		};
+		PresidentialPardonForm();
+		PresidentialPardonForm(std::string name);
 		PresidentialPardonForm(const PresidentialPardonForm& obj);
 		PresidentialPardonForm& operator=(const PresidentialPardonForm& obj);
 		~PresidentialPardonForm();
-		virtual bool		execute(Bureaucrat const & executor) const;
-
+		virtual void	execute(Bureaucrat const & executor) const;
 };
+
+std::ostream&	operator<<(std::ostream& out, const PresidentialPardonForm& ps);
 
 #endif
