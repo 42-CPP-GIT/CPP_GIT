@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 15:37:23 by hchang            #+#    #+#             */
-/*   Updated: 2022/11/22 14:23:17 by hchang           ###   ########.fr       */
+/*   Updated: 2022/11/23 20:16:48 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,13 @@ Character& Character::operator=(const Character& obj)
 	if (this == &obj)
 		return (*this);
 	this->_name = obj._name;
-	this->_slotIdx = obj._slotIdx;
 	for (int i = 0; i < obj._slotIdx; i++)
 	{
-		if (_slot[i])
+		if (i < this->_slotIdx && _slot[i])
 			delete _slot[i];
 		_slot[i] = obj.getAMateria(i)->clone();
 	}
+	this->_slotIdx = obj._slotIdx;
 	return (*this);
 }
 
@@ -64,8 +64,11 @@ void	Character::equip(AMateria* m)
 		std::cout <<RED "NO More skills\n" RESET;
 		return ;
 	}
-	_slot[_slotIdx] = m;
-	_slotIdx++;
+	if (!m)
+	{
+		_slot[_slotIdx] = m->clone();
+		_slotIdx++;
+	}
 }
 
 void	Character::unequip(int idx)

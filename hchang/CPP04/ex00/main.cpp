@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 18:29:34 by hojinjang         #+#    #+#             */
-/*   Updated: 2022/11/22 15:11:31 by hchang           ###   ########.fr       */
+/*   Updated: 2022/11/23 20:06:27 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void a()
 }
 int main()
 {
-	atexit(a);
+	// atexit(a);
 	// 다형성
 	// Subject
 	const Animal* meta = new Animal();

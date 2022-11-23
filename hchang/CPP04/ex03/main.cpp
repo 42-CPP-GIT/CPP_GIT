@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 16:34:11 by hchang            #+#    #+#             */
-/*   Updated: 2022/11/22 15:12:07 by hchang           ###   ########.fr       */
+/*   Updated: 2022/11/23 20:24:35 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ void test2(void)
 
 int main()
 {
-	// atexit(a);
+	atexit(a);
 	MateriaSource* src = new MateriaSource();
 	src->learnMateria(new Ice());
 	src->learnMateria(new Cure());
@@ -117,6 +117,19 @@ int main()
 	Character* me = new Character("me");
 	
 	MateriaSource* src2 = new MateriaSource();
+
+
+	// Character* me = new Character("me");
+	// Character* hchang = new Character("hchang");
+
+	// *hchang = *me;
+
+	// Character& operator=(const Character& obj);
+	// ICharacter& operator=(const ICharacter& obj);
+	
+
+
+
 
 	*src2 = *src;
 
@@ -127,9 +140,7 @@ int main()
 	me->equip(tmp);
 
 	Character* hchang = new Character("hchang");
-	std::cout << "bro\n";
 	*hchang = *me;
-	std::cout << "bro1\n";
 
 	tmp = src2->createMateria("hi");
 
@@ -138,6 +149,7 @@ int main()
 	hchang->use(2, *me);
 
 
+	delete hchang;
 	delete me;
 	delete src;
 	delete src2;
