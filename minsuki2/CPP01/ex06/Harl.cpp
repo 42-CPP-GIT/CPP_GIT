@@ -6,24 +6,16 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 15:23:12 by minsuki2          #+#    #+#             */
-/*   Updated: 2022/11/23 17:57:10 by minsuki2         ###   ########.fr       */
+/*   Updated: 2022/11/23 19:18:03 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Harl.hpp"
 
 
-Harl::Harl(void) {
-#ifdef debug
-	std::cout << "Harl is created" << MSG_ENDL;
-#endif
-}
+Harl::Harl(void) {}
 
-Harl::~Harl(void) {
-#ifdef debug
-	std::cout << "Harl is created" << MSG_ENDL;
-#endif
-}
+Harl::~Harl(void) {}
 
 
 void	Harl::debug(void) {
@@ -57,8 +49,7 @@ void	Harl::complain(std::string level) {
 			this->warning();
 		case 3:
 			this->error();
-		case -1:
-			break;
+			break ;
 		default:
 			std::cout << MSG_ELSE << MSG_ENDL;
 	}

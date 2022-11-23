@@ -6,7 +6,7 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 15:08:54 by minsuki2          #+#    #+#             */
-/*   Updated: 2022/11/23 17:59:03 by minsuki2         ###   ########.fr       */
+/*   Updated: 2022/11/23 18:46:36 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,6 @@ class Harl {
 		int		printOut(const int& i);
 };
 
-typedef  void (Harl::*functionPtr)(void);
+typedef  void (Harl::*const functionPtr)(void);
 
 #endif

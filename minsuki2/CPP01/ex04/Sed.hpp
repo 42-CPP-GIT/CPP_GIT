@@ -6,7 +6,7 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 15:24:13 by minsuki2          #+#    #+#             */
-/*   Updated: 2022/11/22 19:52:21 by minsuki2         ###   ########.fr       */
+/*   Updated: 2022/11/23 19:14:19 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,17 +36,15 @@ class Sed {
 	public:
 		Sed(const std::string& name, const std::string& before, const std::string& afeter);
 		~Sed(void);
-		void				fileDisplay(void);
-		const std::string&	getFileName(void);
-		const std::string&	getBefore(void);
-		const std::string&	getAfter(void);
-		const std::string&	getFileScripts(void);
+		const std::string&	getFileName(void) const;
+		const std::string&	getBefore(void) const;
+		const std::string&	getAfter(void) const;
+		const std::string&	getFileScripts(void) const;
 		void				setFileScripts(std::string input);
 		void				replace(void);
 
 	private:
 		Sed(void);
-		static std::string makeFileString(std::ifstream& ifs);
 		const std::string&	file_name_;
 		const std::string&	before_;
 		const std::string&	after_;

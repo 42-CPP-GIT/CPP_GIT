@@ -6,7 +6,7 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 14:43:54 by minsuki2          #+#    #+#             */
-/*   Updated: 2022/11/23 16:32:42 by minsuki2         ###   ########.fr       */
+/*   Updated: 2022/11/23 19:16:31 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ static std::string	_myGetLine(const std::string &msg) {
 	} while (str.empty());
 	return (str);
 }
-
 static bool askIsOkay(void) {
 		std::string	question;
 		do
@@ -36,25 +35,25 @@ static bool askIsOkay(void) {
 }
 
 static bool checkIfstream(std::ifstream& ifs, Sed& target) {
-	if (ifs.fail()) {			// ex) 파일이 없을 때 
-		std::cerr << "[Error] ifstream open() is failed" << MSG_ENDL;
+	if (!ifs.is_open()) {
+		std::cerr << "[Error] " << target.getFileName() << " couldn't open" << MSG_ENDL;
 		return false;
 	}
-	else if (!ifs.is_open()) {
-		std::cerr << "[Error] " << target.getFileName() << " couldn't open" << MSG_ENDL;
+	else if (ifs.fail()) {			// ex) 파일이 없을 때
+		std::cerr << "[Error] ifstream open() is failed" << MSG_ENDL;
 		return false;
 	}
 	return true;
 }
 
 static bool checkOfstream(std::ofstream& ofs, Sed& target) {
-	if (ofs.fail()) {			 // ex) 용량이 꽉찼을 때
-		std::cerr << "[Error] ifstream open() is failed" << MSG_ENDL;
-		return false;
-	}
-	else if (!ofs.is_open()) {
+	if (!ofs.is_open()) {
 		std::cerr << "[Error] " << target.getFileName() + ".replace" \
 											<< " couldn't open" << MSG_ENDL;
+		return false;
+	}
+	else if (ofs.fail()) {			 // ex) 용량이 꽉찼을 때
+		std::cerr << "[Error] ifstream open() is failed" << MSG_ENDL;
 		return false;
 	}
 	return true;
@@ -68,6 +67,19 @@ static std::string _makeFileString(std::ifstream& ifs) {
 	return (str);
 }
 
+static void	_fileDisplay(Sed& target) {
+	std::cout << MSG_ENDL << MSG_ENDL << MSG_LINE << MSG_ENDL;
+	std::cout << "* Filename : " << '"' << target.getFileName() << '"' << MSG_ENDL;
+	std::cout << MSG_LINE << MSG_ENDL;
+	std::cout << target.getFileScripts() << MSG_ENDL;
+	std::cout << MSG_LINE << MSG_ENDL << MSG_ENDL;
+}
+
+static void	_chagneDisplay(Sed& target) {
+	std::cout << "* Before > " << '"' << target.getBefore() << '"' \
+			  << "      ==>       " \
+			  << "After > " << '"' << target.getAfter() << '"' << MSG_ENDL;
+}
 
 int main(int argc, char *argv[]) {
 	std::cout << MSG_SED << "  by minsuki2" << std::endl;
@@ -77,39 +89,27 @@ int main(int argc, char *argv[]) {
 	}
 	Sed	target(argv[1], argv[2], argv[3]);
 	if (target.getFileName().empty()
-		|| target.getFileName().empty()) {
+		|| target.getBefore().empty()) {
 		std::cerr << "[Error] Something is Empty" << MSG_ENDL;
 		return 1;
 	}
-std::ifstream ifs;
+	std::ifstream ifs;
 	ifs.open(target.getFileName(), std::ifstream::in);
 	if (!checkIfstream(ifs, target))
 		return 1;
 	target.setFileScripts(_makeFileString(ifs));
-	target.fileDisplay();
-	std::cout << "* Before > " << '"' << target.getBefore() << '"' \
-			  << "      ==>       " \
-			  << "After > " << '"' << target.getAfter() << '"' << MSG_ENDL;
+	_fileDisplay(target);
+	_chagneDisplay(target);
 	ifs.close();
 	if (!askIsOkay())
 		return std::cout << "\n~Good Bye~" << std::endl, 0;		// Error는 아니라고 생각
-
 	std::ofstream ofs;
 	ofs.open (target.getFileName() + ".replace", std::ofstream::out);
 	if (!checkOfstream(ofs, target))
 		return 1;
 	target.replace();
-	target.fileDisplay();
+	_fileDisplay(target);
 	ofs << target.getFileScripts();
 	ofs.close();
 	return 0;
 }
-
-/*
-	while (!ifs.eof) {
-            // 1. istream의 getline.
-            char tmp[256];
-            readFile.getline(tmp, 256);
-            cout << tmp << endl;    //지금은 읽은 문자열 바로 출력.
-	}
-*/

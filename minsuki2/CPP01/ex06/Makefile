@@ -6,7 +6,7 @@
 #    By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/29 18:32:08 by minsuki2          #+#    #+#              #
-#    Updated: 2022/11/23 18:01:27 by minsuki2         ###   ########.fr        #
+#    Updated: 2022/11/23 19:18:45 by minsuki2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,7 +54,6 @@ fclean: clean
 re:
 	@make fclean
 	@make all
-
 
 debug: fclean
 	@echo "<<< debug >>>"

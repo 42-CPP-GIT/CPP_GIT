@@ -6,7 +6,7 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 14:43:54 by minsuki2          #+#    #+#             */
-/*   Updated: 2022/11/22 14:58:31 by minsuki2         ###   ########.fr       */
+/*   Updated: 2022/11/23 18:26:54 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int main(void) {
 		// jim.setWeapon(club);				// 주석 처리해도 seg. fault 없어야 함
 		jim.attack();
 		club.setType("some other type of club");
-		// jim.setWeapon(club);				// 중간에 추가하면 반영되어야 함
+		jim.setWeapon(club);				// 중간에 추가하면 반영되어야 함
 		jim.attack();
 	}
 	// std::cout << std::endl;

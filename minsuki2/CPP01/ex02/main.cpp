@@ -6,7 +6,7 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 14:43:54 by minsuki2          #+#    #+#             */
-/*   Updated: 2022/11/21 14:59:11 by minsuki2         ###   ########.fr       */
+/*   Updated: 2022/11/23 18:20:06 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int main(void) {
 	std::cout << "< Print of memory address >" << MSG_ENDL;
 	std::cout << "String Variable  : " << &stringORI << MSG_ENDL;
 	std::cout << "String Reference : " << &stringREF << MSG_ENDL;
-	std::cout << "String Pointer   : " << &stringPTR << MSG_ENDL;
+	std::cout << "String Pointer   : " << stringPTR << MSG_ENDL;	// string의 주소를 출력
 	std::cout << std::endl;
 
 	std::cout << "< Print of value >" << MSG_ENDL;
