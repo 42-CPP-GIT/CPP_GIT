@@ -20,21 +20,7 @@ class Base
 private:
 	/* data */
 public:
-	Base(/* args */);
 	virtual ~Base();
-
-	Base * generate(void);
-
-	bool isAP(Base* object);
-	bool isBP(Base* object);
-	bool isCP(Base* object);
-
-	bool isAR(Base& object);
-	bool isBR(Base& object);
-	bool isCR(Base& object);
-
-	void identify(Base* p);
-	void identify(Base& p);
 };
 
 #endif

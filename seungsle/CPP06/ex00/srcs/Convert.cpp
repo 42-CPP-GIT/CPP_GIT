@@ -57,6 +57,12 @@ void Convert::setType(void)
 		if (start)
 		{
 			size_t k = i;
+			if (((this->_input.at(k) >= 'a' && this->_input.at(k) <= 'z') || (this->_input.at(k) >= 'A' && this->_input.at(k) <= 'Z')) && this->_input.length() == k + 1)
+			{
+				this->_literal = this->_input.at(k);
+				this->_type = 0;
+				return ;
+			}
 			if (this->_input.at(k) == '-' || this->_input.at(k) == '+')
 				k++;
 			if (this->_input.at(k) == 'n' && this->_input.at(k + 1) == 'a' && this->_input.at(k + 2) == 'n' && this->_input.length() == k + 3)
