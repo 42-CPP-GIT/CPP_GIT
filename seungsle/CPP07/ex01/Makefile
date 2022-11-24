@@ -6,7 +6,7 @@
 #    By: seungsle <seungsle@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/25 16:49:27 by seungsle          #+#    #+#              #
-#    Updated: 2022/11/23 00:36:37 by seungsle         ###   ########.fr        #
+#    Updated: 2022/11/24 11:30:13 by seungsle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ CXX = c++ -g
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 INCFLAGS = -I$(INC_DIR)
 
-NAME = Template
+NAME = Iter
 
 SRC_DIR = srcs/
 OBJ_DIR = objs/

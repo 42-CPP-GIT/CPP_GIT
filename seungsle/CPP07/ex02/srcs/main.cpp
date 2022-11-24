@@ -6,7 +6,7 @@
 /*   By: seungsle <seungsle@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 01:38:48 by seungsle          #+#    #+#             */
-/*   Updated: 2022/11/23 02:47:56 by seungsle         ###   ########.fr       */
+/*   Updated: 2022/11/24 11:29:30 by seungsle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,11 @@ int main(int, char**)
 	{
 		numbers[i] = rand();
 	}
+	for (int i = 0; i < MAX_VAL; i++)
+	{
+		std::cout << numbers[i] << std::endl;
+	}
+	std::cout << numbers.size() << std::endl;
 	delete [] mirror;//
 	return 0;
 }

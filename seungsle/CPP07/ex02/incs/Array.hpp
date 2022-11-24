@@ -6,7 +6,7 @@
 /*   By: seungsle <seungsle@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 01:38:46 by seungsle          #+#    #+#             */
-/*   Updated: 2022/11/23 02:46:31 by seungsle         ###   ########.fr       */
+/*   Updated: 2022/11/24 11:27:53 by seungsle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ public:
 		};
 	};
 	Array():_n(0)
-	{ 
+	{
 		this->_array = new T[0];
 	};
 	Array(unsigned int n):_n(n)
@@ -46,7 +46,7 @@ public:
 	};
 	~Array()
 	{
-		
+		delete[] this->_array;
 	};
 	Array& operator=(const Array &source)
 	{ 
@@ -61,11 +61,6 @@ public:
 			this->_array[i] = source._array[i];
 		}
 		return (*this);
-	};
-	void *operator new[] ( std::size_t count )
-	{
-		void* m = std::malloc(count);
-		return m;
 	};
 	T &operator[] (unsigned int index)
 	{
