@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 17:31:31 by hchang            #+#    #+#             */
-/*   Updated: 2022/11/23 16:35:39 by hchang           ###   ########.fr       */
+/*   Updated: 2022/11/24 12:12:16 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,26 @@ int	main()
 {
 	try
 	{
-		Bureaucrat	C("Test", 135);
+		Bureaucrat	X("Test", 2);
 
 		Intern	A;
 
 		Form *B = A.makeForm("shrubbery creation", "test");
+		Form *C = A.makeForm("robotomy request", "test2");
+		Form *D = A.makeForm("presidential pardon", "test3");
 
-		C.signForm(*B);
-		C.executeForm(*B);
+
+		X.signForm(*B);
+		X.executeForm(*B);
+
+		X.signForm(*C);
+		X.executeForm(*C);
+
+		X.signForm(*D);
+		X.executeForm(*D);
 		std::cout << *B << std::endl;
-
+		std::cout << *C << std::endl;
+		std::cout << *D << std::endl;
 	}
 	catch(const std::exception& e)
 	{

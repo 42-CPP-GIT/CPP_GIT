@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 16:06:07 by hchang            #+#    #+#             */
-/*   Updated: 2022/11/23 16:28:43 by hchang           ###   ########.fr       */
+/*   Updated: 2022/11/24 12:13:24 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,11 @@ class Intern
 		Intern(const Intern& obj);
 		Intern& operator=(const Intern& obj);
 		~Intern();
-		Form*	makeForm(std::string formName, std::string formTarget);
+		Form* (Intern::*f[3])(std::string);
+		Form	*makeForm(std::string formName, std::string formTarget);
+		Form	*makeShrubberyCreationForm(std::string formTarget);
+		Form	*makeRobotomyRequestForm(std::string formTarget);
+		Form	*makePresidentialPardonForm(std::string formTarget);
 };
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 16:12:25 by hchang            #+#    #+#             */
-/*   Updated: 2022/11/23 16:33:26 by hchang           ###   ########.fr       */
+/*   Updated: 2022/11/24 12:13:01 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,32 +42,49 @@ Intern::~Intern()
 
 Form*	Intern::makeForm(std::string formName, std::string formTarget)
 {
-	int	checkValidSqureBracket;
-	checkValidSqureBracket = formName.find('[', 0);
-	std::cout << "hey " << checkValidSqureBracket << std::endl;
+	int	checkValidSqureBracket = formName.find('[', 0);
 
 	switch (checkValidSqureBracket)
 	{
-	case static_cast<int>(std::string::npos):
-		break;
-	default:
-		throw InvalidFormNameException();
+		case static_cast<int>(std::string::npos):
+			break;
+		default:
+			throw InvalidFormNameException();
 	}
 	
 	std::string	to_find = "[" + formName + "]";
 	std::string key = "[shrubbery creation][robotomy request][presidential pardon]";
 	size_t hi = key.find(to_find, 0);
 
-	std::cout << "hey " << hi << std::endl;
+	f[0] = &Intern::makeShrubberyCreationForm;
+	f[1] = &Intern::makeRobotomyRequestForm;
+	f[2] = &Intern::makePresidentialPardonForm;
+	
 	switch (hi)
 	{
-	case 0:
-		return (new ShrubberyCreationForm(formTarget));
-	case 20:
-		return (new RobotomyRequestForm(formTarget));
-	case 38:
-		return (new PresidentialPardonForm(formTarget));
-	default:
-		throw InvalidFormNameException();
+		case 0:
+			return (this->*f[0])(formTarget);
+		case 20:
+			return (this->*f[1])(formTarget);
+		case 38:
+			return (this->*f[2])(formTarget);
+		default:
+			throw InvalidFormNameException();
 	}
 }
+
+Form*	Intern::makeShrubberyCreationForm(std::string formTarget)
+{
+	return (new ShrubberyCreationForm(formTarget));
+}
+
+Form*	Intern::makeRobotomyRequestForm(std::string formTarget)
+{
+	return (new RobotomyRequestForm(formTarget));
+}
+
+Form*	Intern::makePresidentialPardonForm(std::string formTarget)
+{
+	return (new PresidentialPardonForm(formTarget));
+}
+
