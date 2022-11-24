@@ -6,7 +6,7 @@
 /*   By: jinypark <jinypark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/05 11:01:57 by jinypark          #+#    #+#             */
-/*   Updated: 2022/11/18 17:18:42 by jinypark         ###   ########.fr       */
+/*   Updated: 2022/11/23 15:04:34 by jinypark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 int main(void)
 {
 	Fixed a(3.17f);
-	Fixed const b( Fixed( 5.053f ) * Fixed( 2.3f ) );
+	Fixed const b( Fixed( 5.05f ) * Fixed( 2.3f ) );
 	std::cout << a << std::endl;
 	std::cout << ++a << std::endl;
 	std::cout << a << std::endl;

@@ -6,7 +6,7 @@
 /*   By: jinypark <jinypark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 09:33:26 by jinypark          #+#    #+#             */
-/*   Updated: 2022/11/18 17:18:24 by jinypark         ###   ########.fr       */
+/*   Updated: 2022/11/23 15:03:59 by jinypark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,16 +26,16 @@ public:
 	Fixed(const int num);
 	Fixed(const float num);
 	Fixed	&operator=(Fixed const &obj);
-	bool	operator>(Fixed const &obj);
-	bool	operator<(Fixed const &obj);
-	bool	operator>=(Fixed const &obj);
-	bool	operator<=(Fixed const &obj);
-	bool	operator==(Fixed const &obj);
-	bool	operator!=(Fixed const &obj);
-	Fixed	operator+(Fixed const &obj);
-	Fixed	operator-(Fixed const &obj);
-	Fixed	operator*(Fixed const &obj);
-	Fixed	operator/(Fixed const &obj);
+	bool	operator>(Fixed const &obj) const;
+	bool	operator<(Fixed const &obj) const;
+	bool	operator>=(Fixed const &obj) const;
+	bool	operator<=(Fixed const &obj) const;
+	bool	operator==(Fixed const &obj) const;
+	bool	operator!=(Fixed const &obj) const;
+	Fixed	operator+(Fixed const &obj) const;
+	Fixed	operator-(Fixed const &obj) const;
+	Fixed	operator*(Fixed const &obj) const;
+	Fixed	operator/(Fixed const &obj) const;
 	Fixed	&operator++(void);
 	Fixed	operator++(int dummy);
 	Fixed	&operator--(void);
