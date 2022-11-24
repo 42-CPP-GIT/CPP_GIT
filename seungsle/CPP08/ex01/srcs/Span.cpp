@@ -6,7 +6,7 @@
 /*   By: seungsle <seungsle@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 03:48:23 by seungsle          #+#    #+#             */
-/*   Updated: 2022/11/23 05:24:44 by seungsle         ###   ########.fr       */
+/*   Updated: 2022/11/24 13:57:18 by seungsle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,26 @@ int Span::longestSpan()
 	return (this->_storage.back() - this->_storage.front());
 }
 
+void Span::fill(std::vector<int>::iterator begin, std::vector<int>::iterator end)
+{
+	if (end - begin == this->_max)
+	{
+		int i = 0;
+		while (begin != end)
+		{
+			addNumber(*begin);
+			std::cout << i << std::endl;
+			begin++;
+			i++;
+		}
+	}
+	else
+	{
+		throw(Span::InvalidVector());
+	}
+}
+
+
 const char *Span::AlreadyStoredElement::what() const throw()
 {
 	return "already existing element";
@@ -100,4 +120,9 @@ const char *Span::StorageFull::what() const throw()
 const char *Span::NotCompatiable::what() const throw()
 {
 	return "not compatiable";
+}
+
+const char *Span::InvalidVector::what() const throw()
+{
+	return "invalid vector";
 }

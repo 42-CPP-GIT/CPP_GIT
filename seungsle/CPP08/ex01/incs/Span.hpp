@@ -6,7 +6,7 @@
 /*   By: seungsle <seungsle@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 03:48:18 by seungsle          #+#    #+#             */
-/*   Updated: 2022/11/23 05:10:35 by seungsle         ###   ########.fr       */
+/*   Updated: 2022/11/24 13:56:01 by seungsle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,10 @@ public:
 	{
 		const char *what() const throw();
 	};
+	class InvalidVector: public std::exception
+	{
+		const char *what() const throw();
+	};
 	Span(/* args */);
 	Span(unsigned int N);
 	Span(const Span& source);
@@ -45,6 +49,8 @@ public:
 	void addNumber(int number);
 	int shortestSpan();
 	int longestSpan();
+
+	void fill(std::vector<int>::iterator begin, std::vector<int>::iterator end);
 };
 
 #endif
