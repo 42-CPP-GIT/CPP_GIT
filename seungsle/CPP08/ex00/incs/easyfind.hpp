@@ -6,7 +6,7 @@
 /*   By: seungsle <seungsle@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 02:56:24 by seungsle          #+#    #+#             */
-/*   Updated: 2022/11/24 18:25:46 by seungsle         ###   ########.fr       */
+/*   Updated: 2022/11/25 12:15:20 by seungsle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,8 @@ public:
 template<typename Iter, typename T>
 Iter findIter( Iter it, Iter end, T search )
 {
-	for (; it!=end; ++it)
-	{
-		if (search == *it)
-			return (it);
-	}
-	return (it);
+	Iter found = std::find(it, end, search);
+	return (found);
 }
 
 template<typename T>

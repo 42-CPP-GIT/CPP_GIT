@@ -6,7 +6,7 @@
 /*   By: seungsle <seungsle@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 02:56:27 by seungsle          #+#    #+#             */
-/*   Updated: 2022/11/23 03:38:50 by seungsle         ###   ########.fr       */
+/*   Updated: 2022/11/25 12:15:58 by seungsle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int main()
 	}
 	try
 	{
-		std::cout << easyfind(c, 9) << std::endl;
+		std::cout << easyfind(c, 5) << std::endl;
 	}
 	catch(const std::exception& e)
 	{
