@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 17:40:41 by hchang            #+#    #+#             */
-/*   Updated: 2022/11/23 16:02:19 by hchang           ###   ########.fr       */
+/*   Updated: 2022/11/25 15:40:15 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,14 +42,19 @@ PresidentialPardonForm::~PresidentialPardonForm()
 	std::cout << "[PresidentialPardonForm Destructor Called]" << std::endl;
 }
 
-bool	PresidentialPardonForm::execute(Bureaucrat const & executor) const
+void	PresidentialPardonForm::execute(Bureaucrat const & executor) const
 {
 	if (!this->getIsSigned())
+	{
+		std::cerr << executor.getName() << " couldn't execute " << this->getName() << " because this Form is already signed.\n";
 		throw NotSignedException();
+	}
 	else if (executor.getGrade() > this->getExecuteGrade())
-		return (false);
+	{
+		std::cerr << executor.getName() << " couldn't execute " << this->getName() << " because " << executor.getName() << "'s grade is too low.\n";
+		throw Form::GradeTooLowException();
+	}
 	std::cout << IT << "Informs that " << this->getName() << " has been pardoned by Zaphod Beeblebrox.\n" << RESET;
-	return (true);
 }
 
 

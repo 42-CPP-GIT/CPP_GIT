@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 17:40:53 by hchang            #+#    #+#             */
-/*   Updated: 2022/11/23 16:02:09 by hchang           ###   ########.fr       */
+/*   Updated: 2022/11/25 15:39:59 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,18 @@ RobotomyRequestForm::~RobotomyRequestForm()
 	std::cout << "[RobotomyRequestForm Destructor Called]" << std::endl;
 }
 
-bool	RobotomyRequestForm::execute(Bureaucrat const & executor) const
+void	RobotomyRequestForm::execute(Bureaucrat const & executor) const
 {
 	if (!this->getIsSigned())
+	{
+		std::cerr << executor.getName() << " couldn't execute " << this->getName() << " because this Form is already signed.\n";
 		throw NotSignedException();
+	}
 	else if (executor.getGrade() > this->getExecuteGrade())
-		return (false);
+	{
+		std::cerr << executor.getName() << " couldn't execute " << this->getName() << " because " << executor.getName() << "'s grade is too low.\n";
+		throw Form::GradeTooLowException();
+	}
 	srand(time(NULL));
 	int random_var = rand();
 	std::cout << this->getName() << " : DRRRRRRIIIIIILLLLLLLLLLLL NOOOOOOIIISESSSSSSS\n";
@@ -56,7 +62,6 @@ bool	RobotomyRequestForm::execute(Bureaucrat const & executor) const
 		std::cout << IT << executor.getName() <<" noticed that " <<  this->getName() <<" GOT ROBOTOMIZED. \n" << RESET;
 	else
 		std::cout << IT << executor.getName() <<" noticed that " <<  this->getName() <<" GOT ROBOTOMIZED FAILED. \n" << RESET;
-	return (true);
 }
 
 

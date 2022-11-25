@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 17:41:01 by hchang            #+#    #+#             */
-/*   Updated: 2022/11/23 15:41:43 by hchang           ###   ########.fr       */
+/*   Updated: 2022/11/25 15:38:12 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ class RobotomyRequestForm : public Form
 		RobotomyRequestForm(const RobotomyRequestForm& obj);
 		RobotomyRequestForm& operator=(const RobotomyRequestForm& obj);
 		~RobotomyRequestForm();
-		virtual bool	execute(Bureaucrat const & executor) const;
+		virtual void	execute(Bureaucrat const & executor) const;
 };
 
 std::ostream&	operator<<(std::ostream& out, const RobotomyRequestForm& rb);

@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 17:31:34 by hchang            #+#    #+#             */
-/*   Updated: 2022/11/23 16:04:13 by hchang           ###   ########.fr       */
+/*   Updated: 2022/11/25 15:37:59 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,24 +84,9 @@ void	Bureaucrat::downGrade()
 
 void	Bureaucrat::signForm(Form &form)
 {
-	if (form.beSigned(*this))
-	{
+	form.beSigned(*this);
+	if (form.getIsSigned())
 		std::cout << this->_name << " signed " << form.getName() << std::endl;
-		form.setIsSigned(true);
-	}
-	else
-		throw Bureaucrat::GradeTooLowException();
-}
-
-void	Bureaucrat::executeForm(Form const & form)
-{
-	if (form.execute(*this))
-		std::cout << this->_name << " execute " << form.getName() << std::endl;
-	else
-	{
-		std::cerr << this->_name << " couldn't execute " << form.getName() << " because ";
-		throw Bureaucrat::GradeTooLowException();
-	}
 }
 
 std::ostream&	operator<<(std::ostream& out, const Bureaucrat& bureaucrat)
@@ -110,3 +95,8 @@ std::ostream&	operator<<(std::ostream& out, const Bureaucrat& bureaucrat)
 	return out;
 }
 
+void	Bureaucrat::executeForm(Form const & form)
+{
+	form.execute(*this);
+	std::cout << this->_name << " execute " << form.getName() << std::endl;
+}

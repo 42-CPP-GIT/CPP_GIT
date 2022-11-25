@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 16:34:11 by hchang            #+#    #+#             */
-/*   Updated: 2022/11/25 13:52:57 by hchang           ###   ########.fr       */
+/*   Updated: 2022/11/25 15:02:03 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void subject()
 	me->equip(tmp);
 	tmp = src->createMateria("ice");
 	me->equip(tmp);
-	tmp = src->createMateria("hi");
+	// tmp = src->createMateria("hi");
 	
 	me->use(0, *bob);
 	me->use(1, *bob);

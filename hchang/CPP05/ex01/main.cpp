@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 17:31:31 by hchang            #+#    #+#             */
-/*   Updated: 2022/11/22 16:42:23 by hchang           ###   ########.fr       */
+/*   Updated: 2022/11/25 15:20:42 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ int	main()
 {
 	try
 	{
-		Bureaucrat	A("Test", 76);
-		A.upGrade();
+		Bureaucrat	A("Test", 1);
+		// A.upGrade();
 		// A.downGrade();
-		Form		B("sesim", false, 75, 100);
+		Form		B("sesim", false, 1, 121);
 		A.signForm(B);
 		std::cout << A << std::endl;
 		std::cout << B << std::endl;

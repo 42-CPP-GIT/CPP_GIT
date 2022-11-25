@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 17:31:32 by hchang            #+#    #+#             */
-/*   Updated: 2022/11/23 15:43:42 by hchang           ###   ########.fr       */
+/*   Updated: 2022/11/25 15:25:34 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ class Bureaucrat
 		void				downGrade();
 		void				signForm(Form &form);
 		void				executeForm(Form const & form);
-
 };
 
 std::ostream&	operator<<(std::ostream& out, const Bureaucrat& bureaucrat);

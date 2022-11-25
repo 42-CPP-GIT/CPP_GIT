@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 16:12:25 by hchang            #+#    #+#             */
-/*   Updated: 2022/11/24 12:13:01 by hchang           ###   ########.fr       */
+/*   Updated: 2022/11/25 15:58:29 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,24 +43,27 @@ Intern::~Intern()
 Form*	Intern::makeForm(std::string formName, std::string formTarget)
 {
 	int	checkValidSqureBracket = formName.find('[', 0);
-
 	switch (checkValidSqureBracket)
 	{
 		case static_cast<int>(std::string::npos):
 			break;
 		default:
+		{
+			std::cout << "There is No Form named " << formName << std::endl;
 			throw InvalidFormNameException();
+		}
 	}
-	
+
 	std::string	to_find = "[" + formName + "]";
 	std::string key = "[shrubbery creation][robotomy request][presidential pardon]";
-	size_t hi = key.find(to_find, 0);
+	
+	size_t key_value = key.find(to_find, 0);
 
 	f[0] = &Intern::makeShrubberyCreationForm;
 	f[1] = &Intern::makeRobotomyRequestForm;
 	f[2] = &Intern::makePresidentialPardonForm;
 	
-	switch (hi)
+	switch (key_value)
 	{
 		case 0:
 			return (this->*f[0])(formTarget);
@@ -75,16 +78,19 @@ Form*	Intern::makeForm(std::string formName, std::string formTarget)
 
 Form*	Intern::makeShrubberyCreationForm(std::string formTarget)
 {
+	std::cout << "Intern creates ShrubberyCreationForm named " << formTarget << std::endl;
 	return (new ShrubberyCreationForm(formTarget));
 }
 
 Form*	Intern::makeRobotomyRequestForm(std::string formTarget)
 {
+	std::cout << "Intern creates RobotomyRequestForm named " << formTarget << std::endl;
 	return (new RobotomyRequestForm(formTarget));
 }
 
 Form*	Intern::makePresidentialPardonForm(std::string formTarget)
 {
+	std::cout << "Intern creates PresidentialPardonForm named " << formTarget << std::endl;
 	return (new PresidentialPardonForm(formTarget));
 }
 

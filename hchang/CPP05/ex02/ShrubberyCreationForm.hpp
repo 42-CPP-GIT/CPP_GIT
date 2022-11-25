@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 17:40:46 by hchang            #+#    #+#             */
-/*   Updated: 2022/11/23 15:41:50 by hchang           ###   ########.fr       */
+/*   Updated: 2022/11/25 15:39:32 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ class ShrubberyCreationForm : public Form
 		ShrubberyCreationForm(const ShrubberyCreationForm& obj);
 		ShrubberyCreationForm& operator=(const ShrubberyCreationForm& obj);
 		~ShrubberyCreationForm();
-		virtual bool		execute(Bureaucrat const & executor) const;
+		virtual void	execute(Bureaucrat const & executor) const;
 
 };
 

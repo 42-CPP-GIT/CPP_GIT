@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 16:20:30 by hchang            #+#    #+#             */
-/*   Updated: 2022/11/23 15:42:00 by hchang           ###   ########.fr       */
+/*   Updated: 2022/11/25 15:36:37 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,13 +45,13 @@ class Form
 		Form(std::string name, bool sign, int signGrade, int executeGrade);
 		Form(const Form& obj);
 		Form& operator=(const Form& obj);
-		bool			beSigned(Bureaucrat bureaucrat);
-		std::string		getName() const;
+		void			beSigned(Bureaucrat &br);
 		void			setIsSigned(bool otherSign);
+		std::string		getName() const;
 		bool			getIsSigned() const;
 		int				getSignGrade() const;
 		int				getExecuteGrade() const;
-		virtual bool	execute(Bureaucrat const & executor) const = 0;
+		virtual void	execute(Bureaucrat const & executor) const = 0;
 		virtual ~Form();
 };
 

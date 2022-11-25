@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 17:31:31 by hchang            #+#    #+#             */
-/*   Updated: 2022/11/24 12:12:16 by hchang           ###   ########.fr       */
+/*   Updated: 2022/11/25 16:39:25 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ int	main()
 		Form *C = A.makeForm("robotomy request", "test2");
 		Form *D = A.makeForm("presidential pardon", "test3");
 
-
 		X.signForm(*B);
 		X.executeForm(*B);
 
@@ -37,6 +36,7 @@ int	main()
 		std::cout << *B << std::endl;
 		std::cout << *C << std::endl;
 		std::cout << *D << std::endl;
+
 	}
 	catch(const std::exception& e)
 	{

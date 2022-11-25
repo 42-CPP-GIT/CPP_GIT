@@ -6,14 +6,14 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 17:40:35 by hchang            #+#    #+#             */
-/*   Updated: 2022/11/23 15:41:54 by hchang           ###   ########.fr       */
+/*   Updated: 2022/11/25 16:03:18 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PRESIDENTIALPARDONFORM_HPP
 # define PRESIDENTIALPARDONFORM_HPP
 
-#include "Form.hpp"
+# include "Form.hpp"
 
 class PresidentialPardonForm : public Form
 {
@@ -28,7 +28,7 @@ class PresidentialPardonForm : public Form
 		PresidentialPardonForm(const PresidentialPardonForm& obj);
 		PresidentialPardonForm& operator=(const PresidentialPardonForm& obj);
 		~PresidentialPardonForm();
-		virtual bool	execute(Bureaucrat const & executor) const;
+		virtual void	execute(Bureaucrat const & executor) const;
 };
 
 std::ostream&	operator<<(std::ostream& out, const PresidentialPardonForm& ps);

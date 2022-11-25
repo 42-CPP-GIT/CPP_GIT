@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 17:40:49 by hchang            #+#    #+#             */
-/*   Updated: 2022/11/23 16:01:58 by hchang           ###   ########.fr       */
+/*   Updated: 2022/11/25 15:39:51 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,18 @@ ShrubberyCreationForm::~ShrubberyCreationForm()
 	std::cout << "[ShrubberyCreationForm Destructor Called]" << std::endl;
 }
 
-bool	ShrubberyCreationForm::execute(Bureaucrat const & executor) const
+void	ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 {
 	if (!this->getIsSigned())
+	{
+		std::cerr << executor.getName() << " couldn't execute " << this->getName() << " because this Form is already signed.\n";
 		throw NotSignedException();
+	}
 	else if (executor.getGrade() > this->getExecuteGrade())
-		return (false);
+	{
+		std::cerr << executor.getName() << " couldn't execute " << this->getName() << " because " << executor.getName() << "'s grade is too low.\n";
+		throw Form::GradeTooLowException();
+	}
 	std::ofstream out(executor.getName() + "_shrubbery");
 	if (out.fail())
 		throw FileNotOpenException();
@@ -96,7 +102,6 @@ bool	ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 		"	 \\____________________________/\n";
 	}
 	out.close();
-	return (true);
 }
 
 std::ostream&	operator<<(std::ostream& out, const ShrubberyCreationForm& sh)
