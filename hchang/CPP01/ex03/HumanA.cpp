@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 11:41:07 by hchang            #+#    #+#             */
-/*   Updated: 2022/11/05 16:08:08 by hchang           ###   ########.fr       */
+/*   Updated: 2022/11/07 20:32:57 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,6 @@ HumanA::HumanA(std::string name, Weapon &weapon)
 {
 }
 
-HumanA::~HumanA()
-{
-}
 
 void	HumanA::attack(void) const
 {

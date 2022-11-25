@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 10:58:14 by hchang            #+#    #+#             */
-/*   Updated: 2022/11/02 11:01:55 by hchang           ###   ########.fr       */
+/*   Updated: 2022/11/10 13:47:43 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 class Zombie
 {
 private:
-    std::string name_;
+    std::string _name;
 public:
     void	announce(void);
     void	setZombieName(std::string name);

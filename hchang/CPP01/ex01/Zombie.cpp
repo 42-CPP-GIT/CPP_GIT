@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 10:58:16 by hchang            #+#    #+#             */
-/*   Updated: 2022/11/05 15:46:35 by hchang           ###   ########.fr       */
+/*   Updated: 2022/11/10 13:48:56 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	Zombie::announce(void)
 {
-	std::cout << this->name_ << " : BraiiiiiiinnnzzzZ..." << std::endl;
+	std::cout << this->_name << " : BraiiiiiiinnnzzzZ..." << std::endl;
 }
 
 Zombie::Zombie()
@@ -23,10 +23,10 @@ Zombie::Zombie()
 }
 
 Zombie::~Zombie() {
-	std::cout << "[destructor] " << this->name_ << " will be back.. " << std::endl;
+	std::cout << "[destructor] " << this->_name << " will be back.. " << std::endl;
 }
 
 void	Zombie::setZombieName(std::string name)
 {
-	this->name_ = name;
+	this->_name = name;
 }

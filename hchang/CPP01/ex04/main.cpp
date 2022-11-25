@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 11:05:14 by hchang            #+#    #+#             */
-/*   Updated: 2022/11/05 16:22:54 by hchang           ###   ########.fr       */
+/*   Updated: 2022/11/07 21:38:35 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int main(int argc, char **argv)
     std::ofstream outFile;
     std::string str;
 
-    if (argc != 4 || argv[1][0] == '\0' || argv[2][0] == '\0')
+    if (argc != 4 || argv[1][0] == '\0')
         return (0);
     readFile.open(argv[1]);
     if (readFile.is_open())
