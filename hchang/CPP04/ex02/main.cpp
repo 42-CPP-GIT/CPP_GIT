@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 14:31:51 by hchang            #+#    #+#             */
-/*   Updated: 2022/11/22 15:11:50 by hchang           ###   ########.fr       */
+/*   Updated: 2022/11/25 13:55:27 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,19 @@ void a()
 	system("leaks Animal");
 }
 
-int main()
+void subject()
 {
-	// atexit(a);
-	// Subject
 	const Animal* j = new Dog();
 	const Animal* i = new Cat();
 
 	delete j; //should not create a leak
 	delete i;
+}
+
+int main()
+{
+	// atexit(a);
+	subject();
 
 	return 0;
 }

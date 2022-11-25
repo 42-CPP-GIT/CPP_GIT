@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 18:29:34 by hojinjang         #+#    #+#             */
-/*   Updated: 2022/11/23 20:06:27 by hchang           ###   ########.fr       */
+/*   Updated: 2022/11/25 13:54:15 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,13 @@
 #include "Dog.hpp"
 #include "WrongCat.hpp"
 
-
 void a()
 {
 	system("leaks Animal");
 }
-int main()
+
+void subject()
 {
-	// atexit(a);
-	// 다형성
-	// Subject
 	const Animal* meta = new Animal();
 	const Animal* j = new Dog();
 	const Animal* i = new Cat();
@@ -34,7 +31,7 @@ int main()
 	std::cout << i->getType() << " " << std::endl;
 	std::cout << meta->getType() << " " << std::endl;
 	
-	i->makeSound(); //will output the cat sound!
+	i->makeSound();
 	j->makeSound();
 	meta->makeSound();
 
@@ -44,7 +41,13 @@ int main()
 	delete i;
 	delete j;
 	delete meta;
-	delete t; // 왜 animal만 delete but no leaks
+	delete t;
+}
+
+int main()
+{
+	// atexit(a);
+	subject();
 	
 	return 0;	
 }
