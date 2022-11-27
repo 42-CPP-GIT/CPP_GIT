@@ -14,11 +14,13 @@
 
 AAnimal::AAnimal(void)
 {
+	std::cout << "[AAnimal] default constructor has been called.\n";
 	this->type = "Abstract Animal";
 }
 
 AAnimal::~AAnimal(void)
 {
+	std::cout << "[AAnimal] destructor has been called.\n";
 }
 
 AAnimal::AAnimal(const AAnimal &obj)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Animal.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jinypark <jinypark@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jinypark <jinypark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 22:13:19 by jinypark          #+#    #+#             */
-/*   Updated: 2022/11/16 13:05:47 by jinypark         ###   ########.fr       */
+/*   Updated: 2022/11/27 16:34:07 by jinypark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ protected:
 	std::string type;
 public:
 	Animal(void);
-	~Animal(void);
+	virtual	~Animal(void);
 	Animal(const Animal &obj);
 	Animal	&operator=(Animal const &obj);
 	std::string	getType(void) const;

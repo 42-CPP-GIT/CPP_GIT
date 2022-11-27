@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jinypark <jinypark@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jinypark <jinypark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 12:46:33 by jinypark          #+#    #+#             */
-/*   Updated: 2022/11/22 12:13:43 by jinypark         ###   ########.fr       */
+/*   Updated: 2022/11/27 17:55:29 by jinypark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,7 @@
 
 int main()
 {
-	AAnimal ani;
-	
+	// AAnimal b;
 	AAnimal *a[100];
 
 	int i = 0;
@@ -36,7 +35,7 @@ int main()
 	std::cout << "----------------------------------\n";
 	a[0]->getBrain()->showIdeas();
 	newAnimal->getBrain()->showIdeas();
-	
+
 	// for (; j < 100; j++)
 	// 	delete a[j];
 	return (0);

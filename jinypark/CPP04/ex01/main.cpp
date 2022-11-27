@@ -3,26 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jinypark <jinypark@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jinypark <jinypark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 12:46:33 by jinypark          #+#    #+#             */
-/*   Updated: 2022/11/22 12:07:13 by jinypark         ###   ########.fr       */
+/*   Updated: 2022/11/27 16:56:48 by jinypark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cat.hpp"
 #include "Dog.hpp"
 
+void a()
+{
+	system("leaks a.out");
+}
+
 int main()
 {
-
+	atexit(a);
 	Animal *a[100];
 
 	int i = 0;
-	// int j = 0;
-	for (; i < 50; i++)
+	for (; i < 50; ++i)
 		a[i] = new Dog();
-	for (; i < 100; i++)
+	for (; i < 100; ++i)
 		a[i] = new Cat();
 
 	Animal* newAnimal = new Dog(*(dynamic_cast<Dog *>(a[0])));
@@ -35,8 +39,9 @@ int main()
 	std::cout << "----------------------------------\n";
 	a[0]->getBrain()->showIdeas();
 	newAnimal->getBrain()->showIdeas();
-	
-	// for (; j < 100; j++)
-	// 	delete a[j];
+
+	for (int j = 0; j < 100; ++j)
+		delete a[j];
+	delete newAnimal;
 	return (0);
 }

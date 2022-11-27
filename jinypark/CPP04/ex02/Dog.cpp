@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Dog.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jinypark <jinypark@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jinypark <jinypark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 22:19:56 by jinypark          #+#    #+#             */
-/*   Updated: 2022/11/22 11:56:25 by jinypark         ###   ########.fr       */
+/*   Updated: 2022/11/27 16:51:05 by jinypark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ Dog::Dog()
 
 Dog::~Dog()
 {
-	std::cout << "[Dog] default destructor has been called.\n";
+	std::cout << "[Dog] destructor has been called.\n";
 	delete this->brain;
 }
 
@@ -41,7 +41,7 @@ Dog	&Dog::operator=(Dog const &obj)
 			delete this->brain;
 		this->type = obj.type;
 		this->brain = new Brain();
-		this->brain->setIdeas(obj.getBrain()->getIdeas());		
+		this->brain->setIdeas(obj.getBrain()->getIdeas());
 	}
 	return (*this);
 }

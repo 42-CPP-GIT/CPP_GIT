@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   MateriaSource.cpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jinypark <jinypark@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jinypark <jinypark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 00:57:56 by jinypark          #+#    #+#             */
-/*   Updated: 2022/11/22 12:34:05 by jinypark         ###   ########.fr       */
+/*   Updated: 2022/11/27 16:51:05 by jinypark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void MateriaSource::learnMateria(AMateria* m)
 	if (this->slotCnt < 4)
 		this->slots[this->slotCnt] = m;
 	++this->slotCnt;
-}	
+}
 
 AMateria* MateriaSource::createMateria(std::string const & type)
 {
@@ -42,7 +42,7 @@ MateriaSource::MateriaSource()
 MateriaSource::~MateriaSource()
 {
 	#ifdef DEBUG
-	std::cout << "[MaterialSource] default destructor has been called.\n";
+	std::cout << "[MaterialSource] destructor has been called.\n";
 	#endif
 	for (int i = 0; i < 4; ++i)
 	{

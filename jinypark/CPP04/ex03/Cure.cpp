@@ -22,7 +22,7 @@ Cure::Cure(void) : AMateria("cure")
 Cure::~Cure()
 {
 	#ifdef DEBUG
-	std::cout << "[Cure] default destructor has been called.\n";
+	std::cout << "[Cure] destructor has been called.\n";
 	#endif
 }
 

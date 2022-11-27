@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jinypark <jinypark@student.42.fr>          +#+  +:+       +#+         #
+#    By: jinypark <jinypark@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/24 17:01:08 by jinypark          #+#    #+#              #
-#    Updated: 2022/11/21 14:53:23 by jinypark         ###   ########.fr        #
+#    Updated: 2022/11/27 16:27:31 by jinypark         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	@$(CXX) $(CPPFLAGS) -o $@ $(OBJS)
 
-%.o : %.c
+%.o : %.cpp
 	@echo [$<] compiling ...
 	@$(CXX) $(CPPFLAGS) -c -o $@ $<
 
