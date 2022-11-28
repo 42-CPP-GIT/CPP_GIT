@@ -26,6 +26,16 @@ Cure::~Cure()
 	#endif
 }
 
+Cure::Cure(const Cure &obj)
+{
+
+}
+
+Cure&	Cure::operator=(const Cure &obj)
+{
+	
+}
+
 AMateria* Cure::clone() const
 {
 	return (new Cure());

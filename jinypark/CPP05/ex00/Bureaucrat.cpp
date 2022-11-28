@@ -6,7 +6,7 @@
 /*   By: jinypark <jinypark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 13:53:26 by jinypark          #+#    #+#             */
-/*   Updated: 2022/11/22 15:19:03 by jinypark         ###   ########.fr       */
+/*   Updated: 2022/11/28 09:07:41 by jinypark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,23 @@ Bureaucrat::Bureaucrat(int grade) : name_("jinypark")
 
 Bureaucrat::~Bureaucrat()
 {
+}
+
+Bureaucrat::Bureaucrat(const Bureaucrat &obj)
+{
+	*this = obj;
+}
+
+Bureaucrat	&Bureaucrat::operator=(const Bureaucrat &obj)
+{
+	if (this != &obj)
+	{
+		std::string &tmp = const_cast<std::string &>(this->name_);
+		
+		tmp = obj.getName();
+		this->grade_ = obj.getGrade();
+	}
+	return (*this);
 }
 
 std::string	Bureaucrat::getName(void) const

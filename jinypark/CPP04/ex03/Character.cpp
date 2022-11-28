@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Character.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jinypark <jinypark@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: jinypark <jinypark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 00:19:27 by jinypark          #+#    #+#             */
-/*   Updated: 2022/11/27 16:51:05 by jinypark         ###   ########.fr       */
+/*   Updated: 2022/11/28 09:15:04 by jinypark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,12 @@ Character&	Character::operator=(Character const &obj)
 	{
 		this->name_ = obj.name_;
 		for (int i = 0; i < 4; ++i)
-			if (this->slots[i] != NULL)
+		{
+			if (obj.slots[i] != NULL)
 				this->slots[i] = obj.slots[i]->clone();
+			else
+				this->slots[i] = NULL;
+		}
 	}
 	return (*this);
 }
