@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   MateriaSource.cpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jinypark <jinypark@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: jinypark <jinypark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 00:57:56 by jinypark          #+#    #+#             */
-/*   Updated: 2022/11/29 11:44:43 by jinypark         ###   ########.fr       */
+/*   Updated: 2022/11/29 15:34:00 by jinypark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,22 +38,28 @@ static unsigned int	ftGetNum(const std::string& question)
 	std::stringstream	ss(answer);
 
 	ss >> ret;
-	std::cout << ss.fail() << "\n";
-	return (ret);
+	return (ss.fail() ? 0 : ret);
 }
 
 void MateriaSource::learnMateria(AMateria* m)
 {
-	if (this->slotCnt < 4)
-		this->slots[this->slotCnt++] = m;
+	int i = 0;
+	for (;this->slots[i] && i < SLOT_CNT; ++i)
+		;
+	if (i == SLOT_CNT)
+	{
+		std::cout << "Slot is full!\n" << std::endl;
+		return ;
+	}
+	this->slots[i] = m;
 }
 
 AMateria* MateriaSource::createMateria(std::string const & type)
 {
 	AMateria* ret = 0;
-	for (unsigned int i = 0; i < slotCnt; ++i)
+	for (unsigned int i = 0; i < SLOT_CNT; ++i)
 	{
-		if (this->slots[i]->getType() == type)
+		if (this->slots[i] && this->slots[i]->getType() == type)
 		{
 			unsigned int j = 0;
 			for (;MateriaSource::inventory[j] && j < 100; ++j)
@@ -78,17 +84,11 @@ MateriaSource::MateriaSource()
 	#ifdef DEBUG
 	std::cout << "[MaterialSource] default constructor has been called.\n";
 	#endif
-	this->slotCnt = 0;
-	this->inventoryCnt = 0;
 	int i = 0;
-	for (; i < 4; ++i)
+	for (; i < SLOT_CNT; ++i)
 	{
-		this->slots[i] = NULL;
+		this->slots[i] = 0;
 	}
-	// 	this->inventory[i] = NULL;
-	// }
-	// for (; i < INVENTORY_CNT; ++i)
-	// 	this->inventory[i] = NULL;
 }
 
 MateriaSource::~MateriaSource()
@@ -97,9 +97,9 @@ MateriaSource::~MateriaSource()
 	std::cout << "[MaterialSource] destructor has been called.\n";
 	#endif
 	int i = 0;
-	for (; i < 4; ++i)
+	for (; i < SLOT_CNT; ++i)
 	{
-		delete this->slots[i];
+		delete MateriaSource::slots[i];
 		delete MateriaSource::inventory[i];
 	}
 	for (; i < INVENTORY_CNT; ++i)
@@ -118,8 +118,45 @@ MateriaSource&	MateriaSource::operator=(const MateriaSource &obj)
 	if (this != &obj)
 	{
 		for (int i = 0; i < 4; ++i)
-			this->slots[i] = obj.slots[i];
-		this->slotCnt = obj.slotCnt;
+		{
+			delete this->slots[i];
+			if (obj.slots[i])
+				this->slots[i] = obj.slots[i]->clone();
+		}
 	}
 	return (*this);
+}
+
+bool	MateriaSource::removeFromInven(AMateria* m)
+{
+	int i = 0;
+	for(; MateriaSource::inventory[i] != m && i < 100; ++i)
+		;
+	if (i == 100)
+		return (false);
+	MateriaSource::inventory[i] = NULL;
+	return (true);
+}
+
+bool	MateriaSource::putInInven(AMateria* m)
+{
+	int i = 0;
+	for(; MateriaSource::inventory[i] != NULL && i < 100; ++i)
+		;
+	if (i == 100)
+	{
+		std::cout << "Inventory is full!\n";
+		return (false);
+	}
+	MateriaSource::inventory[i] = m;
+	return (true);
+}
+
+void	MateriaSource::printSlot(std::string name)
+{
+	for (int i = 0; i < SLOT_CNT; ++i)
+	{
+		if (this->slots[i])
+			std::cout << name + ": " << i << " " <<this->slots[i]->getType() << "\n";
+	}
 }

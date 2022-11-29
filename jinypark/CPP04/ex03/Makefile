@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jinypark <jinypark@student.42seoul.kr>     +#+  +:+       +#+         #
+#    By: jinypark <jinypark@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/24 17:01:08 by jinypark          #+#    #+#              #
-#    Updated: 2022/11/29 09:40:32 by jinypark         ###   ########.fr        #
+#    Updated: 2022/11/29 14:37:03 by jinypark         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,6 +40,6 @@ re:
 	@make all
 
 debug:
-	make "CPPFLAGS = -Wall -Wextra -Werror -std=c++98 -DDEBUG" all
+	make "CPPFLAGS = -Wall -Wextra -Werror -g -std=c++98 -DDEBUG -fsanitize=address" all
 
 .PHONY: all clean fclean re

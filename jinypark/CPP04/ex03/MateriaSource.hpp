@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   MateriaSource.hpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jinypark <jinypark@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: jinypark <jinypark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 22:59:05 by jinypark          #+#    #+#             */
-/*   Updated: 2022/11/29 11:53:39 by jinypark         ###   ########.fr       */
+/*   Updated: 2022/11/29 16:04:06 by jinypark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,22 +16,23 @@
 # include "IMateriaSource.hpp"
 # include <sstream>
 # define INVENTORY_CNT 100
+# define SLOT_CNT 4
 
 class MateriaSource : public IMateriaSource
 {
-// private:
-public:
+private:
 	static AMateria*	inventory[INVENTORY_CNT];
-	unsigned int		inventoryCnt;
-	AMateria*			slots[4];
-	unsigned int		slotCnt;
+	AMateria*			slots[SLOT_CNT];
 public:
 	MateriaSource();
 	~MateriaSource();
 	MateriaSource(const MateriaSource &obj);
 	MateriaSource&	operator=(const MateriaSource &obj);
-	virtual void learnMateria(AMateria* m);
-	virtual AMateria* createMateria(std::string const & type);
+	void 		learnMateria(AMateria* m);
+	AMateria*	createMateria(std::string const & type);
+	static bool	removeFromInven(AMateria* m);
+	static bool	putInInven(AMateria* m);
+	void		printSlot(std::string name);
 };
 
 #endif

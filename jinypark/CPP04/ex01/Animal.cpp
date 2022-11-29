@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Animal.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jinypark <jinypark@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: jinypark <jinypark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 21:59:52 by jinypark          #+#    #+#             */
-/*   Updated: 2022/11/27 17:07:45 by jinypark         ###   ########.fr       */
+/*   Updated: 2022/11/29 16:24:34 by jinypark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,11 @@ void	Animal::makeSound(void) const
 std::string	Animal::getType(void) const
 {
 	return (this->type);
+}
+
+Brain*	Animal::getBrain(void) const
+{
+	std::cout << "BAD ACCESS!\n";
+	std::exit(0);
 }
 

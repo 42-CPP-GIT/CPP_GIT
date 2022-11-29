@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jinypark <jinypark@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: jinypark <jinypark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 00:08:35 by jinypark          #+#    #+#             */
-/*   Updated: 2022/11/29 11:53:08 by jinypark         ###   ########.fr       */
+/*   Updated: 2022/11/29 16:18:05 by jinypark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,44 +20,78 @@ void a()
 	system("leaks a.out");
 }
 
-int main()
+void testSubject()
 {
-	atexit(a);
 	IMateriaSource* src = new MateriaSource();
 	src->learnMateria(new Ice());
 	src->learnMateria(new Cure());
-	Character* me = new Character("me");
+
+	ICharacter* me = new Character("me");
+
 	AMateria* tmp;
 	tmp = src->createMateria("ice");
 	me->equip(tmp);
 	tmp = src->createMateria("cure");
-	tmp = src->createMateria("cure");
-	tmp = src->createMateria("cure");
-	tmp = src->createMateria("cure");
-	tmp = src->createMateria("cure");
-	tmp = src->createMateria("cure");
-	tmp = src->createMateria("fire");
-	tmp = src->createMateria("lightning");
 	me->equip(tmp);
-	Character* bob = new Character("bob");
-	*bob = *me;
-	Character* sam = new Character("sam");
+
+	ICharacter* bob = new Character("bob");
+
 	me->use(0, *bob);
 	me->use(1, *bob);
-	me->use(1, *sam);
-	sam->use(0, *me);
-	sam->equip(tmp);
-	sam->use(0, *me);
-
-	std::cout << "bob: " << dynamic_cast<Character *>(bob)->slots[0] << "\n";
-	std::cout << "me: " << dynamic_cast<Character *>(me)->slots[0]<< "\n";
-	for(int i = 0; i < 100; ++i)
-	{
-		std::cout << MateriaSource::inventory[i] << "\n";
-	}
-	delete sam;
+	
 	delete bob;
 	delete me;
 	delete src;
+}
+
+void testDeepCopy()
+{
+	std::cout << "TestDeepCopy start\n";
+	MateriaSource* src = new MateriaSource();
+	src->learnMateria(new Ice());
+	src->learnMateria(new Cure());
+
+	AMateria* tmp;
+	tmp = src->createMateria("ice");
+
+	Character* me(new Character("me"));
+	me->equip(tmp);
+
+	tmp = src->createMateria("cure");
+	Character* bob(new Character("bob"));
+	bob->equip(tmp);
+
+	std::cout << "[me]  before : " << me->getFirstMateria()->getType() << "\n";
+	std::cout << "[bob] before : " << bob->getFirstMateria()->getType() << "\n";
+	std::cout << "-----------------------------------" << "\n";
+	*bob = *me;
+	std::cout << "[me]  after  : " << me->getFirstMateria()->getType() << "\n";
+	std::cout << "[bob] after  : " << bob->getFirstMateria()->getType() << "\n";
+	std::cout << "-----------------------------------" << "\n";
+	MateriaSource* src2 = new MateriaSource();
+	*src2 = *src;
+	src->printSlot("before src");
+	src2->printSlot("before src2");
+	std::cout << "-----------------------------------" << "\n";
+	src->learnMateria(new Ice());
+	src->printSlot("after src");
+	src2->printSlot("after src2");
+	
+
+	delete bob;
+	delete me;
+	delete src;
+	delete src2;
+}
+
+int main()
+{
+	atexit(a);
+	
+	std::string str;
+	testSubject();
+	std::getline(std::cin, str);
+	testDeepCopy();
+	std::getline(std::cin, str);
 	return 0;
 }

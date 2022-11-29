@@ -6,7 +6,7 @@
 /*   By: jinypark <jinypark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 22:13:19 by jinypark          #+#    #+#             */
-/*   Updated: 2022/11/16 12:36:37 by jinypark         ###   ########.fr       */
+/*   Updated: 2022/11/29 15:46:15 by jinypark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 
 class WrongCat : public WrongAnimal
 {
-protected:
 public:
 	WrongCat(void);
 	~WrongCat(void);
