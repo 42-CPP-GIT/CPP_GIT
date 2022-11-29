@@ -28,12 +28,16 @@ Cure::~Cure()
 
 Cure::Cure(const Cure &obj)
 {
-
+	*this = obj;
 }
 
 Cure&	Cure::operator=(const Cure &obj)
 {
-	
+	if (this != &obj)
+	{
+		this->type_ = obj.type_;
+	}
+	return (*this);
 }
 
 AMateria* Cure::clone() const

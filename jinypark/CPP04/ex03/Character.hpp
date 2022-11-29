@@ -6,7 +6,7 @@
 /*   By: jinypark <jinypark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 22:55:53 by jinypark          #+#    #+#             */
-/*   Updated: 2022/11/21 09:18:50 by jinypark         ###   ########.fr       */
+/*   Updated: 2022/11/29 11:16:28 by jinypark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@
 
 class Character : public ICharacter
 {
-private:
+// private:
+public:
 	std::string name_;
 	AMateria*	slots[4];
-	int			slotIdx;
 public:
 	Character();
 	Character(const std::string type);

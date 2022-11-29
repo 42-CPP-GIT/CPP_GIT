@@ -6,7 +6,7 @@
 /*   By: jinypark <jinypark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 23:57:10 by jinypark          #+#    #+#             */
-/*   Updated: 2022/11/27 16:51:05 by jinypark         ###   ########.fr       */
+/*   Updated: 2022/11/28 14:44:48 by jinypark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,20 @@ Ice::~Ice()
 	#ifdef DEBUG
 	std::cout << "[Ice] destructor has been called.\n";
 	#endif
+}
+
+Ice::Ice(const Ice &obj)
+{
+	*this = obj;
+}
+
+Ice&	Ice::operator=(const Ice &obj)
+{
+	if (this != &obj)
+	{
+		this->type_ = obj.type_;
+	}
+	return (*this);
 }
 
 AMateria* Ice::clone() const

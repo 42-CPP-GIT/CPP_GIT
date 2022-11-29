@@ -6,7 +6,7 @@
 #    By: jinypark <jinypark@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/24 17:01:08 by jinypark          #+#    #+#              #
-#    Updated: 2022/11/27 16:27:31 by jinypark         ###   ########.fr        #
+#    Updated: 2022/11/29 09:40:32 by jinypark         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,6 +40,6 @@ re:
 	@make all
 
 debug:
-	make "CPPFLAGS = -Wall -Wextra -Werror -std=c++98 -DEVAL" all
+	make "CPPFLAGS = -Wall -Wextra -Werror -std=c++98 -DDEBUG" all
 
 .PHONY: all clean fclean re

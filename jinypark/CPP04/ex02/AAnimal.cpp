@@ -25,6 +25,7 @@ AAnimal::~AAnimal(void)
 
 AAnimal::AAnimal(const AAnimal &obj)
 {
+	std::cout << "[AAnimal] default constructor has been called.\n";
 	*this = obj;
 }
 
