@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Character.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jinypark <jinypark@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jinypark <jinypark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 00:19:27 by jinypark          #+#    #+#             */
-/*   Updated: 2022/11/29 16:15:13 by jinypark         ###   ########.fr       */
+/*   Updated: 2022/11/29 20:29:49 by jinypark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ void Character::unequip(int idx)
 
 void Character::use(int idx, ICharacter& target)
 {
-	if (this->slots[idx] && 0 < idx && idx < SLOT_CNT)
+	if (this->slots[idx] && 0 <= idx && idx < SLOT_CNT)
 		this->slots[idx]->use(target);
 	else
 		std::cout << "Slot is empty.\n";

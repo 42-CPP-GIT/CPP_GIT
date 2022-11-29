@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jinypark <jinypark@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jinypark <jinypark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 00:08:35 by jinypark          #+#    #+#             */
-/*   Updated: 2022/11/29 16:18:05 by jinypark         ###   ########.fr       */
+/*   Updated: 2022/11/29 20:18:29 by jinypark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void testSubject()
 
 	me->use(0, *bob);
 	me->use(1, *bob);
-	
+
 	delete bob;
 	delete me;
 	delete src;
@@ -76,7 +76,7 @@ void testDeepCopy()
 	src->learnMateria(new Ice());
 	src->printSlot("after src");
 	src2->printSlot("after src2");
-	
+
 
 	delete bob;
 	delete me;
@@ -87,7 +87,7 @@ void testDeepCopy()
 int main()
 {
 	atexit(a);
-	
+
 	std::string str;
 	testSubject();
 	std::getline(std::cin, str);

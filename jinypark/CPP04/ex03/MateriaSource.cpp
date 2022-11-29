@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   MateriaSource.cpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jinypark <jinypark@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jinypark <jinypark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 00:57:56 by jinypark          #+#    #+#             */
-/*   Updated: 2022/11/29 15:34:00 by jinypark         ###   ########.fr       */
+/*   Updated: 2022/11/29 20:25:23 by jinypark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ AMateria* MateriaSource::createMateria(std::string const & type)
 		if (this->slots[i] && this->slots[i]->getType() == type)
 		{
 			unsigned int j = 0;
-			for (;MateriaSource::inventory[j] && j < 100; ++j)
+			for (;MateriaSource::inventory[j] && j < INVENTORY_CNT; ++j)
 				;
 			switch (j)
 			{
@@ -99,12 +99,15 @@ MateriaSource::~MateriaSource()
 	int i = 0;
 	for (; i < SLOT_CNT; ++i)
 	{
-		delete MateriaSource::slots[i];
+		delete this->slots[i];
 		delete MateriaSource::inventory[i];
+		MateriaSource::inventory[i] = NULL;
+		this->slots[i] = NULL;
 	}
 	for (; i < INVENTORY_CNT; ++i)
 	{
 		delete MateriaSource::inventory[i];
+		MateriaSource::inventory[i] = NULL;
 	}
 }
 
