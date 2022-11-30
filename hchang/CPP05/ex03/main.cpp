@@ -5,32 +5,41 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/11 14:31:51 by hchang            #+#    #+#             */
-/*   Updated: 2022/11/25 13:55:27 by hchang           ###   ########.fr       */
+/*   Created: 2022/11/18 17:31:31 by hchang            #+#    #+#             */
+/*   Updated: 2022/11/25 16:39:25 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Cat.hpp"
-#include "Dog.hpp"
+#include "Intern.hpp"
+#include "Bureaucrat.hpp"
 
-void a()
+int	main()
 {
-	system("leaks Animal");
-}
+	try
+	{
+		Bureaucrat	X("Test", 2);
 
-void subject()
-{
-	const Animal* j = new Dog();
-	const Animal* i = new Cat();
+		Intern	A;
 
-	delete j; //should not create a leak
-	delete i;
-}
+		Form *B = A.makeForm("shrubbery creation", "test");
+		Form *C = A.makeForm("robotomy request", "test2");
+		Form *D = A.makeForm("presidential pardon", "test3");
 
-int main()
-{
-	// atexit(a);
-	subject();
+		X.signForm(*B);
+		X.executeForm(*B);
 
-	return 0;
+		X.signForm(*C);
+		X.executeForm(*C);
+
+		X.signForm(*D);
+		X.executeForm(*D);
+		std::cout << *B << std::endl;
+		std::cout << *C << std::endl;
+		std::cout << *D << std::endl;
+
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << RED << e.what()  << RESET << '\n';
+	}
 }

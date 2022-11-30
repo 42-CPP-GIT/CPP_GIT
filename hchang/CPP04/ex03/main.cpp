@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 16:34:11 by hchang            #+#    #+#             */
-/*   Updated: 2022/11/22 15:12:07 by hchang           ###   ########.fr       */
+/*   Updated: 2022/11/25 15:02:03 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,133 +15,148 @@
 #include "MateriaSource.hpp"
 #include "Character.hpp"
 
+AMateria	*Character::_floor[10] = {0,};
+int			Character::_floorIdx = 0;
+
 void a()
 {
 	system("leaks Materia");
 }
 
-void test1(void)
+void floorClear()
 {
+	for (int i = 0; i < Character::_floorIdx; i++)
+	{
+		if (Character::_floor[i])
+			delete Character::_floor[i];
+	}
+}
 
+void subject()
+{
+	AMateria* tmp;
+	ICharacter* me = new Character("me");
+	ICharacter* bob = new Character("bob");
 	IMateriaSource* src = new MateriaSource();
+	
 	src->learnMateria(new Ice());
 	src->learnMateria(new Cure());
-	// src->learnMateria(new Ice());
-	// src->learnMateria(new Ice());
-	// src->learnMateria(new Cure()); // <- 못들어감
 
-	
-	Character* me = new Character("me");
-	
-	AMateria* tmp;
-	AMateria* tmp1;
-	
 	tmp = src->createMateria("ice");
-	// std::cout << tmp->getType() << std::endl;
 	me->equip(tmp);
 	tmp = src->createMateria("cure");
 	me->equip(tmp);
-	tmp1 = tmp->clone();
-	me->equip(tmp1);
-	me->equip(tmp1);
-	me->equip(tmp1);
-	me->equip(tmp1);
-	me->unequip(0);
-
-	// tmp = src->createMateria("ice");
-	// me->equip(tmp);
-	// tmp = src->createMateria("ice");
-	// me->equip(tmp);
-	// tmp = src->createMateria("cure");
-	// me->equip(tmp);
-	// tmp = src->createMateria("whatthe");
-	// me->equip(tmp);
-
-	Character* bob = new Character("sesim");
+	tmp = src->createMateria("cure");
+	me->equip(tmp);
+	tmp = src->createMateria("ice");
+	me->equip(tmp);
+	// tmp = src->createMateria("hi");
+	
 	me->use(0, *bob);
 	me->use(1, *bob);
 	me->use(2, *bob);
-	// me->use(3, *bob);
-	// me->use(1, *bob);
-	// me->use(2, *me);
+	me->use(3, *bob);
+	// me->use(4, *bob);
 
-	// me->use(6, *bob);
-	
-	delete tmp1;
 	delete bob;
 	delete me;
 	delete src;
 }
 
-void test2(void)
+void MateriaSourceAssignmentOperator()
 {
-	IMateriaSource* src = new MateriaSource();
+	AMateria* tmp;
+	ICharacter* me = new Character("me");
+	ICharacter* bob = new Character("bob");
+	MateriaSource* src = new MateriaSource();
+	MateriaSource* src2 = new MateriaSource();
+
 	src->learnMateria(new Ice());
 	src->learnMateria(new Cure());
 
-	Character* me = new Character("me");
+	*src2 = *src;
 
+	tmp = src2->createMateria("ice");
+	me->equip(tmp);
+	tmp = src2->createMateria("cure");
+	me->equip(tmp);
+
+	me->use(0, *bob);
+	me->use(1, *bob);
+
+	delete bob;
+	delete me;
+	delete src;
+	delete src2;
+}
+
+void	CharacterAssignmentOperator()
+{
 	AMateria* tmp;
-	
+	Character* me = new Character("me");
+	Character* hchang = new Character("hchang");
+	Character* bob = new Character("bob");
+	IMateriaSource* src = new MateriaSource();
+
+	src->learnMateria(new Ice());
+	src->learnMateria(new Cure());
+
 	tmp = src->createMateria("ice");
 	me->equip(tmp);
 	tmp = src->createMateria("cure");
 	me->equip(tmp);
 
-	Character* hchang = me;
-
-	hchang->use(0, *me);
-	hchang->use(1, *me);
-
-
-	// IMateriaSource* tmp_src = src;
-
-	// tmp = tmp_src->createMateria("cure");
-	// hchang->equip(tmp);
-	// hchang->use(2, *me);
-	// hchang->use(3, *me);
-
+	*hchang = *me;
 	
+	me->use(0, *bob);
+	me->use(1, *bob);
+
+	delete hchang;
+	delete bob;
 	delete me;
 	delete src;
+}
+
+void	BothAssignmentOperator()
+{
+	AMateria* tmp;
+	Character* me = new Character("me");
+	Character* hchang = new Character("hchang");
+	Character* bob = new Character("bob");
+	MateriaSource* src = new MateriaSource();
+	MateriaSource* src2 = new MateriaSource();
+
+	src->learnMateria(new Ice());
+	src->learnMateria(new Cure());
+
+	*src2 = *src;
+	
+	tmp = src2->createMateria("ice");
+	me->equip(tmp);
+	tmp = src2->createMateria("cure");
+	me->equip(tmp);
+
+	*hchang = *me;
+
+	hchang->use(0, *bob);
+	hchang->use(1, *bob);
+
+	delete me;
+	delete bob;
+	delete src;
+	delete src2;
+	delete hchang;
 }
 
 
 int main()
 {
 	// atexit(a);
-	MateriaSource* src = new MateriaSource();
-	src->learnMateria(new Ice());
-	src->learnMateria(new Cure());
+	subject();
+	// MateriaSourceAssignmentOperator();
+	// CharacterAssignmentOperator();
+	// BothAssignmentOperator();
 
-	Character* me = new Character("me");
-	
-	MateriaSource* src2 = new MateriaSource();
-
-	*src2 = *src;
-
-	AMateria* tmp;
-	tmp = src2->createMateria("ice");
-	me->equip(tmp);
-	tmp = src2->createMateria("cure");
-	me->equip(tmp);
-
-	Character* hchang = new Character("hchang");
-	std::cout << "bro\n";
-	*hchang = *me;
-	std::cout << "bro1\n";
-
-	tmp = src2->createMateria("hi");
-
-	hchang->use(0, *me);
-	hchang->use(1, *me);
-	hchang->use(2, *me);
-
-
-	delete me;
-	delete src;
-	delete src2;
-
-
+	floorClear();
 	return 0;
 }

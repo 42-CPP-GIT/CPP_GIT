@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 16:31:45 by hchang            #+#    #+#             */
-/*   Updated: 2022/11/21 22:12:16 by hchang           ###   ########.fr       */
+/*   Updated: 2022/11/25 11:05:11 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,3 @@ void Ice::use(ICharacter& target)
 {
 	std::cout <<BLE "* shoots an ice bolt at " << target.getName() << " *" RESET<< std::endl;
 }
-// 일단 가자

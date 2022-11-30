@@ -5,32 +5,28 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/11 14:31:51 by hchang            #+#    #+#             */
-/*   Updated: 2022/11/25 13:55:27 by hchang           ###   ########.fr       */
+/*   Created: 2022/11/18 17:31:31 by hchang            #+#    #+#             */
+/*   Updated: 2022/11/25 15:20:42 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Cat.hpp"
-#include "Dog.hpp"
+#include "Bureaucrat.hpp"
+#include "Form.hpp"
 
-void a()
+int	main()
 {
-	system("leaks Animal");
-}
-
-void subject()
-{
-	const Animal* j = new Dog();
-	const Animal* i = new Cat();
-
-	delete j; //should not create a leak
-	delete i;
-}
-
-int main()
-{
-	// atexit(a);
-	subject();
-
-	return 0;
+	try
+	{
+		Bureaucrat	A("Test", 1);
+		// A.upGrade();
+		// A.downGrade();
+		Form		B("sesim", false, 1, 121);
+		A.signForm(B);
+		std::cout << A << std::endl;
+		std::cout << B << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << RED << e.what()  << RESET << '\n';
+	}
 }

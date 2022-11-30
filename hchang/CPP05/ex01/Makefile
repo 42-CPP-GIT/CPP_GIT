@@ -6,12 +6,12 @@
 #    By: hchang <hchang@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/21 15:09:06 by hchang            #+#    #+#              #
-#    Updated: 2022/11/25 13:55:45 by hchang           ###   ########.fr        #
+#    Updated: 2022/11/22 16:32:20 by hchang           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CXX				=	c++
-NAME			=	Animal
+NAME			=	Form
 RM 				=	rm -rf
 CPPFLAGS 		=	-Wall -Wextra -Werror -std=c++98
 

@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 16:32:47 by hchang            #+#    #+#             */
-/*   Updated: 2022/11/21 21:46:30 by hchang           ###   ########.fr       */
+/*   Updated: 2022/11/25 12:01:31 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,13 @@
 class Character : public ICharacter
 {
 	private:
-		std::string		_name;
-		int				_slotIdx;
-		AMateria		*_slot[4];
+		std::string			_name;
+		int					_slotIdx;
+		AMateria			*_slot[4];
 
 	public:
+		static AMateria		*_floor[10];
+		static int			_floorIdx;
 		const AMateria* getAMateria(int idx) const;
 		Character(std::string name);
 		Character(const Character& obj);
