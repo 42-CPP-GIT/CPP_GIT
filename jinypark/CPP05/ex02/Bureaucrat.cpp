@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jinypark <jinypark@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jinypark <jinypark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 13:53:26 by jinypark          #+#    #+#             */
-/*   Updated: 2022/11/30 09:29:19 by jinypark         ###   ########.fr       */
+/*   Updated: 2022/11/30 17:12:14 by jinypark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,3 +91,16 @@ void	Bureaucrat::signForm(Form* form)
 		std::cout << this->name_ << " couldn't sign " << form->getName() << " because " << " it's already signed" << ".\n";
 	}
 }
+
+void	Bureaucrat::executeForm(Form* form) const
+{
+	try
+	{
+		form->execute(*this);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+}
+

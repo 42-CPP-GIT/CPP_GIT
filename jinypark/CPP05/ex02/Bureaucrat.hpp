@@ -6,7 +6,7 @@
 /*   By: jinypark <jinypark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 13:18:55 by jinypark          #+#    #+#             */
-/*   Updated: 2022/11/30 09:13:25 by jinypark         ###   ########.fr       */
+/*   Updated: 2022/11/30 16:37:19 by jinypark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ public:
 	void		increment(int grade);
 	void		decrement(int grade);
 	void		signForm(Form* form);
+	void		executeForm(Form* form) const;
 	class GradeTooHighException : public std::exception
 	{
 	public:

@@ -6,12 +6,13 @@
 /*   By: jinypark <jinypark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 13:59:42 by jinypark          #+#    #+#             */
-/*   Updated: 2022/11/29 22:15:40 by jinypark         ###   ########.fr       */
+/*   Updated: 2022/11/30 17:14:09 by jinypark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 #include "Form.hpp"
+#include "ShrubberyCreationForm.hpp"
 
 int main()
 {
@@ -43,12 +44,12 @@ int main()
 
 
 	Bureaucrat	a(25);
-	Form		f("FORM", 25, 1);
-	Form		f2("FORM", 1, 1);
-	std::cout << f;
-	a.signForm(&f);
-	std::cout << "-----------------\n";
-	std::cout << f;
-	a.signForm(&f2);
+	std::string ho("test");
+	Form* form(new ShrubberyCreationForm(ho));
+
+	a.signForm(form);
+	a.executeForm(form);
+
+
 	return (0);
 }

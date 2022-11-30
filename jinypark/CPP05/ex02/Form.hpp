@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Form.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jinypark <jinypark@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jinypark <jinypark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 14:48:21 by jinypark          #+#    #+#             */
-/*   Updated: 2022/11/30 09:35:26 by jinypark         ###   ########.fr       */
+/*   Updated: 2022/11/30 17:03:18 by jinypark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ public:
 	void	setSignGrade(int grade);
 	void	setExecuteGrade(int grade);
 	void	setName(const std::string& name);
-	virtual void		execute(Bureaucrat const & executor) = 0;
+	virtual void		execute(Bureaucrat const & executor) const = 0;
 	class GradeTooHighException : public std::exception
 	{
 	public:

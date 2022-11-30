@@ -6,7 +6,7 @@
 /*   By: jinypark <jinypark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 14:48:21 by jinypark          #+#    #+#             */
-/*   Updated: 2022/11/29 22:14:23 by jinypark         ###   ########.fr       */
+/*   Updated: 2022/11/30 16:51:10 by jinypark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,5 @@ public:
 };
 
 std::ostream& operator<<(std::ostream& os, Form& obj);
-
 
 #endif
