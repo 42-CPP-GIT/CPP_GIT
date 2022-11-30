@@ -6,7 +6,7 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 16:30:17 by minsuki2          #+#    #+#             */
-/*   Updated: 2022/11/30 17:31:06 by minsuki2         ###   ########.fr       */
+/*   Updated: 2022/11/30 23:19:41 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,11 @@
 # endif
 # define FLOAT_BITS		23
 
+enum e_constant {
+	OFFSET_SIGN = 1 << 31,
+	OFFSET_
+};
+
 class Fixed {
 	public:
 		Fixed(void);
@@ -49,6 +54,17 @@ class Fixed {
 	private:
 		int					fixed_num_;
 		static const int	fixed_nbits_;
+		static const int	float_nbits_;
+		static const int	float_exponent_bit_;
+		static const int	float_mantissa_bit_;
+		static const int	sign_bit_;
+
+};
+
+struct s_info_float {
+	int		bit;
+	int		sign;
+	int		exponent;
 };
 
 
