@@ -2,7 +2,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ShrubberyCreationForm.hpp                                           :+:      :+:    :+:   */
+/*   PresidentialPardonForm.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jinypark <jinypark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -11,24 +11,23 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ShrubberyCreationForm_HPP
-#define ShrubberyCreationForm_HPP
+#ifndef PresidentialPardonForm_HPP
+#define PresidentialPardonForm_HPP
 
-# include <fstream>
 # include "Form.hpp"
 
-# define SHRUBBERY_SIGN_GRADE 145
-# define SHRUBBERY_EXECUTE_GRADE 137
+# define PRESIDENTIALPARDONFORM_SIGN_GRADE 72
+# define PRESIDENTIALPARDONFORM_EXECUTE_GRADE 45
 
-class ShrubberyCreationForm : public Form
+class PresidentialPardonForm : public Form
 {
 private:
 	std::string target_;
-	ShrubberyCreationForm();
+	PresidentialPardonForm();
 public:
-	ShrubberyCreationForm(std::string& target);
-	ShrubberyCreationForm(const std::string name, const int signedGrade, const int executeGrade);
-	~ShrubberyCreationForm();
+	PresidentialPardonForm(std::string& target);
+	PresidentialPardonForm(const std::string name, const int signedGrade, const int executeGrade);
+	~PresidentialPardonForm();
 	void	execute(Bureaucrat const & executor) const;
 };
 

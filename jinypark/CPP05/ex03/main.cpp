@@ -6,7 +6,7 @@
 /*   By: jinypark <jinypark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 13:59:42 by jinypark          #+#    #+#             */
-/*   Updated: 2022/11/30 21:08:43 by jinypark         ###   ########.fr       */
+/*   Updated: 2022/11/30 21:25:50 by jinypark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
+#include "Intern.hpp"
 
 int main()
 {
@@ -47,17 +48,18 @@ int main()
 
 
 	Bureaucrat	a(50);
-	std::string ho("target");
-	Form* form(new ShrubberyCreationForm(ho));
-	Form* form1(new RobotomyRequestForm(ho));
-	Form* form2(new PresidentialPardonForm(ho));
+	Intern		intern;
+	Form* form;
 
+	form = intern.makeForm("shrubbery creation request", "jiny");
 	a.signForm(form);
 	a.executeForm(form);
-	a.signForm(form1);
-	a.executeForm(form1);
-	a.signForm(form2);
-	a.executeForm(form2);
+	form = intern.makeForm("robotomy request", "hchang");
+	a.signForm(form);
+	a.executeForm(form);
+	form = intern.makeForm("presidential pardon request", "sesim");
+	a.signForm(form);
+	a.executeForm(form);
 
 
 	return (0);

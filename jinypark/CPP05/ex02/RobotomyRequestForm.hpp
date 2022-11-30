@@ -2,7 +2,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ShrubberyCreationForm.hpp                                           :+:      :+:    :+:   */
+/*   RobotomyRequestForm.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jinypark <jinypark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -11,24 +11,25 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ShrubberyCreationForm_HPP
-#define ShrubberyCreationForm_HPP
+#ifndef RobotomyRequestForm_HPP
+#define RobotomyRequestForm_HPP
 
-# include <fstream>
+# include <cstdlib>
+# include <ctime>
 # include "Form.hpp"
 
-# define SHRUBBERY_SIGN_GRADE 145
-# define SHRUBBERY_EXECUTE_GRADE 137
+# define ROBOTOMY_SIGN_GRADE 72
+# define ROBOTOMY_EXECUTE_GRADE 45
 
-class ShrubberyCreationForm : public Form
+class RobotomyRequestForm : public Form
 {
 private:
 	std::string target_;
-	ShrubberyCreationForm();
+	RobotomyRequestForm();
 public:
-	ShrubberyCreationForm(std::string& target);
-	ShrubberyCreationForm(const std::string name, const int signedGrade, const int executeGrade);
-	~ShrubberyCreationForm();
+	RobotomyRequestForm(std::string& target);
+	RobotomyRequestForm(const std::string name, const int signedGrade, const int executeGrade);
+	~RobotomyRequestForm();
 	void	execute(Bureaucrat const & executor) const;
 };
 
