@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jinypark <jinypark@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: jinypark <jinypark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 13:59:42 by jinypark          #+#    #+#             */
-/*   Updated: 2022/11/29 22:15:40 by jinypark         ###   ########.fr       */
+/*   Updated: 2022/11/30 09:24:45 by jinypark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ int main()
 	a.signForm(&f);
 	std::cout << "-----------------\n";
 	std::cout << f;
-	a.signForm(&f2);
+	a.signForm(&f);
+
+	// a.signForm(&f2);
 	return (0);
 }

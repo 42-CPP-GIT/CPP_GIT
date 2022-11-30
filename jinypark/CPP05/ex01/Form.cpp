@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Form.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jinypark <jinypark@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: jinypark <jinypark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 16:36:08 by jinypark          #+#    #+#             */
-/*   Updated: 2022/11/29 22:14:45 by jinypark         ###   ########.fr       */
+/*   Updated: 2022/11/30 09:22:58 by jinypark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ void	Form::beSigned(const Bureaucrat& applicant)
 {
 	if (applicant.getGrade() > this->signGrade_)
 		throw GradeTooLowException();
+	if (this->isSigned_ == true)
+		throw std::exception();
 	this->isSigned_ = true;
 }
 

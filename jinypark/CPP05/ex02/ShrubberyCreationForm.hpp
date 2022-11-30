@@ -15,12 +15,13 @@
 #define ShrubberyCreationForm_HPP
 
 # include <iostream>
+# include <fstream>
 # include "Form.hpp"
 
 class ShrubberyCreationForm : public Form
 {
 private:
-	std::string target;
+	std::string target_;
 	ShrubberyCreationForm();
 public:
 	ShrubberyCreationForm(std::string& target);

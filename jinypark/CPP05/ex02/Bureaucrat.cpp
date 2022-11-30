@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jinypark <jinypark@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: jinypark <jinypark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 13:53:26 by jinypark          #+#    #+#             */
-/*   Updated: 2022/11/29 21:32:15 by jinypark         ###   ########.fr       */
+/*   Updated: 2022/11/30 09:29:19 by jinypark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,8 +82,12 @@ void	Bureaucrat::signForm(Form* form)
 		form->beSigned(*this);
 		std::cout << this->getName() << " signed " << form->getName() << "\n";
 	}
+	catch(const GradeTooLowException& e)
+	{
+		std::cout << this->name_ << " couldn't sign " << form->getName() << " because " << e.what() << ".\n";
+	}
 	catch(const std::exception& e)
 	{
-		std::cout << this->name_ << " couldn’t sign " << form->getName() << " because " << e.what() << ".\n";
+		std::cout << this->name_ << " couldn't sign " << form->getName() << " because " << " it's already signed" << ".\n";
 	}
 }
