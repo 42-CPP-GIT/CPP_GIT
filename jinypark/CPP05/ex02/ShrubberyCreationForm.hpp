@@ -1,7 +1,8 @@
+
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.hpp                                           :+:      :+:    :+:   */
+/*   ShrubberyCreationForm.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jinypark <jinypark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,41 +11,22 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FORM_HPP
-#define FORM_HPP
+#ifndef ShrubberyCreationForm_HPP
+#define ShrubberyCreationForm_HPP
 
 # include <iostream>
-# include "Bureaucrat.hpp"
+# include "Form.hpp"
 
-class Form
+class ShrubberyCreationForm : public Form
 {
 private:
-	const std::string	name_;
-	bool				isSigned_;
-	const int			signGrade_;
-	const int			executeGrade_;
+	std::string target;
+	ShrubberyCreationForm();
 public:
-	Form();
-	Form(const std::string name, const int signedGrade, const int executeGrade);
-	~Form();
-	void	beSigned(const Bureaucrat& applicant);
-	bool		getSigned() const;
-	int			getSignGrade() const;
-	int			getExecuteGrade() const;
-	const std::string&	getName() const;
-	class GradeTooHighException : public std::exception
-	{
-	public:
-		const char* what() const throw();
-	};
-	class GradeTooLowException : public std::exception
-	{
-	public:
-		const char* what() const throw();
-	};
+	ShrubberyCreationForm(std::string& target);
+	ShrubberyCreationForm(const std::string name, const int signedGrade, const int executeGrade);
+	~ShrubberyCreationForm();
+	void	execute(Bureaucrat const & executor);
 };
-
-std::ostream& operator<<(std::ostream& os, Form& obj);
-
 
 #endif

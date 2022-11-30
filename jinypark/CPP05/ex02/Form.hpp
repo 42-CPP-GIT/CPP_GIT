@@ -1,36 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
+/*   Form.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jinypark <jinypark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/22 13:18:55 by jinypark          #+#    #+#             */
-/*   Updated: 2022/11/30 09:13:27 by jinypark         ###   ########.fr       */
+/*   Created: 2022/11/22 14:48:21 by jinypark          #+#    #+#             */
+/*   Updated: 2022/11/29 23:18:13 by jinypark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BUREAUCRAT_HPP
-#define BUREAUCRAT_HPP
+#ifndef FORM_HPP
+#define FORM_HPP
 
 # include <iostream>
+# include "Bureaucrat.hpp"
 
-class Form;
-
-class Bureaucrat
+class Form
 {
 private:
-	const	std::string name_;
-	int		grade_;
+	const std::string	name_;
+	bool				isSigned_;
+	const int			signGrade_;
+	const int			executeGrade_;
 public:
-	Bureaucrat(void);
-	Bureaucrat(int grade);
-	~Bureaucrat();
-	std::string	getName(void) const;
-	int			getGrade(void) const;
-	void		increment(int grade);
-	void		decrement(int grade);
-	void		signForm(Form* form);
+	Form();
+	Form(const std::string name, const int signedGrade, const int executeGrade);
+	virtual ~Form();
+	void	beSigned(const Bureaucrat& applicant);
+	bool		getSigned() const;
+	int			getSignGrade() const;
+	int			getExecuteGrade() const;
+	const std::string&	getName() const;
+	virtual void		execute(Bureaucrat const & executor) = 0;
 	class GradeTooHighException : public std::exception
 	{
 	public:
@@ -43,6 +45,7 @@ public:
 	};
 };
 
-std::ostream& operator<<(std::ostream& os, Bureaucrat& obj);
+std::ostream& operator<<(std::ostream& os, Form& obj);
+
 
 #endif
