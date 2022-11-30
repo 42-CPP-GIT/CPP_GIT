@@ -4,6 +4,7 @@
 int	main(void)
 {
 	Fixed		a(10.24751f);
+	Fixed		c(8388607.0f);
 	// Fixed const	b(Fixed(5.05f) * Fixed(2));
 	Fixed const	b(4.96241f);
 
@@ -17,5 +18,6 @@ int	main(void)
 
 	// std::cout << Fixed::max(a, b) << std::endl;
 	std::cout << a + b << std::endl;
+	std::cout << c * 1.0f << std::endl;
 
 }
