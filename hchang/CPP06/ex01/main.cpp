@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 11:34:15 by hchang            #+#    #+#             */
-/*   Updated: 2022/11/29 17:12:35 by hchang           ###   ########.fr       */
+/*   Updated: 2022/11/30 18:31:57 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,20 +30,26 @@ Data*	deserialize(uintptr_t raw)
 int main(void)
 {
 	Data*		A = new Data;
+	uintptr_t	B = 0;
 	Data*		C = new Data;
-	uintptr_t	B;
 
+	std::cout << "======[Begin]======" << std::endl;
+	std::cout << "A : " << A << std::endl;
+	std::cout << "B : 0x" << std::hex << B << std::endl;
+
+	std::cout << "======[Serialize]======" << std::endl;
 	A->_data = 10;
 	B = serialize(A);
-	std::cout << A << std::endl;
-	std::cout << "0x" << std::hex << B << std::endl;
+	std::cout << "A : " << A << std::endl;
+	std::cout << "B : 0x" << std::hex << B << std::endl;
 
+	std::cout << "======[Deserialize]======" << std::endl;
 	C = deserialize(B);
+	std::cout << "A : " << A << std::endl;
+	std::cout << "B : 0x" << std::hex << B << std::endl;
+	std::cout << "C : " << C << std::endl;
 
-	std::cout << A << std::endl;
-	std::cout << "0x" << std::hex << B << std::endl;
-	std::cout << C << std::endl;
-
-	std::cout << A->_data << std::endl;
-	std::cout << C->_data << std::endl;
+	std::cout << "======[Data Check]======" << std::endl;
+	std::cout << "A->_data : " << A->_data << std::endl;
+	std::cout << "C->_data : " << C->_data << std::endl;
 }

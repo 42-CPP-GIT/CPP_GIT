@@ -3,21 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   Convert.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sesim <sesim@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 13:31:43 by hchang            #+#    #+#             */
-/*   Updated: 2022/11/30 17:23:16 by sesim            ###   ########.fr       */
+/*   Updated: 2022/11/30 18:30:20 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Convert.hpp"
 #include <cmath>
 
-
 // 	0 : non displayable
 // 	1 : char && int impossible double float NAN or INF
 // 	2 : char && int && float impossible double printable
-
 
 const char*	Convert::NotPrintableException::what() const throw()
 {
@@ -37,7 +35,9 @@ bool	isRightForm(char *end)
 		return (true);
 	return (false);
 }
-
+// '-'
+// '/"'
+// is_alpha()
 void	Convert::isValidInput(char* input)
 {
 	if (this->_data.length() == 1 && !(std::isdigit(this->_data.at(0))))
@@ -81,9 +81,8 @@ void	Convert::isValidInput(char* input)
 	this->_d = val;
 }
 
-Convert::Convert(char *input)
+Convert::Convert(char *input) : _data(std::string(input))
 {
-	this->_data = std::string(input);
 	isValidInput(input);
 }
 
@@ -115,12 +114,12 @@ void	Convert::print() const
 		std::cout << "char: Non displayable\n";
 		std::cout << "int: " << this->_i << "\n";
 		std::cout << "float: " << this->_f;
-		if (this->_i == this->_f)
+		if (fabs(this->_f - static_cast<float>(this->_i)) < std::numeric_limits<float>::epsilon())
 			std::cout << ".0f\n";
 		else
 			std::cout << "f\n";
 		std::cout << "double: " << this->_d;
-		if (this->_i == this->_d)
+		if (abs(this->_d - static_cast<double>(this->_i)) < std::numeric_limits<double>::epsilon())
 			std::cout << ".0";
 		std::cout << std::endl;
 	}

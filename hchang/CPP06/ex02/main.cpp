@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 11:34:15 by hchang            #+#    #+#             */
-/*   Updated: 2022/11/30 13:35:56 by hchang           ###   ########.fr       */
+/*   Updated: 2022/11/30 19:49:21 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,13 +129,13 @@ void identify(Base& p)
 	return ;
 }
 
-int main(void)
+
+void	allExampleCheck()
 {
 	Base *a = new A();
 	Base *b = new B();
 	Base *c = new C();
 	Base *base = new Base();
-
 
 	identify(a);
 	identify(b);
@@ -147,7 +147,6 @@ int main(void)
 	Base &c1 = *c;
 	Base &base1 = *base;
 
-
 	identify(a1);
 	identify(b1);
 	identify(c1);
@@ -157,4 +156,20 @@ int main(void)
 	delete b;
 	delete c;
 	delete base;
+}
+
+void subject()
+{
+	Base *test = generate();
+	identify(test);
+	
+	Base &test1 = *test;
+	identify(test1);
+	delete test;
+}
+
+int main(void)
+{
+	// allExampleCheck();
+	subject();
 }

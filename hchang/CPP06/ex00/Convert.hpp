@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Convert.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sesim <sesim@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 13:31:53 by hchang            #+#    #+#             */
-/*   Updated: 2022/11/30 16:35:27 by sesim            ###   ########.fr       */
+/*   Updated: 2022/11/30 18:03:00 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ class Convert
 {
 	private:
 		std::string	_data;
-		char	_c;
-		int		_i;
-		float	_f;
-		double	_d;
+		char		_c;
+		int			_i;
+		float		_f;
+		double		_d;
 
 	public:
 		class	NotPrintableException : public std::exception
