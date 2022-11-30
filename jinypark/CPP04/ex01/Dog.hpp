@@ -6,7 +6,7 @@
 /*   By: jinypark <jinypark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 22:13:19 by jinypark          #+#    #+#             */
-/*   Updated: 2022/11/16 13:09:33 by jinypark         ###   ########.fr       */
+/*   Updated: 2022/11/22 11:56:41 by jinypark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,19 @@
 
 #include <iostream>
 #include "Animal.hpp"
+#include "Brain.hpp"
 
 class Dog : public Animal
 {
-protected:
+private:
+	Brain* brain;
 public:
 	Dog(void);
 	~Dog(void);
 	Dog(const Dog &obj);
 	Dog	&operator=(Dog const &obj);
 	virtual void	makeSound(void) const;
+	Brain*			getBrain(void) const;
 };
 
 #endif

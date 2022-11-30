@@ -6,7 +6,7 @@
 #    By: jinypark <jinypark@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/24 17:01:08 by jinypark          #+#    #+#              #
-#    Updated: 2022/11/21 14:53:23 by jinypark         ###   ########.fr        #
+#    Updated: 2022/11/29 14:37:03 by jinypark         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	@$(CXX) $(CPPFLAGS) -o $@ $(OBJS)
 
-%.o : %.c
+%.o : %.cpp
 	@echo [$<] compiling ...
 	@$(CXX) $(CPPFLAGS) -c -o $@ $<
 
@@ -40,6 +40,6 @@ re:
 	@make all
 
 debug:
-	make "CPPFLAGS = -Wall -Wextra -Werror -std=c++98 -DEVAL" all
+	make "CPPFLAGS = -Wall -Wextra -Werror -g -std=c++98 -DDEBUG -fsanitize=address" all
 
 .PHONY: all clean fclean re

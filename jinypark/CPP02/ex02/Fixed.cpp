@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Fixed copy.cpp                                     :+:      :+:    :+:   */
+/*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jinypark <jinypark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 10:04:22 by jinypark          #+#    #+#             */
-/*   Updated: 2022/11/18 17:11:16 by jinypark         ###   ########.fr       */
+/*   Updated: 2022/11/23 15:19:37 by jinypark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,37 +49,37 @@ Fixed	&Fixed::operator=(Fixed const &obj)
 	return (*this);
 }
 
-bool	Fixed::operator>(Fixed const &obj)
+bool	Fixed::operator>(Fixed const &obj) const
 {
 	return (this->numVal > obj.numVal);
 }
 
-bool	Fixed::operator<(Fixed const &obj)
+bool	Fixed::operator<(Fixed const &obj) const
 {
 	return (this->numVal < obj.numVal);
 }
 
-bool	Fixed::operator>=(Fixed const &obj)
+bool	Fixed::operator>=(Fixed const &obj) const
 {
 	return (this->numVal >= obj.numVal);
 }
 
-bool	Fixed::operator<=(Fixed const &obj)
+bool	Fixed::operator<=(Fixed const &obj) const
 {
 	return (this->numVal <= obj.numVal);
 }
 
-bool	Fixed::operator==(Fixed const &obj)
+bool	Fixed::operator==(Fixed const &obj) const
 {
 	return (this->numVal == obj.numVal);
 }
 
-bool	Fixed::operator!=(Fixed const &obj)
+bool	Fixed::operator!=(Fixed const &obj) const
 {
 	return (this->numVal != obj.numVal);
 }
 
-Fixed	Fixed::operator+(Fixed const &obj)
+Fixed	Fixed::operator+(Fixed const &obj) const
 {
 	Fixed	tmp;
 	
@@ -87,7 +87,7 @@ Fixed	Fixed::operator+(Fixed const &obj)
 	return (tmp);
 }
 
-Fixed	Fixed::operator-(Fixed const &obj)
+Fixed	Fixed::operator-(Fixed const &obj) const
 {
 	Fixed	tmp;
 
@@ -95,21 +95,20 @@ Fixed	Fixed::operator-(Fixed const &obj)
 	return (tmp);
 }
 
-Fixed	Fixed::operator*(Fixed const &obj)
+Fixed	Fixed::operator*(Fixed const &obj) const
 {
 	Fixed	tmp;
 
-	tmp.setRawBits((int)(((long long)this->numVal * (long long)obj.numVal) >> fracBits));
+	tmp.setRawBits(((this->numVal * obj.numVal) >> fracBits));
 	return (tmp);
 }
 
 
-
-Fixed	Fixed::operator/(Fixed const &obj)
+Fixed	Fixed::operator/(Fixed const &obj) const
 {
 	Fixed	tmp;
 	
-	tmp.setRawBits((int)(((long long)this->numVal << fracBits) / (long long)obj.numVal));
+	tmp.setRawBits(((this->numVal << fracBits) / obj.numVal));
 	return (tmp);
 }
 

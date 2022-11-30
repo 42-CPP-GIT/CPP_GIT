@@ -6,7 +6,7 @@
 /*   By: jinypark <jinypark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 22:13:19 by jinypark          #+#    #+#             */
-/*   Updated: 2022/11/21 18:44:49 by jinypark         ###   ########.fr       */
+/*   Updated: 2022/11/29 16:25:32 by jinypark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ public:
 	Animal	&operator=(Animal const &obj);
 	std::string	getType(void) const;
 	virtual void	makeSound(void) const;
-	virtual Brain*	getBrain(void) const = 0;
+	virtual Brain*	getBrain(void) const;
 };
 
 #endif

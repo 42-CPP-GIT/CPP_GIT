@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Brain.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jinypark <jinypark@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jinypark <jinypark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 13:15:30 by jinypark          #+#    #+#             */
-/*   Updated: 2022/11/21 18:04:06 by jinypark         ###   ########.fr       */
+/*   Updated: 2022/11/27 17:41:05 by jinypark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,20 +21,22 @@ Brain::Brain()
 
 Brain::~Brain()
 {
-	std::cout << "[Brain] default destructor has been called.\n";
+	std::cout << "[Brain] destructor has been called.\n";
 }
 
 Brain::Brain(const Brain &obj)
 {
+	std::cout << "[Brain] copy constructor has been called.\n";
 	*this = obj;
 }
 
 Brain	&Brain::operator=(Brain const &obj)
 {
+	std::cout << "[Brain] copy assignment operator has been called.\n";
 	if (this != &obj)
 	{
 		this->ideaCnt = obj.getIdeaCnt();
-		for (unsigned int i = 0; i < ideaCnt; ++i)
+		for (unsigned int i = 0; i < 100; ++i)
 			this->ideas[i] = obj.getIdeas(i);
 	}
 	return (*this);
@@ -49,15 +51,15 @@ void	Brain::setIdeas(const std::string& idea)
 
 void	Brain::setIdeas(const std::string* ideas)
 {
-	for (unsigned int i = 0; i < ideaCnt; ++i)
+	for (unsigned int i = 0; i < 100; ++i)
 	{
 		this->ideas[i] = ideas[i];
-	} 
+	}
 }
 
 const std::string	Brain::getIdeas(unsigned int i) const
 {
-	return (this->ideas[i]);
+	return (this->ideas[i % 100]);
 }
 
 const std::string*	Brain::getIdeas(void) const

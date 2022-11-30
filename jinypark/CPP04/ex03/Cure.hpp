@@ -19,8 +19,10 @@ class Cure : public AMateria
 {
 private:
 public:
-	Cure(/* args */);
+	Cure();
 	virtual ~Cure();
+	Cure(const Cure &obj);
+	Cure&	operator=(const Cure &obj);
 	virtual AMateria* clone() const;
 	virtual void use(ICharacter& target);
 };
