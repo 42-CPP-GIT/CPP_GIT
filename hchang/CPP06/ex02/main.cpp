@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 11:34:15 by hchang            #+#    #+#             */
-/*   Updated: 2022/11/29 17:53:51 by hchang           ###   ########.fr       */
+/*   Updated: 2022/11/30 13:35:56 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,12 +114,12 @@ void identify(Base& p)
 		std::cout << GRN << "YES! THIS IS A Ref" << RESET << std::endl;
 		return ;
 	}
-	if (isBRef(p))
+	else if (isBRef(p))
 	{
 		std::cout << GRN << "YES! THIS IS B Ref" << RESET << std::endl;
 		return ;
 	}
-	if (isCRef(p))
+	else if (isCRef(p))
 	{
 		std::cout << GRN << "YES! THIS IS C Ref" << RESET << std::endl;
 		return ;

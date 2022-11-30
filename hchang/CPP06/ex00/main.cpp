@@ -6,17 +6,16 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 11:34:15 by hchang            #+#    #+#             */
-/*   Updated: 2022/11/29 14:22:38 by hchang           ###   ########.fr       */
+/*   Updated: 2022/11/30 14:48:49 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
+#include "Convert.hpp"
 
 int main(int argc, char **argv)
 {
 	if (argc != 2)
 		return ;
-	double res_d;
-	
-
+	Convert A(std::string(argv[1]));
+	A.print();
 }
