@@ -3,14 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   Convert.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sesim <sesim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 13:31:43 by hchang            #+#    #+#             */
-/*   Updated: 2022/11/30 15:51:05 by hchang           ###   ########.fr       */
+/*   Updated: 2022/11/30 17:23:16 by sesim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Convert.hpp"
+#include <cmath>
+
+
+// 	0 : non displayable
+// 	1 : char && int impossible double float NAN or INF
+// 	2 : char && int && float impossible double printable
+
 
 const char*	Convert::NotPrintableException::what() const throw()
 {
@@ -31,23 +38,47 @@ bool	isRightForm(char *end)
 	return (false);
 }
 
-bool	Convert::isValidInput(char* input)
+void	Convert::isValidInput(char* input)
 {
 	if (this->_data.length() == 1 && !(std::isdigit(this->_data.at(0))))
 		throw NotPrintableException();
 	char	*end;
-	double	f = strtod(input, &end);
-	if ((isnan(f) || isinf(f)) && isRightForm(end))
+	double	val = strtod(input, &end);
+
+	if ((isnan(val) || isinf(val)) && isRightForm(end))
 	{
 		this->_c = 1;
-		this->_f = static_cast<float>(f);
-		this->_d
+		this->_f = static_cast<float>(val);
+		this->_d = val;
+		return ;
 	}
-	if (end)
+	if (end && !isRightForm(end))
 		throw NotValidException();
-	
-	
-
+	if (this->_data.find(".") != std::string::npos && val > __FLT_MAX__)
+	{
+		this->_c = 2;
+		this->_d = val;
+		return ;
+	}
+	if (val > INT_MAX || val < INT_MIN)
+	{
+		this->_c = 1;
+		this->_f = static_cast<float>(val);
+		this->_d = val;
+		return ;
+	}
+	if (val > 126 || val < 32)
+	{
+		this->_c = 0;
+		this->_i = static_cast<int>(val);
+		this->_f = static_cast<float>(val);
+		this->_d = val;
+		return ;
+	}
+	this->_c = static_cast<char>(val);
+	this->_i = static_cast<int>(val);
+	this->_f = static_cast<float>(val);
+	this->_d = val;
 }
 
 Convert::Convert(char *input)
@@ -58,20 +89,67 @@ Convert::Convert(char *input)
 
 Convert::Convert(const Convert& obj)
 {
-	
+	*this = obj;
 }
 
 Convert& Convert::operator=(const Convert& obj)
 {
-	
+	if (this == &obj)
+		return (*this);
+	this->_c = obj._c;
+	this->_i = obj._i;
+	this->_f = obj._f;
+	this->_d = obj._d;
+	this->_data = obj._data;
+	return (*this);
 }
 
 Convert::~Convert()
 {
-	
 }
 
 void	Convert::print() const
 {
-	std::cout << 
+	if (this->_c == 0)
+	{
+		std::cout << "char: Non displayable\n";
+		std::cout << "int: " << this->_i << "\n";
+		std::cout << "float: " << this->_f;
+		if (this->_i == this->_f)
+			std::cout << ".0f\n";
+		else
+			std::cout << "f\n";
+		std::cout << "double: " << this->_d;
+		if (this->_i == this->_d)
+			std::cout << ".0";
+		std::cout << std::endl;
+	}
+	else if (this->_c == 1)
+	{
+		std::cout << "char: impossible\n";
+		std::cout << "int: impossible\n";
+		std::cout << "float: " << this->_f << "f\n";
+		std::cout << "double: " << this->_d << std::endl;
+	}
+	else if (this->_c == 2)
+	{
+		std::cout << "char: impossible\n";
+		std::cout << "int: impossible\n";
+		std::cout << "float: impossible\n";
+		std::cout << "double: " << this->_d << std::endl;
+	}
+	else
+	{
+		std::cout << "char: '" << this->_c << "'\n";
+		std::cout << "int: " << this->_i << "\n";
+		std::cout << "float: " << this->_f;
+		if (this->_i == this->_f)
+			std::cout << ".0f\n";
+		else
+			std::cout << "f\n";
+		std::cout << "double: " << this->_d;
+		if (this->_i == this->_d)
+			std::cout << ".0";
+		std::cout << std::endl;
+	}
 }

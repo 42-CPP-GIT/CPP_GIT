@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Convert.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sesim <sesim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 13:31:53 by hchang            #+#    #+#             */
-/*   Updated: 2022/11/30 15:14:41 by hchang           ###   ########.fr       */
+/*   Updated: 2022/11/30 16:35:27 by sesim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ class Convert
 		Convert& operator=(const Convert& obj);
 		~Convert();
 		void print() const;
-		bool isValidInput(char *input);
+		void isValidInput(char *input);
 };
 
 #endif
