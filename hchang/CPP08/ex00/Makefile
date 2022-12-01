@@ -6,12 +6,12 @@
 #    By: hchang <hchang@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/21 15:09:06 by hchang            #+#    #+#              #
-#    Updated: 2022/12/01 16:11:02 by hchang           ###   ########.fr        #
+#    Updated: 2022/12/01 13:57:14 by hchang           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CXX				=	c++
-NAME			=	Array
+NAME			=	easyfind
 RM 				=	rm -rf
 CXXFLAGS 		=	-Wall -Wextra -Werror -std=c++98
 

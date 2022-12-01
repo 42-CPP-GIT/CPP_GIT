@@ -1,40 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   whatever.hpp                                       :+:      :+:    :+:   */
+/*   MutantStack.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/30 20:18:43 by hchang            #+#    #+#             */
-/*   Updated: 2022/12/01 20:49:36 by hchang           ###   ########.fr       */
+/*   Created: 2022/12/01 11:33:28 by hchang            #+#    #+#             */
+/*   Updated: 2022/12/01 21:00:59 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WHATEVER_HPP
-# define WHATEVER_HPP
+#ifndef MUTANTSTACK_HPP
+# define MUTANTSTACK_HPP
 
+#include <stack>
 #include <iostream>
+#include <exception>
+#include <algorithm>
 
 template <typename T>
-void	swap(T &a, T &b)
+class MutantStack : public std::stack<T>
 {
-	T tmp;
-	
-	tmp = a;
-	a = b;
-	b = tmp;
-}
+	public:
+		MutantStack();
+		MutantStack(const MutantStack& obj);
+		MutantStack& operator=(const MutantStack& obj);
+		~MutantStack();
+		typedef typename std::stack<T>::container_type::iterator iterator;
+		iterator begin()
+		{
+			return (c.begin());
+		}
+		iterator end()
+		{
+			return (c.end());
+		}
 
-template <typename T>
-T	min(const T a, const T b)
-{
-	return (a < b ? a : b);
-}
-
-template <typename T>
-T	max(const T a, const T b)
-{
-	return (a > b ? a : b);
-}
+};
 
 #endif

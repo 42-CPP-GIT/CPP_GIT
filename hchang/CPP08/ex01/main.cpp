@@ -5,28 +5,32 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/30 20:18:37 by hchang            #+#    #+#             */
-/*   Updated: 2022/12/01 11:42:21 by hchang           ###   ########.fr       */
+/*   Created: 2022/12/01 11:33:35 by hchang            #+#    #+#             */
+/*   Updated: 2022/12/01 18:05:30 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "iter.hpp"
+#include "Span.hpp"
 
-int main(void)
+int main()
 {
-	const int x	= 10;
-	const int y	= 10;
-	const int z	= 10;
+	// int hey[5] = {6, 3, 17, 9, 11};s
+	try
+	{
+		Span sp = Span(5);
+		
+		// sp.addNumbers(hey, sizeof(hey) / sizeof(int));
+		sp.addNumber(6);
+		sp.addNumber(3);
+		sp.addNumber(17);
+		sp.addNumber(9);
+		sp.addNumber(11);
 
-	int			a[3] = {1, 2, 3};
-	const int	aa[3] = {x, y, z};
-	double		b[3] = {1.123, 2.123, 3.123};
-	float		c[3] = {1.123f, 2.123f, 3.123f};
-	std::string	d[3] = {"hchang", "42seoul", "CPP Module"};
-
-	iter(a, 3, print);
-	iter(aa, 3, print);
-	iter(b, 3, print);
-	iter(c, 3, print);
-	iter(d, 3, print);
+		std::cout << sp.shortestSpan() << std::endl;
+		std::cout << sp.longestSpan() << std::endl;
+	}
+	catch (const std::exception &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
 }

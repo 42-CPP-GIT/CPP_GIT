@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 20:18:43 by hchang            #+#    #+#             */
-/*   Updated: 2022/11/30 21:58:03 by hchang           ###   ########.fr       */
+/*   Updated: 2022/12/01 22:09:50 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ class Array
 			if (this->_array)
 				delete [] this->_array;
 			this->_array = new T[obj.size()];
-			for (int i = 0; i < obj.size(); i++)
+			for (size_t i = 0; i < obj.size(); i++)
 				this->_array[i] = obj[i];
 			return (*this);
 		}

@@ -6,7 +6,7 @@
 #    By: hchang <hchang@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/21 15:09:06 by hchang            #+#    #+#              #
-#    Updated: 2022/11/30 20:34:44 by hchang           ###   ########.fr        #
+#    Updated: 2022/12/01 16:10:56 by hchang           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,10 +21,10 @@ OBJS 			=	$(SRCS:.cpp=.o)
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	@$(CXX) $(CPPFLAGS) -o $(NAME) $(OBJS)
+	@$(CXX) $(CXXFLAGS) -o $(NAME) $(OBJS)
 
 %.o: %.cpp
-	@$(CXX) $(CPPFLAGS) -c $< -o $@ 
+	@$(CXX) $(CXXFLAGS) -c $< -o $@ 
 
 clean:
 	@$(RM) $(OBJS)

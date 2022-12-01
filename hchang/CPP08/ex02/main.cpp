@@ -5,28 +5,39 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/30 20:18:37 by hchang            #+#    #+#             */
-/*   Updated: 2022/12/01 11:42:21 by hchang           ###   ########.fr       */
+/*   Created: 2022/12/01 11:33:35 by hchang            #+#    #+#             */
+/*   Updated: 2022/12/01 18:26:35 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "iter.hpp"
+#include "MutantStack.hpp"
 
-int main(void)
+int main()
 {
-	const int x	= 10;
-	const int y	= 10;
-	const int z	= 10;
+	MutantStack<int> mstack;
+	
+	mstack.push(5);
+	mstack.push(17);
+	std::cout << mstack.top() << std::endl;
+	
+	mstack.pop();
+	std::cout << mstack.size() << std::endl;
+	
+	mstack.push(3);
+	mstack.push(5);
+	mstack.push(737);
+	mstack.push(0);
 
-	int			a[3] = {1, 2, 3};
-	const int	aa[3] = {x, y, z};
-	double		b[3] = {1.123, 2.123, 3.123};
-	float		c[3] = {1.123f, 2.123f, 3.123f};
-	std::string	d[3] = {"hchang", "42seoul", "CPP Module"};
+	MutantStack<int>::iterator it = mstack.begin();
+	MutantStack<int>::iterator ite = mstack.end();
+	++it;
+	--it;
 
-	iter(a, 3, print);
-	iter(aa, 3, print);
-	iter(b, 3, print);
-	iter(c, 3, print);
-	iter(d, 3, print);
+	while (it != ite)
+	{
+		std::cout << *it << std::endl;
+		++it;
+	}
+	std::stack<int> s(mstack);
+	return 0;
 }
