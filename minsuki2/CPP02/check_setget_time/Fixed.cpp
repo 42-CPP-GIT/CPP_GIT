@@ -6,42 +6,29 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 16:42:10 by minsuki2          #+#    #+#             */
-/*   Updated: 2022/12/01 14:56:00 by minsuki2         ###   ########.fr       */
+/*   Updated: 2022/12/01 14:56:35 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 
-const int	Fixed::f_bits_ = 8;
-
 Fixed::Fixed(void) {
-	std::cout << MSG_CREATE << MSG_CALL << MSG_ENDL;
-	this->f_num_ = 0 << this->f_bits_;
+	std::cout << "start" << std::endl;
+	this->num_ = 0;
 }
-
-Fixed::Fixed(const Fixed& obj) {
-	std::cout << MSG_COPY << MSG_CALL << MSG_ENDL;
-	*this = obj;
-}
-
-Fixed&	Fixed::operator=(const Fixed& obj) {
-	if (this == &obj) // early return
-		return *this;
-	// [Thinking] 작동하는 상황에서만 출력
-	std::cout << MSG_ASSIGN << MSG_CALL << MSG_ENDL;
-	this->f_num_ = obj.getRawBits();
-	// this->f_num_ = obj.f_num_;	// [Thinking] 이 문장이 더 맞다고 생각
-	return *this;
-}
-	// this->setRawBits(obj.getRawBits())
 
 Fixed::~Fixed(void) {
-	std::cout << MSG_DESTROY << MSG_CALL << MSG_ENDL;
+	std::cout << "finish"<< std::endl;
 }
 
-int		Fixed::getRawBits(void) const {
-	std::cout << MSG_GETRB << MSG_CALL << MSG_ENDL;
-	return this->f_num_;
+const int&	Fixed::getRawBits(void) const { return this->num_; }
+void		Fixed::setRawBits(int const& raw) { this->num_ = raw; }
+
+// void		Fixed::count(const int& num) {
+//     this->num_ = this->num_ + num;
+// }
+//
+void		Fixed::count(const int& i) {
+	this->setRawBits(this->getRawBits() + i);
 }
-void	Fixed::setRawBits(int const raw) { this->f_num_ = raw; }
 

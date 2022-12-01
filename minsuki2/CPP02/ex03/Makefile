@@ -6,7 +6,7 @@
 #    By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/29 18:32:08 by minsuki2          #+#    #+#              #
-#    Updated: 2022/11/28 22:25:05 by minsuki2         ###   ########.fr        #
+#    Updated: 2022/12/01 14:27:07 by minsuki2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ DEPS_DIR 	:=		deps/
 SRCS 		:=		$(wildcard $(SRCS_DIR)*.cpp)
 OBJS 		:=		$(addprefix $(OBJS_DIR), $(notdir $(SRCS:.cpp=.o)))
 DEPS		:=		$(addprefix $(DEPS_DIR), $(notdir $(SRCS:.cpp=.d)))
-NAME		:=		fixed
+NAME		:=		bsp
 
 all: $(NAME)
 

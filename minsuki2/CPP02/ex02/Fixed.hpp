@@ -6,7 +6,7 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 16:30:17 by minsuki2          #+#    #+#             */
-/*   Updated: 2022/12/01 06:48:43 by minsuki2         ###   ########.fr       */
+/*   Updated: 2022/12/01 14:14:04 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@
 # include <iostream>
 # include <cmath>
 # define MSG_CALL		" called"
-# define MSG_CREATE		"Default constructor"
-# define MSG_DESTROY 	"Destructor"
-# define MSG_COPY		"Copy constructor"
-# define MSG_ASSIGN 	"Copy assignment operator"
+# define MSG_CREATE		"Default constructor '-'"
+# define MSG_DESTROY 	"Destructor '~'"
+# define MSG_COPY		"Copy constructor '()'"
+# define MSG_ASSIGN 	"Copy assignment operator '='"
 # define MSG_GETRB		"getRawBits member function"
 # define MSG_IS			" is"
 # define MSG_INTEGER	" as integer"
@@ -30,6 +30,7 @@
 # else
 #  define MSG_ENDL		std::endl
 # endif
+# define FLOAT_BITS		23
 
 enum e_off_bit {
 	OFFSET_SIGN_NBITS = 31,
@@ -51,19 +52,35 @@ class Fixed {
 		Fixed(const float num);
 		Fixed(const Fixed& obj);
 		Fixed& operator=(const Fixed& obj);
+		bool operator>(const Fixed& obj) const;
+		bool operator<(const Fixed& obj) const;
+		bool operator<=(const Fixed& obj) const;
+		bool operator>=(const Fixed& obj) const;
+		bool operator==(const Fixed& obj) const;
+		bool operator!=(const Fixed& obj) const;
+		Fixed	operator+(const Fixed& obj) const ;
+		Fixed	operator-(const Fixed& obj) const ;
+		Fixed	operator*(const Fixed& obj) const ;
+		Fixed	operator/(const Fixed& obj) const ;
+		Fixed&	operator++(void);
+		Fixed	operator++(int);
+		Fixed&	operator--(void);
+		Fixed	operator--(int);
+		static Fixed& max(Fixed& a, Fixed& b);
+		static const Fixed& max(const Fixed& a, const Fixed& b);
+		static Fixed& min(Fixed& a, Fixed& b);
+		static const Fixed& min(const Fixed& a, const Fixed& b);
 		~Fixed(void);
 		float	toFloat(void) const;
 		int		toInt(void) const;
 		int		getRawBits(void) const;
 		void	setRawBits(int const raw);
-
-		friend std::ostream& operator<<(std::ostream& out, const Fixed& obj);
 	private:
 		int					fixed_num_;
 		static const int	fixed_nbits_;
 
 };
 
-
+std::ostream& operator<<(std::ostream& out, const Fixed& obj);
 
 #endif
