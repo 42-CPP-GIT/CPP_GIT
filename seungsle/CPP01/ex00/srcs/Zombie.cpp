@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Zombie.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seungsle <seungsle@student.42.fr>          +#+  +:+       +#+        */
+/*   By: seungsle <seungsle@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 11:49:54 by seungsle          #+#    #+#             */
-/*   Updated: 2022/10/26 12:29:38 by seungsle         ###   ########.fr       */
+/*   Updated: 2022/11/14 16:15:48 by seungsle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,35 +14,20 @@
 
 void	Zombie::announce()
 {
-	std::cout << _name << ": BraiiiiiiinnnzzzZ..." << std::endl;
-}
-
-Zombie*	Zombie::newZombie(std::string name)
-{
-	Zombie *newZombie = new Zombie(name);
-	return (newZombie);
-}
-
-void	Zombie::randomChump(std::string name)
-{
-	Zombie	*zombie;
-
-	zombie = newZombie(name);
-	zombie->announce();
-	delete zombie;
+	std::cout << this->_name << ": BraiiiiiiinnnzzzZ..." << std::endl;
 }
 
 Zombie::Zombie(std::string name)
 {
-	_name = name;
+	this->_name = name;
 }
 
 Zombie::~Zombie()
 {
-	std::cout << _name << " is destructed" << std::endl;
+	std::cout << this->_name << " is destructed" << std::endl;
 }
 
 Zombie::Zombie()
 {
-	_name = "Foo";
+	this->_name = "Foo";
 }
