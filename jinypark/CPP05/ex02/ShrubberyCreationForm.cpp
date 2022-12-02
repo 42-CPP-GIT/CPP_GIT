@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ShrubberyCreationForm.cpp                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jinypark <jinypark@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jinypark <jinypark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 22:51:33 by jinypark          #+#    #+#             */
-/*   Updated: 2022/11/30 22:06:06 by jinypark         ###   ########.fr       */
+/*   Updated: 2022/12/02 21:00:52 by jinypark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,18 @@ ShrubberyCreationForm::ShrubberyCreationForm(std::string& target) : target_(targ
 	this->setName("Shrubbery_Creation_Form");
 	this->setSignGrade(SHRUBBERY_SIGN_GRADE);
 	this->setExecuteGrade(SHRUBBERY_EXECUTE_GRADE);
+}
+
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& obj) : Form(obj.getName(), obj.getSignGrade(), obj.getExecuteGrade())
+{
+	*this = obj;
+}
+
+ShrubberyCreationForm	&ShrubberyCreationForm::operator=(const ShrubberyCreationForm& obj)
+{
+	this->setSigned(obj.getSigned());
+	this->target_ = obj.target_;
+	return (*this);
 }
 
 ShrubberyCreationForm::~ShrubberyCreationForm()

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Intern.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jinypark <jinypark@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jinypark <jinypark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 21:13:26 by jinypark          #+#    #+#             */
-/*   Updated: 2022/11/30 21:26:30 by jinypark         ###   ########.fr       */
+/*   Updated: 2022/12/02 21:05:52 by jinypark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,17 @@ Intern::~Intern()
 {
 }
 
+Intern::Intern(const Intern& obj)
+{
+	(void)obj;
+}
+
+Intern	&Intern::operator=(const Intern& obj)
+{
+	(void)obj;
+	return (*this);
+}
+
 Form*	Intern::makeForm(std::string formName, std::string target)
 {
 	std::string formArr[3] = {"shrubbery creation request", "robotomy request", "presidential pardon request"};
@@ -30,9 +41,9 @@ Form*	Intern::makeForm(std::string formName, std::string target)
 	switch (i)
 	{
 	case 0:
-		return (new ShrubberyCreationForm(target));		
+		return (new ShrubberyCreationForm(target));
 	case 1:
-		return (new RobotomyRequestForm(target));		
+		return (new RobotomyRequestForm(target));
 	case 2:
 		return (new PresidentialPardonForm(target));
 	default:

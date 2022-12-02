@@ -16,6 +16,7 @@ PresidentialPardonForm::PresidentialPardonForm()
 {
 	this->target_ = "default";
 	this->setName("Presidential_Pardon_Form");
+	this->setSigned(false);
 	this->setSignGrade(PRESIDENTIALPARDONFORM_SIGN_GRADE);
 	this->setExecuteGrade(PRESIDENTIALPARDONFORM_EXECUTE_GRADE);
 }
@@ -23,13 +24,25 @@ PresidentialPardonForm::PresidentialPardonForm()
 PresidentialPardonForm::PresidentialPardonForm(std::string& target) : target_(target)
 {
 	this->setName("Presidential_Pardon_Form");
+	this->setSigned(false);
 	this->setSignGrade(PRESIDENTIALPARDONFORM_SIGN_GRADE);
 	this->setExecuteGrade(PRESIDENTIALPARDONFORM_EXECUTE_GRADE);
 }
 
+PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& obj) : Form(obj.getName(), obj.getSignGrade(), obj.getExecuteGrade())
+{
+	*this = obj;
+}
+
+PresidentialPardonForm	&PresidentialPardonForm::operator=(const PresidentialPardonForm& obj)
+{
+	this->setSigned(obj.getSigned());
+	this->target_ = obj.target_;
+	return (*this);
+}
+
 PresidentialPardonForm::~PresidentialPardonForm()
 {
-
 }
 
 void	PresidentialPardonForm::execute(Bureaucrat const & executor) const

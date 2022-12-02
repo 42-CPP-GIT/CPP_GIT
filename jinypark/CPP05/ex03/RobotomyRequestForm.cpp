@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   RobotomyRequestForm.cpp                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jinypark <jinypark@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jinypark <jinypark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 22:51:33 by jinypark          #+#    #+#             */
-/*   Updated: 2022/11/30 21:02:46 by jinypark         ###   ########.fr       */
+/*   Updated: 2022/12/02 21:03:02 by jinypark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,18 @@ RobotomyRequestForm::RobotomyRequestForm(std::string& target) : target_(target)
 	this->setExecuteGrade(ROBOTOMY_EXECUTE_GRADE);
 }
 
+RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& obj) : Form(obj.getName(), obj.getSignGrade(), obj.getExecuteGrade())
+{
+	*this = obj;
+}
+
+RobotomyRequestForm	&RobotomyRequestForm::operator=(const RobotomyRequestForm& obj)
+{
+	this->setSigned(obj.getSigned());
+	this->target_ = obj.target_;
+	return (*this);
+}
+
 RobotomyRequestForm::~RobotomyRequestForm()
 {
 
@@ -42,7 +54,7 @@ void	RobotomyRequestForm::execute(Bureaucrat const & executor) const
 
 	int	i(std::rand());
 
-	if (i % 2 == 0)	
+	if (i % 2 == 0)
 		std::cout << this->target_ << " has been robotomized successfully.\n";
 	else
 		std::cout << "Robotomy failed...\n";

@@ -28,6 +28,8 @@ private:
 public:
 	ShrubberyCreationForm(std::string& target);
 	ShrubberyCreationForm(const std::string name, const int signedGrade, const int executeGrade);
+	ShrubberyCreationForm(const ShrubberyCreationForm &obj);
+	ShrubberyCreationForm	&operator=(const ShrubberyCreationForm &obj);
 	~ShrubberyCreationForm();
 	void	execute(Bureaucrat const & executor) const;
 };

@@ -29,6 +29,8 @@ private:
 public:
 	RobotomyRequestForm(std::string& target);
 	RobotomyRequestForm(const std::string name, const int signedGrade, const int executeGrade);
+	RobotomyRequestForm(const RobotomyRequestForm &obj);
+	RobotomyRequestForm	&operator=(const RobotomyRequestForm &obj);
 	~RobotomyRequestForm();
 	void	execute(Bureaucrat const & executor) const;
 };

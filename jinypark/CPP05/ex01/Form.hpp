@@ -6,7 +6,7 @@
 /*   By: jinypark <jinypark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 14:48:21 by jinypark          #+#    #+#             */
-/*   Updated: 2022/11/30 16:51:10 by jinypark         ###   ########.fr       */
+/*   Updated: 2022/12/02 15:44:41 by jinypark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ private:
 public:
 	Form();
 	Form(const std::string name, const int signedGrade, const int executeGrade);
+	Form(const Form& obj);
+	Form &operator=(const Form& obj);
 	~Form();
 	void	beSigned(const Bureaucrat& applicant);
 	bool		getSigned() const;

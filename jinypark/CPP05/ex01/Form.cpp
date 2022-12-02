@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Form.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jinypark <jinypark@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jinypark <jinypark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 16:36:08 by jinypark          #+#    #+#             */
-/*   Updated: 2022/11/30 09:22:58 by jinypark         ###   ########.fr       */
+/*   Updated: 2022/12/02 15:49:49 by jinypark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,28 @@ name_(name), signGrade_(signedGrade), executeGrade_(executeGrade)
 Form::~Form()
 {
 }
+
+Form::Form(const Form& obj) : name_(obj.getName()), signGrade_(obj.getSigned()), executeGrade_(obj.getExecuteGrade()),  isSigned_(obj.getSigned())
+{
+}
+
+Form	&Form::operator=(const Form& obj)
+{
+	if (this != &obj)
+	{
+		std::string &tmpName = const_cast<std::string &>(this->name_);
+		int			&tmpSign = const_cast<int &>(this->signGrade_);
+		int			&tmpExecute = const_cast<int &>(this->executeGrade_);
+
+		this->isSigned_ = obj.isSigned_;
+		tmpName = obj.getName();
+		tmpSign = obj.getSignGrade();
+		tmpExecute = obj.getExecuteGrade();
+
+	}
+	return (*this);
+}
+
 
 void	Form::beSigned(const Bureaucrat& applicant)
 {
