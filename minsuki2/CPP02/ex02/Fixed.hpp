@@ -6,7 +6,7 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 16:30:17 by minsuki2          #+#    #+#             */
-/*   Updated: 2022/12/01 14:14:04 by minsuki2         ###   ########.fr       */
+/*   Updated: 2022/12/02 21:10:52 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ class Fixed {
 		float	toFloat(void) const;
 		int		toInt(void) const;
 		int		getRawBits(void) const;
+		int		getMantissaBits(void) const;
 		void	setRawBits(int const raw);
 	private:
 		int					fixed_num_;

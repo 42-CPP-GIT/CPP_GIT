@@ -6,7 +6,7 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 16:42:10 by minsuki2          #+#    #+#             */
-/*   Updated: 2022/12/01 14:14:13 by minsuki2         ###   ########.fr       */
+/*   Updated: 2022/12/02 21:34:28 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ int		Fixed::toInt(void) const {
 }
 
 int		Fixed::getRawBits(void) const { return this->fixed_num_; }
+int		Fixed::getMantissaBits(void) const { return this->fixed_num_ & fixed_nbits_; }
 void	Fixed::setRawBits(int const raw) { this->fixed_num_ = raw; }
 
 /* 관계 연산자 */
@@ -117,7 +118,13 @@ Fixed Fixed::operator*(const Fixed& obj) const {
 	Fixed tmp;				// 생성과 동시에 초기화하면 int 생성자로 감
 	tmp.fixed_num_ = ((*this).fixed_num_ * obj.fixed_num_) >> fixed_nbits_;
 	return tmp;
+	// 1. 나눠서 하는 것은 연산 시간에 효율이 안 좋음
+	// 2. 부호가 음수 범위를 침범하면 undefined 됨...
 }
+	// std::cerr << "this : " << std::bitset<32>((*this).fixed_num_) << MSG_ENDL;
+	// std::cerr << "obj  : " << std::bitset<32>(obj.fixed_num_) << MSG_ENDL;
+	// std::cerr << "obj  : " << std::bitset<32>((*this).fixed_num_ * obj.fixed_num_) << MSG_ENDL;
+	// std::cerr << "res  : " << std::bitset<32>(tmp.fixed_num_) << MSG_ENDL;
 
 Fixed Fixed::operator/(const Fixed& obj) const {
 	Fixed tmp;

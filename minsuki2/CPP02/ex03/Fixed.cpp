@@ -6,7 +6,7 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 16:42:10 by minsuki2          #+#    #+#             */
-/*   Updated: 2022/12/01 15:00:06 by minsuki2         ###   ########.fr       */
+/*   Updated: 2022/12/02 19:24:34 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 const int	Fixed::fixed_nbits_ = 8;
 
-Fixed::Fixed( void ) { this->fixed_num_ = 0; }
+Fixed::Fixed(void) { this->fixed_num_ = 0; }
 
-Fixed::Fixed( const int num ) { this->fixed_num_ = num << this->fixed_nbits_; }
+Fixed::Fixed(const int num) { this->fixed_num_ = num << this->fixed_nbits_; }
 
-Fixed::Fixed( const float num ) {
+Fixed::Fixed(const float num) {
 	if (!num) {
 		this->fixed_num_ = 0;
 		return ;
@@ -27,7 +27,7 @@ Fixed::Fixed( const float num ) {
 	struct s_info_float flo;
 	std::memcpy(&flo.bit, &num, sizeof(float));
 	flo.exponent = ((flo.bit & BIT_FLOAT_EXPONENT) >> OFFSET_FLOAT_NBITS) - 127;
-	flo.sign = 2 * !(flo.bit & (1 << OFFSET_SIGN_NBITS)) - 1;
+	flo.sign = 2 * !(flo.bit & BIT_SIGN) - 1;
 	this->fixed_num_ = (1 << OFFSET_FLOAT_NBITS) | (flo.bit & BIT_FLOAT_MANTISSA);
 	this->fixed_num_ += 1 << (OFFSET_FLOAT_NBITS - (flo.exponent + fixed_nbits_ + 1));
 	this->fixed_num_ >>= OFFSET_FLOAT_NBITS - this->fixed_nbits_ - (flo.exponent);
@@ -35,9 +35,9 @@ Fixed::Fixed( const float num ) {
 
 }
 
-Fixed::Fixed( const Fixed& obj ) { *this = obj; }
+Fixed::Fixed(const Fixed& obj) { *this = obj; }
 
-Fixed&	Fixed::operator=( const Fixed& obj ) {
+Fixed&	Fixed::operator=(const Fixed& obj) {
 	if (this == &obj) // early return
 		return *this;
 	this->fixed_num_ = obj.fixed_num_;
@@ -45,55 +45,55 @@ Fixed&	Fixed::operator=( const Fixed& obj ) {
 }
 
 
-Fixed::~Fixed( void ) {}
+Fixed::~Fixed(void) {}
 
-float	Fixed::toFloat( void ) const {
+float	Fixed::toFloat(void) const {
 	return static_cast<float>(this->fixed_num_) / (1 << fixed_nbits_);
 }
 
-int		Fixed::toInt( void ) const {
+int		Fixed::toInt(void) const {
 	return this->fixed_num_ >> fixed_nbits_;
 }
 
-int		Fixed::getRawBits( void ) const { return this->fixed_num_; }
-void	Fixed::setRawBits( int const raw ) { this->fixed_num_ = raw; }
+int		Fixed::getRawBits(void) const { return this->fixed_num_; }
+void	Fixed::setRawBits(int const raw) { this->fixed_num_ = raw; }
 
 /* 관계 연산자 */
-bool Fixed::operator < ( const Fixed& obj ) const \
+bool Fixed::operator < (const Fixed& obj) const \
 								{ return (*this).fixed_num_ < obj.fixed_num_; }
 
-bool Fixed::operator > ( const Fixed& obj ) const \
+bool Fixed::operator > (const Fixed& obj) const \
 								{ return (*this).fixed_num_ > obj.fixed_num_; }
 
-bool Fixed::operator >= ( const Fixed& obj ) const { return !(*this < obj); }
+bool Fixed::operator >= (const Fixed& obj) const { return !(*this < obj); }
 
-bool Fixed::operator <= ( const Fixed& obj ) const { return !(*this > obj); }
+bool Fixed::operator <= (const Fixed& obj) const { return !(*this > obj); }
 
-bool Fixed::operator == ( const Fixed& obj ) const \
+bool Fixed::operator == (const Fixed& obj) const \
 								{ return (*this).fixed_num_ == obj.fixed_num_; }
 
-bool Fixed::operator != ( const Fixed& obj) const { return !(*this == obj); }
+bool Fixed::operator != (const Fixed& obj) const { return !(*this == obj); }
 
 /* 산술 연산자 */
-Fixed Fixed::operator + ( const Fixed& obj ) const {
+Fixed Fixed::operator + (const Fixed& obj) const {
 	Fixed tmp;
 	tmp.fixed_num_ = (*this).fixed_num_ + obj.fixed_num_;
 	return tmp;
 }
 
-Fixed Fixed::operator - ( const Fixed& obj ) const {
+Fixed Fixed::operator - (const Fixed& obj) const {
 	Fixed tmp;
 	tmp.fixed_num_ = (*this).fixed_num_ - obj.fixed_num_;
 	return tmp;
 }
 
-Fixed Fixed::operator * ( const Fixed& obj ) const {
+Fixed Fixed::operator * (const Fixed& obj) const {
 	Fixed tmp;				// 생성과 동시에 초기화하면 int 생성자로 감
 	tmp.fixed_num_ = ((*this).fixed_num_ * obj.fixed_num_) >> fixed_nbits_;
 	return tmp;
 }
 
-Fixed Fixed::operator / ( const Fixed& obj ) const {
+Fixed Fixed::operator/(const Fixed& obj) const {
 	Fixed tmp;
 	tmp.fixed_num_ = ((*this).fixed_num_ << fixed_nbits_) / obj.fixed_num_;
 	return tmp;
@@ -101,39 +101,39 @@ Fixed Fixed::operator / ( const Fixed& obj ) const {
 
 
 /* 증감 연산자 */
-Fixed& Fixed::operator ++ ( void ) {
+Fixed& Fixed::operator ++ (void) {
 	this->fixed_num_++;
 	return *this;
 }
 
-Fixed Fixed::operator ++ ( int ) {
+Fixed Fixed::operator ++ (int) {
 	Fixed tmp(*this);
 	++(*this);
 	return tmp;
 }
 
-Fixed& Fixed::operator -- ( void ) {
+Fixed& Fixed::operator -- (void) {
 	this->fixed_num_ -= 1;
 	return *this;
 }
 
-Fixed Fixed::operator -- ( int ) {
+Fixed Fixed::operator -- (int) {
 	Fixed tmp(this->fixed_num_);
 	--(*this);
 	return tmp;
 }
 
-Fixed&	Fixed::max( Fixed& a, Fixed& b ) { return a > b ? a : b; }
+Fixed&	Fixed::max(Fixed& a, Fixed& b) { return a > b ? a : b; }
 
-const Fixed&	Fixed::max( const Fixed& a, const Fixed& b ) \
+const Fixed&	Fixed::max(const Fixed& a, const Fixed& b) \
 								{ return a.fixed_num_ > b.fixed_num_? a : b; }
 
 Fixed&	Fixed::min(Fixed& a, Fixed& b) { return a < b ? a : b; }
 
-const Fixed&	Fixed::min( const Fixed& a, const Fixed& b ) \
+const Fixed&	Fixed::min(const Fixed& a, const Fixed& b) \
 								{ return a.fixed_num_ < b.fixed_num_? a : b; }
 
-std::ostream& operator<<( std::ostream& out, const Fixed& obj ) {
+std::ostream& operator<<(std::ostream& out, const Fixed& obj) {
 	out << obj.toFloat();
 	return (out);
 }

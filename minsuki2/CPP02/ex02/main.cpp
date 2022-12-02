@@ -6,7 +6,7 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 15:13:18 by minsuki2          #+#    #+#             */
-/*   Updated: 2022/12/01 14:25:14 by minsuki2         ###   ########.fr       */
+/*   Updated: 2022/12/02 21:35:19 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,10 @@ int main( void ) {
 	Fixed const d(Fixed(2234.234f));
 	Fixed const e(Fixed(3234235));
 	const Fixed f(Fixed(2234.234f));
+	const Fixed g(Fixed(65536.234f));
+	const Fixed h(Fixed(16384.234f));
+	const Fixed i(Fixed(8192.234f));
+	const Fixed two(Fixed(2));
 
 	std::cout << "a         : " << a << std::endl;			// 0
 	std::cout << "++a       : " << ++a << std::endl;			// 0.00390625
@@ -29,6 +33,7 @@ int main( void ) {
 	std::cout << "a++       : " << a++ << std::endl;			// 0.00390625
 	std::cout << "a         : " << a << std::endl;			// 0.0078125
 	std::cout << "b         : " << b << std::endl;			// 10.1016
+	std::cout << "g         : " << g << std::endl;
 	std::cout << "max(a,b)  : " << Fixed::max(a, b) << std::endl; //10.1016
 	std::cout << "max(e,f)  : " << Fixed::max(e, f) << std::endl; //10.1016
 	std::cout << "(a >  b)  : " << (a > b) << std::endl;
@@ -51,7 +56,9 @@ int main( void ) {
 	std::cout << "a - b     : " << a << " - " << b << " = " << a - b << std::endl;
 	std::cout << "a * b     : " << a << " * " << b << " = " << a * b << std::endl;
 	std::cout << "a / b     : " << a << " / " << b << " = " << a / b << std::endl;
-
+	std::cout << "g * two     : " << g << " * " << two << " = " << g * two << std::endl;
+	std::cout << "h * two     : " << h << " * " << two << " = " << h * two << std::endl;
+	std::cout << "i * two     : " << i << " * " << two << " = " << i * two << std::endl;
 
 	return 0;
 }

@@ -6,10 +6,9 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 16:30:17 by minsuki2          #+#    #+#             */
-/*   Updated: 2022/12/01 14:35:43 by minsuki2         ###   ########.fr       */
+/*   Updated: 2022/12/02 17:30:24 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef FIXED_HPP
 # define FIXED_HPP
@@ -30,11 +29,10 @@
 # else
 #  define MSG_ENDL		std::endl
 # endif
-# define FLOAT_BITS		23
 
 enum e_off_bit {
-	OFFSET_SIGN_NBITS = 31,
 	OFFSET_FLOAT_NBITS = 23,
+	BIT_SIGN = 1 << 31,
 	BIT_FLOAT_EXPONENT = 0b11111111 << OFFSET_FLOAT_NBITS,
 	BIT_FLOAT_MANTISSA = 0b11111111111111111111111
 };
