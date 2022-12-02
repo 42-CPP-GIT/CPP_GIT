@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 20:18:43 by hchang            #+#    #+#             */
-/*   Updated: 2022/11/30 22:34:30 by hchang           ###   ########.fr       */
+/*   Updated: 2022/12/02 11:44:56 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include <iostream>
 
 template <typename T>
-void	iter(const T *arrayAd, unsigned int len, void(*f)(const T&))
+void	iter(T *arrayAd, unsigned int len, void(*f)(T&))
 {
 	for (unsigned int i = 0; i < len; i++)
 		f(arrayAd[i]);
@@ -24,7 +24,7 @@ void	iter(const T *arrayAd, unsigned int len, void(*f)(const T&))
 }
 
 template <typename T>
-void	iter(T *arrayAd, unsigned int len, void(*f)(T&))
+void	iter(const T *arrayAd, unsigned int len, void(*f)(const T&))
 {
 	for (unsigned int i = 0; i < len; i++)
 		f(arrayAd[i]);

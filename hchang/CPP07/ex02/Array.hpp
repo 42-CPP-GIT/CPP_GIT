@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 20:18:43 by hchang            #+#    #+#             */
-/*   Updated: 2022/12/01 22:09:50 by hchang           ###   ########.fr       */
+/*   Updated: 2022/12/02 11:59:15 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,9 @@ class Array
 		{
 			return (this->_len);
 		}
-		~Array()
+		~Array<T>()
 		{
+			std::cout << "bye\n";
 			if (this->_array)
 				delete [] _array;
 		}
