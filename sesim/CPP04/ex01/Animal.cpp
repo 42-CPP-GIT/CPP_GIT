@@ -6,7 +6,7 @@
 /*   By: sesim <sesim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 15:08:50 by sesim             #+#    #+#             */
-/*   Updated: 2022/12/03 14:07:45 by sesim            ###   ########.fr       */
+/*   Updated: 2022/12/03 14:34:37 by sesim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,11 @@ const std::string&	Animal::getType(void) const
 void	Animal::makeSound(void) const
 {
 	std::cout << "[ Animal Make Sound Called ]" << std::endl;
+}
+
+void	Animal::getIdeas(void) const
+{
+	std::cout << "Animal has no ideas" << std::endl;
 }
 
 Animal::~Animal()

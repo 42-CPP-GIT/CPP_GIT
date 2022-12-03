@@ -1,29 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.cpp                                         :+:      :+:    :+:   */
+/*   Ice.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sesim <sesim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/28 15:08:50 by sesim             #+#    #+#             */
-/*   Updated: 2022/12/03 14:07:45 by sesim            ###   ########.fr       */
+/*   Created: 2022/12/03 16:49:03 by sesim             #+#    #+#             */
+/*   Updated: 2022/12/03 16:58:27 by sesim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
+#include "Ice.hpp"
 
-Animal::Animal() : type_("Animal")
+Ice::Ice()
 {
-	std::cout << "[ Animal Default Construct Called ]" << std::endl;
+	this->type_ = "ice";
 }
 
-Animal::Animal(const Animal& obj)
+Ice::Ice(std::string const & type)
 {
-	std::cout << "[ Animal Copy Constructor Called ]" << std::endl;
+	this->type_ = type;
+}
+
+Ice::Ice(const Ice& obj)
+{
 	*this = obj;
 }
 
-Animal& Animal::operator=(const Animal& obj)
+Ice& Ice::operator=(const Ice& obj)
 {
 	if (this == &obj)
 		return (*this);
@@ -31,17 +35,23 @@ Animal& Animal::operator=(const Animal& obj)
 	return (*this);
 }
 
-const std::string&	Animal::getType(void) const
+std::string const &	Ice::getType() const
 {
 	return (this->type_);
 }
 
-void	Animal::makeSound(void) const
+AMateria*	Ice::clone() const
 {
-	std::cout << "[ Animal Make Sound Called ]" << std::endl;
+	return (new Ice());
 }
 
-Animal::~Animal()
+void	Ice::use(ICharacter& target)
 {
-	std::cout << "[ Animal Destructor Called ]" << std::endl;
+	std::cout << "* shoots an ice bolt at " << target.getName() << " *" << std::endl;
 }
+
+Ice::~Ice()
+{
+	std::cout << "Ice Materia Destroyed" << std::endl;
+}
+

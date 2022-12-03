@@ -1,32 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   WrongCat.hpp                                       :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sesim <sesim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/28 15:21:06 by sesim             #+#    #+#             */
-/*   Updated: 2022/12/03 14:03:38 by sesim            ###   ########.fr       */
+/*   Created: 2022/12/03 13:59:43 by sesim             #+#    #+#             */
+/*   Updated: 2022/12/03 14:50:09 by sesim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WRONGCAT_HPP
-# define WRONGCAT_HPP
+#include "Dog.hpp"
+#include "Cat.hpp"
 
-#include "WrongAnimal.hpp"
-
-class WrongCat : public WrongAnimal
+void	a()
 {
-	private:
-		std::string	name_;
+	system("leaks Animal");
+}
 
-	public:
-		WrongCat();
-		WrongCat(const WrongCat& obj);
-		WrongCat& operator=(const WrongCat& obj);
-		void				makeSound(void) const;
-		const std::string&	getName(void) const;
-		~WrongCat();
-};
+int	main()
+{
+	atexit(a);
 
-#endif
+	// const Animal	animal;
+	const Animal	*A = new Dog();
+	const Animal	*B = new Cat();
+
+	A->makeSound();
+	B->makeSound();
+
+	delete A;
+	delete B;
+	return (0);
+}

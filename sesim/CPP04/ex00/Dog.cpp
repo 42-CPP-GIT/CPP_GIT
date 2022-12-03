@@ -6,7 +6,7 @@
 /*   By: sesim <sesim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 15:23:59 by sesim             #+#    #+#             */
-/*   Updated: 2022/11/28 15:40:57 by sesim            ###   ########.fr       */
+/*   Updated: 2022/12/03 14:06:52 by sesim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ Dog::Dog() : name_("Dog")
 Dog::Dog(const Dog& obj)
 {
 	std::cout << "[ Dog Copy Constructor Called ]" << std::endl;
+	*this = obj;
 }
 
 Dog& Dog::operator=(const Dog& obj)

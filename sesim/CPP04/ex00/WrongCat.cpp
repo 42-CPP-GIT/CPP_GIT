@@ -6,7 +6,7 @@
 /*   By: sesim <sesim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 15:23:59 by sesim             #+#    #+#             */
-/*   Updated: 2022/11/28 16:48:58 by sesim            ###   ########.fr       */
+/*   Updated: 2022/12/03 14:07:08 by sesim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ WrongCat::WrongCat() : name_("WrongCat")
 WrongCat::WrongCat(const WrongCat& obj)
 {
 	std::cout << "[ WrongCat Copy Constructor Called ]" << std::endl;
+	*this = obj;
 }
 
 WrongCat& WrongCat::operator=(const WrongCat& obj)

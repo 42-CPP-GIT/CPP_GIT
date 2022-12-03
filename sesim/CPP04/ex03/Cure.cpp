@@ -1,29 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.cpp                                         :+:      :+:    :+:   */
+/*   Cure.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sesim <sesim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/28 15:08:50 by sesim             #+#    #+#             */
-/*   Updated: 2022/12/03 14:07:45 by sesim            ###   ########.fr       */
+/*   Created: 2022/12/03 16:49:03 by sesim             #+#    #+#             */
+/*   Updated: 2022/12/03 20:23:20 by sesim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
+#include "Cure.hpp"
 
-Animal::Animal() : type_("Animal")
+Cure::Cure()
 {
-	std::cout << "[ Animal Default Construct Called ]" << std::endl;
+	this->type_ = "cure";
 }
 
-Animal::Animal(const Animal& obj)
+Cure::Cure(std::string const & type)
 {
-	std::cout << "[ Animal Copy Constructor Called ]" << std::endl;
+	this->type_ = type;
+}
+
+Cure::Cure(const Cure& obj)
+{
 	*this = obj;
 }
 
-Animal& Animal::operator=(const Animal& obj)
+Cure& Cure::operator=(const Cure& obj)
 {
 	if (this == &obj)
 		return (*this);
@@ -31,17 +35,22 @@ Animal& Animal::operator=(const Animal& obj)
 	return (*this);
 }
 
-const std::string&	Animal::getType(void) const
+std::string const &	Cure::getType() const
 {
 	return (this->type_);
 }
 
-void	Animal::makeSound(void) const
+AMateria*	Cure::clone() const
 {
-	std::cout << "[ Animal Make Sound Called ]" << std::endl;
+	return (new Cure());
 }
 
-Animal::~Animal()
+void	Cure::use(ICharacter& target)
 {
-	std::cout << "[ Animal Destructor Called ]" << std::endl;
+	std::cout << "* heals " << target.getName() << "'s wounds *" << std::endl;
+}
+
+Cure::~Cure()
+{
+	std::cout << "Cure Materia Destroyed" << std::endl;
 }

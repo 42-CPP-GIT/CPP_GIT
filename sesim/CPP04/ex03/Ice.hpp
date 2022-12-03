@@ -1,32 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   WrongCat.hpp                                       :+:      :+:    :+:   */
+/*   Ice.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sesim <sesim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/28 15:21:06 by sesim             #+#    #+#             */
-/*   Updated: 2022/12/03 14:03:38 by sesim            ###   ########.fr       */
+/*   Created: 2022/12/03 16:49:03 by sesim             #+#    #+#             */
+/*   Updated: 2022/12/03 20:24:11 by sesim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WRONGCAT_HPP
-# define WRONGCAT_HPP
+#ifndef ICE_HPP
+# define ICE_HPP
 
-#include "WrongAnimal.hpp"
+# include "AMateria.hpp"
 
-class WrongCat : public WrongAnimal
+class ICharacter;
+
+class Ice : public AMateria
 {
-	private:
-		std::string	name_;
-
 	public:
-		WrongCat();
-		WrongCat(const WrongCat& obj);
-		WrongCat& operator=(const WrongCat& obj);
-		void				makeSound(void) const;
-		const std::string&	getName(void) const;
-		~WrongCat();
+		Ice();
+		Ice(std::string const & type);
+		Ice(const Ice& obj);
+		Ice& operator=(const Ice& obj);
+		std::string const &	getType() const;
+		virtual AMateria*	clone() const;
+		virtual void		use(ICharacter& target);
+		virtual ~Ice();
 };
 
 #endif

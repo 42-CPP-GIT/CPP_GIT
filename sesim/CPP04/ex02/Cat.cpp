@@ -6,13 +6,13 @@
 /*   By: sesim <sesim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 15:23:59 by sesim             #+#    #+#             */
-/*   Updated: 2022/12/03 14:06:44 by sesim            ###   ########.fr       */
+/*   Updated: 2022/12/03 14:27:21 by sesim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cat.hpp"
 
-Cat::Cat() : name_("Cat")
+Cat::Cat() : name_("Cat"), brain_(new Brain)
 {
 	std::cout << "[ Cat Default Constructor Called ]" << std::endl;
 }
@@ -20,6 +20,7 @@ Cat::Cat() : name_("Cat")
 Cat::Cat(const Cat& obj)
 {
 	std::cout << "[ Cat Copy Constructor Called ]" << std::endl;
+	this->brain_ = NULL;
 	*this = obj;
 }
 
@@ -28,12 +29,21 @@ Cat& Cat::operator=(const Cat& obj)
 	if (this == &obj)
 		return (*this);
 	this->name_ = obj.getName();
+	if (this->brain_)
+		delete this->brain_;
+	this->brain_ = new Brain(*obj.brain_);
 	return (*this);
 }
 
 void	Cat::makeSound(void) const
 {
 	std::cout << "[ " << this->getName() << " : Ya-ong ]" << std::endl;
+}
+
+void	Cat::getIdeas(void) const
+{
+	if (this->brain_)
+		this->brain_->showIdeas();
 }
 
 const std::string&	Cat::getName(void) const
@@ -44,4 +54,6 @@ const std::string&	Cat::getName(void) const
 Cat::~Cat()
 {
 	std::cout << "[ Cat Destructor Called ]" << std::endl;
+	if (this->brain_)
+		delete this->brain_;
 }

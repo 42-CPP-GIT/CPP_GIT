@@ -6,13 +6,13 @@
 /*   By: sesim <sesim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 15:08:50 by sesim             #+#    #+#             */
-/*   Updated: 2022/11/28 15:44:30 by sesim            ###   ########.fr       */
+/*   Updated: 2022/12/03 14:08:00 by sesim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "WrongAnimal.hpp"
 
-WrongAnimal::WrongAnimal() : type_("Default")
+WrongAnimal::WrongAnimal() : type_("WrongAnimal")
 {
 	std::cout << "[ WrongAnimal Default Construct Called ]" << std::endl;
 }

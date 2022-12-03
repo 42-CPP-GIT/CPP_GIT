@@ -1,47 +1,58 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.cpp                                            :+:      :+:    :+:   */
+/*   Dog.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sesim <sesim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 15:23:59 by sesim             #+#    #+#             */
-/*   Updated: 2022/12/03 14:06:44 by sesim            ###   ########.fr       */
+/*   Updated: 2022/12/03 14:28:56 by sesim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Cat.hpp"
+#include "Dog.hpp"
 
-Cat::Cat() : name_("Cat")
+Dog::Dog() : name_("Dog"), brain_(new Brain)
 {
-	std::cout << "[ Cat Default Constructor Called ]" << std::endl;
+	std::cout << "[ Dog Default Constructor Called ]" << std::endl;
 }
 
-Cat::Cat(const Cat& obj)
+Dog::Dog(const Dog& obj)
 {
-	std::cout << "[ Cat Copy Constructor Called ]" << std::endl;
+	std::cout << "[ Dog Copy Constructor Called ]" << std::endl;
+	this->brain_ = NULL;
 	*this = obj;
 }
 
-Cat& Cat::operator=(const Cat& obj)
+Dog& Dog::operator=(const Dog& obj)
 {
 	if (this == &obj)
 		return (*this);
 	this->name_ = obj.getName();
+	if (this->brain_)
+		delete this->brain_;
+	this->brain_ = new Brain(*obj.brain_);
 	return (*this);
 }
 
-void	Cat::makeSound(void) const
+void	Dog::makeSound(void) const
 {
-	std::cout << "[ " << this->getName() << " : Ya-ong ]" << std::endl;
+	std::cout << "[ " << this->getName() << " : Wal ]" << std::endl;
 }
 
-const std::string&	Cat::getName(void) const
+void	Dog::getIdeas(void) const
+{
+	if (this->brain_)
+		this->brain_->showIdeas();
+}
+const std::string&	Dog::getName(void) const
 {
 	return (this->name_);
 }
 
-Cat::~Cat()
+Dog::~Dog()
 {
-	std::cout << "[ Cat Destructor Called ]" << std::endl;
+	std::cout << "[ Dog Destructor Called ]" << std::endl;
+	if (this->brain_)
+		delete this->brain_;
 }

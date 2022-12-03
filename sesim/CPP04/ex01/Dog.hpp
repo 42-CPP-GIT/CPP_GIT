@@ -1,32 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   WrongCat.hpp                                       :+:      :+:    :+:   */
+/*   Dog.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sesim <sesim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 15:21:06 by sesim             #+#    #+#             */
-/*   Updated: 2022/12/03 14:03:38 by sesim            ###   ########.fr       */
+/*   Updated: 2022/12/03 14:27:10 by sesim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WRONGCAT_HPP
-# define WRONGCAT_HPP
+#ifndef DOG_HPP
+# define DOG_HPP
 
-#include "WrongAnimal.hpp"
+# include "Animal.hpp"
+# include "Brain.hpp"
 
-class WrongCat : public WrongAnimal
+class Dog : public Animal
 {
 	private:
 		std::string	name_;
+		Brain		*brain_;
 
 	public:
-		WrongCat();
-		WrongCat(const WrongCat& obj);
-		WrongCat& operator=(const WrongCat& obj);
+		Dog();
+		Dog(const Dog& obj);
+		Dog& operator=(const Dog& obj);
 		void				makeSound(void) const;
+		void				getIdeas(void) const;
 		const std::string&	getName(void) const;
-		~WrongCat();
+		~Dog();
 };
 
 #endif
