@@ -1,28 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   zombieHorde.cpp                                    :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sesim <sesim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/07 13:43:10 by sesim             #+#    #+#             */
-/*   Updated: 2022/12/03 16:41:47 by sesim            ###   ########.fr       */
+/*   Created: 2022/12/03 23:22:37 by sesim             #+#    #+#             */
+/*   Updated: 2022/12/03 23:26:28 by sesim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include "Bureaucrat.hpp"
 
-Zombie*	zombieHorde(int N, std::string name)
+int	main()
 {
-	if (N < 1)
-		return (NULL);
-	Zombie	*zombies(new Zombie[N]);
-
-	for (int i(0) i < N; ++i)
+	try
 	{
-		std::cout << "[" << i + 1 << "] ";
-		zombies[i].initialize(name);
-		zombies[i].announce();
+		Bureaucrat	A("AA", 150);
+		Bureaucrat	B("BB", 2);
+
+		// A.demotion();
+		A.promotion();
+		std::cout << A << std::endl;
+		A = B;
+		std::cout << A << std::endl;
 	}
-	return (zombies);
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << std::endl;;
+	}
+	
 }

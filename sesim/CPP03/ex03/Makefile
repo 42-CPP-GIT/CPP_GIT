@@ -6,7 +6,7 @@
 #    By: sesim <sesim@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/27 10:57:54 by sesim             #+#    #+#              #
-#    Updated: 2022/11/20 21:12:12 by sesim            ###   ########.fr        #
+#    Updated: 2022/12/04 11:09:51 by sesim            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,15 +31,16 @@ $(OBJS_DIR)%.o : %.cpp
 	@mkdir -p $(dir $@)
 	@mkdir -p $(DEPS_DIR)
 	$(CXX) $(CXXFLAGS) $< -c -o $@ -MMD
-	mv $(@:.o=.d) $(DEPS_DIR)
+	@mv $(@:.o=.d) $(DEPS_DIR)
 
 clean:
-	$(RM) $(OBJS_DIR)
-	$(RM) $(DEPS_DIR)
+	@$(RM) $(OBJS_DIR)
+	@$(RM) $(DEPS_DIR)
 
 fclean: clean
-	$(RM) $(NAME)
+	@$(RM) $(NAME)
 
-re: | fclean all
+re: fclean
+	@make all
 
 .PHONY: all clean fclean re
