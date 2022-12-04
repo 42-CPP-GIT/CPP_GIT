@@ -6,7 +6,7 @@
 #    By: sesim <sesim@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/27 10:57:54 by sesim             #+#    #+#              #
-#    Updated: 2022/12/04 11:10:58 by sesim            ###   ########.fr        #
+#    Updated: 2022/12/04 13:49:54 by sesim            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,5 +42,7 @@ fclean: clean
 
 re: fclean
 	@make all
+
+-include $(DEPS)
 
 .PHONY: all clean fclean re
