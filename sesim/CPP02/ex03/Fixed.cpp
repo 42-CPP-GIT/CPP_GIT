@@ -6,7 +6,7 @@
 /*   By: sesim <sesim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 12:01:48 by sesim             #+#    #+#             */
-/*   Updated: 2022/11/20 18:13:25 by sesim            ###   ########.fr       */
+/*   Updated: 2022/12/04 21:55:26 by sesim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ Fixed	Fixed::operator+(const Fixed& obj)
 {
 	Fixed	res;
 
-	res.setRawBits(this->fixed_num_ + obj.fixed_num_);
+	res.setRawBits(this->getRawBits() + obj.getRawBits());
 	return (res);
 }
 
@@ -51,7 +51,7 @@ Fixed	Fixed::operator-(const Fixed& obj)
 {
 	Fixed	res;
 
-	res.setRawBits(this->fixed_num_ - obj.fixed_num_);
+	res.setRawBits(this->getRawBits() - obj.getRawBits());
 	return (res);
 }
 
@@ -69,7 +69,7 @@ Fixed	Fixed::operator/(const Fixed& obj)
 
 bool	Fixed::operator==(const Fixed& obj) const
 {
-	return (this->fixed_num_ == obj.fixed_num_);
+	return (this->getRawBits() == obj.getRawBits());
 }
 
 bool	Fixed::operator!=(const Fixed& obj) const
@@ -79,22 +79,22 @@ bool	Fixed::operator!=(const Fixed& obj) const
 
 bool	Fixed::operator>(const Fixed& obj) const
 {
-	return (this->fixed_num_ > obj.fixed_num_);
+	return (this->getRawBits() > obj.getRawBits());
 }
 
 bool	Fixed::operator>=(const Fixed& obj) const
 {
-	return (this->fixed_num_ >= obj.fixed_num_);
+	return (this->getRawBits() >= obj.getRawBits());
 }
 
 bool	Fixed::operator<=(const Fixed& obj) const
 {
-	return (this->fixed_num_ <= obj.fixed_num_);
+	return (this->getRawBits() <= obj.getRawBits());
 }
 
 bool	Fixed::operator<(const Fixed& obj) const
 {
-	return (this->fixed_num_ < obj.fixed_num_);
+	return (this->getRawBits() < obj.getRawBits());
 }
 
 Fixed&	Fixed::operator++(void)
@@ -127,22 +127,22 @@ const Fixed	Fixed::operator--(int)
 
 Fixed&	Fixed::max(Fixed& a, Fixed& b)
 {
-	return ((a.fixed_num_ >= b.fixed_num_) ? a : b);
+	return ((a.getRawBits() >= b.getRawBits()) ? a : b);
 }
 
 Fixed&	Fixed::min(Fixed& a, Fixed& b)
 {
-	return ((a.fixed_num_ <= b.fixed_num_) ? a : b);
+	return ((a.getRawBits() <= b.getRawBits()) ? a : b);
 }
 
 const Fixed&	Fixed::max(const Fixed& a, const Fixed& b)
 {
-	return ((a.fixed_num_ >= b.fixed_num_) ? a : b);
+	return ((a.getRawBits() >= b.getRawBits()) ? a : b);
 }
 
 const Fixed&	Fixed::min(const Fixed& a, const Fixed& b)
 {
-	return ((a.fixed_num_ <= b.fixed_num_) ? a : b);
+	return ((a.getRawBits() <= b.getRawBits()) ? a : b);
 }
 
 
