@@ -1,37 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   whatever.hpp                                       :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sesim <sesim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/04 19:02:28 by sesim             #+#    #+#             */
-/*   Updated: 2022/12/04 19:07:38 by sesim            ###   ########.fr       */
+/*   Created: 2022/12/01 10:08:58 by sesim             #+#    #+#             */
+/*   Updated: 2022/12/01 11:31:51 by sesim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
+#include "iter.hpp"
 
-#include <iostream>
-
-template <typename T>
-void	swap(T& a, T& b)
+int	main(void)
 {
-	T	tmp;
+	const int	arr1[10] = {1, 2, 3, 4,};
+	int			arr2[10] = {1, 2, 3, };
 
-	tmp = a;
-	a = b;
-	b = tmp;
-}
-
-template <typename T>
-T	min(const T& a, const T& b)
-{
-	return (a < b ? a : b);
-}
-
-template <typename T>
-T	max(const T& a, const T& b)
-{
-	return (a > b ? a : b);
+	::iter(arr1, (sizeof(arr1) / sizeof(arr1[0])), print1);
+	::iter(arr2, (sizeof(arr2) / sizeof(arr2[0])), print1);
+	return (0);
 }

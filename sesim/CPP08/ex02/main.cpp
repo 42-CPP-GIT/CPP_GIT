@@ -6,18 +6,29 @@
 /*   By: sesim <sesim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 10:08:58 by sesim             #+#    #+#             */
-/*   Updated: 2022/12/01 11:31:51 by sesim            ###   ########.fr       */
+/*   Updated: 2022/12/02 13:03:47 by sesim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "iter.hpp"
+#include "MutantStack.hpp"
+#include <iostream>
 
-int	main(void)
+int main()
 {
-	const int	arr1[10] = {1, 2, 3, 4,};
-	int			arr2[10] = {1, 2, 3, };
+	MutantStack<int> mstack;
+	mstack.push(5); mstack.push(17);
 
-	::iter(arr1, (sizeof(arr1) / sizeof(arr1[0])), print1);
-	::iter(arr2, (sizeof(arr2) / sizeof(arr2[0])), print1);
-	return (0);
+	std::cout << mstack.top() << std::endl; mstack.pop();
+	std::cout << mstack.size() << std::endl;
+
+	mstack.push(3); mstack.push(5); mstack.push(737); //[...] mstack.push(0);
+	MutantStack<int>::iterator it = mstack.begin(); MutantStack<int>::iterator ite = mstack.end();
+
+	++it;
+	--it;
+
+	while (it != ite) {
+		std::cout << *it << std::endl;
+	++it; }
+	std::stack<int> s(mstack); return 0;
 }
