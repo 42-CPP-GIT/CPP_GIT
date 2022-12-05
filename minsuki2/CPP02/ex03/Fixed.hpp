@@ -6,7 +6,7 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 16:30:17 by minsuki2          #+#    #+#             */
-/*   Updated: 2022/12/02 17:30:24 by minsuki2         ###   ########.fr       */
+/*   Updated: 2022/12/04 20:49:47 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define FIXED_HPP
 # include <iostream>
 # include <cmath>
+// # include <bitset> // linux c+11
+# include <climits> // linux
 # define MSG_CALL		" called"
 # define MSG_CREATE		"Default constructor '-'"
 # define MSG_DESTROY 	"Destructor '~'"
@@ -23,8 +25,20 @@
 # define MSG_IS			" is"
 # define MSG_INTEGER	" as integer"
 # define MSG_FLOAT		" as float"
+# define MSG_BSP		"[bsp] : "
+# define MSG_ANS		" : [ans]"
+# define SET_RESET		"\033[0m"
+# define SET_RED		"\e[0;31m"
+# define SET_GREEN		"\e[0;33m"
+# define MSG_TRUE		SET_GREEN "True " SET_RESET
+# define MSG_FALSE		SET_RED   "False" SET_RESET
+# define MSG_VERTEX		"  Vertex!"
+# define MSG_EDGE		"  Edge!"
+# define MSG_ROUND		"  Rounding Error!"
+# define MSG_OVER		"  Overflow Check!"
 
-# ifndef std_endl
+
+# ifndef ENDL
 #  define MSG_ENDL		'\n'
 # else
 #  define MSG_ENDL		std::endl

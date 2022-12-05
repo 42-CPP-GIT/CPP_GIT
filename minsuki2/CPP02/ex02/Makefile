@@ -6,11 +6,11 @@
 #    By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/29 18:32:08 by minsuki2          #+#    #+#              #
-#    Updated: 2022/11/28 22:25:05 by minsuki2         ###   ########.fr        #
+#    Updated: 2022/12/04 14:00:31 by minsuki2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CPPFLAGS	=		-Wall -Werror -Wextra -std=c++98
+CPPFLAGS	=		-Wall -Werror -Wextra #-std=c++98
 # CPPFLAGS	=
 RM 			=		rm -rvf
 

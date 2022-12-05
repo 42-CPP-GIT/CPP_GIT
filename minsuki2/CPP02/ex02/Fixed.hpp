@@ -6,7 +6,7 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 16:30:17 by minsuki2          #+#    #+#             */
-/*   Updated: 2022/12/02 21:10:52 by minsuki2         ###   ########.fr       */
+/*   Updated: 2022/12/04 14:35:05 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 # define FIXED_HPP
 # include <iostream>
 # include <cmath>
+# include <cstring>
+# include <bitset>
 # define MSG_CALL		" called"
 # define MSG_CREATE		"Default constructor '-'"
 # define MSG_DESTROY 	"Destructor '~'"
@@ -33,8 +35,8 @@
 # define FLOAT_BITS		23
 
 enum e_off_bit {
-	OFFSET_SIGN_NBITS = 31,
 	OFFSET_FLOAT_NBITS = 23,
+	BIT_SIGN = 1 << 31,
 	BIT_FLOAT_EXPONENT = 0b11111111 << OFFSET_FLOAT_NBITS,
 	BIT_FLOAT_MANTISSA = 0b11111111111111111111111
 };

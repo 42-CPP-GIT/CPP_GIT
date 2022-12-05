@@ -6,70 +6,55 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 14:28:27 by minsuki2          #+#    #+#             */
-/*   Updated: 2022/12/03 00:10:54 by minsuki2         ###   ########.fr       */
+/*   Updated: 2022/12/04 20:52:57 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Point.hpp"
 #include <sstream>
 
-int countLeftBit(int raw_bit) {
+static int _countLeftBit(int raw_bit) {
 	int cnt = 0;
 	while (!(raw_bit & (1 << (31 - cnt))) && cnt++ < 32);
 	return cnt;
 }
 
-int bitShifting(int raw_bit, int cnt) {
+static int _bitShift(int raw_bit, int cnt) {
 	return cnt > 0 ? raw_bit << cnt : raw_bit >> -cnt;
 }
 
-const Fixed	checkTimes(const Fixed& a, const Fixed& b) {
-
+static const Fixed	_checkTimes(const Fixed& a, const Fixed& b) {
 	Fixed const res(a * b);
-	if (a == 0 || b == 0)
+	if (a == 0 || a == 1 || b == 0 || b == 1)
 		return res;
+	std::stringstream equation;
 	int a_bit = a > 0 ? a.getRawBits() : -a.getRawBits();
 	int b_bit = b > 0 ? b.getRawBits() : -b.getRawBits();
-
-	std::cerr << "\n\na        : " << a << ' ' << static_cast<float>(a_bit)/256 << ' '<< std::bitset<32>(a_bit) << MSG_ENDL;
-	std::cerr << "b        : " << b << ' ' << static_cast<float>(b_bit)/256 << ' ' << std::bitset<32>(b_bit) << MSG_ENDL;
-
-
-	int left_space = countLeftBit(a_bit);
-	int max_b_bit = 31 - countLeftBit(b_bit) - 8;
-	std::cerr << "cnt_a : " << left_space << MSG_ENDL;
-	std::cerr << "cnt_b : " << max_b_bit << MSG_ENDL;
-	if (left_space < max_b_bit) {
-		std::stringstream equation;
-		equation << a << " * " << b << " = " << res;
+	int left_space = _countLeftBit(a_bit);
+	int max_b_bit = 31 - _countLeftBit(b_bit) - 8;
+	if (left_space <= max_b_bit) {
+		equation << "Error[1] : " << a << " * " << b << " = " << res;
 		throw equation.str();
 	}
-	// b_bit = b > 0 ? b_bit : b.getRawBits() & INT_MAX;
-	// b.getRawBits() & INT_MAX;
 	int res_bit = 0;
-	for (int i = 0; i < 32; ++i) {
-		// std::cerr << "[inter " << i << ']'<< MSG_ENDL;
-	std::cerr << "\nans       : " << std::bitset<32>(res.getRawBits()) << " => " << a << ' ' << b << ' ' << " = "<< res << MSG_ENDL;
-		std::cerr << "res_bit   : " << std::bitset<32>(res_bit) << MSG_ENDL;
-		std::cerr << "+         : " << std::bitset<32>(bitShifting(a_bit, max_b_bit)) << MSG_ENDL;
-		std::cerr << "max_b_bit : " << max_b_bit << MSG_ENDL;
-		std::cerr << "b_bit     : " << std::bitset<32>(b_bit) << MSG_ENDL;
-
-		// INT_MIN - res_bit > INT_MIN + a.xx
-		int tmp;
-		if (INT_MAX - res_bit < (tmp = (max_b_bit) > 0 ? a.getRawBits() << max_b_bit : a.getRawBits() >> (max_b_bit))) {
-			std::stringstream equation;
-			equation << a << " * " << b << " = " << res;
+	for (int i = max_b_bit; i >= -8; --i) {
+		if (!(b_bit & 1 << (i + 8)))
+			continue ;
+		const int add_val = _bitShift(a_bit, i);
+		if (res_bit > 0 && INT_MAX - res_bit < add_val) {
+			equation << "Error[2] : " << a << " * " << b << " = " << res;
 			throw equation.str();
 		}
-		b_bit &= (max_b_bit - 1) >= 0 ? ~(0b100000000 << max_b_bit) : ~(0b100000000 >> max_b_bit);
-		res_bit += a_bit << max_b_bit;
-		max_b_bit = 31 - countLeftBit(b_bit) - 8;
+		b_bit &= ~(_bitShift(0b100000000, i));
+		res_bit += add_val;
 	}
-	// 234234 * 324234
-
-	std::cerr << "res      : " << std::bitset<32>(res_bit) << " => " << res_bit << " => " << static_cast<float>(res_bit) / 256 << MSG_ENDL;
-	std::cerr << "ans      : " << std::bitset<32>(res.getRawBits()) << " => " << a << ' ' << b << ' ' << " = "<< res << MSG_ENDL;
+	const int compare_bit = res.getRawBits() > 0 \
+								? res.getRawBits() : ~(res.getRawBits() - 1);
+	if (_countLeftBit(res_bit) != _countLeftBit(compare_bit)) {
+		equation << "Error[3] : " << a << " * " << b << " = |" << res << "| ≠ |" \
+			<< (static_cast<float>(res_bit) / 256) << '|';
+		throw equation.str();
+	}
 	return res;
 }
 
@@ -77,11 +62,12 @@ bool _isSameInequalityLine(Point const& point, Point const& start, \
 							Point const& known, Point const& line) {
 	Point const unknown(point.getX() - start.getX(), point.getY() - start.getY());
 	try {
-		Fixed const& val1(checkTimes(unknown.getY(), line.getX()) - checkTimes(unknown.getX(),  line.getY()));
-		Fixed const& val2(checkTimes(known.getY(), line.getX()) - checkTimes(known.getX(),  line.getY()));
-		// Point is on line || There is not triangle || Another side
-		if (val1 == 0 || val2 == 0
-			|| ((val1.getRawBits() & BIT_SIGN) ^ (val2.getRawBits() & BIT_SIGN))) // XOR
+		Fixed const& val1(_checkTimes(unknown.getY(), line.getX()) - _checkTimes(unknown.getX(),  line.getY()));
+		Fixed const& val2(_checkTimes(known.getY(), line.getX()) - _checkTimes(known.getX(),  line.getY()));
+		// Another side || Point is on line || There is not triangle
+		if (((val1.getRawBits() & BIT_SIGN) ^ (val2.getRawBits() & BIT_SIGN)) // XOR
+			|| (-0.05f < val1.toFloat() && val1.toFloat() < 0.05f)
+			|| (-0.05f < val2.toFloat() && val2.toFloat() < 0.05f))
 			return false;
 	}
 	catch (std::string what) {
@@ -102,69 +88,3 @@ bool bsp(Point const a, Point const b, Point const c, Point const point) {
 		return false;
 	return true;
 }
-// # 1 그냥 나누기
-	// if ((a != 0 && b != 0) && ((res.getRawBits() / b.getRawBits() != a.getRawBits()))) {
-	//     std::cerr << a << " * " << b << " = " << a * b << " b != " << res << MSG_ENDL;
-	//     std::stringstream equation;
-	//     equation << a << " * " << b;
-	//     std::string what(equation.str());
-	//     throw what;
-	// }
-
-// # 2 범위에 나누기
-	// if ((a > 0 && b > 0) || (a < 0 && b < 0)) {
-	//     if (b.getRawBits() > 0 ? b.getRawBits() : ~(b.getRawBits() - 1) > (INT_MAX / (a > 0 ? a.getRawBits() : ~(a.getRawBits() - 1)))) {
-	// // std::cerr << a << " * " << b << " = " << a * b << " b != " << res << MSG_ENDL;
-	//     }
-	// }
-	// else
-	//     if (-b.getRawBits() > 0 ? b.getRawBits() : ~(b.getRawBits() - 1) < (INT_MIN / (a > 0 ? a.getRawBits() : ~(a.getRawBits() - 1)))) {
-	//         equation << a << " * " << b << " = " << res;
-	//         throw equation.str();
-	//     }
-
-	// INT_MAX >= a + b >= INT_MIN
-
-	/*
-	INT_MAX - a >= a :> INT_MAX - b < a
-	INT_MIN - a <= a :> INT_MIN - b > a
-
-	a + b > INT_MIN
-	300 + 3234234234 < INT_MAX
-	INT_MAX - 300 > 3234234234(양수)
-	300 + -2147394023 > INT_MIN
-	INT_MIN + 300 < 2147394023(음수)
-	b > 0 ... INT_MAX - a < a
-
-	b < 0 ... INT_MIN - a > a
-
-	0b1111
-	b & BIT_SIGN
-
-	a + b <= INT_MAX + +
-	a + b >= INT_MIN - -
-	INT_MAX - a >= b 	 INT_MAX - a < b			a > only 0    b 모두 가능ㅗ ... 1
-	a >= INT_MIN + b     a < INT_MIN + b			a 모두 가능   b > 0			... 2
-
-	- a + b > INT_MIN
-
-
-	내가 음수면
-	INT_MAX + a < b
-
-	쟤가 음수면
-	a < INT_MIN - b
-
-	부호 다르면 판단 필요 없음
-	+를 판단 - 내가 음수면 판단 할 필요 X
-			   내가 양수인데 쟤가 양수일때?
-
-
-
-
-	(1 - 2 * (b_bit & BIT_SIGN)) * ;
-	+
-
-		*/
-
-			// || (res_bit < 0 && -res_bit > (a.getRawBits() << max_b_bit))) {

@@ -6,7 +6,7 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 16:42:10 by minsuki2          #+#    #+#             */
-/*   Updated: 2022/12/02 21:34:28 by minsuki2         ###   ########.fr       */
+/*   Updated: 2022/12/04 20:43:03 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ Fixed::Fixed(const int num) {
 #ifdef debug
 	std::cerr << MSG_CREATE << " int" << MSG_CALL << ' ';
 #endif
-	this->fixed_num_ = num << this->fixed_nbits_;
+	this->fixed_num_ = (num << this->fixed_nbits_);
 }
 
 Fixed::Fixed(const float num) {
@@ -41,7 +41,7 @@ Fixed::Fixed(const float num) {
 	struct s_info_float flo;
 	std::memcpy(&flo.bit, &num, sizeof(float));
 	flo.exponent = ((flo.bit & BIT_FLOAT_EXPONENT) >> OFFSET_FLOAT_NBITS) - 127;			// 지수부 구하기
-	flo.sign = 2 * !(flo.bit & (1 << OFFSET_SIGN_NBITS)) - 1;								// sign 만들기
+	flo.sign = 2 * !(flo.bit & BIT_SIGN) - 1;								// sign 만들기
 	this->fixed_num_ = (1 << OFFSET_FLOAT_NBITS) | (flo.bit & BIT_FLOAT_MANTISSA);			// 1 추가 + mantissa 부분 추출
 	this->fixed_num_ += 1 << (OFFSET_FLOAT_NBITS - (flo.exponent + fixed_nbits_ + 1));		// 반올림 해주기
 	this->fixed_num_ >>= OFFSET_FLOAT_NBITS - this->fixed_nbits_ - (flo.exponent);			// fixed 으로 이동하기
@@ -116,11 +116,20 @@ Fixed Fixed::operator-(const Fixed& obj) const {
 
 Fixed Fixed::operator*(const Fixed& obj) const {
 	Fixed tmp;				// 생성과 동시에 초기화하면 int 생성자로 감
-	tmp.fixed_num_ = ((*this).fixed_num_ * obj.fixed_num_) >> fixed_nbits_;
+	// 부호 다른 지 체크
+	if (((*this).fixed_num_ & BIT_SIGN) ^ (obj.fixed_num_ & BIT_SIGN)) {
+		// 음수 비트 살려서 이동 + 음수가 아니면 2의 보수 취하기
+		tmp.fixed_num_ = ((*this).fixed_num_ * obj.fixed_num_) >> fixed_nbits_;
+		tmp.fixed_num_ = tmp.fixed_num_ > 0 ? ~tmp.fixed_num_ + 1 : tmp.fixed_num_;
+	}
+	else
+		tmp.fixed_num_ = static_cast<unsigned int>( // 음수 비트 없애서 이동
+						(*this).fixed_num_ * obj.fixed_num_) >> fixed_nbits_;
+	// tmp.fixed_num_ = ((*this).fixed_num_ * obj.fixed_num_) >> fixed_nbits_;
 	return tmp;
+}
 	// 1. 나눠서 하는 것은 연산 시간에 효율이 안 좋음
 	// 2. 부호가 음수 범위를 침범하면 undefined 됨...
-}
 	// std::cerr << "this : " << std::bitset<32>((*this).fixed_num_) << MSG_ENDL;
 	// std::cerr << "obj  : " << std::bitset<32>(obj.fixed_num_) << MSG_ENDL;
 	// std::cerr << "obj  : " << std::bitset<32>((*this).fixed_num_ * obj.fixed_num_) << MSG_ENDL;
