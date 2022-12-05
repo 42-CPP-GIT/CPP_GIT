@@ -6,7 +6,7 @@
 /*   By: sesim <sesim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 12:01:48 by sesim             #+#    #+#             */
-/*   Updated: 2022/11/20 15:15:58 by sesim            ###   ########.fr       */
+/*   Updated: 2022/12/05 12:19:16 by sesim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,7 @@ Fixed::Fixed(const float raw)
 Fixed::Fixed(const Fixed& obj)
 {
 	std::cout << "Copy constructor called" << std::endl;
-	if (this != &obj)
-		*this = obj;
+	*this = obj;
 }
 
 Fixed&	Fixed::operator=(const Fixed& obj)
@@ -74,3 +73,18 @@ std::ostream&	operator<<(std::ostream& out, const Fixed& fixed)
 	out << fixed.toFloat();
 	return out;
 }
+
+// 01111111 10100000
+
+// 5.25 -> 101 | 01
+// 101.0 * 2^0 
+// 1.01 * 2^2 -> 01111111 + 0000010
+// 127 + 2 -> 129
+// 10000001
+
+// 0 1000000 10100000000000
+// 5.25 -> 5
+
+// 32
+// 00000000 00000000 00000000 | 00000000
+

@@ -6,7 +6,7 @@
 /*   By: sesim <sesim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 15:20:01 by sesim             #+#    #+#             */
-/*   Updated: 2022/12/03 21:56:34 by sesim            ###   ########.fr       */
+/*   Updated: 2022/12/05 13:06:51 by sesim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ Character& Character::operator=(const Character& obj)
 
 const AMateria*	Character::getAMateria(int idx) const
 {
-	if (idx < 0 || idx > 3)
+	if (idx < 0 || idx > this->idx_)
 	{
 		std::cout << "Put right Index!" << std::endl;
 		return (NULL);

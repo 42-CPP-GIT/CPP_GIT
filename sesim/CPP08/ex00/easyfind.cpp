@@ -1,26 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   easyfind.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sesim <sesim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/20 19:10:13 by sesim             #+#    #+#             */
-/*   Updated: 2022/12/05 12:27:30 by sesim            ###   ########.fr       */
+/*   Created: 2022/12/05 10:22:27 by sesim             #+#    #+#             */
+/*   Updated: 2022/12/05 11:15:36 by sesim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ClapTrap.hpp"
+#include "easyfind.hpp"
 
-int	main(void)
+const char *	OutOfBoundsException::what() const throw()
 {
-	ClapTrap	A("test");
-
-	A.attack("something");
-	A.takeDamage(2147483647);
-	A.beRepaired(5);
-	A.takeDamage(6);
-	A.beRepaired(2147483649);
-	A.takeDamage(12);
-	A.beRepaired(12);
+	return ("err: index is out of range");
 }
+
+

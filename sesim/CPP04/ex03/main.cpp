@@ -6,7 +6,7 @@
 /*   By: sesim <sesim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 17:00:43 by sesim             #+#    #+#             */
-/*   Updated: 2022/12/03 22:18:32 by sesim            ###   ########.fr       */
+/*   Updated: 2022/12/05 13:12:01 by sesim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,50 @@ void	test1(void)
 	me->equip(tmp1);
 	me->equip(tmp1);
 	me->unequip(0);
-
+	me->unequip(0);
+	me->unequip(1);
+	me->unequip(2);
+	me->unequip(3);
+	me->equip(tmp1);
+	me->equip(tmp1);
+	me->equip(tmp1);
+	me->equip(tmp1);
+	me->equip(tmp1);
+	me->equip(tmp1);
+	me->unequip(0);
+	me->unequip(1);
+	me->unequip(2);
+	me->unequip(3);
+	me->equip(tmp1);
+	me->equip(tmp1);
+	me->equip(tmp1);
+	me->equip(tmp1);
+	me->equip(tmp1);
+	me->equip(tmp1);
+	me->unequip(0);
+	me->unequip(1);
+	me->unequip(2);
+	me->unequip(3);
+	me->equip(tmp1);
+	me->equip(tmp1);
+	me->equip(tmp1);
+	me->equip(tmp1);
+	me->equip(tmp1);
+	me->equip(tmp1);
+	me->unequip(0);
+	me->unequip(1);
+	me->unequip(2);
+	me->unequip(3);
+	me->equip(tmp1);
+	me->equip(tmp1);
+	me->equip(tmp1);
+	me->equip(tmp1);
+	me->equip(tmp1);
+	me->equip(tmp1);
+	me->unequip(0);
+	me->unequip(1);
+	me->unequip(2);
+	me->unequip(3);
 	// tmp = src->createMateria("ice");
 	// me->equip(tmp);
 	// tmp = src->createMateria("ice");
@@ -69,9 +112,9 @@ void	test1(void)
 
 	// me->use(6, *bob);
 	
+	delete tmp1;
 	delete bob;
 	delete me;
-	std::cout << "      aa      \n";
 	delete src;
 }
 
@@ -108,6 +151,7 @@ void subject()
 
 void MateriaSourceAssignmentOperator()
 {
+	std::cout << "===== MateriaSourceAssignmentOperator =====\n";
 	AMateria* tmp;
 	ICharacter* me = new Character("me");
 	ICharacter* bob = new Character("bob");
@@ -116,6 +160,14 @@ void MateriaSourceAssignmentOperator()
 
 	src->learnMateria(new Ice());
 	src->learnMateria(new Cure());
+	src->learnMateria(new Cure());
+	src->learnMateria(new Cure());
+	src->learnMateria(new Cure());
+	src->learnMateria(new Cure());
+	src->learnMateria(new Cure());
+	src->learnMateria(new Cure());
+	src->learnMateria(new Cure());
+	src->learnMateria(new Cure());
 
 	*src2 = *src;
 
@@ -123,8 +175,24 @@ void MateriaSourceAssignmentOperator()
 	me->equip(tmp);
 	tmp = src2->createMateria("cure");
 	me->equip(tmp);
+	tmp = src2->createMateria("cure");
+	me->equip(tmp);
+	tmp = src2->createMateria("cure");
+	me->equip(tmp);
+	tmp = src2->createMateria("cure");
+	me->equip(tmp);
+	tmp = src2->createMateria("cure");
+	me->equip(tmp);
+	tmp = src2->createMateria("cure");
+	me->equip(tmp);
+	tmp = src2->createMateria("Cure");
+	me->equip(tmp);
+	tmp = src2->createMateria("cre");
+	me->equip(tmp);
 
 	me->use(0, *bob);
+	me->use(-1, *bob);
+	me->use(50, *bob);
 	me->use(1, *bob);
 
 	delete bob;

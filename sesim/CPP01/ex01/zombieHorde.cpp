@@ -6,7 +6,7 @@
 /*   By: sesim <sesim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 13:43:10 by sesim             #+#    #+#             */
-/*   Updated: 2022/12/03 16:41:47 by sesim            ###   ########.fr       */
+/*   Updated: 2022/12/05 12:49:15 by sesim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ Zombie*	zombieHorde(int N, std::string name)
 		return (NULL);
 	Zombie	*zombies(new Zombie[N]);
 
-	for (int i(0) i < N; ++i)
+	for (int i(0); i < N; ++i)
 	{
 		std::cout << "[" << i + 1 << "] ";
 		zombies[i].initialize(name);

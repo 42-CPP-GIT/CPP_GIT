@@ -6,7 +6,7 @@
 /*   By: sesim <sesim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 15:16:30 by sesim             #+#    #+#             */
-/*   Updated: 2022/12/03 22:00:01 by sesim            ###   ########.fr       */
+/*   Updated: 2022/12/05 13:03:08 by sesim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,7 +139,8 @@ void	MateriaSource::clearFloor(void)
 {
 	for (int i(0); i < MateriaSource::_floor_idx; ++i)
 	{
-		delete MateriaSource::_floor[i];
+		if (MateriaSource::_floor[i])
+			delete MateriaSource::_floor[i];
 		MateriaSource::_floor[i] = 0;
 	}
 }
@@ -152,7 +153,6 @@ MateriaSource::~MateriaSource()
 	{
 		if (this->items_[i])
 		{
-			std::cout << "wtf\n";
 			delete this->items_[i];
 			this->items_[i] = 0;
 		}

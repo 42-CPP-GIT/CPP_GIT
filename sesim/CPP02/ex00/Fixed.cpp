@@ -6,7 +6,7 @@
 /*   By: sesim <sesim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 12:01:48 by sesim             #+#    #+#             */
-/*   Updated: 2022/11/20 14:49:37 by sesim            ###   ########.fr       */
+/*   Updated: 2022/12/05 12:07:42 by sesim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,7 @@ Fixed::Fixed() : fixed_num_(0)
 Fixed::Fixed(const Fixed& obj)
 {
 	std::cout << "Copy constructor called" << std::endl;
-	if (this != &obj)
-		*this = obj;
+	*this = obj;
 }
 
 Fixed&	Fixed::operator=(const Fixed& obj)

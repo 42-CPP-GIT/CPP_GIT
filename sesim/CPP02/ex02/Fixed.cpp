@@ -6,7 +6,7 @@
 /*   By: sesim <sesim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 12:01:48 by sesim             #+#    #+#             */
-/*   Updated: 2022/12/04 19:20:59 by sesim            ###   ########.fr       */
+/*   Updated: 2022/12/05 12:20:25 by sesim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,10 +114,12 @@ Fixed&	Fixed::operator--(void)
 	return (*this);
 }
 
-const Fixed	Fixed::operator++(int)
+const Fixed	Fixed::operator++(int a)
 {
 	Fixed	res(*this);
 
+	if (a != 0)
+		this->fixed_num_ += a;
 	this->fixed_num_ += 1;
 	return (res);
 }

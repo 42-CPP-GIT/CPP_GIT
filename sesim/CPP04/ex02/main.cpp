@@ -6,7 +6,7 @@
 /*   By: sesim <sesim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 13:59:43 by sesim             #+#    #+#             */
-/*   Updated: 2022/12/03 14:50:09 by sesim            ###   ########.fr       */
+/*   Updated: 2022/12/05 12:54:25 by sesim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,11 @@ int	main()
 
 	A->makeSound();
 	B->makeSound();
+
+	Dog	h1;
+	{
+		Dog test = h1;
+	}
 
 	delete A;
 	delete B;

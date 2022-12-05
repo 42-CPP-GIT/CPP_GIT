@@ -55,6 +55,9 @@
 		"__split_buffer": "cpp",
 		"deque": "cpp",
 		"iomanip": "cpp",
-		"stack": "cpp"
+		"stack": "cpp",
+		"iterator": "cpp",
+		"set": "cpp",
+		"vector": "cpp"
 	}
 }
