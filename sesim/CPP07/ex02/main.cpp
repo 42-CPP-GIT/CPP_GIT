@@ -6,18 +6,67 @@
 /*   By: sesim <sesim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 10:08:58 by sesim             #+#    #+#             */
-/*   Updated: 2022/12/01 11:31:51 by sesim            ###   ########.fr       */
+/*   Updated: 2022/12/05 09:43:58 by sesim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "iter.hpp"
+#include "Array.hpp"
+# define MAX_VAL 10
 
-int	main(void)
+void a()
 {
-	const int	arr1[10] = {1, 2, 3, 4,};
-	int			arr2[10] = {1, 2, 3, };
+	system("leaks Array");
+}
 
-	::iter(arr1, (sizeof(arr1) / sizeof(arr1[0])), print1);
-	::iter(arr2, (sizeof(arr2) / sizeof(arr2[0])), print1);
-	return (0);
+int main(int, char**)
+{
+	// atexit(a);
+    srand(time(NULL));
+    Array<int> numbers(MAX_VAL);
+    int* mirror = new int[MAX_VAL];
+    for (int i = 0; i < MAX_VAL; i++)
+    {
+        const int value = (rand() % 10) + 1;
+        numbers[i] = value;
+		std::cout << numbers[i] << std::endl;
+        mirror[i] = value;
+    }
+    {
+        Array<int> tmp = numbers;
+        Array<int> test(tmp);
+    }
+    for (int i = 0; i < MAX_VAL; i++)
+    {
+        if (mirror[i] != numbers[i])
+        {
+            std::cerr << "didn't save the same value!!" << std::endl;
+            return 1;
+        }
+    }
+    // try
+    // {
+    //     numbers[-2] = 0;
+    // }
+    // catch(const std::exception& e)
+    // {
+    //     std::cerr << e.what() << '\n';
+    // }
+    // try
+    // {
+    //     numbers[MAX_VAL] = 0;
+    // }
+    // catch(const std::exception& e)
+    // {
+    //     std::cerr << e.what() << '\n';
+    // }
+    // for (int i = 0; i < MAX_VAL; i++)
+    // {
+    //     numbers[i] = rand() % 20;
+    // }
+	for (int i = 0; i < MAX_VAL; i++)
+    {
+        std::cout << numbers[i] << " ";
+    }
+	delete [] mirror;
+    return 0;
 }
