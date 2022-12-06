@@ -6,7 +6,7 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 15:13:18 by minsuki2          #+#    #+#             */
-/*   Updated: 2022/11/28 22:25:09 by minsuki2         ###   ########.fr       */
+/*   Updated: 2022/12/06 14:30:37 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	main(void) {
 	Fixed	c;
 
 	c = b;
-	// b = b;
+	b = b;
 	std::cout << a.getRawBits() << std::endl;
 	std::cout << b.getRawBits() << std::endl;
 	std::cout << c.getRawBits() << std::endl;

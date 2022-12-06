@@ -6,7 +6,7 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 16:42:10 by minsuki2          #+#    #+#             */
-/*   Updated: 2022/12/05 16:17:33 by minsuki2         ###   ########.fr       */
+/*   Updated: 2022/12/06 14:26:56 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,11 @@ Fixed::Fixed(const Fixed& obj) {
 Fixed&	Fixed::operator=(const Fixed& obj) {
 	if (this == &obj) // early return
 		return *this;
-	// [Thinking] 작동하는 상황에서만 출력
 	std::cout << MSG_ASSIGN << MSG_CALL << MSG_ENDL;
-	this->f_num_ = obj.getRawBits();
+	this->setRawBits(obj.getRawBits());
 	// this->f_num_ = obj.f_num_;	// [Thinking] 이 문장이 더 맞다고 생각
 	return *this;
 }
-	// this->setRawBits(obj.getRawBits())
 
 Fixed::~Fixed(void) {
 	std::cout << MSG_DESTROY << MSG_CALL << MSG_ENDL;

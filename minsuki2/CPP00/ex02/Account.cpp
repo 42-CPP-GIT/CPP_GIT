@@ -6,7 +6,7 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 14:02:39 by minsuki2          #+#    #+#             */
-/*   Updated: 2022/11/09 13:31:48 by minsuki2         ###   ########.fr       */
+/*   Updated: 2022/12/06 18:16:38 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "Account.hpp"
@@ -233,3 +233,4 @@ void	Account::_displayTimestamp(void) {
 	std::cout << std::setw(BUFFER_SIZE) << std::left << "[19920104_091532]";
 #endif
 }
+

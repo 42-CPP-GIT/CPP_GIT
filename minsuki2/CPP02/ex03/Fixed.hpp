@@ -6,7 +6,7 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 16:30:17 by minsuki2          #+#    #+#             */
-/*   Updated: 2022/12/05 16:00:50 by minsuki2         ###   ########.fr       */
+/*   Updated: 2022/12/06 14:58:12 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,6 @@ enum e_off_bit {
 	BIT_FLOAT_MANTISSA = 0b11111111111111111111111
 };
 
-struct s_info_float {
-	int		bit;
-	bool	sign_flag;
-	int		exponent;
-};
-
 class Fixed {
 	public:
 		Fixed( void );
@@ -93,6 +87,7 @@ class Fixed {
 
 };
 
-std::ostream& operator<<(std::ostream& out, const Fixed& obj);
+std::ostream&	operator<<(std::ostream& out, const Fixed& obj);
+int				bitShift(int raw_bit, int cnt);
 
 #endif

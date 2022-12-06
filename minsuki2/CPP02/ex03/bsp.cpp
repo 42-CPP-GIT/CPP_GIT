@@ -6,7 +6,7 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 14:28:27 by minsuki2          #+#    #+#             */
-/*   Updated: 2022/12/05 17:00:53 by minsuki2         ###   ########.fr       */
+/*   Updated: 2022/12/06 15:15:13 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,6 @@ static int _countLeftBit(int raw_bit) {
 	while (!(raw_bit & (1 << (31 - cnt))) && cnt++ < 32);
 	return cnt;
 }
-
-static int _bitShift(int raw_bit, int cnt) {
-	return cnt > 0 ? raw_bit << cnt : raw_bit >> -cnt;
-}
-
 
 static const Fixed	_checkTimes(const Fixed& a, const Fixed& b) {
 	Fixed const res(a * b);
@@ -41,12 +36,12 @@ static const Fixed	_checkTimes(const Fixed& a, const Fixed& b) {
 	for (int i = max_b_bit; i >= -8; --i) {
 		if (!(b_bit & 1 << (i + 8)))
 			continue ;
-		const int add_val = _bitShift(a_bit, i);
+		const int add_val = bitShift(a_bit, i);
 		if (res_bit > 0 && INT_MAX - res_bit < add_val) {
 			equation << "Error[2] : " << a << " * " << b << " = " << res;
 			throw equation.str();
 		}
-		b_bit &= ~(_bitShift(0b100000000, i));
+		b_bit &= ~(bitShift(0b100000000, i));
 		res_bit += add_val;
 	}
 	const int compare_bit = res.getRawBits() > 0 \
@@ -67,8 +62,6 @@ bool _isSameInequalityLine(Point const& point, Point const& start, \
 		Fixed const& val1(_checkTimes(unknown.getY(), line.getX()) - _checkTimes(unknown.getX(),  line.getY()));
 		Fixed const& val2(_checkTimes(known.getY(), line.getX()) - _checkTimes(known.getX(),  line.getY()));
 		// Another side || Point is on line || There is not triangle
-		std::cerr << val1 << MSG_ENDL;
-		std::cerr << val2 << MSG_ENDL;
 		if (((val1.getRawBits() & BIT_SIGN) ^ (val2.getRawBits() & BIT_SIGN)) // XOR
 			|| (-0.05f < val1.toFloat() && val1.toFloat() < 0.05f)
 			|| (-0.05f < val2.toFloat() && val2.toFloat() < 0.05f))
@@ -80,6 +73,9 @@ bool _isSameInequalityLine(Point const& point, Point const& start, \
 	}
 	return true;
 }
+/* val1 val2 print */
+		// std::cerr << val1 << MSG_ENDL;
+		// std::cerr << val2 << MSG_ENDL;
 
 bool bsp(Point const a, Point const b, Point const c, Point const point) {
 	Point const a_b(a.getX() - b.getX(), a.getY() - b.getY());

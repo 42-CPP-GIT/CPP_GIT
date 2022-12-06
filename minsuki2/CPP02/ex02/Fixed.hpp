@@ -6,7 +6,7 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 16:30:17 by minsuki2          #+#    #+#             */
-/*   Updated: 2022/12/05 16:14:55 by minsuki2         ###   ########.fr       */
+/*   Updated: 2022/12/06 14:57:00 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,6 @@ enum e_off_bit {
 	BIT_SIGN = 1 << 31,
 	BIT_FLOAT_EXPONENT = 0b11111111 << OFFSET_FLOAT_NBITS,
 	BIT_FLOAT_MANTISSA = 0b11111111111111111111111
-};
-
-struct s_info_float {
-	int		bit;
-	bool	sign_flag;
-	int		exponent;
 };
 
 class Fixed {

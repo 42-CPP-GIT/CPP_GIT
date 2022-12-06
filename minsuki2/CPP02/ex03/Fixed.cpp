@@ -6,7 +6,7 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 16:42:10 by minsuki2          #+#    #+#             */
-/*   Updated: 2022/12/05 16:00:58 by minsuki2         ###   ########.fr       */
+/*   Updated: 2022/12/06 17:52:03 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ Fixed::Fixed(void) { this->fixed_num_ = 0; }
 
 Fixed::Fixed(const int num) { this->fixed_num_ = (num << this->fixed_nbits_); }
 
-static int _bitShift(int raw_bit, int cnt) {
+int bitShift(int raw_bit, int cnt) {
 	return cnt > 0 ? raw_bit << cnt : raw_bit >> -cnt;
 }
 
@@ -28,16 +28,14 @@ Fixed::Fixed(const float num) {
 		this->fixed_num_ = 0;
 		return ;
 	}
-	struct s_info_float flo;
-	std::memcpy(&flo.bit, &num, sizeof(float));
-	flo.exponent = ((flo.bit & BIT_FLOAT_EXPONENT) >> OFFSET_FLOAT_NBITS) - 127;			// 지수부 구하기
-	flo.sign_flag = flo.bit & BIT_SIGN; 							// sign 만들기
-	this->fixed_num_ = (1 << OFFSET_FLOAT_NBITS) | (flo.bit & BIT_FLOAT_MANTISSA);	// 1 추가 + mantissa 부분 추출
-																					//
-	this->fixed_num_ += _bitShift(1,  (OFFSET_FLOAT_NBITS - (flo.exponent + fixed_nbits_ + 1)));		// 반올림 해주기
-	this->fixed_num_ = _bitShift(this->fixed_num_, \
-					this->fixed_nbits_ + flo.exponent - OFFSET_FLOAT_NBITS);							// fixed 으로 이동하기
-	this->fixed_num_ = (flo.sign_flag == true) ? ~this->fixed_num_ + 1 : this->fixed_num_;							// 음수면 2의 보수
+	int flo_bit;
+	std::memcpy(&flo_bit, &num, sizeof(float));
+	this->fixed_num_ = (1 << OFFSET_FLOAT_NBITS) | (flo_bit & BIT_FLOAT_MANTISSA);
+	const int flo_exponent = ((flo_bit & BIT_FLOAT_EXPONENT) >> OFFSET_FLOAT_NBITS) - 127;
+	const int flo_bitshift = OFFSET_FLOAT_NBITS - (flo_exponent + this->fixed_nbits_);
+	this->fixed_num_ += bitShift(1,  flo_bitshift - 1);
+	this->fixed_num_ = bitShift(this->fixed_num_, -flo_bitshift);
+	this->fixed_num_ = !(flo_bit & BIT_SIGN) ? this->fixed_num_ : ~this->fixed_num_ + 1 ;
 }
 
 Fixed::Fixed(const Fixed& obj) {
@@ -60,7 +58,6 @@ float	Fixed::toFloat(void) const {
 int		Fixed::getRawBits(void) const { return this->fixed_num_; }
 void	Fixed::setRawBits(int const raw) { this->fixed_num_ = raw; }
 
-/* 관계 연산자 */
 bool Fixed::operator<(const Fixed& obj) const { return (*this).fixed_num_ < obj.fixed_num_; }
 bool Fixed::operator>(const Fixed& obj) const { return (*this).fixed_num_ > obj.fixed_num_; }
 bool Fixed::operator>=(const Fixed& obj) const { return !(*this < obj); }
