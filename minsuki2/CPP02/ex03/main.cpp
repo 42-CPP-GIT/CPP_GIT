@@ -6,7 +6,7 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 15:13:18 by minsuki2          #+#    #+#             */
-/*   Updated: 2022/12/04 20:33:21 by minsuki2         ###   ########.fr       */
+/*   Updated: 2022/12/05 16:06:53 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,10 +137,10 @@ int main(void) {
 
 	std::cout << "\n[TEST 3-3] " << "가능한 중간 삼각형" << std::endl; //
 	{
-		Point const A(-50.3595,-42.98222);
-		Point const B(128.9956,-48.49675);
-		Point const C(-19.3387,89.56122);
-		Point const D(-33.07943,6.16736);
+		Point const A(-50.3595f, -42.98222f);
+		Point const B(128.9956f, -48.49675f);
+		Point const C(-19.3387f, 89.56122f);
+		Point const D(-33.07943f, 6.16736f);
 		bsp(A, B, C, D) ? std::cout << MSG_BSP << MSG_TRUE :
 						  std::cout << MSG_BSP << MSG_FALSE;
 		std::cout << "  =  " << MSG_TRUE << MSG_ANS << std::endl;
@@ -171,7 +171,7 @@ int main(void) {
 
 	std::cout << "\n[TEST 3-6] " << "완전 큰 삼각형" << std::endl; //
 	{
-		Point const A(2874.8032,1472.67529);
+		Point const A(6129.20008,3555.9458);
 		Point const B(2811.47958,-1693.50585);
 		Point const C(-2406.38688,-1959.46507);
 		Point const D(216.89658,-418.6028);

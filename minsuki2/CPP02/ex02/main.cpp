@@ -6,7 +6,7 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 15:13:18 by minsuki2          #+#    #+#             */
-/*   Updated: 2022/12/04 20:50:13 by minsuki2         ###   ########.fr       */
+/*   Updated: 2022/12/05 16:12:32 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ int main( void ) {
 	std::cout << "a++       : " << a++ << std::endl;			// 0.00390625
 	std::cout << "a         : " << a << std::endl;			// 0.0078125
 	std::cout << "b         : " << b << std::endl;			// 10.1016
-	std::cout << "g         : " << g << std::endl;
 	std::cout << "max(a,b)  : " << Fixed::max(a, b) << std::endl; //10.1016
 	std::cout << "max(e,f)  : " << Fixed::max(e, f) << std::endl; //10.1016
 	std::cout << "(a >  b)  : " << (a > b) << std::endl;
@@ -52,10 +51,12 @@ int main( void ) {
 	std::cout << "(d == f)  : " << (d == f) << std::endl;
 	std::cout << "(d != f)  : " << (d != f) << std::endl;
 	std::cout << "(f == a)  : " << (f == a) << std::endl;
+	std::cout << "c        : " << c << std::endl;
 	std::cout << "c1        : " << c1 << std::endl;
 	std::cout << "c2        : " << c2 << std::endl;
 	std::cout << "c3        : " << c3 << std::endl;
 	std::cout << "d         : " << d << std::endl;
+	std::cout << "g         : " << g << std::endl;
 
 	std::cout << "a + b     : " << a << " + " << b << " = " << a + b << std::endl;
 	std::cout << "a - b     : " << a << " - " << b << " = " << a - b << std::endl;

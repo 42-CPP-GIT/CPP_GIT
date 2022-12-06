@@ -6,7 +6,7 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 16:42:10 by minsuki2          #+#    #+#             */
-/*   Updated: 2022/12/04 20:49:28 by minsuki2         ###   ########.fr       */
+/*   Updated: 2022/12/05 16:00:58 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,21 +19,25 @@ Fixed::Fixed(void) { this->fixed_num_ = 0; }
 
 Fixed::Fixed(const int num) { this->fixed_num_ = (num << this->fixed_nbits_); }
 
+static int _bitShift(int raw_bit, int cnt) {
+	return cnt > 0 ? raw_bit << cnt : raw_bit >> -cnt;
+}
+
 Fixed::Fixed(const float num) {
 	if (!num) {
 		this->fixed_num_ = 0;
 		return ;
 	}
-	this->fixed_num_ = static_cast<int>(std::roundf(num * (1 << fixed_nbits_))); return ;
 	struct s_info_float flo;
 	std::memcpy(&flo.bit, &num, sizeof(float));
-	flo.exponent = ((flo.bit & BIT_FLOAT_EXPONENT) >> OFFSET_FLOAT_NBITS) - 127;
-	flo.sign = 2 * !(flo.bit & BIT_SIGN) - 1;
-	this->fixed_num_ = (1 << OFFSET_FLOAT_NBITS) | (flo.bit & BIT_FLOAT_MANTISSA);
-	this->fixed_num_ += 1 << (OFFSET_FLOAT_NBITS - (flo.exponent + fixed_nbits_ + 1));
-	this->fixed_num_ >>= OFFSET_FLOAT_NBITS - this->fixed_nbits_ - (flo.exponent);
-	this->fixed_num_ = flo.sign < 0 ? ~this->fixed_num_ + 1 : this->fixed_num_;
-
+	flo.exponent = ((flo.bit & BIT_FLOAT_EXPONENT) >> OFFSET_FLOAT_NBITS) - 127;			// 지수부 구하기
+	flo.sign_flag = flo.bit & BIT_SIGN; 							// sign 만들기
+	this->fixed_num_ = (1 << OFFSET_FLOAT_NBITS) | (flo.bit & BIT_FLOAT_MANTISSA);	// 1 추가 + mantissa 부분 추출
+																					//
+	this->fixed_num_ += _bitShift(1,  (OFFSET_FLOAT_NBITS - (flo.exponent + fixed_nbits_ + 1)));		// 반올림 해주기
+	this->fixed_num_ = _bitShift(this->fixed_num_, \
+					this->fixed_nbits_ + flo.exponent - OFFSET_FLOAT_NBITS);							// fixed 으로 이동하기
+	this->fixed_num_ = (flo.sign_flag == true) ? ~this->fixed_num_ + 1 : this->fixed_num_;							// 음수면 2의 보수
 }
 
 Fixed::Fixed(const Fixed& obj) {

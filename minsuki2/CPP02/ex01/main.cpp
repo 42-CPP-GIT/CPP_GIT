@@ -6,7 +6,7 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 15:13:18 by minsuki2          #+#    #+#             */
-/*   Updated: 2022/12/01 15:23:54 by minsuki2         ###   ########.fr       */
+/*   Updated: 2022/12/05 16:40:56 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,15 @@
 
 int	main(void) {
 	Fixed	a;
-	Fixed	const& b(0);
+	Fixed	const& b(10);
 	Fixed	const c(42.42f);
 	Fixed	d(b);
 	Fixed	e(7.625f);
 	Fixed	f(-7.625f);
 	Fixed	const g(-42.42f);
 	Fixed	const h(0.0f);
-	Fixed	const i(0);
+	const Fixed i(65536.234f);
+	const Fixed j(0.02046875f);
 
 	a = Fixed(1234.4321f);
 
@@ -34,7 +35,7 @@ int	main(void) {
 	std::cout << "g is " << g << std::endl;
 	std::cout << "h is " << h << std::endl;
 	std::cout << "i is " << i << std::endl;
-
+	//
 	std::cout << "a is " << a.toInt() << MSG_INTEGER << std::endl;
 	std::cout << "b is " << b.toInt() << MSG_INTEGER << std::endl;
 	std::cout << "c is " << c.toInt() << MSG_INTEGER << std::endl;
@@ -44,6 +45,6 @@ int	main(void) {
 	std::cout << "g is " << g.toInt() << MSG_INTEGER << std::endl;
 	std::cout << "h is " << h.toInt() << MSG_INTEGER << std::endl;
 	std::cout << "i is " << i.toInt() << MSG_INTEGER << std::endl;
-
+    //
 	return 0;
 }

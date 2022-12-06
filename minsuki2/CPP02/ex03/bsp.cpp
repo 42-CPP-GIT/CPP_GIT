@@ -6,7 +6,7 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 14:28:27 by minsuki2          #+#    #+#             */
-/*   Updated: 2022/12/04 20:52:57 by minsuki2         ###   ########.fr       */
+/*   Updated: 2022/12/05 17:00:53 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ static int _countLeftBit(int raw_bit) {
 static int _bitShift(int raw_bit, int cnt) {
 	return cnt > 0 ? raw_bit << cnt : raw_bit >> -cnt;
 }
+
 
 static const Fixed	_checkTimes(const Fixed& a, const Fixed& b) {
 	Fixed const res(a * b);
@@ -58,6 +59,7 @@ static const Fixed	_checkTimes(const Fixed& a, const Fixed& b) {
 	return res;
 }
 
+
 bool _isSameInequalityLine(Point const& point, Point const& start, \
 							Point const& known, Point const& line) {
 	Point const unknown(point.getX() - start.getX(), point.getY() - start.getY());
@@ -65,6 +67,8 @@ bool _isSameInequalityLine(Point const& point, Point const& start, \
 		Fixed const& val1(_checkTimes(unknown.getY(), line.getX()) - _checkTimes(unknown.getX(),  line.getY()));
 		Fixed const& val2(_checkTimes(known.getY(), line.getX()) - _checkTimes(known.getX(),  line.getY()));
 		// Another side || Point is on line || There is not triangle
+		std::cerr << val1 << MSG_ENDL;
+		std::cerr << val2 << MSG_ENDL;
 		if (((val1.getRawBits() & BIT_SIGN) ^ (val2.getRawBits() & BIT_SIGN)) // XOR
 			|| (-0.05f < val1.toFloat() && val1.toFloat() < 0.05f)
 			|| (-0.05f < val2.toFloat() && val2.toFloat() < 0.05f))

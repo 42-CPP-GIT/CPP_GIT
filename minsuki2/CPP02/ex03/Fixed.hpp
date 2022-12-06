@@ -6,7 +6,7 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 16:30:17 by minsuki2          #+#    #+#             */
-/*   Updated: 2022/12/04 20:49:47 by minsuki2         ###   ########.fr       */
+/*   Updated: 2022/12/05 16:00:50 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 # include <iostream>
 # include <cmath>
 // # include <bitset> // linux c+11
-# include <climits> // linux
+// # include <climits> // linux
 # define MSG_CALL		" called"
 # define MSG_CREATE		"Default constructor '-'"
 # define MSG_DESTROY 	"Destructor '~'"
@@ -53,7 +53,7 @@ enum e_off_bit {
 
 struct s_info_float {
 	int		bit;
-	int		sign;
+	bool	sign_flag;
 	int		exponent;
 };
 

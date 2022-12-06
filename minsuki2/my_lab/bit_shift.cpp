@@ -3,7 +3,7 @@
 
 int main(void) {
 	int a = INT_MIN;
-	unsigned int b = static_cast<unsigned int>INT_MIN >> 4;
+	unsigned int b = static_cast<unsigned int>INT_MIN >> 1;
 	int c = -1;
 
 	std::cout << std::bitset<32>(a) << std::endl;
