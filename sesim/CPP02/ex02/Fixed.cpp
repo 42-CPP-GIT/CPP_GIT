@@ -6,7 +6,7 @@
 /*   By: sesim <sesim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 12:01:48 by sesim             #+#    #+#             */
-/*   Updated: 2022/12/05 12:20:25 by sesim            ###   ########.fr       */
+/*   Updated: 2022/12/07 14:11:16 by sesim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,13 +62,40 @@ Fixed	Fixed::operator-(const Fixed& obj)
 
 Fixed	Fixed::operator*(const Fixed& obj)
 {
-	Fixed	res(this->toFloat() * obj.toFloat());
+	Fixed	res;
+	int		to_multiple;
+	int		prime(this->getRawBits() & 0b11111111);
+
+	res.fixed_num_ = this->getRawBits() < 0 ? ~(this->getRawBits()) + 1 : this->getRawBits();
+	to_multiple = obj.getRawBits() < 0 ? ~(obj.getRawBits()) + 1 : obj.getRawBits();
+	res.fixed_num_ = (res.fixed_num_ >> this->fractional_bits_) * to_multiple;
+	prime *= to_multiple;
+	res.fixed_num_ += (prime >> this->fractional_bits_);
+	res.fixed_num_ = (((this->fixed_num_ & 1 << 31) ^ (obj.fixed_num_ & 1 << 31)) == 0) \
+						? res.fixed_num_ : ~res.fixed_num_ + 1;
 	return (res);
 }
 
 Fixed	Fixed::operator/(const Fixed& obj)
 {
-	Fixed	res(this->toFloat() / obj.toFloat());
+	if (obj.getRawBits() == 0)
+	{
+		std::cerr << "err: Divided with zero" << std::endl;
+		exit(1);
+	}
+
+	Fixed	res;
+	int		to_div;
+	int		over_val(this->getRawBits() & 0x7f800000);
+
+	res.fixed_num_ = this->getRawBits() < 0 ? ~(this->getRawBits()) + 1 : this->getRawBits();
+	to_div = obj.getRawBits() < 0 ? ~(obj.getRawBits()) + 1 : obj.getRawBits();
+	res.fixed_num_ = (static_cast<unsigned int>((this->fixed_num_ & 0x7FFFFF) \
+						<< this->fractional_bits_) / to_div);
+	over_val /= to_div;
+	res.fixed_num_ += (over_val << this->fractional_bits_);
+	res.fixed_num_ = (((this->fixed_num_ & 1 << 31) ^ (obj.fixed_num_ & 1 << 31)) == 0) \
+						? res.fixed_num_ : ~res.fixed_num_ + 1;
 	return (res);
 }
 
