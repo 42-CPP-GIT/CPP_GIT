@@ -6,7 +6,7 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 16:30:17 by minsuki2          #+#    #+#             */
-/*   Updated: 2022/11/28 23:01:59 by minsuki2         ###   ########.fr       */
+/*   Updated: 2022/12/07 20:05:44 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # define MSG_ASSIGN 	"Copy assignment operator"
 # define MSG_GETRB		"getRawBits member function"
 
-# ifndef std_endl
+# ifndef ENDL
 #  define MSG_ENDL		'\n'
 # else
 #  define MSG_ENDL		std::endl
@@ -35,11 +35,9 @@ class Fixed {
 		~Fixed(void);
 		int		getRawBits(void) const;
 		void	setRawBits(int const raw);
-
 	private:
-		int					f_num_;
-		static const int	f_bits_;
+		int					fixed_num_;
+		static const int	fixed_nbits_;
 };
-
 
 #endif

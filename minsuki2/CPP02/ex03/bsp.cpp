@@ -6,7 +6,7 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 14:28:27 by minsuki2          #+#    #+#             */
-/*   Updated: 2022/12/06 15:15:13 by minsuki2         ###   ########.fr       */
+/*   Updated: 2022/12/07 20:23:29 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,28 +54,37 @@ static const Fixed	_checkTimes(const Fixed& a, const Fixed& b) {
 	return res;
 }
 
+static const Fixed	_checkMinus(const Fixed& a, const Fixed& b) {
+	Fixed const res(a - b);
+	std::stringstream equation;
+	if ((a > 0 && b > 0 && (INT_MAX - a.getRawBits() < b.getRawBits()))
+		|| (a < 0 && b > 0 && (a.getRawBits() - INT_MIN < b.getRawBits()))) {
+		equation << "Error[4] : " << a << " - " << b << " = " << res;
+		throw equation.str();
+	}
+	return res;
+}
 
 bool _isSameInequalityLine(Point const& point, Point const& start, \
 							Point const& known, Point const& line) {
 	Point const unknown(point.getX() - start.getX(), point.getY() - start.getY());
 	try {
-		Fixed const& val1(_checkTimes(unknown.getY(), line.getX()) - _checkTimes(unknown.getX(),  line.getY()));
-		Fixed const& val2(_checkTimes(known.getY(), line.getX()) - _checkTimes(known.getX(),  line.getY()));
+		Fixed const& val1(_checkMinus(_checkTimes(unknown.getY(), line.getX()) \
+									, _checkTimes(unknown.getX(),  line.getY())));
+		Fixed const& val2(_checkMinus(_checkTimes(known.getY(), line.getX()) \
+									, _checkTimes(known.getX(),  line.getY())));
 		// Another side || Point is on line || There is not triangle
 		if (((val1.getRawBits() & BIT_SIGN) ^ (val2.getRawBits() & BIT_SIGN)) // XOR
 			|| (-0.05f < val1.toFloat() && val1.toFloat() < 0.05f)
 			|| (-0.05f < val2.toFloat() && val2.toFloat() < 0.05f))
 			return false;
 	}
-	catch (std::string what) {
+	catch (const std::string& what) {
 		std::cout << what << " is overflow!" << std::endl;
 		return false;
 	}
 	return true;
 }
-/* val1 val2 print */
-		// std::cerr << val1 << MSG_ENDL;
-		// std::cerr << val2 << MSG_ENDL;
 
 bool bsp(Point const a, Point const b, Point const c, Point const point) {
 	Point const a_b(a.getX() - b.getX(), a.getY() - b.getY());

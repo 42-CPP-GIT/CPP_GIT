@@ -6,7 +6,7 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 15:13:18 by minsuki2          #+#    #+#             */
-/*   Updated: 2022/12/05 16:06:53 by minsuki2         ###   ########.fr       */
+/*   Updated: 2022/12/07 19:56:53 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int main(void) {
 	std::cout << "\n[TEST 2-2] " << "실수 삼각형 모서리 안 쪽" << std::endl;
 	{
 		Point const A(-2.14f, -1.71f); Point const B(9.04f, -2.4f);
-		Point const C(-1.47f, 6.87f); Point const D(3.65385, 2.34747);
+		Point const C(-1.47f, 6.87f); Point const D(3.65385f,  2.34747f);
 		bsp(A, B, C, D) ? std::cout << MSG_BSP << MSG_TRUE :
 						  std::cout << MSG_BSP << MSG_FALSE;
 		std::cout << "  =  " << MSG_TRUE << MSG_ANS << std::endl;
@@ -55,7 +55,7 @@ int main(void) {
 	std::cout << "\n[TEST 2-3]" << "실수 삼각형 모서리 위 1" << std::endl;
 	{
 		Point const A(-2.14f, -1.71f); Point const B(9.04f, -2.4f);
-		Point const C(-1.47f, 6.87f); Point const D(3.7046,2.30331);
+		Point const C(-1.47f, 6.87f); Point const D(3.7046f, 2.30331f);
 		bsp(A, B, C, D) ? std::cout << MSG_BSP << MSG_TRUE :
 						  std::cout << MSG_BSP << MSG_FALSE;
 		std::cout << "  =  " << MSG_FALSE << MSG_ANS \
@@ -65,7 +65,7 @@ int main(void) {
 	std::cout << "\n[TEST 2-3] " << "실수 삼각형 모서리 위 2" << std::endl;
 	{
 		Point const A(-2.14f, -1.71f); Point const B(9.04f, -2.4f);
-		Point const C(-1.47f, 6.87f); Point const D(3.6545, 2.34785);
+		Point const C(-1.47f, 6.87f); Point const D(3.6545f,  2.34785f);
 		bsp(A, B, C, D) ? std::cout << MSG_BSP << MSG_TRUE :
 						  std::cout << MSG_BSP << MSG_FALSE;
 		std::cout << "  =  " << MSG_FALSE << MSG_ANS \
@@ -113,9 +113,9 @@ int main(void) {
 
 	std::cout << "\n[TEST 3-1] " << "큰 좌표 + 큰 삼각형" << std::endl; //
 	{
-		Point const A(147.0123,604.50371);
-		Point const B(-623.96877,-304.00371);
-		Point const C(1729.0883237063,-1344.8792588026);
+		Point const A(147.0123f, 604.50371f);
+		Point const B(-623.96877f, -304.00371f);
+		Point const C(1729.0883237063f, -1344.8792588026f);
 		Point const D(10000,10000);
 		bsp(A, B, C, D) ? std::cout << MSG_BSP << MSG_TRUE :
 						  std::cout << MSG_BSP << MSG_FALSE;
@@ -125,14 +125,13 @@ int main(void) {
 
 	std::cout << "\n[TEST 3-2] " << "작은 좌표 + 큰 삼각형" << std::endl; //
 	{
-		Point const A(147.0123,604.50371);
-		Point const B(-623.96877,-304.00371);
-		Point const C(1729.0883237063,-1344.8792588026);
+		Point const A(147.0123f, 604.50371f);
+		Point const B(-623.96f, -304.00371f);
+		Point const C(1729.08f, -1344.879f);
 		Point const D(0,0);
 		bsp(A, B, C, D) ? std::cout << MSG_BSP << MSG_TRUE :
 						  std::cout << MSG_BSP << MSG_FALSE;
-		std::cout << "  =  " << MSG_FALSE << MSG_ANS \
-								<< SET_GREEN MSG_OVER SET_RESET<< std::endl;
+		std::cout << "  =  " << MSG_TRUE << MSG_ANS << std::endl;
 	}
 
 	std::cout << "\n[TEST 3-3] " << "가능한 중간 삼각형" << std::endl; //
@@ -157,19 +156,42 @@ int main(void) {
 		std::cout << "  =  " << MSG_FALSE << MSG_ANS << std::endl;
 	}
 
-	std::cout << "\n[TEST 3-5] " << "좀 더 큰 삼각형" << std::endl; //
+	std::cout << "\n[TEST 3-5] " << "더 큰 삼각형" << std::endl; //
 	{
 		Point const A(-100,-80);
-		Point const B(154.06349,-82.11628);
-		Point const C(-52.39148,123.87888);
-		Point const D(9.68296,-11.30545);
+		Point const B(154.06f, -82.11f);
+		Point const C(-52.39f, 123.878f);
+		Point const D(9.68296f, -11.30545f);
+		bsp(A, B, C, D) ? std::cout << MSG_BSP << MSG_TRUE :
+						  std::cout << MSG_BSP << MSG_FALSE;
+		std::cout << "  =  " << MSG_TRUE << MSG_ANS << std::endl;
+	}
+
+	std::cout << "\n[TEST 3-6] " << "좀 더 큰 삼각형" << std::endl; //
+	{
+		Point const A(0, 1000);
+		Point const B(-1500,-2000);
+		Point const C(2500, -2000);
+		Point const D(10,-11);
 		bsp(A, B, C, D) ? std::cout << MSG_BSP << MSG_TRUE :
 						  std::cout << MSG_BSP << MSG_FALSE;
 		std::cout << "  =  " << MSG_FALSE << MSG_ANS \
 								<< SET_GREEN MSG_OVER SET_RESET<< std::endl;
 	}
 
-	std::cout << "\n[TEST 3-6] " << "완전 큰 삼각형" << std::endl; //
+	std::cout << "\n[TEST 3-7] " << "더어어? 큰 삼각형" << std::endl; //
+	{
+		Point const A(8388608.10,0);
+		Point const B(0, 1);
+		Point const C(1, 0);
+		Point const D(1, 0.4);
+		bsp(A, B, C, D) ? std::cout << MSG_BSP << MSG_TRUE :
+						  std::cout << MSG_BSP << MSG_FALSE;
+		std::cout << "  =  " << MSG_FALSE << MSG_ANS \
+								<< SET_GREEN MSG_OVER SET_RESET<< std::endl;
+	}
+
+	std::cout << "\n[TEST 3-8] " << "완전 큰 삼각형" << std::endl; //
 	{
 		Point const A(6129.20008,3555.9458);
 		Point const B(2811.47958,-1693.50585);
@@ -181,7 +203,7 @@ int main(void) {
 								<< SET_GREEN MSG_OVER SET_RESET<< std::endl;
 	}
 
-	std::cout << "\n[TEST 3-7] " << "겁나 큰 삼각형" << std::endl; //
+	std::cout << "\n[TEST 3-9] " << "겁나 큰 삼각형" << std::endl; //
 	{
 		Point const A(-6907.81374,34044.122);
 		Point const B(64956.6022,-23695.21971);
@@ -208,14 +230,13 @@ int main(void) {
 	std::cout << "\n[TEST 4-2] " << "일직선 삼각형 실수" << std::endl; //
 	{
 		Point const A(20.8,10.5);
-		Point const B(31.82912,17.67695);
-		Point const C(40.42021,23.27697);
-		Point const D(30.449,16.78132);
+		Point const B(31.82912f, 17.67695f);
+		Point const C(40.42021f, 23.27697f);
+		Point const D(30.449f, 16.78132f);
 		bsp(A, B, C, D) ? std::cout << MSG_BSP << MSG_TRUE :
 						  std::cout << MSG_BSP << MSG_FALSE;
 		std::cout << "  =  " << MSG_FALSE << MSG_ANS \
 								<< SET_GREEN MSG_EDGE SET_RESET<< std::endl;
 	}
-
 	return 0;
 }

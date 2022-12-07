@@ -100,3 +100,6 @@
 
 
 
+https://clucle.tistory.com/14
+https://en.cppreference.com/w/cpp/language/const_cast
+https://www.geogebra.org/geometry?lang=ko

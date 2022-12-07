@@ -6,7 +6,7 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 16:42:10 by minsuki2          #+#    #+#             */
-/*   Updated: 2022/12/06 18:13:22 by minsuki2         ###   ########.fr       */
+/*   Updated: 2022/12/07 20:12:11 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,33 +90,37 @@ Fixed Fixed::operator-(const Fixed& obj) const {
 	return tmp;
 }
 
-// 1. 나눠서 하는 것은 연산 시간에 효율이 안 좋음
-// 2. 부호가 음수 범위를 침범하면 undefined 됨...
 Fixed Fixed::operator*(const Fixed& obj) const {
 	Fixed tmp;				// 생성과 동시에 초기화하면 int 생성자로 감
-
-	// 음수 비트 살려서 이동 + 음수가 아니면 2의 보수 취하기
-	if (((*this).fixed_num_ & BIT_SIGN) ^ (obj.fixed_num_ & BIT_SIGN)) {
-		tmp.fixed_num_ = ((*this).fixed_num_ * obj.fixed_num_) >> this->fixed_nbits_;
-		tmp.fixed_num_ = tmp.fixed_num_ > 0 ? ~tmp.fixed_num_ + 1 : tmp.fixed_num_;
-	}
-	else
-		tmp.fixed_num_ = static_cast<unsigned int>( // 음수 비트 없애서 이동
-						(*this).fixed_num_ * obj.fixed_num_) >> this->fixed_nbits_;
-	// std::cerr << "\nthis          : " << std::bitset<32>((*this).fixed_num_) << MSG_ENDL;
-	// std::cerr << "obj           : " << std::bitset<32>(obj.fixed_num_) << MSG_ENDL;
-	// std::cerr << "this * obj    : " << std::bitset<32>((*this).fixed_num_ * obj.fixed_num_) << MSG_ENDL;
-	// std::cerr << "this * obj >> : " << std::bitset<32>((*this).fixed_num_ * obj.fixed_num_ >> this->fixed_nbits_) << MSG_ENDL;
-	// std::cerr << "vs tmp        : " << std::bitset<32>(tmp.fixed_num_) << MSG_ENDL;
+	const int abs_this = this->fixed_num_ > 0 ? this->fixed_num_ : ~this->fixed_num_ + 1;
+	const int abs_obj = obj.fixed_num_ > 0 ? obj.fixed_num_ : ~obj.fixed_num_ + 1;
+	const int right_val = abs_this > abs_obj ? abs_obj : abs_this;
+	tmp.fixed_num_ = abs_this > abs_obj ? abs_this : abs_obj;
+	const int backup_bit = tmp.fixed_num_ & BIT_FIXED_MANTISSA;
+	tmp.fixed_num_ = (tmp.fixed_num_ >> this->fixed_nbits_) * right_val;
+	tmp.fixed_num_ += (backup_bit * right_val) >> this->fixed_nbits_;
+	tmp.fixed_num_ = ((this->fixed_num_ & BIT_SIGN) ^ (obj.fixed_num_ & BIT_SIGN)) == 0 \
+					 ? tmp.fixed_num_ : ~tmp.fixed_num_ + 1;
 	return tmp;
 }
-// 음수 비트 출력
+
 
 Fixed Fixed::operator/(const Fixed& obj) const {
-	Fixed tmp;
-	tmp.fixed_num_ = ((*this).fixed_num_ << fixed_nbits_) / obj.fixed_num_;
+	if (obj.fixed_num_ == 0) {
+		std::cerr << "\nError: Dividing with zero" << MSG_ENDL; std::exit(1);
+	}
+	Fixed	tmp;
+	tmp.fixed_num_ = this->fixed_num_ > 0 ? this->fixed_num_ : ~this->fixed_num_ + 1;
+	const int abs_obj = obj.fixed_num_ > 0 ? obj.fixed_num_ : ~obj.fixed_num_ + 1;
+	const int backup_bit = tmp.fixed_num_ & BIT_FLOAT_EXPONENT;
+	tmp.fixed_num_ = static_cast<unsigned int>((tmp.fixed_num_ & BIT_FLOAT_MANTISSA) \
+												<< this->fixed_nbits_) / abs_obj; // res로 받기
+	tmp.fixed_num_ += (backup_bit / abs_obj) << this->fixed_nbits_;
+	tmp.fixed_num_ = ((this->fixed_num_ & BIT_SIGN) ^ (obj.fixed_num_ & BIT_SIGN)) == 0 \
+					 ? tmp.fixed_num_ : ~tmp.fixed_num_ + 1;
 	return tmp;
 }
+
 
 
 /* 증감 연산자 */

@@ -6,7 +6,7 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 16:30:17 by minsuki2          #+#    #+#             */
-/*   Updated: 2022/12/06 14:58:12 by minsuki2         ###   ########.fr       */
+/*   Updated: 2022/12/07 20:22:11 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@
 enum e_off_bit {
 	OFFSET_FLOAT_NBITS = 23,
 	BIT_SIGN = 1 << 31,
+	BIT_FIXED_MANTISSA = 0b11111111,
 	BIT_FLOAT_EXPONENT = 0b11111111 << OFFSET_FLOAT_NBITS,
 	BIT_FLOAT_MANTISSA = 0b11111111111111111111111
 };

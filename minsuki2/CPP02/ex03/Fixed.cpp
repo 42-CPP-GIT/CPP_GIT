@@ -6,7 +6,7 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 16:42:10 by minsuki2          #+#    #+#             */
-/*   Updated: 2022/12/06 17:52:03 by minsuki2         ###   ########.fr       */
+/*   Updated: 2022/12/07 20:27:55 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,22 +78,36 @@ Fixed Fixed::operator-(const Fixed& obj) const {
 }
 
 Fixed Fixed::operator*(const Fixed& obj) const {
-	Fixed tmp;
-	if (((*this).fixed_num_ & BIT_SIGN) ^ (obj.fixed_num_ & BIT_SIGN)) {
-		tmp.fixed_num_ = ((*this).fixed_num_ * obj.fixed_num_) >> fixed_nbits_;
-		tmp.fixed_num_ = tmp.fixed_num_ > 0 ? ~tmp.fixed_num_ + 1 : tmp.fixed_num_;
-	}
-	else
-		tmp.fixed_num_ = static_cast<unsigned int>(
-						(*this).fixed_num_ * obj.fixed_num_) >> fixed_nbits_;
+	Fixed tmp;				// 생성과 동시에 초기화하면 int 생성자로 감
+	const int abs_this = this->fixed_num_ > 0 ? this->fixed_num_ : ~this->fixed_num_ + 1;
+	const int abs_obj = obj.fixed_num_ > 0 ? obj.fixed_num_ : ~obj.fixed_num_ + 1;
+	const int right_val = abs_this > abs_obj ? abs_obj : abs_this;
+	tmp.fixed_num_ = abs_this > abs_obj ? abs_this : abs_obj;
+	const int backup_bit = tmp.fixed_num_ & BIT_FIXED_MANTISSA;
+	tmp.fixed_num_ = (tmp.fixed_num_ >> this->fixed_nbits_) * right_val;
+	tmp.fixed_num_ += (backup_bit * right_val) >> this->fixed_nbits_;
+	tmp.fixed_num_ = ((this->fixed_num_ & BIT_SIGN) ^ (obj.fixed_num_ & BIT_SIGN)) == 0 \
+					 ? tmp.fixed_num_ : ~tmp.fixed_num_ + 1;
 	return tmp;
 }
 
 Fixed Fixed::operator/(const Fixed& obj) const {
-	Fixed tmp;
-	tmp.fixed_num_ = ((*this).fixed_num_ << fixed_nbits_) / obj.fixed_num_;
+	if (obj.fixed_num_ == 0) {
+		std::cerr << "\nError: Dividing with zero" << MSG_ENDL;
+		std::exit(1);
+	}
+	Fixed	tmp;
+	tmp.fixed_num_ = this->fixed_num_ > 0 ? this->fixed_num_ : ~this->fixed_num_ + 1;
+	const int abs_obj = obj.fixed_num_ > 0 ? obj.fixed_num_ : ~obj.fixed_num_ + 1;
+	const int backup_bit = tmp.fixed_num_ & BIT_FLOAT_EXPONENT;
+	tmp.fixed_num_ = static_cast<unsigned int>((tmp.fixed_num_ & BIT_FLOAT_MANTISSA) \
+												<< this->fixed_nbits_) / abs_obj; // res로 받기
+	tmp.fixed_num_ += (backup_bit / abs_obj) << this->fixed_nbits_;
+	tmp.fixed_num_ = ((this->fixed_num_ & BIT_SIGN) ^ (obj.fixed_num_ & BIT_SIGN)) == 0 \
+					 ? tmp.fixed_num_ : ~tmp.fixed_num_ + 1;
 	return tmp;
 }
+
 
 Fixed& Fixed::operator++(void) {
 	this->fixed_num_++;
