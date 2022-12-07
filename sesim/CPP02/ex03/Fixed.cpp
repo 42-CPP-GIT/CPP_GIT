@@ -6,7 +6,7 @@
 /*   By: sesim <sesim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 12:01:48 by sesim             #+#    #+#             */
-/*   Updated: 2022/12/04 21:55:26 by sesim            ###   ########.fr       */
+/*   Updated: 2022/12/07 14:12:04 by sesim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,25 +15,30 @@
 
 Fixed::Fixed() : fixed_num_(0)
 {
+	std::cout << "Default constructor called" << std::endl;
 }
 
 Fixed::Fixed(const int raw) : fixed_num_(raw << this->fractional_bits_)
 {
+	std::cout << "Int constructor called" << std::endl;
 }
 
 Fixed::Fixed(const float raw)
 {
+	std::cout << "Float constructor called" << std::endl;
 	this->setRawBits(static_cast<int>(roundf(raw * (1 << this->fractional_bits_))));
 }
 
 Fixed::Fixed(const Fixed& obj)
 {
+	std::cout << "Copy constructor called" << std::endl;
 	if (this != &obj)
 		*this = obj;
 }
 
 Fixed&	Fixed::operator=(const Fixed& obj)
 {
+	std::cout << "Copy assignment operator called" << std::endl;
 	if (this != &obj)
 		this->setRawBits(obj.getRawBits());
 	return (*this);
@@ -57,13 +62,40 @@ Fixed	Fixed::operator-(const Fixed& obj)
 
 Fixed	Fixed::operator*(const Fixed& obj)
 {
-	Fixed	res(this->toFloat() * obj.toFloat());
+	Fixed	res;
+	int		to_multiple;
+	int		prime(this->getRawBits() & 0b11111111);
+
+	res.fixed_num_ = this->getRawBits() < 0 ? ~(this->getRawBits()) + 1 : this->getRawBits();
+	to_multiple = obj.getRawBits() < 0 ? ~(obj.getRawBits()) + 1 : obj.getRawBits();
+	res.fixed_num_ = (res.fixed_num_ >> this->fractional_bits_) * to_multiple;
+	prime *= to_multiple;
+	res.fixed_num_ += (prime >> this->fractional_bits_);
+	res.fixed_num_ = (((this->fixed_num_ & 1 << 31) ^ (obj.fixed_num_ & 1 << 31)) == 0) \
+						? res.fixed_num_ : ~res.fixed_num_ + 1;
 	return (res);
 }
 
 Fixed	Fixed::operator/(const Fixed& obj)
 {
-	Fixed	res(this->toFloat() / obj.toFloat());
+	if (obj.getRawBits() == 0)
+	{
+		std::cerr << "err: Divided with zero" << std::endl;
+		exit(1);
+	}
+
+	Fixed	res;
+	int		to_div;
+	int		over_val(this->getRawBits() & 0x7f800000);
+
+	res.fixed_num_ = this->getRawBits() < 0 ? ~(this->getRawBits()) + 1 : this->getRawBits();
+	to_div = obj.getRawBits() < 0 ? ~(obj.getRawBits()) + 1 : obj.getRawBits();
+	res.fixed_num_ = (static_cast<unsigned int>((this->fixed_num_ & 0x7FFFFF) \
+						<< this->fractional_bits_) / to_div);
+	over_val /= to_div;
+	res.fixed_num_ += (over_val << this->fractional_bits_);
+	res.fixed_num_ = (((this->fixed_num_ & 1 << 31) ^ (obj.fixed_num_ & 1 << 31)) == 0) \
+						? res.fixed_num_ : ~res.fixed_num_ + 1;
 	return (res);
 }
 
@@ -109,10 +141,12 @@ Fixed&	Fixed::operator--(void)
 	return (*this);
 }
 
-const Fixed	Fixed::operator++(int)
+const Fixed	Fixed::operator++(int a)
 {
 	Fixed	res(*this);
 
+	if (a != 0)
+		this->fixed_num_ += a;
 	this->fixed_num_ += 1;
 	return (res);
 }
@@ -168,6 +202,7 @@ void	Fixed::setRawBits(int const raw)
 
 Fixed::~Fixed()
 {
+	std::cout << "Destructor called" << std::endl;
 }
 
 std::ostream&	operator<<(std::ostream& out, const Fixed& fixed)

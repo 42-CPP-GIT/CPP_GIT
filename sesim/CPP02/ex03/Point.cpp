@@ -6,7 +6,7 @@
 /*   By: sesim <sesim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 16:21:57 by sesim             #+#    #+#             */
-/*   Updated: 2022/11/20 16:53:37 by sesim            ###   ########.fr       */
+/*   Updated: 2022/12/06 16:30:00 by sesim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,8 @@ Point&	Point::operator=(const Point& obj)
 {
 	if (this != &obj)
 	{
-		Fixed	*tmp_x = const_cast<Fixed *>(&x_);
-		Fixed	*tmp_y = const_cast<Fixed *>(&y_);
-
-		*tmp_x = obj.getX();
-		*tmp_y = obj.getY();
+		const_cast<Fixed &>(x_) = obj.x_;
+		const_cast<Fixed &>(y_) = obj.y_;
 	}
 	return (*this);
 }
