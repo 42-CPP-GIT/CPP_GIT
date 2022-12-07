@@ -6,7 +6,7 @@
 /*   By: sesim <sesim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 13:53:08 by sesim             #+#    #+#             */
-/*   Updated: 2022/12/04 15:43:42 by sesim            ###   ########.fr       */
+/*   Updated: 2022/12/07 10:14:30 by sesim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ class Convert
 		bool	isRightForm(char* end) const;
 		void	print() const;
 		void	isValidInput(char* input);
-		bool	isNan(double val) const;
-		bool	isInf(double val) const;
+		bool	isNan(double& val) const;
+		bool	isInf(double& val) const;
 		~Convert();
 };

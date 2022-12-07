@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   Convert.cpp                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: sesim <sesim@student.42seoul.kr>           +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/04 13:53:08 by sesim             #+#    #+#             */
-/*   Updated: 2022/12/04 16:58:56by sesim            ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "Convert.hpp"
 #include <iomanip>
 #include <cmath>
@@ -167,6 +155,9 @@ void	Convert::isValidInput(char *input)
 		throw NonDisplayableException();
 	char	*end;
 	double	val(strtod(input, &end));
+	std::cout << "===================\n";
+	std::cout << static_cast<float>(val) << std::endl;
+	std::cout << "===================\n";
 
 	if ((this->isNan(val) || this->isInf(val)) && this-isRightForm(end))
 	{
@@ -204,14 +195,14 @@ void	Convert::isValidInput(char *input)
 	this->d_ = val;
 }
 
-bool	Convert::isNan(double val) const
+bool	Convert::isNan(double& val) const
 {
 	if (val != val)
 		return (true);
 	return (false);
 }
 
-bool	Convert::isInf(double val) const
+bool	Convert::isInf(double& val) const
 {
 	if (val != 0 && val * 2 == val)
 		return (true);

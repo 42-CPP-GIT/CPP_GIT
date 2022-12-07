@@ -6,7 +6,7 @@
 /*   By: sesim <sesim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 12:01:48 by sesim             #+#    #+#             */
-/*   Updated: 2022/12/07 14:12:04 by sesim            ###   ########.fr       */
+/*   Updated: 2022/12/07 14:13:58 by sesim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -178,7 +178,6 @@ const Fixed&	Fixed::min(const Fixed& a, const Fixed& b)
 {
 	return ((a.getRawBits() <= b.getRawBits()) ? a : b);
 }
-
 
 float	Fixed::toFloat( void ) const
 {

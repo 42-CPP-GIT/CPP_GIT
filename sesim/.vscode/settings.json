@@ -58,6 +58,11 @@
 		"stack": "cpp",
 		"iterator": "cpp",
 		"set": "cpp",
-		"vector": "cpp"
+		"vector": "cpp",
+		"__functional_base": "cpp",
+		"algorithm": "cpp",
+		"bit": "cpp",
+		"functional": "cpp",
+		"utility": "cpp"
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: sesim <sesim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 12:01:48 by sesim             #+#    #+#             */
-/*   Updated: 2022/12/07 14:11:16 by sesim            ###   ########.fr       */
+/*   Updated: 2022/12/07 17:46:41 by sesim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,9 @@ Fixed	Fixed::operator*(const Fixed& obj)
 {
 	Fixed	res;
 	int		to_multiple;
-	int		prime(this->getRawBits() & 0b11111111);
 
 	res.fixed_num_ = this->getRawBits() < 0 ? ~(this->getRawBits()) + 1 : this->getRawBits();
+	int		prime(res.fixed_num_ & 0b11111111);
 	to_multiple = obj.getRawBits() < 0 ? ~(obj.getRawBits()) + 1 : obj.getRawBits();
 	res.fixed_num_ = (res.fixed_num_ >> this->fractional_bits_) * to_multiple;
 	prime *= to_multiple;
@@ -86,11 +86,11 @@ Fixed	Fixed::operator/(const Fixed& obj)
 
 	Fixed	res;
 	int		to_div;
-	int		over_val(this->getRawBits() & 0x7f800000);
 
 	res.fixed_num_ = this->getRawBits() < 0 ? ~(this->getRawBits()) + 1 : this->getRawBits();
+	int		over_val(res.fixed_num_ & 0x7f800000);
 	to_div = obj.getRawBits() < 0 ? ~(obj.getRawBits()) + 1 : obj.getRawBits();
-	res.fixed_num_ = (static_cast<unsigned int>((this->fixed_num_ & 0x7FFFFF) \
+	res.fixed_num_ = (static_cast<unsigned int>((res.fixed_num_ & 0x7FFFFF) \
 						<< this->fractional_bits_) / to_div);
 	over_val /= to_div;
 	res.fixed_num_ += (over_val << this->fractional_bits_);
@@ -178,7 +178,6 @@ const Fixed&	Fixed::min(const Fixed& a, const Fixed& b)
 {
 	return ((a.getRawBits() <= b.getRawBits()) ? a : b);
 }
-
 
 float	Fixed::toFloat( void ) const
 {
