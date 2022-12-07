@@ -6,7 +6,7 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 16:42:10 by minsuki2          #+#    #+#             */
-/*   Updated: 2022/12/07 20:12:11 by minsuki2         ###   ########.fr       */
+/*   Updated: 2022/12/07 20:51:33 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,6 @@ Fixed Fixed::operator*(const Fixed& obj) const {
 	return tmp;
 }
 
-
 Fixed Fixed::operator/(const Fixed& obj) const {
 	if (obj.fixed_num_ == 0) {
 		std::cerr << "\nError: Dividing with zero" << MSG_ENDL; std::exit(1);
@@ -120,8 +119,6 @@ Fixed Fixed::operator/(const Fixed& obj) const {
 					 ? tmp.fixed_num_ : ~tmp.fixed_num_ + 1;
 	return tmp;
 }
-
-
 
 /* 증감 연산자 */
 Fixed& Fixed::operator++(void) {

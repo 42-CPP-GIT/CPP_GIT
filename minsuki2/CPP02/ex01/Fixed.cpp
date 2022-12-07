@@ -6,7 +6,7 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 16:42:10 by minsuki2          #+#    #+#             */
-/*   Updated: 2022/12/06 17:36:37 by minsuki2         ###   ########.fr       */
+/*   Updated: 2022/12/07 20:41:06 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 const int	Fixed::fixed_nbits_ = 8;
 
 Fixed::Fixed(void) {
-	std::cout << MSG_CREATE << MSG_CALL << MSG_ENDL;
+	std::cout << MSG_DEFALUT_CREATE << MSG_CALL << MSG_ENDL;
 	this->fixed_num_ = 0;
 }
 
 Fixed::Fixed(const int num) {
-	std::cout << MSG_CREATE << MSG_CALL << MSG_ENDL;
+	std::cout << MSG_INT_CREATE << MSG_CALL << MSG_ENDL;
 	this->fixed_num_ = num << this->fixed_nbits_;
 }
 
@@ -29,7 +29,7 @@ static int _bitShift(int raw_bit, int cnt) {
 }
 
 Fixed::Fixed(const float num) {
-	std::cout << MSG_CREATE << MSG_CALL << MSG_ENDL;
+	std::cout << MSG_FLOAT_CREATE << MSG_CALL << MSG_ENDL;
 	if (!num) {
 		this->fixed_num_ = 0;
 		return ;
@@ -62,10 +62,9 @@ Fixed&	Fixed::operator=(const Fixed& obj) {
 		return *this;
 	// [Thinking] 작동하는 상황에서만 출력
 	std::cout << MSG_ASSIGN << MSG_CALL << MSG_ENDL;
-	this->setRawBits(obj.getRawBits());
+	this->fixed_num_ = obj.fixed_num_;
 	return *this;
 }
-
 
 Fixed::~Fixed(void) {
 	std::cout << MSG_DESTROY << MSG_CALL << MSG_ENDL;

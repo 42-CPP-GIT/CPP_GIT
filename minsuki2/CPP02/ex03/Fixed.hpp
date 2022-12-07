@@ -6,7 +6,7 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 16:30:17 by minsuki2          #+#    #+#             */
-/*   Updated: 2022/12/07 20:22:11 by minsuki2         ###   ########.fr       */
+/*   Updated: 2022/12/07 20:49:47 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,25 +54,25 @@ enum e_off_bit {
 
 class Fixed {
 	public:
-		Fixed( void );
-		Fixed( const int num );
-		Fixed( const float num );
-		Fixed( const Fixed& obj );
-		Fixed& operator = ( const Fixed& obj );
-		bool				operator > ( const Fixed& obj ) const;
-		bool 				operator < ( const Fixed& obj ) const;
-		bool 				operator <= ( const Fixed& obj ) const;
-		bool 				operator >= ( const Fixed& obj ) const;
-		bool 				operator == ( const Fixed& obj ) const;
-		bool 				operator != ( const Fixed& obj ) const;
-		Fixed				operator + ( const Fixed& obj ) const ;
-		Fixed				operator - ( const Fixed& obj ) const ;
-		Fixed				operator * (const Fixed& obj) const ;
-		Fixed				operator / ( const Fixed& obj ) const ;
-		Fixed&				operator ++ ( void );
-		Fixed				operator ++ ( int );
-		Fixed&				operator -- ( void );
-		Fixed				operator -- ( int );
+		Fixed(void);
+		Fixed(const int num);
+		Fixed(const float num);
+		Fixed(const Fixed& obj);
+		Fixed& operator = (const Fixed& obj);
+		bool				operator> (const Fixed& obj) const;
+		bool 				operator< (const Fixed& obj) const;
+		bool 				operator<= (const Fixed& obj) const;
+		bool 				operator>= (const Fixed& obj) const;
+		bool 				operator== (const Fixed& obj) const;
+		bool 				operator!= (const Fixed& obj) const;
+		Fixed				operator+ (const Fixed& obj) const;
+		Fixed				operator- (const Fixed& obj) const;
+		Fixed				operator* (const Fixed& obj) const;
+		Fixed				operator/ (const Fixed& obj) const;
+		Fixed&				operator++ (void);
+		Fixed				operator++ (int);
+		Fixed&				operator-- (void);
+		Fixed				operator-- (int);
 		static				Fixed& max( Fixed& a, Fixed& b );
 		static const Fixed&	max( const Fixed& a, const Fixed& b );
 		static Fixed&		min( Fixed& a, Fixed& b );

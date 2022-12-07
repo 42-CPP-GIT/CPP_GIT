@@ -6,13 +6,11 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 15:13:18 by minsuki2          #+#    #+#             */
-/*   Updated: 2022/12/07 19:56:53 by minsuki2         ###   ########.fr       */
+/*   Updated: 2022/12/07 20:46:14 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Point.hpp"
-
-// https://www.geogebra.org/geometry?lang=ko
 
 int main(void) {
 

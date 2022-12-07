@@ -6,7 +6,7 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 16:30:17 by minsuki2          #+#    #+#             */
-/*   Updated: 2022/12/07 20:08:44 by minsuki2         ###   ########.fr       */
+/*   Updated: 2022/12/07 20:44:31 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,9 @@
 # include <iostream>
 # include <cmath>
 # define MSG_CALL		" called"
-# define MSG_CREATE		"Default constructor"
+# define MSG_DEFALUT_CREATE		"Default constructor"
+# define MSG_INT_CREATE			"Int constructor"
+# define MSG_FLOAT_CREATE		"Float constructor"
 # define MSG_DESTROY 	"Destructor"
 # define MSG_COPY		"Copy constructor"
 # define MSG_ASSIGN 	"Copy assignment operator"
@@ -25,7 +27,7 @@
 # define MSG_INTEGER	" as integer"
 # define MSG_FLOAT		" as float"
 
-# ifndef std_endl
+# ifndef ENDL
 #  define MSG_ENDL		'\n'
 # else
 #  define MSG_ENDL		std::endl

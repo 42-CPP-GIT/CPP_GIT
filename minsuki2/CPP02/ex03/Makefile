@@ -6,7 +6,7 @@
 #    By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/29 18:32:08 by minsuki2          #+#    #+#              #
-#    Updated: 2022/12/05 12:32:56 by minsuki2         ###   ########.fr        #
+#    Updated: 2022/12/07 20:53:30 by minsuki2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,14 +14,14 @@ CPPFLAGS	=		-Wall -Werror -Wextra -std=c++98
 RM 			=		rm -rvf
 
 # Directory
-SRCS_DIR 	:=		./
-INCS_DIR 	:=		./
-OBJS_DIR 	:=		objs/
-DEPS_DIR 	:=		deps/
+SRCS_DIR 	:=		.
+INCS_DIR 	:=		.
+OBJS_DIR 	:=		objs
+DEPS_DIR 	:=		deps
 
-SRCS 		:=		$(wildcard $(SRCS_DIR)*.cpp)
-OBJS 		:=		$(addprefix $(OBJS_DIR), $(notdir $(SRCS:.cpp=.o)))
-DEPS		:=		$(addprefix $(DEPS_DIR), $(notdir $(SRCS:.cpp=.d)))
+SRCS 		:=		$(wildcard $(SRCS_DIR)/*.cpp)
+OBJS 		:=		$(addprefix $(OBJS_DIR)/, $(notdir $(SRCS:.cpp=.o)))
+DEPS		:=		$(addprefix $(DEPS_DIR)/, $(notdir $(SRCS:.cpp=.d)))
 NAME		:=		bsp
 
 all: $(NAME)
@@ -33,12 +33,12 @@ $(NAME): $(OBJS)
 	@echo ">>>>>>>>>> $@ Compiled! <<<<<<<<<<"
 	@echo @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
-$(OBJS_DIR)%.o: $(SRCS_DIR)%.cpp
+$(OBJS_DIR)/%.o: $(SRCS_DIR)/%.cpp
 	@mkdir -p $(dir $@)
 	@echo [$<] compiling...
 	@$(CXX) $(CPPFLAGS) -I$(INCS_DIR) -c $< -o $@ -MMD
 	@mkdir -p $(DEPS_DIR)
-	@mv $(@:.o=.d) $(DEPS_DIR)$(notdir $(@:.o=.d))
+	@mv $(@:.o=.d) $(DEPS_DIR)/$(notdir $(@:.o=.d))
 
 clean:
 	@echo

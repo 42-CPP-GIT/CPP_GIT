@@ -6,7 +6,7 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 14:28:27 by minsuki2          #+#    #+#             */
-/*   Updated: 2022/12/07 20:23:29 by minsuki2         ###   ########.fr       */
+/*   Updated: 2022/12/07 20:47:59 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ bool _isSameInequalityLine(Point const& point, Point const& start, \
 			return false;
 	}
 	catch (const std::string& what) {
-		std::cout << what << " is overflow!" << std::endl;
+		std::cerr << what << " is overflow!" << std::endl;
 		return false;
 	}
 	return true;

@@ -6,7 +6,7 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 16:30:17 by minsuki2          #+#    #+#             */
-/*   Updated: 2022/12/07 20:11:56 by minsuki2         ###   ########.fr       */
+/*   Updated: 2022/12/07 20:45:47 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 # define MSG_INTEGER	" as integer"
 # define MSG_FLOAT		" as float"
 
-# ifndef std_endl
+# ifndef ENDL
 #  define MSG_ENDL		'\n'
 # else
 #  define MSG_ENDL		std::endl
@@ -54,10 +54,10 @@ class Fixed {
 		bool operator>=(const Fixed& obj) const;
 		bool operator==(const Fixed& obj) const;
 		bool operator!=(const Fixed& obj) const;
-		Fixed	operator+(const Fixed& obj) const ;
-		Fixed	operator-(const Fixed& obj) const ;
-		Fixed	operator*(const Fixed& obj) const ;
-		Fixed	operator/(const Fixed& obj) const ;
+		Fixed	operator+(const Fixed& obj) const;
+		Fixed	operator-(const Fixed& obj) const;
+		Fixed	operator*(const Fixed& obj) const;
+		Fixed	operator/(const Fixed& obj) const;
 		Fixed&	operator++(void);
 		Fixed	operator++(int);
 		Fixed&	operator--(void);
