@@ -6,7 +6,7 @@
 /*   By: sesim <sesim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 15:20:01 by sesim             #+#    #+#             */
-/*   Updated: 2022/12/05 13:06:51 by sesim            ###   ########.fr       */
+/*   Updated: 2022/12/08 17:52:05 by sesim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,11 @@ const AMateria*	Character::getAMateria(int idx) const
 		std::cout << "Put right Index!" << std::endl;
 		return (NULL);
 	}
+	if (!this->slot_[idx])
+	{
+		std::cout << "Slot is Empty!" << std::endl;
+		return (NULL);
+	}
 	return (this->slot_[idx]);
 }
 
@@ -66,13 +71,14 @@ void	Character::equip(AMateria* m)
 	if (this->idx_ > 3)
 	{
 		std::cout << "No more inventory" << std::endl;
+		delete m;
 		return ;
 	}
 	if (m)
 	{
 		std::cout << this->getName() << ": equiped " << m->getType() << " in slot " << this->idx_ << std::endl;
-		this->slot_[this->idx_] = m->clone();
-		this->idx_++;
+		this->slot_[this->idx_++] = m->clone();
+		delete m;
 	}
 }
 

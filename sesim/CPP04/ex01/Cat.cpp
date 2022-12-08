@@ -6,7 +6,7 @@
 /*   By: sesim <sesim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 15:23:59 by sesim             #+#    #+#             */
-/*   Updated: 2022/12/03 14:27:21 by sesim            ###   ########.fr       */
+/*   Updated: 2022/12/08 16:55:32 by sesim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,9 @@ Cat::Cat() : name_("Cat"), brain_(new Brain)
 	std::cout << "[ Cat Default Constructor Called ]" << std::endl;
 }
 
-Cat::Cat(const Cat& obj)
+Cat::Cat(const Cat& obj) : name_(obj.name_), brain_(new Brain(*obj.brain_))
 {
 	std::cout << "[ Cat Copy Constructor Called ]" << std::endl;
-	this->brain_ = NULL;
-	*this = obj;
 }
 
 Cat& Cat::operator=(const Cat& obj)

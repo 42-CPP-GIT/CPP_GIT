@@ -6,14 +6,13 @@
 /*   By: sesim <sesim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 15:16:30 by sesim             #+#    #+#             */
-/*   Updated: 2022/12/03 17:51:26 by sesim            ###   ########.fr       */
+/*   Updated: 2022/12/08 17:29:16 by sesim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MATERIASOURCE_HPP
 # define MATERIASOURCE_HPP
 
-# include "AMateria.hpp"
 # include "IMateriaSource.hpp"
 
 typedef	enum	e_mac

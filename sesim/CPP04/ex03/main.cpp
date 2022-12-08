@@ -6,7 +6,7 @@
 /*   By: sesim <sesim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 17:00:43 by sesim             #+#    #+#             */
-/*   Updated: 2022/12/05 13:12:01 by sesim            ###   ########.fr       */
+/*   Updated: 2022/12/08 18:09:45 by sesim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,59 +40,12 @@ void	test1(void)
 	me->equip(tmp);
 	tmp = src->createMateria("cure");
 	me->equip(tmp);
-
-	AMateria* tmp1;
-	tmp1 = tmp->clone(); // tmp1을 할당해제를 어떤식으로 처리해야 될지?
-
-	me->equip(tmp1);
-	me->equip(tmp1);
-	me->equip(tmp1);
-	me->equip(tmp1);
-	me->unequip(0);
+	tmp = src->createMateria("ice");
+	me->equip(tmp);
+	tmp = src->createMateria("cure");
+	me->equip(tmp);
 	me->unequip(0);
 	me->unequip(1);
-	me->unequip(2);
-	me->unequip(3);
-	me->equip(tmp1);
-	me->equip(tmp1);
-	me->equip(tmp1);
-	me->equip(tmp1);
-	me->equip(tmp1);
-	me->equip(tmp1);
-	me->unequip(0);
-	me->unequip(1);
-	me->unequip(2);
-	me->unequip(3);
-	me->equip(tmp1);
-	me->equip(tmp1);
-	me->equip(tmp1);
-	me->equip(tmp1);
-	me->equip(tmp1);
-	me->equip(tmp1);
-	me->unequip(0);
-	me->unequip(1);
-	me->unequip(2);
-	me->unequip(3);
-	me->equip(tmp1);
-	me->equip(tmp1);
-	me->equip(tmp1);
-	me->equip(tmp1);
-	me->equip(tmp1);
-	me->equip(tmp1);
-	me->unequip(0);
-	me->unequip(1);
-	me->unequip(2);
-	me->unequip(3);
-	me->equip(tmp1);
-	me->equip(tmp1);
-	me->equip(tmp1);
-	me->equip(tmp1);
-	me->equip(tmp1);
-	me->equip(tmp1);
-	me->unequip(0);
-	me->unequip(1);
-	me->unequip(2);
-	me->unequip(3);
 	// tmp = src->createMateria("ice");
 	// me->equip(tmp);
 	// tmp = src->createMateria("ice");
@@ -102,6 +55,11 @@ void	test1(void)
 	// tmp = src->createMateria("whatthe");
 	// me->equip(tmp);
 
+	std::cout << "================\n";
+	tmp = MateriaSource::putOutFloor(0);
+	// tmp = MateriaSource::putOutFloor(1);
+	std::cout << "================\n";
+	std::cout << "test :: " << tmp->getType() << "\n";
 	Character* bob = new Character("sesim");
 	me->use(0, *bob);
 	me->use(1, *bob);
@@ -112,7 +70,6 @@ void	test1(void)
 
 	// me->use(6, *bob);
 	
-	delete tmp1;
 	delete bob;
 	delete me;
 	delete src;

@@ -6,7 +6,7 @@
 /*   By: sesim <sesim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 15:16:30 by sesim             #+#    #+#             */
-/*   Updated: 2022/12/05 13:03:08 by sesim            ###   ########.fr       */
+/*   Updated: 2022/12/08 18:05:24 by sesim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,7 @@ void	MateriaSource::learnMateria(AMateria* source)
 		return ;
 	}
 	std::cout << "You learn new materia : " << source->getType() << std::endl;
-	this->items_[this->idx_] = source;
-	this->idx_++;
+	this->items_[this->idx_++] = source;
 }
 
 AMateria*	MateriaSource::createMateria(std::string const & type)
@@ -74,7 +73,7 @@ AMateria*	MateriaSource::createMateria(std::string const & type)
 		if (type == this->items_[i]->getType())
 		{
 			std::cout << "You create " << type << std::endl;
-			return (this->items_[i]);
+			return (this->items_[i]->clone());
 		}
 	}
 	std::cout << "No match skill with " << type << std::endl;
@@ -144,7 +143,6 @@ void	MateriaSource::clearFloor(void)
 		MateriaSource::_floor[i] = 0;
 	}
 }
-
 
 MateriaSource::~MateriaSource()
 {

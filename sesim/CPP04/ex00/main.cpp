@@ -6,7 +6,7 @@
 /*   By: sesim <sesim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 13:59:43 by sesim             #+#    #+#             */
-/*   Updated: 2022/12/05 12:47:09 by sesim            ###   ########.fr       */
+/*   Updated: 2022/12/08 16:06:56 by sesim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,16 @@ int	main()
 	const Animal	*j = new Dog();
 	const Animal	*i = new Cat();
 
-	// Dog	A;
-	// Cat B;
-	// Animal	*k = &A;
 
-	// std::cout << "what is this?\n";
-	// k = &B;
-	// k->makeSound();
+	std::cout << "==============\n";
+	Dog	A;
+	Cat B;
+	Animal	*k = &A;
+
+	k->makeSound();
+	std::cout << "what is this?\n";
+	k = &B;
+	k->makeSound();
 
 
 	std::cout << j->getType() << " " << std::endl;

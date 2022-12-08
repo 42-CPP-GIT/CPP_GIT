@@ -6,7 +6,7 @@
 /*   By: sesim <sesim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 13:59:43 by sesim             #+#    #+#             */
-/*   Updated: 2022/12/03 14:46:58 by sesim            ###   ########.fr       */
+/*   Updated: 2022/12/08 16:48:05 by sesim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,35 @@ void	testC(void)
 	delete B;
 }
 
+void	MainTest(void)
+{
+	std::cout << "======= Main Test ======" << std::endl;
+	Animal	*Arr[10];
+
+	int	i(0);
+	for (; i < 5; ++i)
+		Arr[i] = new Dog();
+	for (; i < 10; ++i)
+		Arr[i] = new Cat();
+
+	i = 0;
+	for (; i < 10; ++i)
+	{
+		std::cout << "==================\n";
+		std::cout << Arr[i]->getType() << std::endl;
+		Arr[i]->getIdeas();
+		Arr[i]->makeSound();
+	}
+	i = 0;
+	for (; i < 10; ++i)
+		delete Arr[i];
+}
+
 int	main()
 {
 	atexit(a);
 
+	MainTest();
 	testA();
 	testB();
 	testC();
