@@ -6,7 +6,7 @@
 /*   By: sesim <sesim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 15:16:30 by sesim             #+#    #+#             */
-/*   Updated: 2022/12/08 18:05:24 by sesim            ###   ########.fr       */
+/*   Updated: 2022/12/08 23:01:48 by sesim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ AMateria*	MateriaSource::putOutFloor(int idx)
 	}
 	if (idx == MateriaSource::_floor_idx)
 	{
-		AMateria	*res(MateriaSource::_floor[MateriaSource::_floor_idx]);
+		AMateria	*res = MateriaSource::_floor[MateriaSource::_floor_idx]->clone();
 
 		delete MateriaSource::_floor[MateriaSource::_floor_idx];
 		MateriaSource::_floor[MateriaSource::_floor_idx] = NULL;
@@ -120,7 +120,7 @@ AMateria*	MateriaSource::putOutFloor(int idx)
 	}
 	else
 	{
-		AMateria	*res(MateriaSource::_floor[idx]);
+		AMateria	*res = MateriaSource::_floor[idx]->clone();
 
 		for (int i(idx); i < MateriaSource::_floor_idx - 1; ++i)
 		{

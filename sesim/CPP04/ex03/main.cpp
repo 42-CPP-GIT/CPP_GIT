@@ -6,7 +6,7 @@
 /*   By: sesim <sesim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 17:00:43 by sesim             #+#    #+#             */
-/*   Updated: 2022/12/08 18:09:45 by sesim            ###   ########.fr       */
+/*   Updated: 2022/12/08 23:10:48 by sesim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ void	test1(void)
 
 	// me->use(6, *bob);
 	
+	delete tmp;
 	delete bob;
 	delete me;
 	delete src;
@@ -162,7 +163,7 @@ void	CharacterAssignmentOperator()
 {
 	AMateria* tmp;
 	Character* me = new Character("me");
-	Character* hchang = new Character("hchang");
+	Character* test = new Character("test");
 	Character* bob = new Character("bob");
 	IMateriaSource* src = new MateriaSource();
 
@@ -174,12 +175,12 @@ void	CharacterAssignmentOperator()
 	tmp = src->createMateria("cure");
 	me->equip(tmp);
 
-	*hchang = *me;
+	*test = *me;
 	
 	me->use(0, *bob);
 	me->use(1, *bob);
 
-	delete hchang;
+	delete test;
 	delete bob;
 	delete me;
 	delete src;
@@ -189,7 +190,7 @@ void	BothAssignmentOperator()
 {
 	AMateria* tmp;
 	Character* me = new Character("me");
-	Character* hchang = new Character("hchang");
+	Character* test = new Character("test");
 	Character* bob = new Character("bob");
 	MateriaSource* src = new MateriaSource();
 	MateriaSource* src2 = new MateriaSource();
@@ -204,16 +205,16 @@ void	BothAssignmentOperator()
 	tmp = src2->createMateria("cure");
 	me->equip(tmp);
 
-	*hchang = *me;
+	*test = *me;
 
-	hchang->use(0, *bob);
-	hchang->use(1, *bob);
+	test->use(0, *bob);
+	test->use(1, *bob);
 
 	delete me;
 	delete bob;
 	delete src;
 	delete src2;
-	delete hchang;
+	delete test;
 }
 
 int main()
