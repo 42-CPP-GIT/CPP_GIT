@@ -6,7 +6,7 @@
 /*   By: sesim <sesim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 13:59:43 by sesim             #+#    #+#             */
-/*   Updated: 2022/12/08 17:13:30 by sesim            ###   ########.fr       */
+/*   Updated: 2022/12/09 08:26:00 by sesim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	a()
 
 int	main()
 {
-	atexit(a);
+	// atexit(a);
 
 	// const Animal	Test;
 	const Animal	*A = new Dog();

@@ -6,7 +6,7 @@
 /*   By: sesim <sesim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 15:20:01 by sesim             #+#    #+#             */
-/*   Updated: 2022/12/08 17:52:05 by sesim            ###   ########.fr       */
+/*   Updated: 2022/12/09 09:11:08 by sesim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,12 @@ const AMateria*	Character::getAMateria(int idx) const
 {
 	if (idx < 0 || idx > this->idx_)
 	{
-		std::cout << "Put right Index!" << std::endl;
+		std::cerr << "Put right Index!" << std::endl;
 		return (NULL);
 	}
 	if (!this->slot_[idx])
 	{
-		std::cout << "Slot is Empty!" << std::endl;
+		std::cerr << "Slot is Empty!" << std::endl;
 		return (NULL);
 	}
 	return (this->slot_[idx]);
@@ -70,7 +70,7 @@ void	Character::equip(AMateria* m)
 {
 	if (this->idx_ > 3)
 	{
-		std::cout << "No more inventory" << std::endl;
+		std::cerr << "No more inventory" << std::endl;
 		delete m;
 		return ;
 	}
@@ -97,22 +97,31 @@ void	Character::unequip(int idx)
 	if (MateriaSource::putInFloor(this->slot_[idx]))
 	{
 		slot_[idx] = NULL;
-		this->idx_--;
+		int	max(this->idx_ - (this->idx_ > 3));
+		for (int i(idx); i < max - 1; ++i)
+		{
+			if (slot_[i + 1])
+			{
+				slot_[i] = slot_[i + 1]->clone();
+				delete slot_[i + 1];
+				slot_[i + 1] = NULL;
+			}
+		}
 	}
 	else
-		std::cout << "You can't unequip now!" << std::endl;
+		std::cerr << "You can't unequip now!" << std::endl;
 }
 
 void	Character::use(int idx, ICharacter& target)
 {
 	if (idx < 0 || idx > 3 || this->idx_ < idx)
 	{
-		std::cout << "Wrong Index" << std::endl;
+		std::cerr << "Wrong Index" << std::endl;
 		return ;
 	}
 	else if (this->idx_ == 0 || this->slot_[idx] == 0)
 	{
-		std::cout << "Slot is Empty" << std::endl;
+		std::cerr << "Slot is Empty" << std::endl;
 		return ;
 	}
 	std::cout << this->getName() << ": use " << this->slot_[idx]->getType() << std::endl;

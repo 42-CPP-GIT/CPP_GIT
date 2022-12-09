@@ -6,7 +6,7 @@
 /*   By: sesim <sesim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 15:16:30 by sesim             #+#    #+#             */
-/*   Updated: 2022/12/08 23:01:48 by sesim            ###   ########.fr       */
+/*   Updated: 2022/12/09 09:12:06 by sesim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	MateriaSource::learnMateria(AMateria* source)
 		return ;
 	if (this->idx_ > 3)
 	{
-		std::cout << "Skill slot is already Full!" << std::endl;
+		std::cerr << "Skill slot is already Full!" << std::endl;
 		delete source;
 		return ;
 	}
@@ -64,8 +64,12 @@ void	MateriaSource::learnMateria(AMateria* source)
 
 AMateria*	MateriaSource::createMateria(std::string const & type)
 {
+	if (this->idx_ > 3)
+	{
+		std::cerr << "Materia slot is already Full!" << std::endl;
+		return (NULL);
+	}
 	int	max(this->idx_ - (this->idx_ > 3));
-
 	if (this->idx_ == 0)
 		return (NULL);
 	for (int i(0); i < max; ++i)
@@ -76,7 +80,7 @@ AMateria*	MateriaSource::createMateria(std::string const & type)
 			return (this->items_[i]->clone());
 		}
 	}
-	std::cout << "No match skill with " << type << std::endl;
+	std::cerr << "No match skill with " << type << std::endl;
 	return (NULL);
 }
 
@@ -89,7 +93,7 @@ bool	MateriaSource::putInFloor(AMateria *src)
 {
 	if (MateriaSource::_floor_idx >= FLOOR_CNT)
 	{
-		std::cout << "Floor is full!" << std::endl;
+		std::cerr << "Floor is full!" << std::endl;
 		return (false);
 	}
 	MateriaSource::_floor[MateriaSource::_floor_idx] = src;
@@ -101,12 +105,12 @@ AMateria*	MateriaSource::putOutFloor(int idx)
 {
 	if (idx < 0 || idx >= FLOOR_CNT)
 	{
-		std::cout << "Wrong Idx!" << std::endl;
+		std::cerr << "Wrong Idx!" << std::endl;
 		return (NULL);
 	}
 	else if (MateriaSource::_floor_idx == 0 || idx > MateriaSource::_floor_idx)
 	{
-		std::cout << "Empty slot!" << std::endl;
+		std::cerr << "Empty slot!" << std::endl;
 		return (NULL);
 	}
 	if (idx == MateriaSource::_floor_idx)

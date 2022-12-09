@@ -6,12 +6,12 @@
 #    By: sesim <sesim@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/27 10:57:54 by sesim             #+#    #+#              #
-#    Updated: 2022/12/04 13:49:47 by sesim            ###   ########.fr        #
+#    Updated: 2022/12/09 08:25:52 by sesim            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CXX			=	c++
-CXXFLAGS	=	-Wall -Wextra -Werror -std=c++98 #-fsanitize=address
+CXXFLAGS	=	-Wall -Wextra -Werror -std=c++98
 RM			=	rm -rf
 
 OBJS_DIR	:=	objs/

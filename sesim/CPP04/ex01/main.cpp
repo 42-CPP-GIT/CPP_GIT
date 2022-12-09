@@ -6,7 +6,7 @@
 /*   By: sesim <sesim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 13:59:43 by sesim             #+#    #+#             */
-/*   Updated: 2022/12/08 16:48:05 by sesim            ###   ########.fr       */
+/*   Updated: 2022/12/09 08:26:16 by sesim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ void	MainTest(void)
 
 int	main()
 {
-	atexit(a);
+	// atexit(a);
 
 	MainTest();
 	testA();

@@ -6,7 +6,7 @@
 /*   By: sesim <sesim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 15:23:59 by sesim             #+#    #+#             */
-/*   Updated: 2022/12/03 14:28:56 by sesim            ###   ########.fr       */
+/*   Updated: 2022/12/09 08:20:31 by sesim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,9 @@ Dog::Dog() : name_("Dog"), brain_(new Brain)
 	std::cout << "[ Dog Default Constructor Called ]" << std::endl;
 }
 
-Dog::Dog(const Dog& obj)
+Dog::Dog(const Dog& obj) : name_(obj.name_), brain_(new Brain(*obj.brain_))
 {
 	std::cout << "[ Dog Copy Constructor Called ]" << std::endl;
-	this->brain_ = NULL;
-	*this = obj;
 }
 
 Dog& Dog::operator=(const Dog& obj)

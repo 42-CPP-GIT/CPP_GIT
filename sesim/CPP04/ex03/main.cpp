@@ -6,7 +6,7 @@
 /*   By: sesim <sesim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 17:00:43 by sesim             #+#    #+#             */
-/*   Updated: 2022/12/08 23:10:48 by sesim            ###   ########.fr       */
+/*   Updated: 2022/12/09 09:11:34 by sesim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ void	test1(void)
 	AMateria* tmp;
 	
 	tmp = src->createMateria("ice");
-	// std::cout << tmp->getType() << std::endl;
 	me->equip(tmp);
 	tmp = src->createMateria("cure");
 	me->equip(tmp);
@@ -44,33 +43,25 @@ void	test1(void)
 	me->equip(tmp);
 	tmp = src->createMateria("cure");
 	me->equip(tmp);
-	me->unequip(0);
-	me->unequip(1);
+	// me->unequip(0);
+	// me->unequip(1);
 	// tmp = src->createMateria("ice");
 	// me->equip(tmp);
 	// tmp = src->createMateria("ice");
 	// me->equip(tmp);
 	// tmp = src->createMateria("cure");
 	// me->equip(tmp);
-	// tmp = src->createMateria("whatthe");
-	// me->equip(tmp);
 
-	std::cout << "================\n";
-	tmp = MateriaSource::putOutFloor(0);
-	// tmp = MateriaSource::putOutFloor(1);
-	std::cout << "================\n";
-	std::cout << "test :: " << tmp->getType() << "\n";
 	Character* bob = new Character("sesim");
 	me->use(0, *bob);
 	me->use(1, *bob);
 	me->use(2, *bob);
-	// me->use(3, *bob);
-	// me->use(1, *bob);
-	// me->use(2, *me);
+	me->use(3, *bob);
+	me->use(1, *bob);
+	me->use(2, *me);
 
-	// me->use(6, *bob);
+	me->use(6, *bob);
 	
-	delete tmp;
 	delete bob;
 	delete me;
 	delete src;
@@ -94,13 +85,13 @@ void subject()
 	me->equip(tmp);
 	tmp = src->createMateria("ice");
 	me->equip(tmp);
-	// tmp = src->createMateria("hi");
+	tmp = src->createMateria("hi");
 	
 	me->use(0, *bob);
 	me->use(1, *bob);
 	me->use(2, *bob);
 	me->use(3, *bob);
-	// me->use(4, *bob);
+	me->use(4, *bob);
 
 	delete bob;
 	delete me;
@@ -219,7 +210,7 @@ void	BothAssignmentOperator()
 
 int main()
 {
-	atexit(a);
+	// atexit(a);
 	subject();
 	MateriaSourceAssignmentOperator();
 	CharacterAssignmentOperator();
