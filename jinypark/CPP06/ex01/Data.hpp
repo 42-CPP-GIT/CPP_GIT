@@ -6,7 +6,7 @@
 /*   By: jinypark <jinypark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 22:36:29 by jinypark          #+#    #+#             */
-/*   Updated: 2022/12/06 22:36:32 by jinypark         ###   ########.fr       */
+/*   Updated: 2022/12/10 19:38:16 by jinypark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,4 @@ typedef struct sData
 	double	d;
 	int		i;
 	char	c;
-	char*	p;
 }			Data;

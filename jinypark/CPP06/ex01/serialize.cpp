@@ -6,23 +6,18 @@
 /*   By: jinypark <jinypark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 22:36:55 by jinypark          #+#    #+#             */
-/*   Updated: 2022/12/06 22:39:59 by jinypark         ###   ########.fr       */
+/*   Updated: 2022/12/10 19:34:57 by jinypark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include "Data.hpp"
+#include "serialize.hpp"
 
 uintptr_t serialize(Data* ptr)
 {
-	uintptr_t*	ret = reinterpret_cast<uintptr_t *>(ptr);
-
-	return (*ret);
+	return (reinterpret_cast<uintptr_t>(ptr));
 }
 
 Data* deserialize(uintptr_t raw)
 {
-	Data*	ret = reinterpret_cast<Data *>(&raw);
-
-	return (ret);
+	return (reinterpret_cast<Data *>(raw));
 }
