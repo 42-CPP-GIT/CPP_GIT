@@ -6,7 +6,7 @@
 /*   By: jinypark <jinypark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 21:09:50 by jinypark          #+#    #+#             */
-/*   Updated: 2022/12/02 19:30:38 by jinypark         ###   ########.fr       */
+/*   Updated: 2022/12/10 19:12:45 by jinypark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@
 
 class Intern
 {
-public:
-	Intern(/* args */);
-	~Intern();
 	Intern(const Intern& obj);
 	Intern	&operator=(const Intern& obj);
+public:
+	Intern();
+	~Intern();
 	Form*	makeForm(std::string formName, std::string target);
 };
 

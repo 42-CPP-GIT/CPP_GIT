@@ -6,7 +6,7 @@
 /*   By: jinypark <jinypark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 13:53:26 by jinypark          #+#    #+#             */
-/*   Updated: 2022/12/02 15:36:33 by jinypark         ###   ########.fr       */
+/*   Updated: 2022/12/10 19:00:27 by jinypark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ void	Bureaucrat::signForm(Form* form)
 		form->beSigned(*this);
 		std::cout << this->getName() << " signed " << form->getName() << "\n";
 	}
-	catch(const GradeTooLowException& e)
+	catch(const Form::GradeTooLowException& e)
 	{
 		std::cout << this->name_ << " couldn't sign " << form->getName() << " because " << e.what() << ".\n";
 	}

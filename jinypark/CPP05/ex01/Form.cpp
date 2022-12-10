@@ -6,7 +6,7 @@
 /*   By: jinypark <jinypark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 16:36:08 by jinypark          #+#    #+#             */
-/*   Updated: 2022/12/02 15:49:49 by jinypark         ###   ########.fr       */
+/*   Updated: 2022/12/10 19:03:27 by jinypark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ Form::~Form()
 {
 }
 
-Form::Form(const Form& obj) : name_(obj.getName()), signGrade_(obj.getSigned()), executeGrade_(obj.getExecuteGrade()),  isSigned_(obj.getSigned())
+Form::Form(const Form& obj) :
+name_(obj.getName()), isSigned_(obj.getSigned()), signGrade_(obj.getSigned()), executeGrade_(obj.getExecuteGrade())
 {
 }
 

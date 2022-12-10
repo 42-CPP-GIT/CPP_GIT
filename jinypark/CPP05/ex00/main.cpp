@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jinypark <jinypark@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jinypark <jinypark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 13:59:42 by jinypark          #+#    #+#             */
-/*   Updated: 2022/11/22 14:43:35 by jinypark         ###   ########.fr       */
+/*   Updated: 2022/12/10 18:56:43 by jinypark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,17 @@ int main()
 	{
 		std::cerr << e.what() << '\n';
 	}
-	
+
+	Bureaucrat a(1);
+	Bureaucrat b(150);
+
+	std::cout << a << "\n";
+	std::cout << b << "\n";
+	std::cout << "-------------------" << "\n";
+	b = a;
+	std::cout << a << "\n";
+	std::cout << b << "\n";
+
+
 	return (0);
 }

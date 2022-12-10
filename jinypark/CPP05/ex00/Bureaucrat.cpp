@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jinypark <jinypark@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jinypark <jinypark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 13:53:26 by jinypark          #+#    #+#             */
-/*   Updated: 2022/11/28 09:07:41 by jinypark         ###   ########.fr       */
+/*   Updated: 2022/12/10 18:57:45 by jinypark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ Bureaucrat::Bureaucrat(void) : name_("jinypark")
 }
 
 Bureaucrat::Bureaucrat(int grade) : name_("jinypark")
-{	
+{
 	if (grade < 1)
 		throw GradeTooHighException();
 	else if (grade > 150)
@@ -40,7 +40,7 @@ Bureaucrat	&Bureaucrat::operator=(const Bureaucrat &obj)
 	if (this != &obj)
 	{
 		std::string &tmp = const_cast<std::string &>(this->name_);
-		
+
 		tmp = obj.getName();
 		this->grade_ = obj.getGrade();
 	}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jinypark <jinypark@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jinypark <jinypark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 13:59:42 by jinypark          #+#    #+#             */
-/*   Updated: 2022/11/30 09:24:45 by jinypark         ###   ########.fr       */
+/*   Updated: 2022/12/10 19:04:07 by jinypark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,34 +15,34 @@
 
 int main()
 {
-	try
-	{
-		Bureaucrat c(-2);
-		Bureaucrat b(150);
-		Bureaucrat a(200);
-		std::cout << b;
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << '\n';
-	}
+	// try
+	// {
+	// 	Bureaucrat c(-2);
+	// 	Bureaucrat b(150);
+	// 	Bureaucrat a(200);
+	// 	std::cout << b;
+	// }
+	// catch(const std::exception& e)
+	// {
+	// 	std::cerr << e.what() << '\n';
+	// }
 
-	try
-	{
-		Bureaucrat a(3);
-		while(1)
-		{
-			std::cout << a << "\n";
-			a.increment(1);
-		}
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << '\n';
-	}
+	// try
+	// {
+	// 	Bureaucrat a(3);
+	// 	while(1)
+	// 	{
+	// 		std::cout << a << "\n";
+	// 		a.increment(1);
+	// 	}
+	// }
+	// catch(const std::exception& e)
+	// {
+	// 	std::cerr << e.what() << '\n';
+	// }
 
 
-	Bureaucrat	a(25);
+	Bureaucrat	a(26);
 	Form		f("FORM", 25, 1);
 	Form		f2("FORM", 1, 1);
 	std::cout << f;
