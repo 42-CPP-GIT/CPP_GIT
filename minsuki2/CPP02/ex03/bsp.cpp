@@ -6,12 +6,13 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 14:28:27 by minsuki2          #+#    #+#             */
-/*   Updated: 2022/12/07 20:47:59 by minsuki2         ###   ########.fr       */
+/*   Updated: 2022/12/10 15:43:48 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Point.hpp"
 #include <sstream>
+#include <climits>
 
 static int _countLeftBit(int raw_bit) {
 	int cnt = 0;

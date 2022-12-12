@@ -6,12 +6,13 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 16:42:10 by minsuki2          #+#    #+#             */
-/*   Updated: 2022/12/07 20:27:55 by minsuki2         ###   ########.fr       */
+/*   Updated: 2022/12/10 15:44:08 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 #include <cstring> // linux
+#include <cstdlib> // linux
 
 const int	Fixed::fixed_nbits_ = 8;
 
