@@ -6,7 +6,7 @@
 /*   By: sesim <sesim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 18:23:39 by sesim             #+#    #+#             */
-/*   Updated: 2022/11/20 21:53:32 by sesim            ###   ########.fr       */
+/*   Updated: 2022/12/08 08:57:19 by sesim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,11 @@ void	ClapTrap::beRepaired(unsigned int amount)
 	{
 		std::cout << "ClapTrap " << this->name_ << \
 		" is dead. So can't repair!" << std::endl;
+		return ;
+	}
+	else if (!amount)
+	{
+		std::cout << "err: no repair amount!" << std::endl;
 		return ;
 	}
 	else if (!this->energy_point_)

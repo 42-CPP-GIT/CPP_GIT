@@ -6,7 +6,7 @@
 /*   By: sesim <sesim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 18:16:01 by sesim             #+#    #+#             */
-/*   Updated: 2022/12/06 17:09:48 by sesim            ###   ########.fr       */
+/*   Updated: 2022/12/08 13:28:09 by sesim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ class ClapTrap
 		ClapTrap(std::string name, int hit_point, unsigned int energy_point, unsigned int attack_damage);
 		ClapTrap(const ClapTrap& obj);
 		ClapTrap& operator=(const ClapTrap& obj);
-		virtual ~ClapTrap();
+		~ClapTrap();
 		virtual void	attack(const std::string& target);
 		void			takeDamage(unsigned int amount);
 		void			beRepaired(unsigned int amount);
