@@ -6,7 +6,7 @@
 /*   By: sesim <sesim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 18:42:18 by sesim             #+#    #+#             */
-/*   Updated: 2022/12/04 18:56:06 by sesim            ###   ########.fr       */
+/*   Updated: 2022/12/15 14:13:38 by sesim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ bool	isCRef(Base& obj)
 	return (true);
 }
 
-void	whoAmI(Base* obj)
+void	identify(Base* obj)
 {
 	if (isAPtr(obj))
 		std::cout << "This is A PTR!" << std::endl;
@@ -106,7 +106,7 @@ void	whoAmI(Base* obj)
 		std::cout << "What the hell are you put in?" << std::endl;
 }
 
-void	whoAmI(Base& obj)
+void	identify(Base& obj)
 {
 	if (isARef(obj))
 	{
@@ -129,25 +129,25 @@ void	whoAmI(Base& obj)
 
 int	main(void)
 {
-	Base*	ap(new A());
-	Base*	bp(new B());
-	Base*	cp(new C());
-	Base*	base_ptr(new Base());
+	Base*	ap(generator());
+	Base*	bp(generator());
+	Base*	cp(generator());
+	Base*	base_ptr(generator());
 
-	whoAmI(ap);
-	whoAmI(bp);
-	whoAmI(cp);
-	whoAmI(base_ptr);
+	identify(ap);
+	identify(bp);
+	identify(cp);
+	identify(base_ptr);
 
 	Base&	ar(*ap);
 	Base&	br(*bp);
 	Base&	cr(*cp);
 	Base&	base_ref(*base_ptr);
 
-	whoAmI(ar);
-	whoAmI(br);
-	whoAmI(cr);
-	whoAmI(base_ref);
+	identify(ar);
+	identify(br);
+	identify(cr);
+	identify(base_ref);
 
 	delete ap;
 	delete bp;

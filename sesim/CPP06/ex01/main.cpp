@@ -6,16 +6,11 @@
 /*   By: sesim <sesim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 17:48:14 by sesim             #+#    #+#             */
-/*   Updated: 2022/12/06 15:58:21 by sesim            ###   ########.fr       */
+/*   Updated: 2022/12/15 14:15:25 by sesim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
-
-void	a(void)
-{
-	system("leaks convert");
-}
 
 typedef struct	s_data
 {
