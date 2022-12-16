@@ -30,7 +30,7 @@ void identify(Base* p)
 	else if (dynamic_cast<BaseC *>(p))
 		std::cout << "Class type is BaseC\n";
 	else
-		std::cout << "Not a Base type\n";
+		std::cout << "Class type is Base\n";
 }
 
 void identify(Base& p)
@@ -59,7 +59,7 @@ void identify(Base& p)
 		return ;
 	}
 	catch(const std::exception& e) {
-		std::cout << "Not a Base type\n";
+		std::cout << "Class type is Base\n";
 	}
 
 }
@@ -80,5 +80,6 @@ int main(void)
 	Base* base = new Base();
 	identify(base);
 	identify(*base);
+	delete base;
 	return (0);
 }

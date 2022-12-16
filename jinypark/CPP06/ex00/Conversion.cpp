@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Conversion.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jinypark <jinypark@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: jinypark <jinypark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 13:39:29 by jinypark          #+#    #+#             */
-/*   Updated: 2022/12/06 22:30:24 by jinypark         ###   ########.fr       */
+/*   Updated: 2022/12/16 13:24:28 by jinypark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,10 +65,20 @@ double	Conversion::getDouble() const
 	return (this->valueDouble_);
 }
 
+bool isNan(double d)
+{
+	return (d != d);
+}
+
+bool isInf(double d)
+{
+	return (d != 0 && d * 2 == d);
+}
+
 
 std::ostream& operator<<(std::ostream& os, const Conversion& obj)
 {
-	if (std::isnan(obj.getDouble()) || std::isinf(obj.getDouble())
+	if (isNan(obj.getDouble()) || isInf(obj.getDouble())
 		|| obj.getDouble() > 127 || obj.getDouble() < 0)
 		std::cout << "char: impossible" << ENDL;
 	else if ((0 <= obj.getDouble() && obj.getDouble() < 32) || obj.getDouble() == 127)
@@ -76,7 +86,7 @@ std::ostream& operator<<(std::ostream& os, const Conversion& obj)
 	else
 		std::cout << "char: '" << obj.getChar() << "'" << ENDL;
 
-	if (std::isnan(obj.getDouble()) || std::isinf(obj.getDouble()))
+	if (isNan(obj.getDouble()) || isInf(obj.getDouble()))
 		std::cout << "int: impossible" << ENDL;
 	else
 		std::cout << "int: " << obj.getInt() << ENDL;
