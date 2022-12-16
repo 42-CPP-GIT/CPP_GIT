@@ -3,21 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jinypark <jinypark@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: jinypark <jinypark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 22:00:15 by jinypark          #+#    #+#             */
-/*   Updated: 2022/12/10 22:25:15 by jinypark         ###   ########.fr       */
+/*   Updated: 2022/12/16 13:50:08 by jinypark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "iter.hpp"
-
-// int main()
-// {
-// 	double a[10] = {1.2,2,3,4,5,6,7,8,9,0};
-
-// 	iter(a, 10, print<double>);
-// }
 
 class Awesome
 {
@@ -33,12 +26,7 @@ std::ostream &operator<<(std::ostream &o, Awesome const &rhs)
 	o << rhs.get();
 	return o;
 }
-template <typename T>
-void print(T const &x)
-{
-	std::cout << x << std::endl;
-	return;
-}
+
 int main()
 {
 	int tab[] = {0, 1, 2, 3, 4};
