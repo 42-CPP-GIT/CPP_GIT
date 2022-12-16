@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.hpp                                           :+:      :+:    :+:   */
+/*   AForm.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jinypark <jinypark@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: jinypark <jinypark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 14:48:21 by jinypark          #+#    #+#             */
-/*   Updated: 2022/12/02 21:04:24 by jinypark         ###   ########.fr       */
+/*   Updated: 2022/12/12 13:48:26 by jinypark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FORM_HPP
-#define FORM_HPP
+#ifndef AFORM_HPP
+#define AFORM_HPP
 
 # include <iostream>
 # include "Bureaucrat.hpp"
 
-class Form
+class AForm
 {
 private:
 	const std::string	name_;
@@ -24,9 +24,9 @@ private:
 	const int			signGrade_;
 	const int			executeGrade_;
 public:
-	Form();
-	Form(const std::string name, const int signedGrade, const int executeGrade);
-	virtual ~Form();
+	AForm();
+	AForm(const std::string name, const int signedGrade, const int executeGrade);
+	virtual ~AForm();
 	void	beSigned(const Bureaucrat& applicant);
 	bool	getSigned() const;
 	int		getSignGrade() const;
@@ -54,7 +54,7 @@ public:
 	};
 };
 
-std::ostream& operator<<(std::ostream& os, Form& obj);
+std::ostream& operator<<(std::ostream& os, AForm& obj);
 
 
 #endif

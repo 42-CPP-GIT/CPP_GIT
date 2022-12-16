@@ -16,12 +16,12 @@
 
 # include <cstdlib>
 # include <ctime>
-# include "Form.hpp"
+# include "AForm.hpp"
 
 # define ROBOTOMY_SIGN_GRADE 72
 # define ROBOTOMY_EXECUTE_GRADE 45
 
-class RobotomyRequestForm : public Form
+class RobotomyRequestForm : public AForm
 {
 private:
 	std::string target_;

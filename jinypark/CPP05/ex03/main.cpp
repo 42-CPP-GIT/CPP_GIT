@@ -6,12 +6,12 @@
 /*   By: jinypark <jinypark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 13:59:42 by jinypark          #+#    #+#             */
-/*   Updated: 2022/11/30 21:25:50 by jinypark         ###   ########.fr       */
+/*   Updated: 2022/12/16 12:03:21 by jinypark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "AForm.hpp"
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
@@ -20,47 +20,47 @@
 int main()
 {
 	std::srand(static_cast<unsigned int>(std::time(0)));
-	// try
-	// {
-	// 	Bureaucrat c(-2);
-	// 	Bureaucrat b(150);
-	// 	Bureaucrat a(200);
-	// 	std::cout << b;
-	// }
-	// catch(const std::exception& e)
-	// {
-	// 	std::cerr << e.what() << '\n';
-	// }
 
-	// try
-	// {
-	// 	Bureaucrat a(3);
-	// 	while(1)
-	// 	{
-	// 		std::cout << a << "\n";
-	// 		a.increment(1);
-	// 	}
-	// }
-	// catch(const std::exception& e)
-	// {
-	// 	std::cerr << e.what() << '\n';
-	// }
+	try
+	{
+		Bureaucrat	a(50);
+		Intern		intern;
+		AForm* form;
 
 
-	Bureaucrat	a(50);
-	Intern		intern;
-	Form* form;
-
-	form = intern.makeForm("shrubbery creation request", "jiny");
-	a.signForm(form);
-	a.executeForm(form);
-	form = intern.makeForm("robotomy request", "hchang");
-	a.signForm(form);
-	a.executeForm(form);
-	form = intern.makeForm("presidential pardon request", "sesim");
-	a.signForm(form);
-	a.executeForm(form);
-
+		try
+		{
+			form = intern.makeForm("shrubbery creation request", "jiny");
+			a.signForm(form);
+			a.executeForm(form);
+			delete form;
+			form = NULL;
+			form = intern.makeForm("robotomy request", "hchang");
+			a.signForm(form);
+			a.executeForm(form);
+			delete form;
+			form = NULL;
+			form = intern.makeForm("presidential pardon request", "sesim");
+			a.signForm(form);
+			a.executeForm(form);
+			delete form;
+			form = NULL;
+		}
+		catch(const std::exception& e)
+		{
+			if (form)
+			{
+				delete form;
+				form = NULL;
+			}
+			std::cerr << e.what() << '\n';
+		}
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	
 
 	return (0);
 }

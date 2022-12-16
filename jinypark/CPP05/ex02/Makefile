@@ -6,7 +6,7 @@
 #    By: jinypark <jinypark@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/24 17:01:08 by jinypark          #+#    #+#              #
-#    Updated: 2022/11/30 20:44:35 by jinypark         ###   ########.fr        #
+#    Updated: 2022/12/16 11:41:52 by jinypark         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ CXX 		=	c++
 NAME		=	a.out
 RM 			=	rm -rvf
 CPPFLAGS 	=	-Wall -Wextra -Werror -std=c++98
-SRCS		=	main.cpp Bureaucrat.cpp Form.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp \
+SRCS		=	main.cpp Bureaucrat.cpp AForm.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp \
 				PresidentialPardonForm.cpp
 OBJS		=	$(SRCS:.cpp=.o)
 

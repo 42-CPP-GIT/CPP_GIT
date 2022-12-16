@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jinypark <jinypark@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: jinypark <jinypark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 13:53:26 by jinypark          #+#    #+#             */
-/*   Updated: 2022/12/02 19:28:53 by jinypark         ###   ########.fr       */
+/*   Updated: 2022/12/16 11:48:03 by jinypark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "AForm.hpp"
 
 Bureaucrat::Bureaucrat(void) : name_("jinypark")
 {
@@ -92,7 +92,7 @@ std::ostream& operator<<(std::ostream& os, Bureaucrat& obj)
 	return (os);
 }
 
-void	Bureaucrat::signForm(Form* form)
+void	Bureaucrat::signForm(AForm* form)
 {
 	try
 	{
@@ -105,7 +105,7 @@ void	Bureaucrat::signForm(Form* form)
 	}
 }
 
-void	Bureaucrat::executeForm(Form* form) const
+void	Bureaucrat::executeForm(AForm* form) const
 {
 	try
 	{

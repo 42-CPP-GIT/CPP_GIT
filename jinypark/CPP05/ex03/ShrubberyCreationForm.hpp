@@ -15,12 +15,12 @@
 #define ShrubberyCreationForm_HPP
 
 # include <fstream>
-# include "Form.hpp"
+# include "AForm.hpp"
 
 # define SHRUBBERY_SIGN_GRADE 145
 # define SHRUBBERY_EXECUTE_GRADE 137
 
-class ShrubberyCreationForm : public Form
+class ShrubberyCreationForm : public AForm
 {
 private:
 	std::string target_;

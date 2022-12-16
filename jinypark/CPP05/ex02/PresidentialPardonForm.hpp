@@ -14,12 +14,12 @@
 #ifndef PresidentialPardonForm_HPP
 #define PresidentialPardonForm_HPP
 
-# include "Form.hpp"
+# include "AForm.hpp"
 
-# define PRESIDENTIALPARDONFORM_SIGN_GRADE 72
-# define PRESIDENTIALPARDONFORM_EXECUTE_GRADE 45
+# define PRESIDENTIALPARDONFORM_SIGN_GRADE 25
+# define PRESIDENTIALPARDONFORM_EXECUTE_GRADE 5
 
-class PresidentialPardonForm : public Form
+class PresidentialPardonForm : public AForm
 {
 private:
 	std::string target_;

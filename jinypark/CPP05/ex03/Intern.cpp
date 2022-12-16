@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Intern.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jinypark <jinypark@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: jinypark <jinypark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 21:13:26 by jinypark          #+#    #+#             */
-/*   Updated: 2022/12/02 21:05:52 by jinypark         ###   ########.fr       */
+/*   Updated: 2022/12/16 11:50:08 by jinypark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ Intern	&Intern::operator=(const Intern& obj)
 	return (*this);
 }
 
-Form*	Intern::makeForm(std::string formName, std::string target)
+AForm*	Intern::makeForm(std::string formName, std::string target)
 {
 	std::string formArr[3] = {"shrubbery creation request", "robotomy request", "presidential pardon request"};
 

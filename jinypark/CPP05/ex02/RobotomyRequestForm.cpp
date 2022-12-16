@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   RobotomyRequestForm.cpp                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jinypark <jinypark@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: jinypark <jinypark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 22:51:33 by jinypark          #+#    #+#             */
-/*   Updated: 2022/12/02 20:59:42 by jinypark         ###   ########.fr       */
+/*   Updated: 2022/12/16 11:45:31 by jinypark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ RobotomyRequestForm::RobotomyRequestForm(std::string& target) : target_(target)
 	this->setExecuteGrade(ROBOTOMY_EXECUTE_GRADE);
 }
 
-RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& obj) : Form(obj.getName(), obj.getSignGrade(), obj.getExecuteGrade())
+RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& obj) : AForm(obj.getName(), obj.getSignGrade(), obj.getExecuteGrade())
 {
 	*this = obj;
 }

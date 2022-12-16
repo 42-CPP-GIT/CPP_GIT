@@ -29,7 +29,7 @@ PresidentialPardonForm::PresidentialPardonForm(std::string& target) : target_(ta
 	this->setExecuteGrade(PRESIDENTIALPARDONFORM_EXECUTE_GRADE);
 }
 
-PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& obj) : Form(obj.getName(), obj.getSignGrade(), obj.getExecuteGrade())
+PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& obj) : AForm(obj.getName(), obj.getSignGrade(), obj.getExecuteGrade())
 {
 	*this = obj;
 }
