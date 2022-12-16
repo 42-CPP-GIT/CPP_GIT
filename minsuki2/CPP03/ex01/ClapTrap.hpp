@@ -6,7 +6,7 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 16:30:17 by minsuki2          #+#    #+#             */
-/*   Updated: 2022/12/16 18:36:56 by minsuki2         ###   ########.fr       */
+/*   Updated: 2022/12/16 23:08:36 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # define MSG_DESTRUCT		"[Destructor]"
 # define MSG_ANNOUNCE		"[Announce]"
 # define MSG_CLAPTRAP_BORN	"Seriously? Claptrap? You'vs heard about his weird Actions Skill, right? This is REALLY what you want?"
-# define MSG_GONE			"hi is gone..."
+# define MSG_GONE			"is gone..."
 # define MSG_CLAPTRAP		"ClapTrap"
 # define MSG_GETRB			"getRawBits member function"
 # define MSG_ATTACK			"attacks"
@@ -45,7 +45,7 @@ class ClapTrap {
 		ClapTrap(const std::string& name);
 		ClapTrap(const ClapTrap& obj);
 		ClapTrap& operator=(const ClapTrap& obj);
-		~ClapTrap(void);
+		virtual ~ClapTrap(void);
 		void		attack(const std::string& target);
 		void		takeDamage(unsigned int amount);
 		void		beRepaired(unsigned int amount);

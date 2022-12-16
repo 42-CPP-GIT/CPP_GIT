@@ -6,7 +6,7 @@
 #    By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/29 18:32:08 by minsuki2          #+#    #+#              #
-#    Updated: 2022/12/16 22:46:11 by minsuki2         ###   ########.fr        #
+#    Updated: 2022/12/16 22:46:00 by minsuki2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ DEPS_DIR 	:=		deps
 SRCS 		:=		$(wildcard $(SRCS_DIR)/*.cpp)
 OBJS 		:=		$(addprefix $(OBJS_DIR)/, $(notdir $(SRCS:.cpp=.o)))
 DEPS		:=		$(addprefix $(DEPS_DIR)/, $(notdir $(SRCS:.cpp=.d)))
-NAME		:=		claptrap
+NAME		:=		scavtrap
 
 all: $(NAME)
 

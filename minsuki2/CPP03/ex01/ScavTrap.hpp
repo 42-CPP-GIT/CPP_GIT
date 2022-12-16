@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ClapTrap.hpp                                       :+:      :+:    :+:   */
+/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 16:30:17 by minsuki2          #+#    #+#             */
-/*   Updated: 2022/12/16 18:36:56 by minsuki2         ###   ########.fr       */
+/*   Updated: 2022/12/16 23:13:37 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
-#ifndef CLAPTRAP_HPP
-# define CLAPTRAP_HPP
+#ifndef SCAVTRAP_HPP
+# define SCAVTRAP_HPP
 # include <iostream>
+# include "ClapTrap.hpp"
 
 # define MSG_CONSTRUCT		"[Constructor]"
 # define MSG_DESTRUCT		"[Destructor]"
 # define MSG_ANNOUNCE		"[Announce]"
-# define MSG_CLAPTRAP_BORN	"Seriously? Claptrap? You'vs heard about his weird Actions Skill, right? This is REALLY what you want?"
-# define MSG_GONE			"hi is gone..."
-# define MSG_CLAPTRAP		"ClapTrap"
+# define MSG_SCAVTRAP_BORN	"Greetings, fellow CL4P-TP unit. I simply wish to gain entrance"
+# define MSG_SCAVTRAP		"ScavTrap"
 # define MSG_GETRB			"getRawBits member function"
 # define MSG_ATTACK			"attacks"
 # define MSG_TAKE_DAMAGE	"is taken damage"
@@ -39,16 +39,15 @@
 
 
 
-class ClapTrap {
+
+class ScavTrap : public ClapTrap {
 	public:
-		ClapTrap(void);
-		ClapTrap(const std::string& name);
-		ClapTrap(const ClapTrap& obj);
-		ClapTrap& operator=(const ClapTrap& obj);
-		~ClapTrap(void);
-		void		attack(const std::string& target);
-		void		takeDamage(unsigned int amount);
-		void		beRepaired(unsigned int amount);
+		ScavTrap(void);
+		ScavTrap(const std::string& name);
+		ScavTrap(const ScavTrap& obj);
+		ScavTrap& operator=(const ScavTrap& obj);
+		~ScavTrap(void);
+		void		guardGate(void);
 		void		checkStatus(void);
 
 	private:
