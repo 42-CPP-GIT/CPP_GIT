@@ -6,7 +6,7 @@
 /*   By: sesim <sesim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 10:08:58 by sesim             #+#    #+#             */
-/*   Updated: 2022/12/02 13:03:47 by sesim            ###   ########.fr       */
+/*   Updated: 2022/12/16 13:12:34 by sesim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 int main()
 {
 	MutantStack<int> mstack;
-	mstack.push(5); mstack.push(17);
+	mstack.push(5);
+	mstack.push(17);
 
 	std::cout << mstack.top() << std::endl; mstack.pop();
 	std::cout << mstack.size() << std::endl;

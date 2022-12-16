@@ -6,7 +6,7 @@
 /*   By: sesim <sesim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 18:42:18 by sesim             #+#    #+#             */
-/*   Updated: 2022/12/15 14:13:38 by sesim            ###   ########.fr       */
+/*   Updated: 2022/12/16 11:51:26 by sesim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,10 @@ Base*	generator(void)
 		return (new B());
 	else
 		return (new C());
+}
+
+void	do_nothing(void *)
+{
 }
 
 bool	isAPtr(Base *obj)
@@ -57,7 +61,7 @@ bool	isARef(Base& obj)
 	try
 	{
 		A&	tmp(dynamic_cast<A&>(obj));
-		(void)tmp;
+		do_nothing(&tmp);
 	}
 	catch(std::bad_cast& e)
 	{
@@ -71,7 +75,7 @@ bool	isBRef(Base& obj)
 	try
 	{
 		B&	tmp(dynamic_cast<B&>(obj));
-		(void)tmp;
+		do_nothing(&tmp);
 	}
 	catch(std::bad_cast& e)
 	{
@@ -85,7 +89,7 @@ bool	isCRef(Base& obj)
 	try
 	{
 		C&	tmp(dynamic_cast<C&>(obj));
-		(void)tmp;
+		do_nothing(&tmp);
 	}
 	catch(std::bad_cast& e)
 	{
@@ -130,27 +134,17 @@ void	identify(Base& obj)
 int	main(void)
 {
 	Base*	ap(generator());
-	Base*	bp(generator());
-	Base*	cp(generator());
-	Base*	base_ptr(generator());
+	Base*	base_ptr(new Base());
 
 	identify(ap);
-	identify(bp);
-	identify(cp);
 	identify(base_ptr);
 
 	Base&	ar(*ap);
-	Base&	br(*bp);
-	Base&	cr(*cp);
 	Base&	base_ref(*base_ptr);
 
 	identify(ar);
-	identify(br);
-	identify(cr);
 	identify(base_ref);
 
 	delete ap;
-	delete bp;
-	delete cp;
 	delete base_ptr;
 }
