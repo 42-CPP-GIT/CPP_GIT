@@ -6,22 +6,23 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 16:42:10 by minsuki2          #+#    #+#             */
-/*   Updated: 2022/12/17 23:46:48 by minsuki2         ###   ########.fr       */
+/*   Updated: 2022/12/17 22:42:20 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "ClapTrap.hpp"
 
-unsigned int	ClapTrap::max_hp_ = 10;
-unsigned int	ClapTrap::max_ep_ = 10;
-unsigned int	ClapTrap::max_ad_ = 0;
+// unsigned int	ClapTrap::max_hp_ = 10;
+// unsigned int	ClapTrap::max_ep_ = 10;
+// unsigned int	ClapTrap::max_ad_ = 0;
 
 const std::string& ClapTrap::getName() const { return this->name_; }
 const unsigned int& ClapTrap::getAttackDamage() const { return this->attack_damage_; }
 
 ClapTrap::ClapTrap(void)
-	: name_("Unknown"), health_point_(max_hp_), energy_point_(max_ep_), attack_damage_(max_ad_),
+	: name_("Unknown"), health_point_(CT_MAX_HP), energy_point_(CT_MAX_EP), attack_damage_(CT_MAX_AD),
+	  max_hp_(CT_MAX_HP), max_ep_(CT_MAX_EP), max_ad_(CT_MAX_AD) {
 	std::cout << MAGENTA << MSG_CONSTRUCT << ' ' << MSG_CLAPTRAP_BORN << RESET<< std::endl;
 }
 

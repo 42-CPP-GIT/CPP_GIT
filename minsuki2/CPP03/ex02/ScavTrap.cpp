@@ -6,13 +6,12 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 16:42:10 by minsuki2          #+#    #+#             */
-/*   Updated: 2022/12/17 23:43:45 by minsuki2         ###   ########.fr       */
+/*   Updated: 2022/12/17 22:56:41 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "ScavTrap.hpp"
-
 
 void	ScavTrap::changeMaxValue_(void) {
 	ClapTrap::max_hp_ = ST_MAX_HP;
@@ -20,17 +19,17 @@ void	ScavTrap::changeMaxValue_(void) {
 	ClapTrap::max_ad_ = ST_MAX_AD;
 }
 
-ScavTrap::ScavTrap(void) : ClapTrap() {
+ScavTrap::ScavTrap(void) {
 	std::cout << MAGENTA << MSG_CONSTRUCT << ' ' << MSG_SCAVTRAP_BORN << RESET<< std::endl;
 	changeMaxValue_();
 	this->name_ = "Unknow";
 	this->health_point_ = max_hp_;
 	this->energy_point_ = max_ep_;
-	this->attack_damage_ = max_ad_;
+	this->attack_damage_ = max_ad_; 
 	this->guard_gate_mode_ = false;
 }
 
-ScavTrap::ScavTrap(const std::string& name) : ClapTrap(name) {
+ScavTrap::ScavTrap(const std::string& name) {
 	std::cout << MAGENTA << MSG_CONSTRUCT << ' ' << MSG_SCAVTRAP_BORN << RESET << std::endl;
 	changeMaxValue_();
 	this->name_ = name;

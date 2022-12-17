@@ -1,36 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
+/*   FragTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 16:30:17 by minsuki2          #+#    #+#             */
-/*   Updated: 2022/12/17 22:49:02 by minsuki2         ###   ########.fr       */
+/*   Updated: 2022/12/17 23:31:26 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
-#ifndef SCAVTRAP_HPP
-# define SCAVTRAP_HPP
+#ifndef FRAGTRAP_HPP
+# define FRAGTRAP_HPP
 # include "ClapTrap.hpp"
 
-# define MSG_SCAVTRAP_BORN	"Greetings, fellow CL4P-TP unit. I simply wish to gain entrance"
-# define MSG_SCAVTRAP		"ScavTrap"
-# define MSG_GATEMODE		"is now in Gate keeper mode."
+# define MSG_FRAGTRAP_BORN	""
+# define MSG_FRAGTRAP		"FragTrap"
+# define MSG_HIGHFIVESGUYS	"\"Shall we do positive high fives?\""
 
-enum e_st_max { ST_MAX_HP = 100, ST_MAX_EP = 50, ST_MAX_AD = 20 };
+enum e_ft_max { FT_MAX_HP = 100, FT_MAX_EP = 100, FT_MAX_AD = 30 };
 
-class ScavTrap : public ClapTrap {
+class FragTrap : virtual public ClapTrap {
 	public:
-		ScavTrap(void); ScavTrap(const std::string& name); ScavTrap(const ScavTrap& obj);
-		ScavTrap& operator=(const ScavTrap& obj);
-		~ScavTrap(void);
-		void		guardGate(void);
-		void		attack(const std::string& target);
+		FragTrap(void); FragTrap(const std::string& name); FragTrap(const FragTrap& obj);
+		FragTrap& operator=(const FragTrap& obj);
+		~FragTrap(void);
+		void		highFivesGuys(void) const;
 		void		checkStatus(void) const;
 	private:
 		void		changeMaxValue_(void);
-		bool		guard_gate_mode_;
 };
 #endif

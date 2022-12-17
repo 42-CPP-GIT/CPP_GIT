@@ -6,11 +6,12 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 15:13:18 by minsuki2          #+#    #+#             */
-/*   Updated: 2022/12/17 23:50:22 by minsuki2         ###   ########.fr       */
+/*   Updated: 2022/12/17 23:01:51 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 
 static void	_test1(void) {	// exception handling
 	std::cout << "\n\n@@@@@@@@@@@@@@@ < TEST 1 > @@@@@@@@@@@@@@@" << std::endl;
@@ -54,74 +55,74 @@ static void	_test1(void) {	// exception handling
 
 }
 
-static void	_test2(void) {	// ScavTrap1 vs ScavTrap2
+static void	_test2(void) {	// FragTrap1 vs FragTrap2
 	std::cout << "\n\n@@@@@@@@@@@@@@@ < TEST 2 > @@@@@@@@@@@@@@@" << std::endl;
-	ScavTrap	st_bot1("sc4v-Tp-1");
-	st_bot1.checkStatus();
-	ScavTrap	st_bot2("sc4v-Tp-2");
-	st_bot2.checkStatus();
+	ScavTrap	ft_bot1("sc4v-Tp-1");
+	ft_bot1.checkStatus();
+	ScavTrap	ft_bot2("sc4v-Tp-2");
+	ft_bot2.checkStatus();
 
-	st_bot1.attack(st_bot2.getName());
-	st_bot1.checkStatus();
-	st_bot2.takeDamage(st_bot1.getAttackDamage());
-	st_bot2.checkStatus();
+	ft_bot1.attack(ft_bot2.getName());
+	ft_bot1.checkStatus();
+	ft_bot2.takeDamage(ft_bot1.getAttackDamage());
+	ft_bot2.checkStatus();
 
 	for (int i = 0; i < 2; ++i) {
-		st_bot2.attack(st_bot1.getName());
-		st_bot2.checkStatus();
-		st_bot1.takeDamage(st_bot2.getAttackDamage());
-		st_bot1.checkStatus();
-		st_bot1.attack(st_bot2.getName());
-		st_bot1.checkStatus();
-		st_bot2.takeDamage(st_bot1.getAttackDamage());
-		st_bot2.checkStatus();
+		ft_bot2.attack(ft_bot1.getName());
+		ft_bot2.checkStatus();
+		ft_bot1.takeDamage(ft_bot2.getAttackDamage());
+		ft_bot1.checkStatus();
+		ft_bot1.attack(ft_bot2.getName());
+		ft_bot1.checkStatus();
+		ft_bot2.takeDamage(ft_bot1.getAttackDamage());
+		ft_bot2.checkStatus();
 	}
-	st_bot1.guardGate();
-	st_bot1.checkStatus();
-	st_bot2.checkStatus();
+	ft_bot1.guardGate();
+	ft_bot1.checkStatus();
+	ft_bot2.checkStatus();
 
-	st_bot1.beRepaired(UINT_MAX);
-	st_bot1.checkStatus();
+	ft_bot1.beRepaired(UINT_MAX);
+	ft_bot1.checkStatus();
 	for (int i = 0; i < 3; ++i) {
-		st_bot2.beRepaired(40);
-		st_bot2.checkStatus();
+		ft_bot2.beRepaired(40);
+		ft_bot2.checkStatus();
 	}
 
-	st_bot2.takeDamage(UINT_MAX);
-	st_bot2.checkStatus();
-	st_bot2.beRepaired(UINT_MAX);
-	st_bot2.checkStatus();
+	ft_bot2.takeDamage(UINT_MAX);
+	ft_bot2.checkStatus();
+	ft_bot2.beRepaired(UINT_MAX);
+	ft_bot2.checkStatus();
 }
 
 
 
-static void	_test3(void) {	// ScavTrap vs ClapTrap
+static void	_test3(void) {	// FragTrap vs ClapTrap
 	std::cout << "\n\n@@@@@@@@@@@@@@@ < TEST 3 > @@@@@@@@@@@@@@@" << std::endl;
+	FragTrap	ft_bot("fr4g-Tp");
+	ft_bot.checkStatus();
 	ClapTrap	ct_bot("cl4p-Tp");
-	ScavTrap	st_bot("sc4v-Tp");
-	st_bot.checkStatus();
 	ct_bot.checkStatus();
 
-	ct_bot.attack(st_bot.getName());
+	ct_bot.attack(ft_bot.getName());
 	ct_bot.checkStatus();
-	st_bot.takeDamage(ct_bot.getAttackDamage());
-	st_bot.checkStatus();
+	ft_bot.takeDamage(ct_bot.getAttackDamage());
+	ft_bot.checkStatus();
 
-	st_bot.attack(ct_bot.getName());
-	st_bot.checkStatus();
-	ct_bot.takeDamage(st_bot.getAttackDamage());
+	ft_bot.attack(ct_bot.getName());
+	ft_bot.checkStatus();
+	ct_bot.takeDamage(ft_bot.getAttackDamage());
 	ct_bot.checkStatus();
 
 	ct_bot.beRepaired(20);		// already Dead
 	ct_bot.checkStatus();
-	st_bot.beRepaired(20);		// HP is full 
-	st_bot.checkStatus();
+	ft_bot.beRepaired(20);		// HP is full
+	ft_bot.checkStatus();
+
+	ft_bot.highFivesGuys();
+
 }
 
 int	main(void) {
-	ClapTrap::max_hp_ = 10;
-	ClapTrap::max_hp_ = 0;
-	ClapTrap::max_hp_ = 10;
 	_test1();
 	_test2();
 	_test3();

@@ -6,7 +6,7 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 16:30:17 by minsuki2          #+#    #+#             */
-/*   Updated: 2022/12/17 23:50:04 by minsuki2         ###   ########.fr       */
+/*   Updated: 2022/12/17 22:46:10 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,9 @@ class ClapTrap {
 		// static unsigned int			max_hp_;
 		// static unsigned int			max_ep_;
 		// static unsigned int			max_ad_;
-		static unsigned int			max_hp;
-		static unsigned int			max_ep;
-		static unsigned int			max_ad;
+		unsigned int			max_hp_;
+		unsigned int			max_ep_;
+		unsigned int			max_ad_;
 };
 
 #define RESET   "\033[0m"

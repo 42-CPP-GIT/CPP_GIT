@@ -6,7 +6,7 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 16:30:17 by minsuki2          #+#    #+#             */
-/*   Updated: 2022/12/17 22:49:02 by minsuki2         ###   ########.fr       */
+/*   Updated: 2022/12/17 23:24:12 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 
 enum e_st_max { ST_MAX_HP = 100, ST_MAX_EP = 50, ST_MAX_AD = 20 };
 
-class ScavTrap : public ClapTrap {
+class ScavTrap : virtual public ClapTrap {
 	public:
 		ScavTrap(void); ScavTrap(const std::string& name); ScavTrap(const ScavTrap& obj);
 		ScavTrap& operator=(const ScavTrap& obj);
