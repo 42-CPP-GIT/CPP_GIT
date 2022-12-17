@@ -6,24 +6,25 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 16:42:10 by minsuki2          #+#    #+#             */
-/*   Updated: 2022/12/16 23:09:08 by minsuki2         ###   ########.fr       */
+/*   Updated: 2022/12/17 18:09:56 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "ClapTrap.hpp"
 
-const unsigned int	ClapTrap::max_hp = 10;
-const unsigned int	ClapTrap::max_ep = 10;
-const unsigned int	ClapTrap::max_ad = 0;
+// unsigned int	ClapTrap::max_hp_ = 10;
+// unsigned int	ClapTrap::max_ep_ = 10;
+// unsigned int	ClapTrap::max_ad_ = 0;
 
 ClapTrap::ClapTrap(void)
-	: bot_name_("Unknown"), health_point_(max_hp), energy_point_(max_ep), attack_damage_(max_ad) {
+	: max_hp_(MAX_HP), max_ep_(MAX_EP), max_ad_(MAX_AD), \
+	bot_name_("Unknown"), health_point_(MAX_HP), energy_point_(MAX_EP), attack_damage_(MAX_AD) {
 	std::cout << MAGENTA << MSG_CONSTRUCT << ' ' << MSG_CLAPTRAP_BORN << RESET<< std::endl;
 }
 
 ClapTrap::ClapTrap(const std::string& name)
-	: bot_name_(name), health_point_(max_hp), energy_point_(max_ep), attack_damage_(max_ad) {
+	: bot_name_(name), health_point_(max_hp_), energy_point_(max_ep_), attack_damage_(max_ad_) {
 	std::cout << MAGENTA << MSG_CONSTRUCT << ' ' << MSG_CLAPTRAP_BORN << RESET << std::endl;
 }
 
@@ -89,15 +90,15 @@ void		ClapTrap::beRepaired(unsigned int amount) {
 		std::cout << BOLDYELLOW << MSG_CLAPTRAP << ' ' << this->bot_name_ << ' ' \
 				  << MSG_NO_EP << RESET << std::endl;
 	}
-	else if (this->health_point_ == ClapTrap::max_hp) {
+	else if (this->health_point_ == ClapTrap::max_hp_) {
 		std::cout << BOLDYELLOW << MSG_CLAPTRAP << ' ' << this->bot_name_ << ' ' \
 				  << MSG_FULL_HP << RESET << std::endl;
 	}
 	else {
 		this->health_point_ = UINT_MAX - this->health_point_ >= amount \
 								? this->health_point_ + amount : UINT_MAX;
-		this->health_point_ = this->health_point_ <= ClapTrap::max_hp \
-								? this->health_point_ : ClapTrap::max_hp;
+		this->health_point_ = this->health_point_ <= max_hp_ \
+								? this->health_point_ : max_hp_;
 		this->energy_point_ = this->energy_point_ > 0 \
 								? this->energy_point_ - 1 : 0;
 		std::cout << YELLOW << MSG_CLAPTRAP << ' ' << this->bot_name_ << ' ' \

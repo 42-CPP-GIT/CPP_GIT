@@ -6,7 +6,7 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 16:30:17 by minsuki2          #+#    #+#             */
-/*   Updated: 2022/12/16 23:08:36 by minsuki2         ###   ########.fr       */
+/*   Updated: 2022/12/17 18:09:27 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@
 # define MSG_REPAIR			"is repaired by"
 
 
+enum e_max { MAX_HP = 10, MAX_EP = 10, MAX_AD = 0 };
 
 class ClapTrap {
 	public:
@@ -50,15 +51,17 @@ class ClapTrap {
 		void		takeDamage(unsigned int amount);
 		void		beRepaired(unsigned int amount);
 		void		checkStatus(void);
-
-	private:
-		const std::string	bot_name_;
-		unsigned int		health_point_;
-		unsigned int		energy_point_;
-		unsigned int		attack_damage_;
-		static const unsigned int	max_hp;
-		static const unsigned int	max_ep;
-		static const unsigned int	max_ad;
+	protected:
+		std::string					bot_name_;
+		unsigned int				health_point_;
+		unsigned int				energy_point_;
+		unsigned int				attack_damage_;
+		// static unsigned int			max_hp_;
+		// static unsigned int			max_ep_;
+		// static unsigned int			max_ad_;
+		const unsigned int			max_hp_;
+		const unsigned int			max_ep_;
+		const unsigned int			max_ad_;
 };
 
 #define RESET   "\033[0m"
@@ -78,5 +81,4 @@ class ClapTrap {
 #define BOLDMAGENTA "\033[1m\033[35m"      /* Bold Magenta */
 #define BOLDCYAN    "\033[1m\033[36m"      /* Bold Cyan */
 #define BOLDWHITE   "\033[1m\033[37m"      /* Bold White */
-
 #endif
