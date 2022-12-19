@@ -28,7 +28,6 @@ private:
 	RobotomyRequestForm();
 public:
 	RobotomyRequestForm(std::string& target);
-	RobotomyRequestForm(const std::string name, const int signedGrade, const int executeGrade);
 	RobotomyRequestForm(const RobotomyRequestForm &obj);
 	RobotomyRequestForm	&operator=(const RobotomyRequestForm &obj);
 	~RobotomyRequestForm();
