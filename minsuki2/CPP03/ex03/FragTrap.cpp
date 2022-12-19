@@ -6,7 +6,7 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 16:42:10 by minsuki2          #+#    #+#             */
-/*   Updated: 2022/12/17 23:02:34 by minsuki2         ###   ########.fr       */
+/*   Updated: 2022/12/19 17:03:18 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,13 @@ void	FragTrap::changeMaxValue_(void) {
 	ClapTrap::max_hp_ = FT_MAX_HP;
 	ClapTrap::max_ep_ = FT_MAX_EP;
 	ClapTrap::max_ad_ = FT_MAX_AD;
+}
+
+void	FragTrap::inputMemberValue_(const FragTrap& obj) {
+	this->name_ = obj.name_;
+	this->health_point_ = obj.health_point_;
+	this->energy_point_ = obj.energy_point_;
+	this->attack_damage_ = obj.attack_damage_;
 }
 
 FragTrap::FragTrap(void) {

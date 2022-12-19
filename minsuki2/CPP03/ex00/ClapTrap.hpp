@@ -6,7 +6,7 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 16:30:17 by minsuki2          #+#    #+#             */
-/*   Updated: 2022/12/16 18:36:56 by minsuki2         ###   ########.fr       */
+/*   Updated: 2022/12/19 17:54:47 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,12 @@
 # define MSG_INCREASE		"increasing"
 # define MSG_HP				"HP"
 # define MSG_P_O_D			"points of damage!"
-# define MSG_P_O_E			"points of energy!"
+# define MSG_P_O_H			"points of heal!"
 # define MSG_NO_HP			"can not do anything because HP is 0!"
 # define MSG_FULL_HP			"do not need to do because HP is FULL!"
 # define MSG_NO_EP			"can not do anything because EP is 0!"
 # define MSG_DIED			"is already dead..."
-# define MSG_REPAIR			"is repaired by"
+# define MSG_REPAIR			"is repaired"
 
 
 
@@ -46,19 +46,21 @@ class ClapTrap {
 		ClapTrap(const ClapTrap& obj);
 		ClapTrap& operator=(const ClapTrap& obj);
 		~ClapTrap(void);
-		void		attack(const std::string& target);
-		void		takeDamage(unsigned int amount);
-		void		beRepaired(unsigned int amount);
-		void		checkStatus(void);
+		const std::string&		getName() const;
+		const unsigned int&		getAttackDamage() const;
+		void					attack(const std::string& target);
+		void					takeDamage(unsigned int amount);
+		void					beRepaired(unsigned int amount);
+		void					checkStatus(void);
 
 	private:
-		const std::string	bot_name_;
-		unsigned int		health_point_;
-		unsigned int		energy_point_;
-		unsigned int		attack_damage_;
-		static const unsigned int	max_hp;
-		static const unsigned int	max_ep;
-		static const unsigned int	max_ad;
+		const std::string		name_;
+		unsigned int			health_point_;
+		unsigned int			energy_point_;
+		unsigned int			attack_damage_;
+		static unsigned int		limit_hp_;
+		static unsigned int		limit_ep_;
+		static unsigned int		limit_ad_;
 };
 
 #define RESET   "\033[0m"

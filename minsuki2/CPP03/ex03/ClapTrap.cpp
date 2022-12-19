@@ -6,42 +6,50 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 16:42:10 by minsuki2          #+#    #+#             */
-/*   Updated: 2022/12/17 22:42:20 by minsuki2         ###   ########.fr       */
+/*   Updated: 2022/12/19 16:53:52 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "ClapTrap.hpp"
 
-// unsigned int	ClapTrap::max_hp_ = 10;
-// unsigned int	ClapTrap::max_ep_ = 10;
-// unsigned int	ClapTrap::max_ad_ = 0;
-
 const std::string& ClapTrap::getName() const { return this->name_; }
 const unsigned int& ClapTrap::getAttackDamage() const { return this->attack_damage_; }
 
-ClapTrap::ClapTrap(void)
-	: name_("Unknown"), health_point_(CT_MAX_HP), energy_point_(CT_MAX_EP), attack_damage_(CT_MAX_AD),
-	  max_hp_(CT_MAX_HP), max_ep_(CT_MAX_EP), max_ad_(CT_MAX_AD) {
-	std::cout << MAGENTA << MSG_CONSTRUCT << ' ' << MSG_CLAPTRAP_BORN << RESET<< std::endl;
+void	ClapTrap::inputMemberValue_(const std::string& name) {
+	this->name_ = name;
+	this->health_point_ = max_hp_;
+	this->energy_point_ = max_ep_;
+	this->attack_damage_ = max_ad_;
 }
 
-ClapTrap::ClapTrap(const std::string& name)
-	: name_(name), health_point_(CT_MAX_HP), energy_point_(CT_MAX_EP), attack_damage_(CT_MAX_AD),
-	  max_hp_(CT_MAX_HP), max_ep_(CT_MAX_EP), max_ad_(CT_MAX_AD) {
-	std::cout << MAGENTA << MSG_CONSTRUCT << ' ' << MSG_CLAPTRAP_BORN << RESET << std::endl;
-}
-
-ClapTrap::ClapTrap(const ClapTrap& obj)
-	: name_(obj.name_), health_point_(obj.health_point_), energy_point_(obj.energy_point_), attack_damage_(obj.attack_damage_),
-	  max_hp_(CT_MAX_HP), max_ep_(CT_MAX_EP), max_ad_(CT_MAX_AD) {
-	std::cout << MAGENTA << MSG_CONSTRUCT << ' ' << MSG_CLAPTRAP_BORN << RESET << std::endl;
-}
-
-ClapTrap& ClapTrap::operator=(const ClapTrap& obj) {
+void	ClapTrap::inputMemberValue_(const ClapTrap& obj) {
+	this->name_ = obj.name_;
 	this->health_point_ = obj.health_point_;
 	this->energy_point_ = obj.energy_point_;
 	this->attack_damage_ = obj.attack_damage_;
+}
+
+ClapTrap::ClapTrap(void)
+	: max_hp_(CT_MAX_HP), max_ep_(CT_MAX_EP), max_ad_(CT_MAX_AD) {
+	std::cout << MAGENTA << MSG_CONSTRUCT << ' ' << MSG_CLAPTRAP_BORN << RESET << std::endl;
+	this->inputMemberValue_("Unknown");
+}
+
+ClapTrap::ClapTrap(const std::string& name)
+	: max_hp_(CT_MAX_HP), max_ep_(CT_MAX_EP), max_ad_(CT_MAX_AD) {
+	std::cout << MAGENTA << MSG_CONSTRUCT << ' ' << MSG_CLAPTRAP_BORN << RESET << std::endl;
+	this->inputMemberValue_(name);
+}
+
+ClapTrap::ClapTrap(const ClapTrap& obj)
+	: max_hp_(CT_MAX_HP), max_ep_(CT_MAX_EP), max_ad_(CT_MAX_AD) {
+	std::cout << MAGENTA << MSG_CONSTRUCT << ' ' << MSG_CLAPTRAP_BORN << RESET << std::endl;
+	this->inputMemberValue_(obj);
+}
+
+ClapTrap& ClapTrap::operator=(const ClapTrap& obj) {
+	this->inputMemberValue_(obj);
 	return *this;
 }
 
@@ -99,16 +107,15 @@ void		ClapTrap::beRepaired(unsigned int amount) {
 				  << MSG_FULL_HP << RESET << std::endl;
 	}
 	else {
+		--this->energy_point_;
 		this->health_point_ = UINT_MAX - this->health_point_ >= amount \
 								? this->health_point_ + amount : UINT_MAX;
 		this->health_point_ = this->health_point_ <= max_hp_ \
 								? this->health_point_ : max_hp_;
 		std::cout << YELLOW << MSG_CLAPTRAP << ' ' << this->name_ << ' ' \
-				  << MSG_REPAIR << ' ' << amount << ", " \
-				  << MSG_USE << ' ' <<  this->energy_point_-- << ' ' \
-				  << MSG_P_O_E << RESET << std::endl;
-		// this->energy_point_ = this->energy_point_ > 0 \
-		//                         ? this->energy_point_ - 1 : 0;
+				  << MSG_REPAIR << ", " \
+				  << MSG_CAUSE << ' ' << amount << ' ' \
+				  << MSG_P_O_H << RESET << std::endl;
 	}
 }
 

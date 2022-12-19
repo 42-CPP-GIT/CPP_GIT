@@ -6,7 +6,7 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 16:30:17 by minsuki2          #+#    #+#             */
-/*   Updated: 2022/12/17 22:46:10 by minsuki2         ###   ########.fr       */
+/*   Updated: 2022/12/19 17:47:43 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,12 @@
 # define MSG_INCREASE		"increasing"
 # define MSG_HP				"HP"
 # define MSG_P_O_D			"points of damage!"
-# define MSG_P_O_E			"points of energy!"
+# define MSG_P_O_H			"points of heal!"
 # define MSG_NO_HP			"can not do anything because HP is 0!"
 # define MSG_FULL_HP			"do not need to do because HP is FULL!"
 # define MSG_NO_EP			"can not do anything because EP is 0!"
 # define MSG_DIED			"is already dead..."
-# define MSG_REPAIR			"is repaired by"
+# define MSG_REPAIR			"is repaired"
 
 enum e_ct_max { CT_MAX_HP = 10, CT_MAX_EP = 10, CT_MAX_AD = 0 };
 
@@ -52,16 +52,16 @@ class ClapTrap {
 		void					beRepaired(unsigned int amount);
 		void					checkStatus(void);
 	protected:
-		std::string					name_;
-		unsigned int				health_point_;
-		unsigned int				energy_point_;
-		unsigned int				attack_damage_;
-		// static unsigned int			max_hp_;
-		// static unsigned int			max_ep_;
-		// static unsigned int			max_ad_;
+		void					inputMemberValue_(const std::string& name);
+		std::string				name_;
+		unsigned int			health_point_;
+		unsigned int			energy_point_;
+		unsigned int			attack_damage_;
 		unsigned int			max_hp_;
 		unsigned int			max_ep_;
 		unsigned int			max_ad_;
+	private:
+		void					inputMemberValue_(const ClapTrap& obj);
 };
 
 #define RESET   "\033[0m"

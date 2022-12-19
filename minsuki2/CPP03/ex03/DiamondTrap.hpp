@@ -6,7 +6,7 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 16:30:17 by minsuki2          #+#    #+#             */
-/*   Updated: 2022/12/17 23:30:04 by minsuki2         ###   ########.fr       */
+/*   Updated: 2022/12/19 17:07:00 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,7 @@
 # define MSG_DIAMONDTRAP_BORN	"This is so risky!"
 # define MSG_DIAMONDTRAP		"DiamondTrap"
 
-// class ScavTrap;
-// class FragTrap;
-
-class DiamondTrap : public FragTrap, public ScavTrap {
+class DiamondTrap : public ScavTrap, public FragTrap {
 	public:
 		DiamondTrap(void);
 		DiamondTrap(const std::string& name);
@@ -34,8 +31,9 @@ class DiamondTrap : public FragTrap, public ScavTrap {
 		const unsigned int&		getAttackDamage() const;
 		void					checkStatus(void) const;
 	private:
-		void						changeMaxValue_(void);
-		std::string					name_;
+		void					inputMemberValue_(const DiamondTrap& obj);
+		void					changeMaxValue_(void);
+		std::string				name_;
 };
 
 #endif

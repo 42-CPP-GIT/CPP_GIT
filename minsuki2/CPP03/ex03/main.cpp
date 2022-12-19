@@ -6,11 +6,12 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 15:13:18 by minsuki2          #+#    #+#             */
-/*   Updated: 2022/12/17 23:24:23 by minsuki2         ###   ########.fr       */
+/*   Updated: 2022/12/19 17:30:47 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "DiamondTrap.hpp"
+#include <typeinfo>
 
 static void	_test1(void) {	// exception handling
 	std::cout << "\n\n@@@@@@@@@@@@@@@ < TEST 1 > @@@@@@@@@@@@@@@" << std::endl;
@@ -125,5 +126,7 @@ int	main(void) {
 	_test1();
 	_test2();
 	_test3();
+	ClapTrap	A;
+	std::cout << typeid(A).name() << std::endl;
 	return 0;
 }

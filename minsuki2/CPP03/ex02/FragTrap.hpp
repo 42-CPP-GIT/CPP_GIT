@@ -6,7 +6,7 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 16:30:17 by minsuki2          #+#    #+#             */
-/*   Updated: 2022/12/17 23:04:19 by minsuki2         ###   ########.fr       */
+/*   Updated: 2022/12/19 17:03:30 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,6 @@ class FragTrap : public ClapTrap {
 		void		checkStatus(void) const;
 	private:
 		void		changeMaxValue_(void);
+		void		inputMemberValue_(const FragTrap& obj);
 };
 #endif

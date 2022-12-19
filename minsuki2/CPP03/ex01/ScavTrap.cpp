@@ -6,7 +6,7 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 16:42:10 by minsuki2          #+#    #+#             */
-/*   Updated: 2022/12/17 23:43:45 by minsuki2         ###   ########.fr       */
+/*   Updated: 2022/12/19 17:23:07 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,41 +20,38 @@ void	ScavTrap::changeMaxValue_(void) {
 	ClapTrap::max_ad_ = ST_MAX_AD;
 }
 
-ScavTrap::ScavTrap(void) : ClapTrap() {
-	std::cout << MAGENTA << MSG_CONSTRUCT << ' ' << MSG_SCAVTRAP_BORN << RESET<< std::endl;
-	changeMaxValue_();
-	this->name_ = "Unknow";
-	this->health_point_ = max_hp_;
-	this->energy_point_ = max_ep_;
-	this->attack_damage_ = max_ad_;
-	this->guard_gate_mode_ = false;
-}
-
-ScavTrap::ScavTrap(const std::string& name) : ClapTrap(name) {
-	std::cout << MAGENTA << MSG_CONSTRUCT << ' ' << MSG_SCAVTRAP_BORN << RESET << std::endl;
-	changeMaxValue_();
-	this->name_ = name;
-	this->health_point_ = max_hp_;
-	this->energy_point_ = max_ep_;
-	this->attack_damage_ = max_ad_;
-	this->guard_gate_mode_ = false;
-}
-
-ScavTrap::ScavTrap(const ScavTrap& obj) {
-	std::cout << MAGENTA << MSG_CONSTRUCT << ' ' << MSG_SCAVTRAP_BORN << RESET << std::endl;
-	changeMaxValue_();
+void	ScavTrap::inputMemberValue_(const ScavTrap& obj) {
 	this->name_ = obj.name_;
 	this->health_point_ = obj.health_point_;
 	this->energy_point_ = obj.energy_point_;
 	this->attack_damage_ = obj.attack_damage_;
+}
+
+ScavTrap::ScavTrap(void) {
+	std::cout << MAGENTA << MSG_CONSTRUCT << ' ' << MSG_SCAVTRAP_BORN << RESET<< std::endl;
+	this->changeMaxValue_();
+	ClapTrap::inputMemberValue_("Unknow");
 	this->guard_gate_mode_ = false;
 }
 
+ScavTrap::ScavTrap(const std::string& name) {
+	std::cout << MAGENTA << MSG_CONSTRUCT << ' ' << MSG_SCAVTRAP_BORN << RESET << std::endl;
+	this->changeMaxValue_();
+	ClapTrap::inputMemberValue_(name);
+	this->guard_gate_mode_ = false;
+}
+
+ScavTrap::ScavTrap(const ScavTrap& obj) {
+	std::cout << MAGENTA << MSG_CONSTRUCT << ' ' << MSG_SCAVTRAP_BORN << RESET << std::endl; changeMaxValue_();
+	this->changeMaxValue_();
+	this->inputMemberValue_(obj);
+	this->guard_gate_mode_ = false;
+}
 
 ScavTrap& ScavTrap::operator=(const ScavTrap& obj) {
-	this->health_point_ = obj.health_point_;
-	this->energy_point_ = obj.energy_point_;
-	this->attack_damage_ = obj.attack_damage_;
+	this->changeMaxValue_();
+	this->inputMemberValue_(obj);
+	this->guard_gate_mode_ = false;
 	return *this;
 }
 

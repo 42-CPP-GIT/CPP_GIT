@@ -6,7 +6,7 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 16:42:10 by minsuki2          #+#    #+#             */
-/*   Updated: 2022/12/17 23:27:42 by minsuki2         ###   ########.fr       */
+/*   Updated: 2022/12/19 17:17:27 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,43 +21,43 @@ void	DiamondTrap::changeMaxValue_(void) {
 	ClapTrap::max_ad_ = FT_MAX_AD;
 }
 
+void	DiamondTrap::inputMemberValue_(const DiamondTrap& obj) {
+	this->name_ = obj.name_;
+	this->health_point_ = obj.health_point_;
+	this->energy_point_ = obj.energy_point_;
+	this->attack_damage_ = obj.attack_damage_;
+}
+
 DiamondTrap::DiamondTrap(void) {
 	std::cout << MAGENTA << MSG_CONSTRUCT << ' ' << MSG_DIAMONDTRAP_BORN << RESET<< std::endl;
-	changeMaxValue_();
+	this->changeMaxValue_();
+	ClapTrap::inputMemberValue_("Unknow");
 	this->name_ = "Unknow";
-	ClapTrap::name_ = name_ + "_clap_name";
-	this->health_point_ = max_hp_;
-	this->energy_point_ = max_ep_;
-	this->attack_damage_ = max_ad_;
+	ClapTrap::name_ += "_clap_name";
 }
 
 DiamondTrap::DiamondTrap(const std::string& name) {
 	std::cout << MAGENTA << MSG_CONSTRUCT << ' ' << MSG_DIAMONDTRAP_BORN << RESET << std::endl;
-	changeMaxValue_();
+	this->changeMaxValue_();
+	ClapTrap::inputMemberValue_(name);
 	this->name_ = name;
-	ClapTrap::name_ = name_ + "_clap_name";
-	this->health_point_ = max_hp_;
-	this->energy_point_ = max_ep_;
-	this->attack_damage_ = max_ad_;
+	ClapTrap::name_ += "_clap_name";
 }
 
 DiamondTrap::DiamondTrap(const DiamondTrap& obj) {
 	std::cout << MAGENTA << MSG_CONSTRUCT << ' ' << MSG_DIAMONDTRAP_BORN << RESET << std::endl;
-	changeMaxValue_();
+	this->changeMaxValue_();
+	this->inputMemberValue_(obj);
 	this->name_ = obj.name_;
-	ClapTrap::name_ = name_ + "_clap_name";
-	this->health_point_ = obj.health_point_;
-	this->energy_point_ = obj.energy_point_;
-	this->attack_damage_ = obj.attack_damage_;
+	ClapTrap::name_ += "_clap_name";
 }
 
 
 DiamondTrap& DiamondTrap::operator=(const DiamondTrap& obj) {
+	this->changeMaxValue_();
+	this->inputMemberValue_(obj);
 	this->name_ = obj.name_;
-	ClapTrap::name_ = name_ + "_clap_name";
-	this->health_point_ = obj.health_point_;
-	this->energy_point_ = obj.energy_point_;
-	this->attack_damage_ = obj.attack_damage_;
+	ClapTrap::name_ += "_clap_name";
 	return *this;
 }
 
@@ -67,7 +67,8 @@ DiamondTrap::~DiamondTrap(void) {
 
 void		DiamondTrap::checkStatus() const {
 	std::cout << "\n============== " << "< status >"<< " ==============" << std::endl;
-	std::cout << "⦁ " << "Bot Name\t: " << this->name_ << std::endl;
+	std::cout << "⦁ " << "Parent Name\t: " << ClapTrap::name_ << std::endl;
+	std::cout << "⦁ " << "Child Name\t: " << this->name_ << std::endl;
 	std::cout << "⦁ " << "Hit Point\t: " << this->health_point_ << std::endl;
 	std::cout << "⦁ " << "Energy Point\t: " << this->energy_point_ << std::endl;
 	std::cout << "⦁ " << "Attack Damage\t: " << this->attack_damage_ << std::endl;
