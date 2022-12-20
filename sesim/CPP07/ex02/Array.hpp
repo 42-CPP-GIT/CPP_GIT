@@ -6,13 +6,12 @@
 /*   By: sesim <sesim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 10:22:39 by sesim             #+#    #+#             */
-/*   Updated: 2022/12/05 09:45:35 by sesim            ###   ########.fr       */
+/*   Updated: 2022/12/20 08:54:51 by sesim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
-# include <iostream>
 # include <exception>
 
 template <typename T>

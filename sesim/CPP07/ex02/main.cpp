@@ -6,11 +6,12 @@
 /*   By: sesim <sesim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 10:08:58 by sesim             #+#    #+#             */
-/*   Updated: 2022/12/05 09:43:58 by sesim            ###   ########.fr       */
+/*   Updated: 2022/12/20 08:20:22 by sesim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Array.hpp"
+#include <iostream>
 # define MAX_VAL 10
 
 void a()
