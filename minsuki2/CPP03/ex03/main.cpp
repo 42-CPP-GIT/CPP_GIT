@@ -6,7 +6,7 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 15:13:18 by minsuki2          #+#    #+#             */
-/*   Updated: 2022/12/20 17:35:52 by minsuki2         ###   ########.fr       */
+/*   Updated: 2022/12/20 17:55:26 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -273,12 +273,5 @@ int	main(void) {
 	_test3_1();
 	_test3_2();
 	_test4();
-	ScavTrap a("hello");
-	std::cout << "\n\n@@@@@@@@@@@@@@@ < TEST 5 > @@@@@@@@@@@@@@@" << std::endl;
-
-	ScavTrap b(a);
-
-	b.checkStatus();
-	std::cerr << b.getName() << '\n';
 	return 0;
 }

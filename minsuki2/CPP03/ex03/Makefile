@@ -6,11 +6,11 @@
 #    By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/29 18:32:08 by minsuki2          #+#    #+#              #
-#    Updated: 2022/12/20 17:42:01 by minsuki2         ###   ########.fr        #
+#    Updated: 2022/12/20 17:46:18 by minsuki2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-# CXX			=		clang++ # for linux
+# CXX		=		clang++ # for linux
 CPPFLAGS	=		-Wall -Werror -Wextra  -Wno-shadow -std=c++98
 RM 			=		rm -rvf
 
