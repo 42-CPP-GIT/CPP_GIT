@@ -6,7 +6,7 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 16:30:17 by minsuki2          #+#    #+#             */
-/*   Updated: 2022/12/20 15:59:54 by minsuki2         ###   ########.fr       */
+/*   Updated: 2022/12/20 17:41:17 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #ifndef CLAPTRAP_HPP
 # define CLAPTRAP_HPP
 # include <iostream>
+//# include <climits>
 
 # define MSG_CONSTRUCT		"[Constructor]"
 # define MSG_DESTRUCT		"[Destructor]"

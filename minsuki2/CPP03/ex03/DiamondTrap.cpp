@@ -6,7 +6,7 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 16:42:10 by minsuki2          #+#    #+#             */
-/*   Updated: 2022/12/20 16:24:55 by minsuki2         ###   ########.fr       */
+/*   Updated: 2022/12/20 17:37:06 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ DiamondTrap::DiamondTrap(const std::string& name) {
 	this->name_ = name;
 }
 
-DiamondTrap::DiamondTrap(const DiamondTrap& obj) {
+DiamondTrap::DiamondTrap(const DiamondTrap& obj) {//: ClapTrap(obj), ScavTrap(obj), FragTrap(obj) {
 	std::cout << MAGENTA << MSG_CONSTRUCT << ' ' << MSG_DIAMONDTRAP_BORN << RESET << std::endl;
 	this->changeMaxValue_();
 	this->inputMemberValue_(obj);

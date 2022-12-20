@@ -6,7 +6,7 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 15:13:18 by minsuki2          #+#    #+#             */
-/*   Updated: 2022/12/20 16:22:22 by minsuki2         ###   ########.fr       */
+/*   Updated: 2022/12/20 16:56:06 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,7 @@ static void	_test2(void) {	// exception handling
 	ft_bot.beRepaired(UINT_MAX);
 	ft_bot.checkStatus();
 
-	for (int i = 0; i < 46; ++i) {
+	for (int i = 0; i < 96; ++i) {
 		ft_bot.attack("nice");
 	}
 	ft_bot.checkStatus();

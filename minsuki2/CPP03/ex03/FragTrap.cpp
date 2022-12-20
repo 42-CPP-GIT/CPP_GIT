@@ -6,7 +6,7 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 16:42:10 by minsuki2          #+#    #+#             */
-/*   Updated: 2022/12/20 15:56:24 by minsuki2         ###   ########.fr       */
+/*   Updated: 2022/12/20 17:38:50 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ FragTrap::FragTrap(const std::string& name) {
 	ClapTrap::inputMemberValue_(name);
 }
 
-FragTrap::FragTrap(const FragTrap& obj) {
+FragTrap::FragTrap(const FragTrap& obj) {//: ClapTrap(obj) {
 	std::cout << MAGENTA << MSG_CONSTRUCT << ' ' \
 			  << MSG_FRAGTRAP_BORN << RESET << std::endl;
 	this->changeMaxValue_();

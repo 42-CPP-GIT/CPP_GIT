@@ -6,7 +6,7 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 15:13:18 by minsuki2          #+#    #+#             */
-/*   Updated: 2022/12/20 16:22:34 by minsuki2         ###   ########.fr       */
+/*   Updated: 2022/12/20 17:35:52 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -258,8 +258,8 @@ static int _test4(void) {
 	std::cout << "\n\n@@@@@@@@@@@@@@@ < TEST 4 > @@@@@@@@@@@@@@@" << std::endl;
 	int i(40);
 	{
-		int i(30);
-		i = 50;
+		int i(3);
+		(void)i;
 	}
 	std::cout << BOLDWHITE << "i Value : " << i << RESET << std::endl;
 	return (i);
@@ -273,5 +273,12 @@ int	main(void) {
 	_test3_1();
 	_test3_2();
 	_test4();
+	ScavTrap a("hello");
+	std::cout << "\n\n@@@@@@@@@@@@@@@ < TEST 5 > @@@@@@@@@@@@@@@" << std::endl;
+
+	ScavTrap b(a);
+
+	b.checkStatus();
+	std::cerr << b.getName() << '\n';
 	return 0;
 }

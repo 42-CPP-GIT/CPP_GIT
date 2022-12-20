@@ -6,7 +6,7 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 16:42:10 by minsuki2          #+#    #+#             */
-/*   Updated: 2022/12/20 15:59:29 by minsuki2         ###   ########.fr       */
+/*   Updated: 2022/12/20 16:14:02 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,6 @@ void		ClapTrap::takeDamage(unsigned int amount) {
 				  << MSG_LEFT << ' ' << this->health_point_<< ' ' \
 				  << MSG_HP << RESET << std::endl;
 	}
-
 }
 
 void		ClapTrap::beRepaired(unsigned int amount) {
