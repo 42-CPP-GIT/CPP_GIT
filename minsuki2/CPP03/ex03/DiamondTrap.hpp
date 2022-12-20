@@ -6,7 +6,7 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 16:30:17 by minsuki2          #+#    #+#             */
-/*   Updated: 2022/12/19 17:07:00 by minsuki2         ###   ########.fr       */
+/*   Updated: 2022/12/20 16:02:00 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ class DiamondTrap : public ScavTrap, public FragTrap {
 		virtual					~DiamondTrap(void);
 		const std::string&		getName() const;
 		const unsigned int&		getAttackDamage() const;
-		void					checkStatus(void) const;
+		void					whoAmI(void);
 	private:
 		void					inputMemberValue_(const DiamondTrap& obj);
 		void					changeMaxValue_(void);

@@ -6,7 +6,7 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 15:13:18 by minsuki2          #+#    #+#             */
-/*   Updated: 2022/12/19 17:31:39 by minsuki2         ###   ########.fr       */
+/*   Updated: 2022/12/20 14:40:34 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ static void	_test1(void) {	// exception handling
 
 }
 
-static void	_test2(void) {	// ScavTrap1 vs ScavTrap2
+static void	_test1_1(void) {	// ScavTrap1 vs ScavTrap2
 	std::cout << "\n\n@@@@@@@@@@@@@@@ < TEST 2 > @@@@@@@@@@@@@@@" << std::endl;
 	ScavTrap	st_bot1("sc4v-Tp-1");
 	st_bot1.checkStatus();
@@ -111,11 +111,9 @@ static void	_test2(void) {	// ScavTrap1 vs ScavTrap2
 
 	for (int i = 0; i < 2; ++i) {
 		st_bot2.attack(st_bot1.getName());
-		st_bot2.checkStatus();
 		st_bot1.takeDamage(st_bot2.getAttackDamage());
 		st_bot1.checkStatus();
 		st_bot1.attack(st_bot2.getName());
-		st_bot1.checkStatus();
 		st_bot2.takeDamage(st_bot1.getAttackDamage());
 		st_bot2.checkStatus();
 	}
@@ -136,14 +134,12 @@ static void	_test2(void) {	// ScavTrap1 vs ScavTrap2
 	st_bot2.checkStatus();
 }
 
-
-
-static void	_test3(void) {	// ScavTrap vs ClapTrap
+static void	_test1_2(void) {	// ScavTrap vs ClapTrap
 	std::cout << "\n\n@@@@@@@@@@@@@@@ < TEST 3 > @@@@@@@@@@@@@@@" << std::endl;
 	ClapTrap	ct_bot("cl4p-Tp");
+	ct_bot.checkStatus();
 	ScavTrap	st_bot("sc4v-Tp");
 	st_bot.checkStatus();
-	ct_bot.checkStatus();
 
 	ct_bot.attack(st_bot.getName());
 	ct_bot.checkStatus();
@@ -157,17 +153,15 @@ static void	_test3(void) {	// ScavTrap vs ClapTrap
 
 	ct_bot.beRepaired(20);		// already Dead
 	ct_bot.checkStatus();
-	st_bot.beRepaired(20);		// HP is full 
+	st_bot.beRepaired(20);		// HP is full
 	st_bot.checkStatus();
+	st_bot.guardGate();
 }
 
 int	main(void) {
 	_test0();
 	_test1();
-	_test2();
-	_test3();
-	ClapTrap	A;
-	std::cout << typeid(A).name() << std::endl;
-	std::cout << typeid(A).name() << std::endl;
+	_test1_1();
+	_test1_2();
 	return 0;
 }

@@ -6,7 +6,7 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 16:30:17 by minsuki2          #+#    #+#             */
-/*   Updated: 2022/12/19 17:47:26 by minsuki2         ###   ########.fr       */
+/*   Updated: 2022/12/20 15:59:54 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,13 @@
 # define MSG_ATTACK			"attacks"
 # define MSG_TAKE_DAMAGE	"is taken damage"
 # define MSG_CAUSE			"causinig"
-# define MSG_USE			"Using"
 # define MSG_LEFT			"lefting"
 # define MSG_INCREASE		"increasing"
 # define MSG_HP				"HP"
 # define MSG_P_O_D			"points of damage!"
 # define MSG_P_O_H			"points of heal!"
 # define MSG_NO_HP			"can not do anything because HP is 0!"
-# define MSG_FULL_HP			"do not need to do because HP is FULL!"
+# define MSG_FULL_HP		"do not need to do because HP is FULL!"
 # define MSG_NO_EP			"can not do anything because EP is 0!"
 # define MSG_DIED			"is already dead..."
 # define MSG_REPAIR			"is repaired"
@@ -50,16 +49,16 @@ class ClapTrap {
 		void					attack(const std::string& target);
 		void					takeDamage(unsigned int amount);
 		void					beRepaired(unsigned int amount);
-		void					checkStatus(void) const;
+		void					checkStatus(void);
 	protected:
 		void					inputMemberValue_(const std::string& name);
 		std::string				name_;
 		unsigned int			health_point_;
 		unsigned int			energy_point_;
 		unsigned int			attack_damage_;
-		unsigned int			max_hp_;
-		unsigned int			max_ep_;
-		unsigned int			max_ad_;
+		unsigned int			limit_hp_;
+		unsigned int			limit_ep_;
+		unsigned int			limit_ad_;
 	private:
 		void					inputMemberValue_(const ClapTrap& obj);
 };

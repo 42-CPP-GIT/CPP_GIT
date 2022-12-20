@@ -6,10 +6,9 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 16:30:17 by minsuki2          #+#    #+#             */
-/*   Updated: 2022/12/19 17:05:36 by minsuki2         ###   ########.fr       */
+/*   Updated: 2022/12/20 16:20:22 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef SCAVTRAP_HPP
 # define SCAVTRAP_HPP
@@ -29,11 +28,9 @@ class ScavTrap : virtual public ClapTrap {
 		ScavTrap& operator=(const ScavTrap& obj);
 		~ScavTrap(void);
 		void		attack(const std::string& target);
-		void		guardGate(void);
-		void		checkStatus(void) const;
+		void		guardGate(void) const;
 	private:
 		void		inputMemberValue_(const ScavTrap& obj);
 		void		changeMaxValue_(void);
-		bool		guard_gate_mode_;
 };
 #endif

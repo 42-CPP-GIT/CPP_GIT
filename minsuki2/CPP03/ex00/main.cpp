@@ -6,7 +6,7 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 15:13:18 by minsuki2          #+#    #+#             */
-/*   Updated: 2022/12/19 17:56:28 by minsuki2         ###   ########.fr       */
+/*   Updated: 2022/12/20 16:16:51 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ static void	_test0(void) {
 
 }
 
-static void	_test0_1(void) {	// ScavTrap vs ClapTrap
+static void	_test0_1(void) {	// ClapTrap vs ClapTrap
 	std::cout << "\n\n@@@@@@@@@@@@@@@ < TEST 0-1 > @@@@@@@@@@@@@@@" << std::endl;
 	ClapTrap	ct_bot1("cl4p-Tp-1");
 	ct_bot1.checkStatus();
@@ -75,7 +75,7 @@ static void	_test0_1(void) {	// ScavTrap vs ClapTrap
 
 	ct_bot2.beRepaired(3);		// already Dead
 	ct_bot2.checkStatus();
-	ct_bot1.beRepaired(3);		// HP is full 
+	ct_bot1.beRepaired(3);		// HP is full
 	ct_bot1.checkStatus();
 }
 
@@ -84,5 +84,3 @@ int	main(void) {
 	_test0_1();
 	return 0;
 }
-
-
