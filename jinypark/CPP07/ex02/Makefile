@@ -6,14 +6,14 @@
 #    By: jinypark <jinypark@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/24 17:01:08 by jinypark          #+#    #+#              #
-#    Updated: 2022/12/16 14:53:35 by jinypark         ###   ########.fr        #
+#    Updated: 2022/12/20 22:12:48 by jinypark         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CXX 		=	c++
 NAME		=	a.out
 RM 			=	rm -rvf
-CPPFLAGS 	=	-Wall -Wextra -Werror -std=c++98 -g -fsanitize=address
+CPPFLAGS 	=	-Wall -Wextra -Werror -std=c++98
 SRCS		=	main.cpp
 OBJS		=	$(SRCS:.cpp=.o)
 
