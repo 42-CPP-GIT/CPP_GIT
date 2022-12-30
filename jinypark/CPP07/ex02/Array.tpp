@@ -6,7 +6,7 @@
 /*   By: jinypark <jinypark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 13:57:26 by jinypark          #+#    #+#             */
-/*   Updated: 2022/12/20 22:30:49 by jinypark         ###   ########.fr       */
+/*   Updated: 2022/12/30 18:59:39 by jinypark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,14 @@ const char* Array<T>::ErrorOutOfIndex::what() const throw()
 
 template <typename T>
 T& Array<T>::operator[](int idx)
+{
+	if (idx < 0 || idx >= static_cast<int>(this->size_))
+		throw (ErrorOutOfIndex());
+	return (this->arr[idx]);
+}
+
+template <typename T>
+const T& Array<T>::operator[](int idx) const
 {
 	if (idx < 0 || idx >= static_cast<int>(this->size_))
 		throw (ErrorOutOfIndex());

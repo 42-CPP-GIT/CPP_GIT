@@ -6,7 +6,7 @@
 /*   By: jinypark <jinypark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 13:52:54 by jinypark          #+#    #+#             */
-/*   Updated: 2022/12/20 22:09:29 by jinypark         ###   ########.fr       */
+/*   Updated: 2022/12/30 18:59:17 by jinypark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ public:
 	Array(const Array<T>& obj);
 	Array&	operator=(const Array<T>& obj);
 	T&	operator[](int idx);
+	const T&	operator[](int idx) const;
 	unsigned int size() const;
 	~Array();
 	class	ErrorOutOfIndex : public std::exception
