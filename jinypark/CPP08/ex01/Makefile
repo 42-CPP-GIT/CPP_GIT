@@ -6,7 +6,7 @@
 #    By: jinypark <jinypark@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/24 17:01:08 by jinypark          #+#    #+#              #
-#    Updated: 2023/01/01 21:30:55 by jinypark         ###   ########.fr        #
+#    Updated: 2023/01/01 21:56:45 by jinypark         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ CXX 		=	c++
 NAME		=	a.out
 RM 			=	rm -rvf
 CPPFLAGS 	=	-Wall -Wextra -Werror -std=c++98
-SRCS		=	main.cpp
+SRCS		=	main.cpp Span.cpp
 OBJS		=	$(SRCS:.cpp=.o)
 
 all: $(NAME)

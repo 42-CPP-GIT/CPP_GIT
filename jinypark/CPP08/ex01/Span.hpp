@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Span.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jinypark <jinypark@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jinypark <jinypark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 23:29:06 by jinypark          #+#    #+#             */
-/*   Updated: 2022/12/29 23:46:17 by jinypark         ###   ########.fr       */
+/*   Updated: 2023/01/01 21:56:03 by jinypark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,60 +14,34 @@
 #define SPAN_HPP
 # include <vector>
 # include <algorithm>
+# include <iostream>
+# include <numeric>
 
 class Span
 {
 private:
-	int* arr;
+	std::vector<int> arr_;
 public:
 	Span(unsigned int N);
-	Span::Span(const Span& obj);
 	~Span();
 	void addNumber(int number);
 	unsigned int	shortestSpan();
 	unsigned int	longestSpan();
-	class ErrorFull : std::exception
+	void			print();
+	class FullException : public std::exception
 	{
 	public:
 		const char* what() const throw();
 	};
-	class ErrorNotFound : std::exception
+	class NotFoundException : public std::exception
 	{
 	public:
 		const char* what() const throw();
 	};
+	Span&	operator=(const Span& obj);
+	Span(const Span& obj);
 private:
 	Span();
 };
-
-Span::Span(/* args */)
-{
-}
-
-Span::Span(unsigned int N)
-{
-	this->arr = new int[N];
-}
-
-Span::Span(const Span& obj)
-{
-	(void)obj;
-}
-
-Span&	Span::operator=(const Span& obj)
-{
-	(void)obj;
-}
-
-Span::~Span()
-{
-	delete[] this->arr;
-}
-
-void addNumber(int number)
-{
-	
-}
-
 
 #endif
