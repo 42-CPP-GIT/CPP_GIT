@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Span.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jinypark <jinypark@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: jinypark <jinypark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/01 21:55:35 by jinypark          #+#    #+#             */
-/*   Updated: 2023/01/01 21:57:49 by jinypark         ###   ########.fr       */
+/*   Updated: 2023/01/02 14:02:33 by jinypark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ Span::Span(const Span& obj) { this->arr_ = obj.arr_; }
 
 Span&	Span::operator=(const Span& obj)
 {
-	this->arr_ = obj.arr_; return (*this);
+	this->arr_ = obj.arr_;
+	return (*this);
 }
 
 Span::~Span() {}

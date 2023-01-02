@@ -3,39 +3,50 @@
 /*                                                        :::      ::::::::   */
 /*   MutantStack.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jinypark <jinypark@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: jinypark <jinypark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/01 22:33:38 by jinypark          #+#    #+#             */
-/*   Updated: 2023/01/01 23:21:26 by jinypark         ###   ########.fr       */
+/*   Updated: 2023/01/02 14:24:19 by jinypark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stack>
 #include <iostream>
+#include <deque>
 
-template <typename T>
-class MutantStack : public std::stack<T>
+template <typename T, typename Container = std::deque<T> >
+class MutantStack : public std::stack<T, Container>
 {
 public:
 	MutantStack();
 	~MutantStack();
-	typedef typename MutantStack<T>::stack::container_type::iterator iterator;
+	typedef typename Container::iterator iterator;
 	iterator begin() { return (this->c.begin()); }
 	iterator end() { return (this->c.end()); }
-
-	typedef typename MutantStack<T>::stack::container_type::reverse_iterator reverse_iterator;
-
-	typedef typename MutantStack<T>::stack::container_type::const_iterator const_iterator;
-
-	typedef typename MutantStack<T>::stack::container_type::const_reverse_iterator const_reverse_iterator;
+private:
+	MutantStack(const MutantStack& obj);
+	MutantStack& operator=(const MutantStack& obj);
 };
 
-template <typename T>
-MutantStack<T>::MutantStack()
+template <typename T, typename Container>
+MutantStack<T, Container>::MutantStack()
 {
 }
 
-template <typename T>
-MutantStack<T>::~MutantStack()
+template <typename T, typename Container>
+MutantStack<T, Container>::MutantStack(const MutantStack& obj)
+{
+	*this = obj;
+}
+
+template <typename T, typename Container>
+MutantStack<T, Container>& MutantStack<T, Container>::operator=(const MutantStack& obj)
+{
+	this->c = obj.c;
+	return (*this);
+}
+
+template <typename T, typename Container>
+MutantStack<T, Container>::~MutantStack()
 {
 }

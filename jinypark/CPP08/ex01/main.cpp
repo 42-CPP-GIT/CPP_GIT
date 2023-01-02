@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jinypark <jinypark@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: jinypark <jinypark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 23:28:32 by jinypark          #+#    #+#             */
-/*   Updated: 2023/01/01 22:28:23 by jinypark         ###   ########.fr       */
+/*   Updated: 2023/01/02 13:58:57 by jinypark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 int main(int ac, char** av)
 {
 	srand(time(0));
-
 	if (ac == 2)
 	{
 		int n(std::atoi(av[1]));
@@ -76,6 +75,7 @@ int main(int ac, char** av)
 		try
 		{
 			Span sp = Span(n);
+			sp.addNumber(1);
 
 			sp.print();
 			std::cout << sp.longestSpan() << std::endl;

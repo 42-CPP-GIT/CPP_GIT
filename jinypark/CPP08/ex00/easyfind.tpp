@@ -6,12 +6,12 @@
 /*   By: jinypark <jinypark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 23:23:28 by jinypark          #+#    #+#             */
-/*   Updated: 2022/12/29 23:23:29 by jinypark         ###   ########.fr       */
+/*   Updated: 2023/01/02 08:54:11 by jinypark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 template <typename T>
-typename T::iterator	easyfind(T& container, const int& n)
+typename T::iterator	easyfind(T& container, int n)
 {
 	typename T::iterator it;
 	
@@ -22,7 +22,7 @@ typename T::iterator	easyfind(T& container, const int& n)
 }
 
 template <typename T>
-typename std::map<int, T>::iterator	easyfind(std::map<int, T>& container, const int& n)
+typename std::map<int, T>::iterator	easyfind(std::map<int, T>& container, int n)
 {
 	typename std::map<int, T>::iterator it;
 	
@@ -33,7 +33,7 @@ typename std::map<int, T>::iterator	easyfind(std::map<int, T>& container, const 
 }
 
 template <typename T>
-typename std::multimap<int, T>::iterator	easyfind(std::multimap<int, T>& container, const int& n)
+typename std::multimap<int, T>::iterator	easyfind(std::multimap<int, T>& container, int n)
 {
 	typename std::multimap<int, T>::iterator it;
 	

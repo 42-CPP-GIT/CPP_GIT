@@ -6,7 +6,7 @@
 /*   By: jinypark <jinypark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 18:11:17 by jinypark          #+#    #+#             */
-/*   Updated: 2022/12/29 23:24:20 by jinypark         ###   ########.fr       */
+/*   Updated: 2023/01/02 13:40:15 by jinypark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@
 # include <iterator>
 
 template <typename T>
-typename T::iterator	easyfind(T& container, const int& n);
+typename T::iterator	easyfind(T& container, int n);
 
 template <typename T>
-typename std::map<int, T>::iterator	easyfind(std::map<int, T>& container, const int& n);
+typename std::map<int, T>::iterator	easyfind(std::map<int, T>& container, int n);
 
 template <typename T>
-typename std::multimap<int, T>::iterator	easyfind(std::multimap<int, T>& container, const int& n);
+typename std::multimap<int, T>::iterator	easyfind(std::multimap<int, T>& container, int n);
 
 # include "easyfind.tpp"
 

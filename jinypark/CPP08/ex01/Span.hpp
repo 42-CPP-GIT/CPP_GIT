@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   Span.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jinypark <jinypark@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: jinypark <jinypark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 23:29:06 by jinypark          #+#    #+#             */
-/*   Updated: 2023/01/01 22:21:53 by jinypark         ###   ########.fr       */
+/*   Updated: 2023/01/02 14:06:11 by jinypark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SPAN_HPP
 #define SPAN_HPP
+
 # include <vector>
 # include <algorithm>
 # include <iostream>

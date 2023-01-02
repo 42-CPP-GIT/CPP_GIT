@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jinypark <jinypark@student.42seoul.kr>     +#+  +:+       +#+         #
+#    By: jinypark <jinypark@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/24 17:01:08 by jinypark          #+#    #+#              #
-#    Updated: 2023/01/01 21:56:45 by jinypark         ###   ########.fr        #
+#    Updated: 2023/01/02 14:09:55 by jinypark         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
