@@ -6,7 +6,7 @@
 /*   By: jinypark <jinypark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/01 22:33:10 by jinypark          #+#    #+#             */
-/*   Updated: 2023/01/02 14:18:43 by jinypark         ###   ########.fr       */
+/*   Updated: 2023/01/03 18:50:50 by jinypark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,7 @@ int main()
 		mstack.push(737);
 		//[...]
 		mstack.push(0);
-		MutantStack<int, std::vector<int> >::MutantStack<int, std::vector<int> >::iterator it = mstack.begin();
-		// MutantStack<int, std::vector<int> >::iterator it = mstack.begin();
+		MutantStack<int, std::vector<int> >::iterator it = mstack.begin();
 		MutantStack<int, std::vector<int> >::iterator ite = mstack.end();
 		++it;
 		--it;
@@ -84,7 +83,6 @@ int main()
 			std::cout << *it << std::endl;
 			++it;
 		}
-		// std::stack<int> s(mstack);
 	}
 	return (0);
 }

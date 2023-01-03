@@ -6,13 +6,16 @@
 /*   By: jinypark <jinypark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/01 22:33:38 by jinypark          #+#    #+#             */
-/*   Updated: 2023/01/02 14:24:19 by jinypark         ###   ########.fr       */
+/*   Updated: 2023/01/03 18:50:23 by jinypark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stack>
-#include <iostream>
-#include <deque>
+#ifndef MUTANTSTACK_HPP
+#define MUTANTSTACK_HPP
+
+# include <stack>
+# include <iostream>
+# include <deque>
 
 template <typename T, typename Container = std::deque<T> >
 class MutantStack : public std::stack<T, Container>
@@ -50,3 +53,5 @@ template <typename T, typename Container>
 MutantStack<T, Container>::~MutantStack()
 {
 }
+
+#endif
