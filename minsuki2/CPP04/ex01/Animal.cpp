@@ -6,7 +6,7 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 17:04:15 by minsuki2          #+#    #+#             */
-/*   Updated: 2023/01/06 17:29:58 by minsuki2         ###   ########.fr       */
+/*   Updated: 2023/01/06 20:28:31 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ Animal& Animal::operator=(const Animal& obj) {
 
 Animal::~Animal(void) {
 	std::cout << MSG_ANIMAL << ' ' << MSG_DESTRCUT << std::endl;
-	// delete this;
 }
 
 void	Animal::makeSound(void) const {

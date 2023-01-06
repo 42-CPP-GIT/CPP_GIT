@@ -6,28 +6,79 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 15:13:18 by minsuki2          #+#    #+#             */
-/*   Updated: 2022/12/23 18:42:15 by minsuki2         ###   ########.fr       */
+/*   Updated: 2023/01/06 18:46:11 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cat.hpp"
 #include "Dog.hpp"
+#include "WrongCat.hpp"
+#include "color.h"
+//
+// static void _only_exit(void) {
+//     std::system("leaks -q animal");
+// }
 
 int	main(void) {
-	const Animal* meta = new Animal();
-	const Animal* j = new Dog();
-	const Animal* i = new Cat();
+	// atexit(_only_exit);
 
+	{
+		std::cout << std::endl
+				  << YELLOW << "--- Project pdf: override가되었을 때 ---"
+				  << RESET << std::endl;
+		const Animal* meta = new Animal();
+		const Animal* j = new Dog();
+		const Animal* i = new Cat();
 
-	std::cout << "Class Dog Type : " << j->getType() << " " << std::endl;
-	std::cout << "Class Cat Type : " << i->getType() << " " << std::endl;
-	j->makeSound();
-	i->makeSound();
-	meta->makeSound();
+		std::cout << "Class Animal Type : " << meta->getType() << " " << std::endl;
+		std::cout << "Class Dog Type : " << j->getType() << " " << std::endl;
+		std::cout << "Class Cat Type : " << i->getType() << " " << std::endl;
+		meta->makeSound();
+		j->makeSound();
+		i->makeSound();
 
+		delete meta;
+		delete j;
+		delete i;
+	}
 
-	// delete j;
-	// delete i;
-	// delete meta;
+	std::cout << std::endl;
+
+	{
+		std::cout << std::endl
+				  << GREEN << "--- Objects are created as derived class ---"
+				  << RESET << std::endl;
+		const Animal* meta = new Animal();
+		const Dog* j = new Dog();
+		const Cat* i = new Cat();
+
+		std::cout << "Class Animal Type : " << meta->getType() << " " << std::endl;
+		std::cout << "Class Dog Type : " << j->getType() << " " << std::endl;
+		std::cout << "Class Cat Type : " << i->getType() << " " << std::endl;
+		meta->makeSound();
+		j->makeSound();
+		i->makeSound();
+
+		delete meta;
+		delete j;
+		delete i;
+	}
+
+	{
+		std::cout << std::endl
+				  << RED << "--- WrongAnimal Test: override가 되지 않았을 때 "
+				  << RESET << std::endl;
+		const WrongAnimal *meta = new WrongAnimal();
+		const WrongAnimal *i = new WrongCat();
+		std::cout << "Class Animal Type : " << meta->getType() << " " << std::endl;
+		std::cout << "Class Cat Type : " << i->getType() << " " << std::endl;
+		meta->makeSound();
+		i->makeSound();  // WrongAnimal에서 virtual 키워드를 사용하지 않아서
+						  // sound가WrongAnimal임
+		delete meta;
+		delete i;  // 소멸자가 한번만 불러짐
+					// => WrongAnimal 소멸자가 virtual 아니기 때문에
+	}
+
 	return 0;
 }

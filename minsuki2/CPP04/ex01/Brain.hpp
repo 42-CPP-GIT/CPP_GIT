@@ -1,19 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   Brain.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/23 16:57:47 by minsuki2          #+#    #+#             */
-/*   Updated: 2023/01/06 17:27:34 by minsuki2         ###   ########.fr       */
+/*   Created: 2023/01/06 16:42:11 by minsuki2          #+#    #+#             */
+/*   Updated: 2023/01/06 19:39:41 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
-#ifndef ANIMAL_HPP
-# define ANIMAL_HPP
-# define MSG_ANIMAL				"[Animal]"
+#ifndef BRAIN_HPP
+# define BRAIN_HPP
+# define MSG_BRAIN				"[Brain]"
 # define MSG_D_CONSTRUCT		"Default Constructor"
 # define MSG_C_CONSTRUCT		"Copy Constructor"
 # define MSG_C_A_OPERATE		"Copy assignment operator"
@@ -22,17 +21,17 @@
 
 # include <iostream>
 
-class Animal {
+class Brain {
 	public:
-		Animal(void);
-		Animal(const Animal& obj);
-		Animal&	operator=(const Animal& obj);
-		virtual				~Animal(void);
-		virtual void		makeSound(void) const;
-		const std::string&	getType(void) const;
-	protected:
-		std::string type_;
+		Brain(void);
+		Brain(const Brain& obj);
+		Brain&	operator=(const Brain& obj);
+		~Brain(void);
+		const std::string&	getIdea(int index) const;
+		void				setIdea(int index, const std::string& idea);
+	private:
+		static const int	n_ideas_ = 100;
+		std::string			ideas_[n_ideas_];
 };
 
 #endif
-

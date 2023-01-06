@@ -1,29 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.hpp                                            :+:      :+:    :+:   */
+/*   Dog.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/23 16:59:45 by minsuki2          #+#    #+#             */
-/*   Updated: 2023/01/06 16:35:45 by minsuki2         ###   ########.fr       */
+/*   Created: 2022/12/23 17:01:47 by minsuki2          #+#    #+#             */
+/*   Updated: 2023/01/06 19:48:46 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CAT_HPP
-# define CAT_HPP
+#ifndef DOG_HPP
+# define DOG_HPP
+# define MSG_DOG	"[Dog]"
+# define DOG_SOUND	")< bowwwboowwww"
 
 # include "Animal.hpp"
-# define MSG_CAT	"[Cat]"
-# define CAT_SOUND	")< meow~ meow~!"
+# include "Brain.hpp"
 
-class Cat : public Animal {
+class Dog : public Animal {
 	public:
-		Cat(void);
-		Cat(const Cat& obj);
-		Cat& operator=(const Cat& obj);
-		~Cat(void);
-		void	makeSound(void) const;
+		Dog(void);
+		Dog(const Dog& obj);
+		Dog& operator=(const Dog& obj);
+		~Dog(void);
+		void	makeSound() const;
+		Brain*	getBrain(void) const;
+	private:
+		Brain*		own_brain_;
 };
 
 #endif
