@@ -6,7 +6,7 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 16:42:09 by minsuki2          #+#    #+#             */
-/*   Updated: 2023/01/06 20:05:55 by minsuki2         ###   ########.fr       */
+/*   Updated: 2023/01/09 17:19:10 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ Brain::~Brain(void) {
 }
 
 const std::string&	Brain::getIdea(int index) const {
-	if (index >= Brain::n_ideas_) {
+	if (index < 0 && index >= Brain::n_ideas_) {
 		std::cout << "Can't get idea " << index << ". Index out of range!"
 			<< std::endl;
 		return this->ideas_[Brain::n_ideas_ - 1];
@@ -51,7 +51,7 @@ const std::string&	Brain::getIdea(int index) const {
 }
 
 void	Brain::setIdea(int index, const std::string& idea) {
-	if (index >= Brain::n_ideas_) {
+	if (index < 0 && index >= Brain::n_ideas_) {
 		std::cout << "Can't set idea " << index << ". Index out of range!"
 			<< std::endl;
 		return ;

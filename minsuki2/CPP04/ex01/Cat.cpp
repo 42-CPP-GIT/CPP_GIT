@@ -6,7 +6,7 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 18:01:46 by minsuki2          #+#    #+#             */
-/*   Updated: 2023/01/06 21:16:21 by minsuki2         ###   ########.fr       */
+/*   Updated: 2023/01/09 17:20:14 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ Cat&	Cat::operator=(const Cat& obj) {
 Cat::~Cat(void) {
 	std::cout << MSG_CAT << ' ' << MSG_DESTRCUT << std::endl;
 	delete this->own_brain_;
+	this->own_brain_ = NULL;
 }
 
 void	Cat::makeSound(void) const {

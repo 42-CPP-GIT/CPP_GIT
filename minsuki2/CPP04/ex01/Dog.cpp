@@ -6,7 +6,7 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 17:45:29 by minsuki2          #+#    #+#             */
-/*   Updated: 2023/01/09 15:44:31 by minsuki2         ###   ########.fr       */
+/*   Updated: 2023/01/09 17:20:28 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ Dog&	Dog::operator=(const Dog& obj) {
 Dog::~Dog(void) {
 	std::cout << MSG_DOG << ' ' << MSG_DESTRCUT << std::endl;
 	delete this->own_brain_;
+	this->own_brain_ = NULL;
 }
 
 void Dog::makeSound(void) const {

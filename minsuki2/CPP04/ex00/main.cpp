@@ -6,7 +6,7 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 15:13:18 by minsuki2          #+#    #+#             */
-/*   Updated: 2023/01/06 18:46:11 by minsuki2         ###   ########.fr       */
+/*   Updated: 2023/01/09 17:15:12 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,22 @@ int	main(void) {
 		delete meta;
 		delete i;  // 소멸자가 한번만 불러짐
 					// => WrongAnimal 소멸자가 virtual 아니기 때문에
+	}
+
+	{
+		std::cout << std::endl
+				  << YELLOW << "--- 정적으로도 upcasting 가능함 ---"
+				  << RESET << std::endl;
+		const Animal meta = Animal();
+		const Animal j = Dog();
+		const Animal i = Cat();
+
+		std::cout << "Class Animal Type : " << meta.getType() << " " << std::endl;
+		std::cout << "Class Dog Type : " << j.getType() << " " << std::endl;
+		std::cout << "Class Cat Type : " << i.getType() << " " << std::endl;
+		meta.makeSound();
+		j.makeSound();
+		i.makeSound();
 	}
 
 	return 0;
