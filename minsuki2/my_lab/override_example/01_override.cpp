@@ -12,7 +12,7 @@ public:
 
 class B : public A {
 public:
-	void over() { cout << "B 클래스의 over 함수 호출!" << endl; }
+	// void over() { cout << "B 클래스의 over 함수 호출!" << endl; }
 };
 
 int main()
