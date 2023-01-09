@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   AAnimal.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 16:57:47 by minsuki2          #+#    #+#             */
-/*   Updated: 2023/01/09 15:56:51 by minsuki2         ###   ########.fr       */
+/*   Updated: 2023/01/09 15:52:26 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #ifndef ANIMAL_HPP
 # define ANIMAL_HPP
-# define MSG_ANIMAL				"[Animal]"
+# define MSG_ANIMAL				"[AAnimal]"
 # define MSG_D_CONSTRUCT		"Default Constructor"
 # define MSG_C_CONSTRUCT		"Copy Constructor"
 # define MSG_C_A_OPERATE		"Copy assignment operator"
@@ -22,13 +22,13 @@
 
 # include <iostream>
 
-class Animal {
+class AAnimal {
 	public:
-		Animal(void);
-		Animal(const Animal& obj);
-		Animal&	operator=(const Animal& obj);
-		virtual				~Animal(void);
-		virtual void		makeSound(void) const;
+		AAnimal(void);
+		AAnimal(const AAnimal& obj);
+		AAnimal&	operator=(const AAnimal& obj);
+		virtual				~AAnimal(void);
+		virtual void		makeSound(void) const = 0;
 		const std::string&	getType(void) const;
 	protected:
 		std::string type_;

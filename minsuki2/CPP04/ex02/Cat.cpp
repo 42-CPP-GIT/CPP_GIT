@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.cpp                                            :+:      :+:    :+:   */
+/*   Cat.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/23 17:45:29 by minsuki2          #+#    #+#             */
-/*   Updated: 2023/01/09 15:44:31 by minsuki2         ###   ########.fr       */
+/*   Created: 2022/12/23 18:01:46 by minsuki2          #+#    #+#             */
+/*   Updated: 2023/01/06 21:16:21 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Dog.hpp"
+#include "Cat.hpp"
 
-Dog::Dog(void) {
-	std::cout << MSG_DOG << ' ' << MSG_D_CONSTRUCT << std::endl;
-	this->type_ = "Dog";
+Cat::Cat(void) {
+	std::cout << MSG_CAT << ' ' << MSG_D_CONSTRUCT << std::endl;
+	this->type_ = "Cat";
 	this->own_brain_ = new Brain();
 }
 
-Dog::Dog(const Dog& obj) : own_brain_(NULL) {
-	std::cout << MSG_DOG << ' ' << MSG_C_CONSTRUCT << std::endl;
+Cat::Cat(const Cat& obj) : own_brain_(NULL) {
+	std::cout << MSG_CAT << ' ' << MSG_C_CONSTRUCT << std::endl;
 	*this = obj;
 }
 
-Dog&	Dog::operator=(const Dog& obj) {
-	std::cout << MSG_DOG << ' ' << MSG_C_A_OPERATE << std::endl;
+Cat&	Cat::operator=(const Cat& obj) {
+	std::cout << MSG_CAT << ' ' << MSG_C_A_OPERATE << std::endl;
 	if (this != &obj) {
 		delete this->own_brain_;
 		this->type_ = obj.type_;
@@ -33,13 +33,15 @@ Dog&	Dog::operator=(const Dog& obj) {
 	return *this;
 }
 
-Dog::~Dog(void) {
-	std::cout << MSG_DOG << ' ' << MSG_DESTRCUT << std::endl;
+Cat::~Cat(void) {
+	std::cout << MSG_CAT << ' ' << MSG_DESTRCUT << std::endl;
 	delete this->own_brain_;
 }
 
-void Dog::makeSound(void) const {
-	std::cout << MSG_DOG << ' ' << DOG_SOUND << std::endl;
+void	Cat::makeSound(void) const {
+	std::cout << MSG_CAT << ' ' << CAT_SOUND << std::endl;
 }
 
-Brain*	Dog::getBrain(void) const { return this->own_brain_; }
+// setIdea함수로 인해 const Brain 못 사용
+Brain*	Cat::getBrain(void) const { return this->own_brain_; }
+

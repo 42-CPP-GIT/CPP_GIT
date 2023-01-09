@@ -6,7 +6,7 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 15:13:18 by minsuki2          #+#    #+#             */
-/*   Updated: 2023/01/09 15:42:42 by minsuki2         ###   ########.fr       */
+/*   Updated: 2023/01/09 15:56:51 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,15 @@
 #include "color.h"
 
 int	main(void) {
+	// pure virtual func를 포함하기 때문에 객체 생성 불가능함
+	// AAnimal *animal1 = new AAnimal();
+	// AAnimal animal2 = AAnimal();
 
 	{
 		std::cout << std::endl << "--- PDF ---"
 				  << std::endl << std::endl;
-		const Animal*		j = new Dog();
-		const Animal*		i = new Cat();
+		const AAnimal*		j = new Dog();
+		const AAnimal*		i = new Cat();
 
 		delete j; j = NULL;
 		delete i; i = NULL;
@@ -32,7 +35,7 @@ int	main(void) {
 		std::cout << std::endl << GREEN << "--- Array of animals ---"
 				  << RESET << std::endl << std::endl;
 
-		Animal*		array_animals[10];
+		AAnimal*		array_animals[10];
 		for (int i = 0; i < 10; i++) {
 			if (i % 2)
 				array_animals[i] = new Dog();
