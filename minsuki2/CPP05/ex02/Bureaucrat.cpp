@@ -6,7 +6,7 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 14:05:55 by minsuki2          #+#    #+#             */
-/*   Updated: 2023/01/11 17:20:56 by minsuki2         ###   ########.fr       */
+/*   Updated: 2023/01/11 17:02:15 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,7 @@ const char*		Bureaucrat::GradeTooLowException::what(void) const throw() \
 void				Bureaucrat::signForm(Form& obj_form) const {
 	try {
 		obj_form.beSigned(*this);
-		std::cout << this->name_ << MSG_SIGNED
-				  << obj_form.getName() << std::endl;
+		std::cout << this->name_ << MSG_SIGNED << obj_form.getName() << std::endl;
 	}
 	catch (std::exception& e) {
 		std::cout << this->name_ << MSG_NOT_SIGNED

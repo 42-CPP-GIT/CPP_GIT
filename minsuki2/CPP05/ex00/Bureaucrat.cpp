@@ -6,15 +6,15 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 14:05:55 by minsuki2          #+#    #+#             */
-/*   Updated: 2023/01/10 16:19:04 by minsuki2         ###   ########.fr       */
+/*   Updated: 2023/01/11 17:27:06 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 
 void	Bureaucrat::checkException(void) const {
-	if (this->grade_ < Bureaucrat::max_grade) { throw Bureaucrat::GradeTooHighException(); }
-	else if (this->grade_ > Bureaucrat::min_grade) { throw Bureaucrat::GradeTooLowException(); }
+	if (this->grade_ < MAX_GRADE) { throw Bureaucrat::GradeTooHighException(); }
+	else if (this->grade_ > MIN_GRADE) { throw Bureaucrat::GradeTooLowException(); }
 }
 
 Bureaucrat::Bureaucrat(void) : name_("Unkwon"), grade_(0) {

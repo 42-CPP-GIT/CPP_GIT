@@ -6,11 +6,10 @@
 #    By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/29 18:32:08 by minsuki2          #+#    #+#              #
-#    Updated: 2022/12/23 18:17:55 by minsuki2         ###   ########.fr        #
+#    Updated: 2023/01/10 15:37:14 by minsuki2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CXX			=		clang++ # for linux
 CPPFLAGS	=		-Wall -Werror -Wextra  -Wno-shadow -std=c++98
 RM 			=		rm -rvf
 
@@ -23,7 +22,7 @@ DEPS_DIR 	:=		deps
 SRCS 		:=		$(wildcard $(SRCS_DIR)/*.cpp)
 OBJS 		:=		$(addprefix $(OBJS_DIR)/, $(notdir $(SRCS:.cpp=.o)))
 DEPS		:=		$(addprefix $(DEPS_DIR)/, $(notdir $(SRCS:.cpp=.d)))
-NAME		:=		animal
+NAME		:=		bureaucrat
 
 all: $(NAME)
 

@@ -6,7 +6,7 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 16:57:47 by minsuki2          #+#    #+#             */
-/*   Updated: 2023/01/10 16:21:06 by minsuki2         ###   ########.fr       */
+/*   Updated: 2023/01/11 18:54:14 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@
 
 # include <iostream>
 # include <exception>
+
+enum e_min_max { MAX_GRADE = 1, MIN_GRADE = 150 };
 
 class Bureaucrat {
 	public:
@@ -46,8 +48,6 @@ class Bureaucrat {
 	private:
 		std::string				name_;
 		int						grade_;
-		static const int		max_grade = 1;
-		static const int		min_grade = 150;
 		void		checkException(void) const;
 
 };

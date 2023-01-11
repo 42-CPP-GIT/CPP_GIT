@@ -6,7 +6,7 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 14:05:55 by minsuki2          #+#    #+#             */
-/*   Updated: 2023/01/11 17:24:18 by minsuki2         ###   ########.fr       */
+/*   Updated: 2023/01/11 17:15:41 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,19 +73,24 @@ const bool&			Form::getSignedIndicator(void) const { return this->signed_indicat
 const int&			Form::getGradeExcute(void) const { return this->grade_excute_; }
 const int&			Form::getGradeSign(void) const { return this->grade_sign_; }
 
-const char*			Form::GradeTooHighException::what(void) const throw() { return MSG_GRADE_HIGH; }
-const char*			Form::GradeTooLowException::what(void) const throw() { return MSG_GRADE_LOW; }
-const char*			Form::AlreadySignedException::what() const throw() { return MSG_DOUBLE_SIGN; }
-
+const char*		Form::GradeTooHighException::what(void) const throw() \
+												{ return MSG_GRADE_HIGH; }
+const char*		Form::GradeTooLowException::what(void) const throw() \
+												{ return MSG_GRADE_LOW; }
+const char*		Form::AlreadySignedException::what() const throw() \
+												{ return MSG_DOUBLE_SIGN; }
 void			Form::beSigned(const Bureaucrat& obj_bure) {
-	if (this->signed_indicator_ == true) { throw AlreadySignedException(); }
-	else if (this->grade_sign_ < obj_bure.getGrade()) { throw GradeTooLowException(); }
+	if (this->signed_indicator_ == true) {
+		throw AlreadySignedException();
+	}
+	else if (this->grade_sign_ < obj_bure.getGrade())
+		throw GradeTooLowException();
 	this->signed_indicator_ = true;
 }
 
 std::ostream& operator<<(std::ostream& out, const Form& obj) {
 	out << "< Form Class information >" << '\n'
-		<< "-----------------------------------" << '\n'
+		<< "--------------------------" << '\n'
 		<< "· name\t\t\t: " << obj.getName() << '\n'
 		<< "· signed_indicator\t: " << std::boolalpha << obj.getSignedIndicator() << '\n'
 		<< "· grade_sign\t\t: " << obj.getGradeSign() << '\n'
