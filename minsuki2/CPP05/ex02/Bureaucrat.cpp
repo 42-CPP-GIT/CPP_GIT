@@ -6,15 +6,20 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 14:05:55 by minsuki2          #+#    #+#             */
-/*   Updated: 2023/01/11 17:02:15 by minsuki2         ###   ########.fr       */
+/*   Updated: 2023/01/18 20:09:14 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+#include "AForm.hpp"
 
 void	Bureaucrat::checkException(void) const {
-	if (this->grade_ < MAX_GRADE) { throw Bureaucrat::GradeTooHighException(); }
-	else if (this->grade_ > MIN_GRADE) { throw Bureaucrat::GradeTooLowException(); }
+	if (this->grade_ < MAX_GRADE) {
+		throw Bureaucrat::GradeTooHighException();
+	}
+	else if (this->grade_ > MIN_GRADE) {
+		throw Bureaucrat::GradeTooLowException();
+	}
 }
 
 Bureaucrat::Bureaucrat(void) : name_("Unkwon"), grade_(0) {
@@ -64,19 +69,33 @@ void				Bureaucrat::decrementGrade(void) {
 	this->checkException();
 }
 
-const char*		Bureaucrat::GradeTooHighException::what(void) const throw() \
-												{ return "Grade too high..."; }
-const char*		Bureaucrat::GradeTooLowException::what(void) const throw() \
-												{ return "Grade too low..."; }
+const char*		Bureaucrat::GradeTooHighException::what(void) const throw() { return "Grade too high..."; }
+const char*		Bureaucrat::GradeTooLowException::what(void) const throw() { return "Grade too low..."; }
 
-void				Bureaucrat::signForm(Form& obj_form) const {
+void				Bureaucrat::signForm(AForm& form) const {
 	try {
-		obj_form.beSigned(*this);
-		std::cout << this->name_ << MSG_SIGNED << obj_form.getName() << std::endl;
+		form.beSigned(*this);
+		std::cout << GREEN << this->name_ << MSG_SIGNED << form.getName()
+				  << RESET << std::endl;
+
 	}
 	catch (std::exception& e) {
-		std::cout << this->name_ << MSG_NOT_SIGNED
-				  << obj_form.getName() << e.what() << std::endl;
+		std::cout << RED << this->name_ << MSG_NOT_SIGNED
+				  << form.getName() << MSG_BECUASE << e.what() << '.'
+				  << RESET << std::endl;
+	}
+}
+
+void				Bureaucrat::executeForm(AForm const& form) const {
+	try {
+		form.execute(*this);
+		std::cout << GREEN << this->name_ << MSG_EXCUTED << form.getName()
+				  << RESET << std::endl;
+	}
+	catch (std::exception& e) {
+		std::cout << RED << this->name_ << MSG_NOT_EXCUTED
+				  << form.getName() << MSG_BECUASE << e.what() << '.'
+				  << RESET << std::endl;
 	}
 }
 
@@ -84,3 +103,4 @@ std::ostream& operator<<(std::ostream& out, const Bureaucrat& obj) {
 	out << obj.getName() << MSG_GRADE << obj.getGrade() << ".";
 	return out;
 }
+

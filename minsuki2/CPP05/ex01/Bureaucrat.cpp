@@ -6,7 +6,7 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 14:05:55 by minsuki2          #+#    #+#             */
-/*   Updated: 2023/01/11 17:20:56 by minsuki2         ###   ########.fr       */
+/*   Updated: 2023/01/18 21:17:42 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,17 +69,20 @@ const char*		Bureaucrat::GradeTooHighException::what(void) const throw() \
 const char*		Bureaucrat::GradeTooLowException::what(void) const throw() \
 												{ return "Grade too low..."; }
 
-void				Bureaucrat::signForm(Form& obj_form) const {
+void				Bureaucrat::signForm(Form& form) const {
 	try {
-		obj_form.beSigned(*this);
-		std::cout << this->name_ << MSG_SIGNED
-				  << obj_form.getName() << std::endl;
+		form.beSigned(*this);
+		std::cout << GREEN << this->name_ << MSG_SIGNED << form.getName()
+				  << RESET << std::endl;
+
 	}
 	catch (std::exception& e) {
-		std::cout << this->name_ << MSG_NOT_SIGNED
-				  << obj_form.getName() << e.what() << std::endl;
+		std::cout << RED << this->name_ << MSG_NOT_SIGNED
+				  << form.getName() << MSG_BECUASE << e.what() << '.'
+				  << RESET << std::endl;
 	}
 }
+
 
 std::ostream& operator<<(std::ostream& out, const Bureaucrat& obj) {
 	out << obj.getName() << MSG_GRADE << obj.getGrade() << ".";

@@ -6,7 +6,7 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 16:57:47 by minsuki2          #+#    #+#             */
-/*   Updated: 2023/01/11 17:01:55 by minsuki2         ###   ########.fr       */
+/*   Updated: 2023/01/18 21:17:01 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 # include <iostream>
 # include <exception>
 # include "Form.hpp"
+# include "color.h"
 
 enum e_min_max { MAX_GRADE = 1, MIN_GRADE = 150 };
 

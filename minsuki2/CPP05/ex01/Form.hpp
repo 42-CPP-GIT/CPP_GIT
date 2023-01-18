@@ -6,7 +6,7 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 16:57:47 by minsuki2          #+#    #+#             */
-/*   Updated: 2023/01/11 17:05:43 by minsuki2         ###   ########.fr       */
+/*   Updated: 2023/01/18 21:18:45 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@
 # define MSG_C_CONSTRUCT		"Copy Constructor"
 # define MSG_C_A_OPERATE		"Copy assignment operator"
 # define MSG_DESTRCUT			"Destructor"
-# define MSG_GRADE_HIGH			" Grade too high...(form)"
-# define MSG_GRADE_LOW			" Grade too low...(Form)"
-# define MSG_DOUBLE_SIGN		" cannot sign a form twice!(Form)"
+# define MSG_GRADE_HIGH			"Grade too high (Form)"
+# define MSG_GRADE_LOW			"Grade too low (Form)"
+# define MSG_DOUBLE_SIGN		"Form cannot be signed twice! (Form)"
 
 # include <iostream>
 # include <exception>

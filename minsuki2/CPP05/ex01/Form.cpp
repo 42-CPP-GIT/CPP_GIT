@@ -6,7 +6,7 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 14:05:55 by minsuki2          #+#    #+#             */
-/*   Updated: 2023/01/11 17:24:18 by minsuki2         ###   ########.fr       */
+/*   Updated: 2023/01/18 21:11:36 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,12 @@ const char*			Form::GradeTooLowException::what(void) const throw() { return MSG_
 const char*			Form::AlreadySignedException::what() const throw() { return MSG_DOUBLE_SIGN; }
 
 void			Form::beSigned(const Bureaucrat& obj_bure) {
-	if (this->signed_indicator_ == true) { throw AlreadySignedException(); }
-	else if (this->grade_sign_ < obj_bure.getGrade()) { throw GradeTooLowException(); }
+	if (this->signed_indicator_ == true) {
+		throw AlreadySignedException();
+	}
+	else if (this->grade_sign_ < obj_bure.getGrade()) {
+		throw GradeTooLowException();
+	}
 	this->signed_indicator_ = true;
 }
 

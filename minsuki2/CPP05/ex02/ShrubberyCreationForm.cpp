@@ -6,13 +6,15 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 18:19:29 by minsuki2          #+#    #+#             */
-/*   Updated: 2023/01/11 18:51:04 by minsuki2         ###   ########.fr       */
+/*   Updated: 2023/01/18 20:31:26 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ShrubberyCreationForm.hpp"
+#include <fstream>
 
-const std::string	shrubbery =	"               ,@@@@@@@,					\n"
+const std::string ShrubberyCreationForm::shrubbery =\
+								"               ,@@@@@@@,					\n"
 								"       ,,,.   ,@@@@@@/@@,  .oo8888o.		\n"
 								"    ,&%%&%&&%,@@@@@/@@@@@@,8888\\88/8o		\n"
 								"   ,%&\\%&&%&&%,@@@\\@@@/@@@88\\88888/88'	\n"
@@ -21,22 +23,38 @@ const std::string	shrubbery =	"               ,@@@@@@@,					\n"
 								"   `&%\\ ` /%&'    |.|        \\ '|8'		\n"
 								"       |o|        | |         | |			\n"
 								"       |.|        | |         | |			\n"
-								"    \\\\/ ._\\//_/__/  ,\\_//__\\\\/.  \\_//__/_";
+								"    \\\\/ ._\\//_/__/  ,\\_//__\\\\/.  \\_//__/_\n";
 
-ShrubberyCreationForm::ShrubberyCreationForm(void) {
-}
 
-ShrubberyCreationForm::ShrubberyCreationForm(const std::string& name) {
+ShrubberyCreationForm::ShrubberyCreationForm(const std::string& name)
+	: AForm(name, SH_SIGN, SH_EXEC) {
+	std::cout << MSG_SHRUBBERYCREATIONFORM << MSG_D_CONSTRUCT << std::endl;
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& obj) {
+	std::cout << MSG_SHRUBBERYCREATIONFORM << MSG_C_CONSTRUCT << std::endl;
+	*this = obj;
 }
 
 ShrubberyCreationForm&	ShrubberyCreationForm::operator=(const ShrubberyCreationForm& obj) {
+	std::cout << MSG_SHRUBBERYCREATIONFORM << MSG_C_A_OPERATE << std::endl;
+	this->setName(obj.getName());
+	return *this;
 }
 
 ShrubberyCreationForm::~ShrubberyCreationForm(void) {
+	std::cout << MSG_SHRUBBERYCREATIONFORM << MSG_DESTRCUT << std::endl;
 }
 
-void	ShrubberyCreationForm::excute(const Bureaucrat& excutor) {
+const char*		ShrubberyCreationForm::NoSpaceException::what() const throw() { return MSG_NO_SPACE; }
+
+void		ShrubberyCreationForm::execute(Bureaucrat const& executor) const {
+	this->checkExec(executor);
+	std::ofstream ofs;
+	ofs.open(this->getName() + "_shrubbery");
+	if (ofs.fail()) {			 // ex) 용량이 꽉찼을 때
+		throw NoSpaceException();
+	}
+	ofs << ShrubberyCreationForm::shrubbery;
+	ofs.close();
 }
