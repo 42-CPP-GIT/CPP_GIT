@@ -6,7 +6,7 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 14:05:55 by minsuki2          #+#    #+#             */
-/*   Updated: 2023/01/19 11:52:13 by minsuki2         ###   ########.fr       */
+/*   Updated: 2023/01/19 14:01:58 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ Bureaucrat::Bureaucrat(const std::string& name) : name_(name), grade_(0) {
 	this->checkException();
 }
 
-Bureaucrat::Bureaucrat(std::string name, int grade) : name_(name), grade_(grade) {
+Bureaucrat::Bureaucrat(std::string name, int grade)
+	: name_(name), grade_(grade) {
 	std::cout << MSG_BREAUCRAT << MSG_D_CONSTRUCT << ' '
 			  << '(' << this->name_ << ", " << this->grade_ << ')' << std::endl;
 	this->checkException();

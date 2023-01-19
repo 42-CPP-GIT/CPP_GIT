@@ -6,7 +6,7 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 14:05:55 by minsuki2          #+#    #+#             */
-/*   Updated: 2023/01/19 11:47:16 by minsuki2         ###   ########.fr       */
+/*   Updated: 2023/01/19 14:01:49 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,12 @@
 #include "Form.hpp"
 
 void	Bureaucrat::checkException(void) const {
-	if (this->grade_ < MAX_GRADE) { throw Bureaucrat::GradeTooHighException(); }
-	else if (this->grade_ > MIN_GRADE) { throw Bureaucrat::GradeTooLowException(); }
+	if (this->grade_ < MAX_GRADE) {
+		throw Bureaucrat::GradeTooHighException();
+	}
+	else if (this->grade_ > MIN_GRADE) {
+		throw Bureaucrat::GradeTooLowException();
+	}
 }
 
 Bureaucrat::Bureaucrat(void) : name_("Unkwon"), grade_(0) {
@@ -40,6 +44,7 @@ Bureaucrat::Bureaucrat(const Bureaucrat& obj) : name_(obj.name_) {
 	std::cout << MSG_BREAUCRAT << MSG_C_CONSTRUCT << std::endl;
 	*this = obj;
 }
+
 
 Bureaucrat&	Bureaucrat::operator=(const Bureaucrat& obj) {
 	std::cout << MSG_BREAUCRAT << MSG_C_A_OPERATE << std::endl;
@@ -74,7 +79,6 @@ void				Bureaucrat::signForm(Form& form) const {
 		form.beSigned(*this);
 		std::cout << GREEN << this->name_ << MSG_SIGNED << form.getName()
 				  << RESET << std::endl;
-
 	}
 	catch (std::exception& e) {
 		std::cout << RED << this->name_ << MSG_NOT_SIGNED

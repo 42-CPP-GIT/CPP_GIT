@@ -6,7 +6,7 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 14:08:46 by minsuki2          #+#    #+#             */
-/*   Updated: 2023/01/19 12:11:53 by minsuki2         ###   ########.fr       */
+/*   Updated: 2023/01/19 14:02:30 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,9 +119,9 @@ int	main() {
 		// Bureaucrat	burretto("Burretto", 151);		// 1st catch에서 잡힘
 		// std::cout << CYAN << burretto << RESET << std::endl;
 
-		testShrubbery(0);
+		testShrubbery(1);
 		testRobotomy(0);
-		testPresident(1);
+		testPresident(0);
 
 	}
 	catch (std::exception& e) {

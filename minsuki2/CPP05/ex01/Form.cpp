@@ -6,7 +6,7 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 14:05:55 by minsuki2          #+#    #+#             */
-/*   Updated: 2023/01/19 11:55:37 by minsuki2         ###   ########.fr       */
+/*   Updated: 2023/01/19 14:04:35 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,10 @@ Form::Form(std::string name, int grade_sign, int grade_excute)
 }
 
 Form::Form(const Form& obj)
-	: name_(obj.name_), signed_indicator_(obj.signed_indicator_)
-	  , grade_sign_(obj.grade_sign_), grade_excute_(obj.grade_excute_) {
+	: name_(obj.name_), grade_sign_(obj.grade_sign_), grade_excute_(obj.grade_excute_) {
 	std::cout << MSG_FORM << MSG_C_CONSTRUCT << std::endl;
 	this->checkException();
+	*this = obj;
 }
 
 Form&	Form::operator=(const Form& obj) {
