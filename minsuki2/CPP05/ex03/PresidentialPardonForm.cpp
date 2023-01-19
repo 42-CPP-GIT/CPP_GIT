@@ -6,12 +6,13 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 18:22:54 by minsuki2          #+#    #+#             */
-/*   Updated: 2023/01/19 12:35:04 by minsuki2         ###   ########.fr       */
+/*   Updated: 2023/01/19 12:31:14 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PresidentialPardonForm.hpp"
 #include "Bureaucrat.hpp"
+//
 
 PresidentialPardonForm::PresidentialPardonForm(const std::string& name)
 	: AForm(name, PR_SIGN, PR_EXEC) {

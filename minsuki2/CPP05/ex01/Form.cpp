@@ -6,7 +6,7 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 14:05:55 by minsuki2          #+#    #+#             */
-/*   Updated: 2023/01/18 21:11:36 by minsuki2         ###   ########.fr       */
+/*   Updated: 2023/01/19 11:55:37 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ Form&	Form::operator=(const Form& obj) {
 	std::cout << MSG_FORM << MSG_C_A_OPERATE << std::endl;
 
 	// self assignment 처리 하면 오히려 비효율 => if (this != &obj)
-	this->name_ = obj.name_;
 	this->signed_indicator_ = obj.signed_indicator_;
 	return *this;
 }

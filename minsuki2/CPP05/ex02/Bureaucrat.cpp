@@ -6,7 +6,7 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 14:05:55 by minsuki2          #+#    #+#             */
-/*   Updated: 2023/01/18 20:09:14 by minsuki2         ###   ########.fr       */
+/*   Updated: 2023/01/19 12:01:04 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ Bureaucrat::Bureaucrat(std::string name, int grade) : name_(name), grade_(grade)
 	this->checkException();
 }
 
-Bureaucrat::Bureaucrat(const Bureaucrat& obj) {
+Bureaucrat::Bureaucrat(const Bureaucrat& obj) : name_(obj.name_) {
 	std::cout << MSG_BREAUCRAT << MSG_C_CONSTRUCT << std::endl;
 	*this = obj;
 }
@@ -49,7 +49,6 @@ Bureaucrat&	Bureaucrat::operator=(const Bureaucrat& obj) {
 	std::cout << MSG_BREAUCRAT << MSG_C_A_OPERATE << std::endl;
 
 	// self assignment 처리 하면 오히려 비효율 => if (this != &obj)
-	this->name_ = obj.name_;
 	this->grade_ = obj.grade_;
 	return *this;
 }

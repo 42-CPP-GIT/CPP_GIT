@@ -6,7 +6,7 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 14:08:46 by minsuki2          #+#    #+#             */
-/*   Updated: 2023/01/18 21:10:12 by minsuki2         ###   ########.fr       */
+/*   Updated: 2023/01/19 12:11:53 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,9 @@ static void	testForm(const Bureaucrat& bureaucrat, AForm& form) {
 	bureaucrat.executeForm(form);
 }
 
-static void	testShrubbery(void) {
+static void	testShrubbery(const bool mute) {
+	if (!mute)
+		return ;
 	/* Shrubbery */
 	{
 		sectionTitle("Shrubbery creation : no sign, no exec", BOLDBLUE);
@@ -55,7 +57,9 @@ static void	testShrubbery(void) {
 	}
 }
 
-static void	testRobotomy(void) {
+static void	testRobotomy(const bool mute) {
+	if (!mute)
+		return ;
 	/* Robotomy */
 	{
 		sectionTitle("Robotomy request : no sign, no exec", BOLDBLUE);
@@ -79,7 +83,9 @@ static void	testRobotomy(void) {
 	}
 }
 
-static void	testPresident(void) {
+static void	testPresident(const bool mute) {
+	if (!mute)
+		return ;
 	/* President */
 	{
 		sectionTitle("Presidential pardon : no sign, no exec", BOLDBLUE);
@@ -113,9 +119,9 @@ int	main() {
 		// Bureaucrat	burretto("Burretto", 151);		// 1st catch에서 잡힘
 		// std::cout << CYAN << burretto << RESET << std::endl;
 
-		testShrubbery();
-		testRobotomy();
-		testPresident();
+		testShrubbery(0);
+		testRobotomy(0);
+		testPresident(1);
 
 	}
 	catch (std::exception& e) {
