@@ -1,15 +1,15 @@
 #include <iostream>
 #include <Array.hpp>
 
-#define MAX_VAL 750
+#define MAX_VAL 1
 
-// static void only_exit(void) {
-//     system("leaks -q array");
-// }
-//
+static void only_exit(void) {
+	system("leaks -q array");
+}
+
 int main(int, char**)
 {
-	// std::atexit(only_exit);
+	std::atexit(only_exit);
 	std::cout << BOLDBLUE << "--- PDF : *a print ---"
 		<< RESET << std::endl;
 	int* a = new int();
@@ -51,7 +51,7 @@ int main(int, char**)
     {
         std::cerr << e.what() << '\n';
 	}
-    
+
     try
     {
 		const int i = MAX_VAL;
@@ -71,7 +71,7 @@ int main(int, char**)
 	std::cout << BOLDMAGENTA << std::endl << "--- self test : size() func ---"
 			  << RESET << std::endl;
 	std::cout << numbers.size() << std::endl << std::endl;
-    delete[] mirror; 
+    delete[] mirror;
 	// tpp 내부 array delete[] 필요 유추 가능
     return 0;
 }
