@@ -6,7 +6,7 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 19:51:03 by minsuki2          #+#    #+#             */
-/*   Updated: 2023/01/22 20:33:20 by minsuki2         ###   ########.fr       */
+/*   Updated: 2023/01/23 20:36:27 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int main(void) {
 			<< RESET << std::endl;
 		std::cout << "a = " << a << ", b = " << b
 				  << std::endl << std::endl;
-		::swap(a, b);
+		ft::swap(a, b);
 		std::cout << BOLDCYAN << "--- Swap after ---"
 			<< RESET << std::endl;
 		std::cout << "a = " << a << ", b = " << b
@@ -31,11 +31,11 @@ int main(void) {
 
 		std::cout << BOLDGREEN << "--- Min test ---"
 			<< RESET << std::endl;
-		std::cout << "min( a, b ) = " << ::min( a, b ) << std::endl << std::endl;
+		std::cout << "min( a, b ) = " << ft::min( a, b ) << std::endl << std::endl;
 
 		std::cout << BOLDYELLOW << "--- Max test ---"
 			<< RESET << std::endl;
-		std::cout << "max( a, b ) = " << ::max( a, b ) << std::endl << std::endl;
+		std::cout << "max( a, b ) = " << ft::max( a, b ) << std::endl << std::endl;
 	}
 
 	std::cout << BOLDWHITE << "@@@@@@@@@@ [String test] @@@@@@@@@@"
@@ -47,7 +47,7 @@ int main(void) {
 			<< RESET << std::endl;
 		std::cout << "a = " << a << ", b = " << b
 				  << std::endl << std::endl;
-		::swap(a, b);
+		ft::swap(a, b);
 		std::cout << BOLDCYAN << "--- Swap after ---"
 			<< RESET << std::endl;
 		std::cout << "a = " << a << ", b = " << b
@@ -55,11 +55,11 @@ int main(void) {
 
 		std::cout << BOLDGREEN << "--- Min test ---"
 			<< RESET << std::endl;
-		std::cout << "min( a, b ) = " << ::min( a, b ) << std::endl << std::endl;
+		std::cout << "min( a, b ) = " << ft::min( a, b ) << std::endl << std::endl;
 
 		std::cout << BOLDYELLOW << "--- Max test ---"
 			<< RESET << std::endl;
-		std::cout << "max( a, b ) = " << ::max( a, b ) << std::endl << std::endl;
+		std::cout << "max( a, b ) = " << ft::max( a, b ) << std::endl << std::endl;
 	}
 	return 0;
 }

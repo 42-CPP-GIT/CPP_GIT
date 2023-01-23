@@ -6,7 +6,7 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 19:18:36 by minsuki2          #+#    #+#             */
-/*   Updated: 2023/01/22 21:06:50 by minsuki2         ###   ########.fr       */
+/*   Updated: 2023/01/23 20:35:52 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,21 @@
 # define WHATEVER_HPP
 # include <iostream>
 
-template <typename T>
-void	swap(T& a, T& b) {
-	T	tmp(a);
+namespace ft {
+	template <typename T>
+		void	swap(T& a, T& b) {
+			T	tmp(a);
 
-	a = b;
-	b = tmp;
+			a = b;
+			b = tmp;
+		}
+
+	template <typename T>
+		T	min(T a, T b) { return a < b ? a : b; }
+
+	template <typename T>
+		T	max(T a, T b) { return a > b ? a : b; }
 }
-
-template <typename T>
-T	min(T a, T b) { return a < b ? a : b; }
-
-template <typename T>
-T	max(T a, T b) { return a > b ? a : b; }
-
 
 # define RESET   "\033[0m"
 # define BLACK   "\033[30m"      /* Black */
