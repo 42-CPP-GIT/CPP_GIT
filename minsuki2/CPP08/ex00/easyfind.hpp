@@ -1,41 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Array.hpp                                          :+:      :+:    :+:   */
+/*   easyfind.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/22 20:47:37 by minsuki2          #+#    #+#             */
-/*   Updated: 2023/01/25 07:39:19 by minsuki2         ###   ########.fr       */
+/*   Created: 2023/01/25 06:19:04 by minsuki2          #+#    #+#             */
+/*   Updated: 2023/01/25 07:56:02 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ARRAY_HPP
-# define ARRAY_HPP
 
+
+
+#ifndef EASYFIND_HPP
+# define EASYFIND_HPP
+
+# include <iostream>
 # include <exception>
+# include <algorithm>
 
-template <typename T>
-class Array {
-	public:
-		Array(void);
-		Array(unsigned int n);
-		Array(const Array<T>& obj);
-		Array&	operator=(const Array<T>& obj);
-		~Array();
-
-		T&	operator[](unsigned int idx);
-		const T&	operator[](unsigned int idx) const;
-		unsigned int size() const;
-		class	OutOfIndexException : public std::exception {
-			const char* what() const throw();
-		};
-	private:
-		T* arr_;
-		unsigned int size_;
+namespace ft {
+	template<typename T>
+	typename T::iterator easyfind(T& container, int num) {
+		typename T::iterator res = std::find(container.begin(), container.end(), num);
+		res != container.end() ? true
+				: throw std::runtime_error("Container doesn't have this number");
+		return res;
+	}
 };
-
-# include "Array.tpp"
 
 # define RESET   "\033[0m"
 # define BLACK   "\033[30m"      /* Black */
@@ -54,5 +47,6 @@ class Array {
 # define BOLDMAGENTA "\033[1m\033[35m"      /* Bold Magenta */
 # define BOLDCYAN    "\033[1m\033[36m"      /* Bold Cyan */
 # define BOLDWHITE   "\033[1m\033[37m"      /* Bold White */
+
 
 #endif

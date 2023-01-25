@@ -1,15 +1,16 @@
 #include <iostream>
 #include <Array.hpp>
+#include <cstdlib>
 
 #define MAX_VAL 1
 
-static void only_exit(void) {
-	system("leaks -q array");
-}
+// static void only_exit(void) {
+	// system("leaks -q array");
+// }
 
 int main(int, char**)
 {
-	std::atexit(only_exit);
+	// std::atexit(only_exit);
 	std::cout << BOLDBLUE << "--- PDF : *a print ---"
 		<< RESET << std::endl;
 	int* a = new int();
