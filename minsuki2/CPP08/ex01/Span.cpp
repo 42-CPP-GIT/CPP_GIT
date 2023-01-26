@@ -6,7 +6,7 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 08:05:11 by minsuki2          #+#    #+#             */
-/*   Updated: 2023/01/25 09:50:08 by minsuki2         ###   ########.fr       */
+/*   Updated: 2023/01/26 15:30:43 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,12 @@ Span&	Span::operator=(const Span& obj) {
 Span::~Span(void) { }
 
 void	Span::addNumber(unsigned int n) {
-	if (this->pocket_.size() == this->N_)
+	if (this->pocket_.size() == this->N_) {
 		throw Span::OverMaximumStoreException();
-	else if (find(this->pocket_.begin(), this->pocket_.end(), n) != this->pocket_.end())
+	}
+	else if (find(this->pocket_.begin(), this->pocket_.end(), n) != this->pocket_.end()) {
 		throw Span::AddNumberTwiceException();
+	}
 	this->pocket_.push_back(n);
 }
 

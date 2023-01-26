@@ -6,11 +6,11 @@
 #    By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/29 18:32:08 by minsuki2          #+#    #+#              #
-#    Updated: 2023/01/25 08:00:28 by minsuki2         ###   ########.fr        #
+#    Updated: 2023/01/26 15:34:51 by minsuki2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CPPFLAGS	=		-Wall -Werror -Wextra  -Wno-shadow -std=c++98
+CXXFLAGS	=		-Wall -Werror -Wextra  -Wno-shadow -std=c++98
 RM 			=		rm -rvf
 
 # Directory
@@ -28,7 +28,7 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	@echo [$@] linking...
-	@$(CXX) $(CPPFLAGS) $^ -o $@
+	@$(CXX) $(CXXFLAGS) $^ -o $@
 	@echo @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 	@echo ">>>>>>>>>> $@ Compiled! <<<<<<<<<<"
 	@echo @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -36,7 +36,7 @@ $(NAME): $(OBJS)
 $(OBJS_DIR)/%.o: $(SRCS_DIR)/%.cpp
 	@mkdir -p $(dir $@)
 	@echo [$<] compiling...
-	@$(CXX) $(CPPFLAGS) -I$(INCS_DIR) -c $< -o $@ -MMD
+	@$(CXX) $(CXXFLAGS) -I$(INCS_DIR) -c $< -o $@ -MMD
 	@mkdir -p $(DEPS_DIR)
 	@mv $(@:.o=.d) $(DEPS_DIR)/$(notdir $(@:.o=.d))
 
@@ -56,7 +56,7 @@ re: | fclean
 
 debug: fclean
 	@echo "<<< debug >>>"
-	@make "CPPFLAGS	= -Wall -Werror -Wextra -std=c++98 -Ddebug -g3" all
+	@make "CXXFLAGS	= -Wall -Werror -Wextra -std=c++98 -Ddebug -g3" all
 
 -include $(DEPS)
 
