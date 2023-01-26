@@ -6,7 +6,7 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 20:52:01 by minsuki2          #+#    #+#             */
-/*   Updated: 2023/01/26 15:24:45 by minsuki2         ###   ########.fr       */
+/*   Updated: 2023/01/27 02:54:54 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static	void	_showContainerReverse(T& target) {
 		; it != target.rend(); ++it) {
 		std::cout << *it << " ➜ ";
 	}
-	std::cout << YELLOW << "(end)" << RESET << std::endl;
+	std::cout << YELLOW << "(rend)" << RESET << std::endl;
 }
 
 int main()

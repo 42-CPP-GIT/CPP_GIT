@@ -6,7 +6,7 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 08:01:22 by minsuki2          #+#    #+#             */
-/*   Updated: 2023/01/25 10:10:28 by minsuki2         ###   ########.fr       */
+/*   Updated: 2023/01/27 02:21:03 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <exception>
 # include <vector>
 # include <algorithm>
+# include <numeric>
 
 class Span {
 	public:
@@ -26,6 +27,8 @@ class Span {
 		~Span(void);
 
 		void			addNumber(unsigned int n);
+		void			addNumber(const std::vector<int>::const_iterator& it_begin
+								  , const std::vector<int>::const_iterator& it_end);
 		void			showSpanNumber(void) const;
 		unsigned int	shortestSpan(void) const;
 		unsigned int	longestSpan(void) const;
