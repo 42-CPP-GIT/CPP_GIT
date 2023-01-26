@@ -6,7 +6,7 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 20:52:01 by minsuki2          #+#    #+#             */
-/*   Updated: 2023/01/25 22:21:56 by minsuki2         ###   ########.fr       */
+/*   Updated: 2023/01/26 15:24:45 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,13 @@ int main()
 		_showContainerReverse(ms);
 
 		std::cout << BOLDMAGENTA << " --- Copy constructor --- " << RESET << std::endl;
-        MutantStack<int> s(ms);
-		_showContainer(s);
+        MutantStack<int> ms1(ms);
+		_showContainer(ms1);
 		std::cout << BOLDMAGENTA << " --- Copy assign operator --- " << RESET << std::endl;
-        MutantStack<int> s2 = s;
-		_showContainer(s2);
+        MutantStack<int> ms2 = ms1;
+		_showContainer(ms2);
+
+		std::stack<int> s(ms);
     } catch (std::exception& e) {
 		std::cout << "[Error] " << e.what() << std::endl;
 	}
