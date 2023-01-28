@@ -6,7 +6,7 @@
 /*   By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 08:05:11 by minsuki2          #+#    #+#             */
-/*   Updated: 2023/01/27 02:48:41 by minsuki2         ###   ########.fr       */
+/*   Updated: 2023/01/28 17:25:07 by minsuki2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,15 +46,15 @@ void	Span::addNumber(const std::vector<int>::const_iterator& start, const std::v
 	}
 }
 
-template <typename T>
-static	void	_showContainer(T& target) {
-	std::cout << YELLOW << "(begin) " << RESET << " ➜ ";
-	for (typename T::const_iterator it = target.begin()
-			; it != target.end(); ++it) {
-		std::cout << *it << " ➜ ";
-	}
-	std::cout << YELLOW << "(end)" << RESET << std::endl;
-}
+// template <typename T>
+// static	void	_showContainer(T& target) {
+//     std::cout << YELLOW << "(begin) " << RESET << " ➜ ";
+//     for (typename T::const_iterator it = target.begin()
+//             ; it != target.end(); ++it) {
+//         std::cout << *it << " ➜ ";
+//     }
+//     std::cout << YELLOW << "(end)" << RESET << std::endl;
+// }
 
 unsigned int	Span::shortestSpan(void) const {
 	std::vector<unsigned int>	tmp(this->pocket_.size() < 2
