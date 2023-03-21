@@ -29,9 +29,10 @@ bool	RPN::isValidArgument()
 
 
 RPN::RPN(const char* argv)
-: _argument(argv)
+: _argument(argv), _flag(false)
 {
-	
+	if (_argument.empty())
+		throw CouldNotCalculate();
 }
 
 RPN::RPN(const RPN& other)
@@ -98,6 +99,8 @@ int	RPN::cal()
 			continue;
 		else if (std::isdigit(static_cast<int>(_argument.at(i))))
 		{
+			if (i < _argument.length() - 1 && std::isdigit(static_cast<int>(_argument.at(i + 1))))
+				throw CouldNotCalculate();
 			_calculator.push(_argument.at(i) - 48);
 			continue;
 		}
@@ -106,7 +109,10 @@ int	RPN::cal()
 			if (_calculator.size() < 2)
 				throw CouldNotCalculate();
 			_calculator.push(switchCalculate(_argument.at(i)));
+			_flag = true;
 		}
 	}
+	if (_calculator.size() > 1 || !_flag)
+		throw CouldNotCalculate();
 	return (_calculator.top());
 }

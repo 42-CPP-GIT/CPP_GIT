@@ -22,6 +22,7 @@ class RPN
 	private:
 		std::stack<int>	_calculator;
 		std::string		_argument;
+		bool			_flag;
 
 		bool	isValidArgument();
 		bool	isfourArith(char c);
