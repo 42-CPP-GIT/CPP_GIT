@@ -23,7 +23,7 @@ void	BitcoinExchange::makeDatabaseCSV(const std::string& data_csv) {
 		std::getline(file, line, '\n');
 		line == "exchange_rate" ? true : throw FomatIsWrong();
 
-		std::string			old_date = "0001-01-01";
+		std::string			old_date = "0000-01-01";
 		while (std::getline(file, line, '\n')) {
 			std::istringstream	ss(line);
 			std::string			date;
@@ -61,7 +61,6 @@ bool	BitcoinExchange::isInvaildDate(const std::string& date, const std::string& 
 	std::istringstream	ss_date(date);
 
 	std::string			year, month, day;
-	// bool				leap_flag;
 	int					y;
 
 	static_cast<void>(old_date);
@@ -75,17 +74,15 @@ bool	BitcoinExchange::isInvaildDate(const std::string& date, const std::string& 
 	if (month.length() != 2 || (month < "01" || "12" < month))
 		return true;
 
-
 	std::getline(ss_date, day, ' ');
 	if ((day.length() != 2
 		|| ((day < "01" || "31" < day))
 		|| ((month == "02") && day > "29"))
 		|| ((month == "04" || month == "06" || month == "09" || month == "11") && day == "31"))
 		return true;
-	if (month == "02" && day == "29") {
+	if (month == "02" && day == "29") { // 윤년 2월 29일 가능
 		std::istringstream	ss(year);
 		ss >> y;
-		// 윤년 2월 29일 가능
 		if (!isLeapYear(y)) {
 			return true;
 		}
@@ -117,7 +114,7 @@ void	BitcoinExchange::calculateInput(const std::string& input_file) {
 		std::getline(file, line, '\n');
 		line == " value" ? true : throw FomatIsWrong();
 
-		std::string			old_date = "0001-01-01";
+		std::string			old_date = "0000-01-01";
 		while(std::getline(file, line, '\n')) {
 			std::istringstream	ss(line);
 			std::string			date;
@@ -163,11 +160,6 @@ BitcoinExchange::BitcoinExchange(const BitcoinExchange& obj) {
 BitcoinExchange::~BitcoinExchange(void) { }
 
 BitcoinExchange&	BitcoinExchange::operator=(const BitcoinExchange& obj) {
-	static_cast<void>(obj);
-	// for (std::map<const std::string, double>::const_iterator it(obj.input_.begin())
-	//     ; it != obj.input_.end(); ++it) {
-	//     this->input_.insert(std::make_pair(it->first, it->second));
-	// }
 	return *this;
 }
 
