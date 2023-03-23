@@ -1,14 +1,22 @@
 
 #include "BitcoinExchange.hpp"
 
-std::map<const std::string, double>		BitcoinExchange::database_;
+std::map<const std::string, float>		BitcoinExchange::database_;
 
-const std::map<const std::string, double>&		BitcoinExchange::getDatabase(void) {
+const std::map<const std::string, float>&		BitcoinExchange::getDatabase(void) {
 	return BitcoinExchange::database_;
 }
 
 BitcoinExchange::BitcoinExchange(const std::string& path) {
 	makeDatabaseCSV(path + "data.csv");
+}
+
+BitcoinExchange::BitcoinExchange(const char* data_char_name) {
+	const std::string& data_str_name(data_char_name);
+	if (data_str_name.substr(data_str_name.size() - 4) != ".csv") {
+		throw InvaildExtension();
+	}
+	makeDatabaseCSV(data_str_name);
 }
 
 void	BitcoinExchange::makeDatabaseCSV(const std::string& data_csv) {
@@ -27,7 +35,7 @@ void	BitcoinExchange::makeDatabaseCSV(const std::string& data_csv) {
 		while (std::getline(file, line, '\n')) {
 			std::istringstream	ss(line);
 			std::string			date;
-			double				price;
+			float				price;
 
 			std::getline(ss, date, ',');
 			if (isInvaildDate(date, old_date)) {
@@ -40,8 +48,7 @@ void	BitcoinExchange::makeDatabaseCSV(const std::string& data_csv) {
 			ss >> price;
 			if(ss.fail()) {
 				throw FaildConvertNumber();
-			}
-			else if (price < 0) {
+			} else if (price < 0) {
 				throw NegativeNumber();
 			}
 			BitcoinExchange::database_.insert(std::make_pair(date, price));
@@ -90,13 +97,13 @@ bool	BitcoinExchange::isInvaildDate(const std::string& date, const std::string& 
 	return false;
 }
 
-bool	BitcoinExchange::isInvaildValue(double value, double price) {
+bool	BitcoinExchange::isInvaildValue(float value, float price) {
 	if (value < 0) {
 		std::cout << "Error: not a positive number." << std::endl;
 		return true;
 	}
-	// over flow를 위해 곱해서 비교 x
-	else if (value * price > 1000) {
+	// 곱해서 음수가 되는 경우도 제외
+	else if (value * price > 1000 || value * price < 0) {
 		std::cout << "Error: too large a number." << std::endl;
 		return true;
 	}
@@ -118,7 +125,7 @@ void	BitcoinExchange::calculateInput(const std::string& input_file) {
 		while(std::getline(file, line, '\n')) {
 			std::istringstream	ss(line);
 			std::string			date;
-			double				value;
+			float				value;
 			std::getline(ss, date, '|');
 			if (isInvaildDate(date, old_date)) {
 				std::cout << "Error: bad input => " << date << std::endl;
@@ -130,7 +137,7 @@ void	BitcoinExchange::calculateInput(const std::string& input_file) {
 			}
 			ss >> value;
 			if(ss.fail()) {
-				std::cout <<  "Error: stringstream -> double is Failded" << std::endl;
+				std::cout <<  "Error: stringstream -> float is Failded" << std::endl;
 				continue;
 			}
 			/* database_ 비어있거나 더 작은 데이터가 없을 때 */
@@ -140,13 +147,14 @@ void	BitcoinExchange::calculateInput(const std::string& input_file) {
 			}
 
 			/* iterator lower_bound 설정 */
-			std::map<const std::string, double>::const_iterator it_low = BitcoinExchange::database_.lower_bound(date);
-			--it_low;
+			std::map<const std::string, float>::const_iterator it_low = BitcoinExchange::database_.lower_bound(date);
+			if (BitcoinExchange::database_.begin() != it_low)
+				--it_low;
 
 			if (isInvaildValue(value, it_low->second)) {
 				continue;
 			}
-			std::cout << date << " => " << value << " = " << std::setprecision(10) << value * it_low->second << std::endl;
+			std::cout << date << " => " << value << " = " << std::setprecision(2) << value * it_low->second << std::endl;
 			old_date = date;
 		}
 		file.close();
@@ -160,11 +168,12 @@ BitcoinExchange::BitcoinExchange(const BitcoinExchange& obj) {
 BitcoinExchange::~BitcoinExchange(void) { }
 
 BitcoinExchange&	BitcoinExchange::operator=(const BitcoinExchange& obj) {
+	static_cast<void>(obj);
 	return *this;
 }
 
 const char*		BitcoinExchange::FaildConvertNumber::what(void) const throw() {
-	return "Error: stringstream -> double is Failded";
+	return "Error: stringstream -> float is Failded";
 }
 
 const char*		BitcoinExchange::FaildOpenFile::what(void) const throw() {
@@ -182,4 +191,7 @@ const char*		BitcoinExchange::EmptyDatabase::what(void) const throw() {
 }
 const char*		BitcoinExchange::NegativeNumber::what(void) const throw() {
 	return "Error: price is negative number";
+}
+const char*		BitcoinExchange::InvaildExtension::what(void) const throw() {
+	return "Error: The extension is not .csv";
 }

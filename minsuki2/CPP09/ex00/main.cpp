@@ -14,27 +14,27 @@ int main(int argc, char *argv[]) {
 	if (argc == 1) {
 		std::cout << "Error: could not open file." << std::endl;
 		return 1;
-	} else if (argc != 2) {
+	} else if (argc > 3) {
 		std::cout << "Error: so many files." << std::endl;
 		return 1;
 	}
 
-	const std::string&	data_csv_path(PATH);
-	const std::string& file_name(argv[1]);
-
 	try {
-		BitcoinExchange		bitco(data_csv_path);
+		const std::string& file_name(argv[1]);
+		if (argc == 2) {
+			const std::string&	data_csv_path(PATH);
+			BitcoinExchange		bitco(data_csv_path);
+			bitco.calculateInput(file_name);
+		}
+		else if (argc == 3) {
+			BitcoinExchange		bitco(argv[2]);
+			bitco.calculateInput(file_name);
+		}
 		// checkMap(BitcoinExchange::getDatabase());
-		bitco.calculateInput(file_name);
 
 	} catch (const std::exception& e) {
 		std::cout << e.what() << std::endl;
+		return 1;
 	}
-
-
-
-
-
-
 	return 0;
 }

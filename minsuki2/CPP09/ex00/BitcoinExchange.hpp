@@ -13,6 +13,7 @@
 class BitcoinExchange {
 	public:
 		BitcoinExchange(const std::string& path);
+		BitcoinExchange(const char* data_path_name);
 		BitcoinExchange(const BitcoinExchange& obj);
 		~BitcoinExchange(void);
 
@@ -20,8 +21,8 @@ class BitcoinExchange {
 		void				makeDatabaseCSV(const std::string& data_csv);
 		void				calculateInput(const std::string& input_file);
 
-		static const std::map<const std::string, double>&	getDatabase(void);
-		const std::map<const std::string, double>&			getInput(void);
+		static const std::map<const std::string, float>&	getDatabase(void);
+		const std::map<const std::string, float>&			getInput(void);
 
 		class FaildConvertNumber : public std::exception {
 			const char*		what(void) const throw();
@@ -41,15 +42,17 @@ class BitcoinExchange {
 		class NegativeNumber : public std::exception {
 			const char*		what(void) const throw();
 		};
-
+		class InvaildExtension : public std::exception {
+			const char*		what(void) const throw();
+		};
 
 	private:
-		static std::map<const std::string, double>		database_;
-		// std::map<const std::string, double>				input_;
+		static std::map<const std::string, float>		database_;
+		// std::map<const std::string, float>				input_;
 		// < <Y-M, D>, val >
 		//
 		bool		isInvaildDate(const std::string& date, const std::string& old_date);
-		bool		isInvaildValue(double value, double price);
+		bool		isInvaildValue(float value, float price);
 		bool		isLeapYear(int y);
 
 };
