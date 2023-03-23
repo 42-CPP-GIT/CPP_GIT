@@ -23,7 +23,7 @@ void	BitcoinExchange::makeDatabaseCSV(const std::string& data_csv) {
 		std::getline(file, line, '\n');
 		line == "exchange_rate" ? true : throw FomatIsWrong();
 
-		std::string			old_date = "0000-01-01";
+		std::string			old_date = "0001-01-01";
 		while (std::getline(file, line, '\n')) {
 			std::istringstream	ss(line);
 			std::string			date;
@@ -53,26 +53,46 @@ void	BitcoinExchange::makeDatabaseCSV(const std::string& data_csv) {
 		throw EmptyDatabase();
 }
 
+bool	BitcoinExchange::isLeapYear(int y) {
+	return (y % 4 == 0 && y % 100 != 0) || (y % 400) == 0;
+}
+
 bool	BitcoinExchange::isInvaildDate(const std::string& date, const std::string& old_date) {
 	std::istringstream	ss_date(date);
 
-	std::string			part;
+	std::string			year, month, day;
+	// bool				leap_flag;
+	int					y;
 
 	static_cast<void>(old_date);
 	if (date < old_date)
 		return true;
-	std::getline(ss_date, part, '-');
-	if (part.length() != 4)
+	std::getline(ss_date, year, '-');
+	if (year.length() != 4)
 		return true;
-	std::getline(ss_date, part, '-');
-	if (part.length() != 2 || (part < "01" || "12" < part))
+
+	std::getline(ss_date, month, '-');
+	if (month.length() != 2 || (month < "01" || "12" < month))
 		return true;
-	std::getline(ss_date, part, ' ');
-	if (part.length() != 2 || (part < "01" || "31" < part))
+
+
+	std::getline(ss_date, day, ' ');
+	if ((day.length() != 2
+		|| ((day < "01" || "31" < day))
+		|| ((month == "02") && day > "29"))
+		|| ((month == "04" || month == "06" || month == "09" || month == "11") && day == "31"))
 		return true;
+	if (month == "02" && day == "29") {
+		std::istringstream	ss(year);
+		ss >> y;
+		// 윤년 2월 29일 가능
+		if (!isLeapYear(y)) {
+			return true;
+		}
+	}
 	return false;
 }
-(
+
 bool	BitcoinExchange::isInvaildValue(double value, double price) {
 	if (value < 0) {
 		std::cout << "Error: not a positive number." << std::endl;
@@ -97,7 +117,7 @@ void	BitcoinExchange::calculateInput(const std::string& input_file) {
 		std::getline(file, line, '\n');
 		line == " value" ? true : throw FomatIsWrong();
 
-		std::string			old_date = "0000-01-01";
+		std::string			old_date = "0001-01-01";
 		while(std::getline(file, line, '\n')) {
 			std::istringstream	ss(line);
 			std::string			date;

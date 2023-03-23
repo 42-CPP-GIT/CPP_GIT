@@ -19,7 +19,7 @@ int main(int argc, char *argv[]) {
 		return 1;
 	}
 
-	const std::string&	data_csv_path("../");
+	const std::string&	data_csv_path(PATH);
 	const std::string& file_name(argv[1]);
 
 	try {

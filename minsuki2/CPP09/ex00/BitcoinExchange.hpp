@@ -6,6 +6,9 @@
 #include <fstream>
 #include <sstream>
 #include <map>
+#ifndef PATH
+ #define PATH "../"
+#endif
 
 class BitcoinExchange {
 	public:
@@ -47,5 +50,6 @@ class BitcoinExchange {
 		//
 		bool		isInvaildDate(const std::string& date, const std::string& old_date);
 		bool		isInvaildValue(double value, double price);
+		bool		isLeapYear(int y);
 
 };
