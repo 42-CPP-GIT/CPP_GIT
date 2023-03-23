@@ -1,0 +1,1 @@
+date,exchange_rate

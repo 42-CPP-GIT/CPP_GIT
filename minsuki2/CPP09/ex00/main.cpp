@@ -22,11 +22,18 @@ int main(int argc, char *argv[]) {
 	const std::string&	data_csv_path("../");
 	const std::string& file_name(argv[1]);
 
+	try {
+		BitcoinExchange		bitco(data_csv_path);
+		// checkMap(BitcoinExchange::getDatabase());
+		bitco.calculateInput(file_name);
 
-	BitcoinExchange		bitco(data_csv_path, file_name);
+	} catch (const std::exception& e) {
+		std::cout << e.what() << std::endl;
+	}
 
 
-	checkMap(BitcoinExchange::getDatabase());
+
+
 
 
 	return 0;
