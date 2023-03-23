@@ -64,17 +64,6 @@ BitcoinExchange::~BitcoinExchange()
 {
 }
 
-/*
-	=========================
-	For Debug
-*/
-void	BitcoinExchange::_printData()
-{
-	btc_currency::const_iterator	it = _data.begin();
-	for (; it != _data.end(); ++it)
-		printf("%s %.2f\n", it->first.c_str(), it->second);
-}
-
 void	BitcoinExchange::_storeCurrency(std::ifstream& currency)
 {
 	std::string	line;
