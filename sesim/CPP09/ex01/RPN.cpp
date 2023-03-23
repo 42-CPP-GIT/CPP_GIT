@@ -29,7 +29,7 @@ bool	RPN::isValidArgument()
 
 
 RPN::RPN(const char* argv)
-: _argument(argv), _flag(false)
+: _argument(argv), _can_calculate_flag(false)
 {
 	if (_argument.empty())
 		throw CouldNotCalculate();
@@ -86,6 +86,8 @@ int	RPN::switchCalculate(char c)
 			_calculator.pop();
 			num2 = _calculator.top();
 			_calculator.pop();
+			if (num1 == 0)
+				throw CouldNotCalculate();
 			num2 /= num1;
 	}
 	return (num2);
@@ -109,10 +111,10 @@ int	RPN::cal()
 			if (_calculator.size() < 2)
 				throw CouldNotCalculate();
 			_calculator.push(switchCalculate(_argument.at(i)));
-			_flag = true;
+			_can_calculate_flag = true;
 		}
 	}
-	if (_calculator.size() > 1 || !_flag)
+	if (_calculator.size() > 1 || !_can_calculate_flag)
 		throw CouldNotCalculate();
 	return (_calculator.top());
 }

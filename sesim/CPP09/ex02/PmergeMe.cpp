@@ -1,4 +1,5 @@
 #include "PmergeMe.hpp"
+#include <algorithm>
 #include <ctime>
 
 const char*	PmergeMe::InvalidArgument::what() const throw()
@@ -68,6 +69,7 @@ bool	PmergeMe::ArgumentCheckWithInit(const int& argc, char** argv)
 }
 
 PmergeMe::PmergeMe(const int& argc, char** argv)
+: _ac(argc)
 {
 	if (!ArgumentCheckWithInit(argc, argv))
 		throw InvalidArgument();
@@ -85,17 +87,21 @@ void	PmergeMe::ft_sort()
 	clock_t	start = std::clock();
 	mergeInsertionSort(this->_sort_vec.begin(), this->_sort_vec.end(), 32);
 	clock_t	end = std::clock();
-	this->_vector_time = static_cast<double>(end - start) / (double)CLOCKS_PER_SEC;
+	this->_vector_time = static_cast<double>(end - start) / (double)1000;
 	start = std::clock();
 	mergeInsertionSort(this->_sort_deque.begin(), this->_sort_deque.end(), 32);
 	end = std::clock();
-	this->_deque_time = static_cast<double>(end - start) / (double)CLOCKS_PER_SEC;
+	this->_deque_time = static_cast<double>(end - start) / (double)1000;
 }
 
 void	PmergeMe::print_res()
 {
 	std::cout << "After:	"; 
 	print_container(this->_sort_deque);
-	std::cout << "Time to process a range of 3000 elements with std::vector :	" << this->_vector_time << " us" << std::endl;
-	std::cout << "Time to process a range of 3000 elements with std::deque :	" << this->_deque_time << " us" << std::endl;
+	std::cout << "=======================\n";
+	std::cout << ((std::is_sorted(_sort_vec.begin(), _sort_vec.end()) == true) ?  "Vec Sorted" : "Not sorted") << std::endl;
+	std::cout << ((std::is_sorted(_sort_deque.begin(), _sort_deque.end()) == true) ? "Deque Sorted" : "Not sorted") << std::endl;
+	std::cout << "=======================\n";
+	std::cout << "Time to process a range of " << this->_ac << " elements with std::vector : " << this->_vector_time << " us" << std::endl;
+	std::cout << "Time to process a range of " << this->_ac << " elements with std::deque  : " << this->_deque_time << " us" << std::endl;
 }

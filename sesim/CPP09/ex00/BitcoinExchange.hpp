@@ -23,7 +23,7 @@ class	BitcoinExchange
 			const char*	what() const throw();
 	};
 	private:
-		std::string		_input_data;
+		const std::string		_input_data;
 		btc_currency	_data;
 		unsigned int	_year;
 		unsigned int	_month;
@@ -37,6 +37,7 @@ class	BitcoinExchange
 		bool	_checkDate(const std::string& date);
 		bool	_isOnlyDigit(const std::string& value);
 		bool	_isValidDate(const unsigned int& year, const unsigned int& month, const unsigned int& day);
+		bool	_isValidFileFormat(const char* csv_file);
 		bool	_checkValue(const std::string& value);
 		float	_getClosetData(const std::string& date);
 	

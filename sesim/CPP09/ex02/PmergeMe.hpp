@@ -18,6 +18,7 @@ private:
 	std::deque<int>		_sort_deque;
 	double				_vector_time;
 	double				_deque_time;
+	const int			_ac;
 
 	PmergeMe(const PmergeMe& other);
 	PmergeMe&operator=(const PmergeMe& other);

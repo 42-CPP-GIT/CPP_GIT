@@ -1,5 +1,6 @@
 #include "BitcoinExchange.hpp"
 #include <cctype>
+#include <cstddef>
 #include <cstdio>
 #include <ctime>
 #include <sstream>
@@ -33,6 +34,10 @@ BitcoinExchange::BitcoinExchange(const char* input_file)
 BitcoinExchange::BitcoinExchange(const char* input_file, const char* data_file)
 : _input_data(input_file)
 {
+	if (!_isValidFileFormat(data_file))
+	{
+		throw WrongCsvFileException();
+	}
 	std::ifstream	currency;
 	
 	currency.open(data_file);
@@ -55,13 +60,28 @@ BitcoinExchange& BitcoinExchange::operator=(const BitcoinExchange& other)
 	{
 		return (*this);
 	}
-	this->_input_data = other._input_data;
 	this->_data = other._data;
 	return (*this);
 }
 
 BitcoinExchange::~BitcoinExchange()
 {
+}
+
+bool	BitcoinExchange::_isValidFileFormat(const char* csv_file)
+{
+	const std::string	inputfile_to_string(csv_file);
+
+	if (inputfile_to_string.empty())
+	{
+		return (false);
+	}
+	size_t	format_pos = inputfile_to_string.find(".csv");
+	if (format_pos == std::string::npos || (inputfile_to_string.size() - format_pos) != 4)
+	{
+		return (false);
+	}
+	return (true);
 }
 
 void	BitcoinExchange::_storeCurrency(std::ifstream& currency)
