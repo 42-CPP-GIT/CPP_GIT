@@ -35,6 +35,9 @@ class BitcoinExchange {
 		class EmptyDatabase : public std::exception {
 			const char*		what(void) const throw();
 		};
+		class NegativeNumber : public std::exception {
+			const char*		what(void) const throw();
+		};
 
 
 	private:

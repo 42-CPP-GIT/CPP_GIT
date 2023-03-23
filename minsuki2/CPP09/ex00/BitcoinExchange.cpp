@@ -41,6 +41,9 @@ void	BitcoinExchange::makeDatabaseCSV(const std::string& data_csv) {
 			if(ss.fail()) {
 				throw FaildConvertNumber();
 			}
+			else if (price < 0) {
+				throw NegativeNumber();
+			}
 			BitcoinExchange::database_.insert(std::make_pair(date, price));
 			old_date = date;
 		}
@@ -69,9 +72,9 @@ bool	BitcoinExchange::isInvaildDate(const std::string& date, const std::string& 
 		return true;
 	return false;
 }
-
+(
 bool	BitcoinExchange::isInvaildValue(double value, double price) {
-	if ((value < 0 && price > 0) || (value > 0 && price < 0)) {
+	if (value < 0) {
 		std::cout << "Error: not a positive number." << std::endl;
 		return true;
 	}
@@ -82,7 +85,6 @@ bool	BitcoinExchange::isInvaildValue(double value, double price) {
 	}
 	return false;
 }
-
 
 void	BitcoinExchange::calculateInput(const std::string& input_file) {
 	std::ifstream file(input_file);
@@ -165,4 +167,7 @@ const char*		BitcoinExchange::WrongInput::what(void) const throw() {
 }
 const char*		BitcoinExchange::EmptyDatabase::what(void) const throw() {
 	return "Error: Database is Empty";
+}
+const char*		BitcoinExchange::NegativeNumber::what(void) const throw() {
+	return "Error: price is negative number";
 }
