@@ -10,8 +10,8 @@ int main(int argc, char **argv)
 	try
 	{
 		PmergeMe	tmp((argc - 1), &(argv[1]));
-		tmp.ft_sort();
-		tmp.print_res();
+		tmp.ftSort();
+		tmp.printRes();
 	}
 	catch (const std::exception& e)
 	{

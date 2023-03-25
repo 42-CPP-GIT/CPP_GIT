@@ -1,9 +1,16 @@
 #pragma once
 
+#include <algorithm>
 #include <iostream>
+#include <iterator>
+#include <utility>
 #include <vector>
 #include <deque>
 #include <ctime>
+
+typedef std::vector<std::pair<int, int> >	vec_pair;
+typedef std::vector<int>					vec_int;
+typedef std::deque<int>						deq_int;
 
 class PmergeMe
 {
@@ -14,200 +21,49 @@ class PmergeMe
 	};
 
 private:
-	std::vector<int>	_sort_vec;
-	std::deque<int>		_sort_deque;
+	vec_int				_sort_vec;
+	deq_int				_sort_deque;
 	double				_vector_time;
 	double				_deque_time;
 	const int			_ac;
+	int					_min_run;
 
 	PmergeMe(const PmergeMe& other);
 	PmergeMe&operator=(const PmergeMe& other);
 
-	bool	ArgumentCheckWithInit(const int& argc, char** argv);
-	int		check_val(size_t nb, int pn);
-	int		ft_atoi(const char *str);
+	bool	_argumentCheckWithInit(const int& argc, char** argv);
+	int		_checkVal(size_t nb, int pn);
+	int		_ftAtoi(const char *str);
+	void	_printContainer(const vec_int& vec);
+	void	_printContainer(const deq_int& vec);
 
-// 	template<typename Iterator>
-// 	void merge(Iterator begin, Iterator mid, Iterator end)
-// 	{
-// 		std::vector<typename Iterator::value_type> temp;
+	/**
+	 * Timsort
+	 */
+	int		_calMinRunLength(int size, const int min);
+	void	_InsertionSortWithIter(const vec_int::iterator& begin, const vec_int::iterator& end);
+	void	_timMergeWithIter(const vec_int::iterator& begin, const vec_int::iterator& mid, const vec_int::iterator& end);
+	void	_timSortwithIter(const vec_int::iterator& begin, const vec_int::iterator& end);
 
-// 		Iterator left = begin;
-// 		Iterator right = mid;
+	void	_timInsertionSortWithRef(vec_int& arr, const int& left, const int& right);
+	void	_timMergeWithRef(vec_int& arr, const int& left, const int& mid, const int& right);
+	void	_timSortWithRef(vec_int& arr);
 
-// 		while (left != mid && right != end)
-// 		{
-// 			if (*left <= *right)
-// 			{
-// 				temp.push_back(*left);
-// 				++left;
-// 			}
-// 			else
-// 			{
-// 				temp.push_back(*right);
-// 				++right;
-// 			}
-// 		}
+	/**
+	 * Ford Johnson algorithm
+	 */
+	void	_fordMergeWithIter(const vec_int::iterator& begin, const vec_int::iterator& mid, const vec_int::iterator& end);
+	void	_fordInsertionSortWithIter(const vec_int::iterator& left, const vec_int::iterator& right);
+	void	_fordJohnsonSortWithIter(const vec_int::iterator& begin, const vec_int::iterator& end);
 
-// 		while (left != mid)
-// 		{
-// 			temp.push_back(*left);
-// 			++left;
-// 		}
-
-// 		while (right != end)
-// 		{
-// 			temp.push_back(*right);
-// 			++right;
-// 		}
-
-// 		std::copy(temp.begin(), temp.end(), begin);
-// 	}
-
-// 	template<typename T>
-// 	void insertionSort(T& container)
-// 	{
-// 		typename T::iterator it = container.begin();
-// 		typename T::iterator end = container.end();
-
-// 		for (typename T::iterator i = it + 1; i != end; ++i)
-// 		{
-// 			typename T::value_type key = *i;
-// 			typename T::iterator j = i - 1;
-// 			while (j >= it && *j > key) {
-// 				*(j + 1) = *j;
-// 				--j;
-// 			}
-// 			*(j + 1) = key;
-// 		}
-// 	}
-
-// 	template<typename T>
-// 	void mergeInsertionSort(T& container, int left, int right, int midrun)
-// {
-//     if (right - left + 1 <= midrun)
-//     {
-//         T newContainer(container.begin() + left, container.begin() + right + 1);
-//         insertionSort(newContainer);
-//         std::copy(newContainer.begin(), newContainer.end(), container.begin() + left);
-//         return;
-//     }
-
-//     int mid = left + (right - left) / 2;
-//     mergeInsertionSort(container, left, mid, midrun);
-//     mergeInsertionSort(container, mid + 1, right, midrun);
-//     merge(container.begin() + left, container.begin() + mid + 1, container.begin() + right + 1);
-// 	}
-
-// 	template<typename T>
-// 	void print_container(const T& container)
-// 	{
-// 		typename T::const_iterator it;
-
-// 		for (it = container.begin(); it != container.end(); ++it)
-// 		{
-// 			std::cout << *it << " ";
-// 		}
-// 		std::cout << std::endl;
-// 	}
-
-/*******/
-
-	template<typename Iterator>
-	void merge(Iterator begin, Iterator mid, Iterator end)
-	{
-		std::vector<typename Iterator::value_type> temp;
-
-		Iterator left = begin;
-		Iterator right = mid;
-
-		while (left != mid && right != end)
-		{
-			if (*left <= *right)
-			{
-				temp.push_back(*left);
-				++left;
-			}
-			else
-			{
-				temp.push_back(*right);
-				++right;
-			}
-		}
-
-		while (left != mid)
-		{
-			temp.push_back(*left);
-			++left;
-		}
-
-		while (right != end)
-		{
-			temp.push_back(*right);
-			++right;
-		}
-
-		std::copy(temp.begin(), temp.end(), begin);
-	}
-
-	//template<typename Iterator>
-	//void insertionSort(Iterator begin, Iterator end)
-	//{
-	//	for (Iterator i = begin + 1; i != end; ++i)
-	//	{
-	//		typename Iterator::value_type key = *i;
-	//		Iterator j = i - 1;
-	//		while (j >= begin && *j > key) {
-	//			*(j + 1) = *j;
-	//			j -= 1;
-	//		}
-	//		*(j + 1) = key;
-	//	}
-	//}
-	template<typename Iterator>
-	void insertionSort(Iterator begin, Iterator end)
-	{
-		for (Iterator i = begin + 1; i != end; ++i)
-		{
-			typename Iterator::value_type key = *i;
-			Iterator j = i;
-			while (j != begin && *(j - 1) > key) {
-				*j = *(j - 1);
-				--j;
-			}
-			*j = key;
-		}
-	}
-	template<typename Iterator>
-	void mergeInsertionSort(Iterator begin, Iterator end, int midrun)
-	{
-		if (std::distance(begin, end) <= midrun)
-		{
-			insertionSort(begin, end);
-			return;
-		}
-		Iterator mid = begin + std::distance(begin, end) / 2;
-		mergeInsertionSort(begin, mid, midrun);
-		mergeInsertionSort(mid, end, midrun);
-		merge(begin, mid, end);
-	}
-
-	template<typename Container>
-	void print_container(const Container& container)
-	{
-		typename Container::const_iterator it;
-
-		for (it = container.begin(); it != container.end(); ++it)
-		{
-			std::cout << *it << " ";
-		}
-		std::cout << std::endl;
-	}
+	void	_fordMergeWithRef(std::vector<int>& arr, int left, int mid, int right);
+	void	_fordInsertionSortWithRef(std::vector<int>& arr, int left, int right);
+	void	_fordJohnsonSortWithRef(std::vector<int>& arr);
 
 public:
 	PmergeMe(const int& argc, char** argv);
 	~PmergeMe();
 
-	void	print_res();
-	void	ft_sort();
+	void	printRes();
+	void	ftSort();
 };
