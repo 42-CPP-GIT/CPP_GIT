@@ -7,6 +7,7 @@
 #include <map>
 #include <string>
 #include <ctime>
+#include <cmath>
 
 typedef	std::map<std::string, float>	btc_currency;
 
@@ -35,7 +36,7 @@ class	BitcoinExchange
 		void	_checkInputFile(std::ifstream& input_file);
 		bool	_checkTitle(const std::string& title1, const std::string& title2);
 		bool	_checkDate(const std::string& date);
-		bool	_isOnlyDigit(const std::string& value);
+		bool	_isRightFloat(const char* end) const;
 		bool	_isValidDate(const unsigned int& year, const unsigned int& month, const unsigned int& day);
 		bool	_isValidFileFormat(const char* csv_file);
 		bool	_checkValue(const std::string& value);

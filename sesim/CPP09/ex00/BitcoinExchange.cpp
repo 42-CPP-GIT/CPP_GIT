@@ -88,6 +88,8 @@ void	BitcoinExchange::_storeCurrency(std::ifstream& currency)
 {
 	std::string	line;
 	std::string	val[2];
+	double		btc_price;
+	char		*end;
 	while (std::getline(currency, line))
 	{
 		std::size_t	pos = line.find(',');
@@ -101,7 +103,12 @@ void	BitcoinExchange::_storeCurrency(std::ifstream& currency)
 		}
 		val[0] = line.substr(0, pos);
 		val[1] = line.substr(pos + 1, line.length());
-		_data[val[0]] = atof(val[1].c_str());
+		btc_price = strtod(val[1].c_str(), &end);
+		if (!_checkDate(val[0]) || val[1].empty() || !_isRightFloat(end))
+		{
+			throw WrongCsvFileException();
+		}
+		_data[val[0]] = static_cast<float>(btc_price);
 	}
 }
 
@@ -189,31 +196,11 @@ bool	BitcoinExchange::_checkDate(const std::string& date)
 	}
 }
 
-bool	BitcoinExchange::_isOnlyDigit(const std::string& value)
+bool	BitcoinExchange::_isRightFloat(const char* end) const
 {
-	for (std::size_t i(0); i < value.length(); ++i)
-	{
-		if (!std::isdigit(value.at(i)) && value.at(i) != '-')
-		{
-			return (false);
-		}
-	}
-	return (true);
-}
-
-bool	BitcoinExchange::_checkValue(const std::string& value)
-{
-	if (value.empty())
-	{
-		return (false);
-	}
-	std::size_t	dot_pos = value.find('.');
-	std::string	float_val = dot_pos != std::string::npos ? value.substr(0, dot_pos) + value.substr(dot_pos + 1, value.length()) : value;
-	if (!_isOnlyDigit(value.substr(0, dot_pos) + value.substr(dot_pos + 1, value.length())))
-	{
-		return (false);
-	}
-	return (true);
+	if (*end == '\0')
+		return (true);
+	return (false);
 }
 
 float	BitcoinExchange::_getClosetData(const std::string& date)
@@ -237,13 +224,15 @@ void	BitcoinExchange::_checkInputFile(std::ifstream& input_file)
 {
 	_getCurTime();
 	std::string	line;
+	char		*end;
+	double		mount;
 	while (std::getline(input_file, line))
 	{
 		std::stringstream	ss(line);
 		std::string			value[3];
 		char				sep_pipe;
-		float				mount(0.0f);
 		ss >> value[0] >> sep_pipe >> value[1] >> value[2];
+		mount = (strtod(value[1].c_str(), &end));
 		if (!value[2].empty())
 		{
 			std::cerr << "Error: too many argument => " << value[2] << std::endl;
@@ -258,17 +247,16 @@ void	BitcoinExchange::_checkInputFile(std::ifstream& input_file)
 			std::cerr << "Error: bad input => " << value[0] << std::endl;
 			continue ;
 		}
-		else if (!_checkValue(value[1]))
+		else if (!_isRightFloat(end))
 		{
 			std::cerr << "Error: bad input => " << value[1] << std::endl;
 			continue ;
 		}
-		mount = atof(value[1].c_str());
-		if (mount < 0.000000f)
+		if (mount < 0.000000)
 		{
 			std::cerr << "Error: not a postive number." << std::endl;
 		}
-		else if (mount > 1000.000000f)
+		else if (mount > 1000 || (std::floor(mount) == 10000 && (mount - std::floor(mount) < 0.0001)))
 		{
 			std::cout << "Error: too large a number." << std::endl;
 		}
