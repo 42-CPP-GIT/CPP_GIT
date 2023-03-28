@@ -5,6 +5,7 @@
 #include <iomanip>
 #include <fstream>
 #include <sstream>
+#include <string>
 #include <map>
 #ifndef PATH
  #define PATH "../"
@@ -12,18 +13,17 @@
 
 class BitcoinExchange {
 	public:
-		BitcoinExchange(const std::string& path);
-		BitcoinExchange(const char* data_path_name);
+		BitcoinExchange(std::ifstream& data_file);
 		BitcoinExchange(const BitcoinExchange& obj);
 		~BitcoinExchange(void);
-
 		BitcoinExchange&	operator=(const BitcoinExchange& obj);
-		void				makeDatabaseCSV(const std::string& data_csv);
-		void				calculateInput(const std::string& input_file);
 
+		static const std::string&							getPath(void);
 		static const std::map<const std::string, float>&	getDatabase(void);
-		const std::map<const std::string, float>&			getInput(void);
 
+		void	calculateInput(const char* input_name);
+
+		const std::string		badInput(const std::string& date) const;
 		class FaildConvertNumber : public std::exception {
 			const char*		what(void) const throw();
 		};
@@ -47,6 +47,7 @@ class BitcoinExchange {
 		};
 
 	private:
+		static const std::string						path_;
 		static std::map<const std::string, float>		database_;
 		// std::map<const std::string, float>				input_;
 		// < <Y-M, D>, val >
@@ -54,5 +55,7 @@ class BitcoinExchange {
 		bool		isInvaildDate(const std::string& date, const std::string& old_date);
 		bool		isInvaildValue(float value, float price);
 		bool		isLeapYear(int y);
+		void		checkTitle(std::ifstream& input_file, std::string& line
+								, const std::string& target, const char delimiter) const;
 
 };

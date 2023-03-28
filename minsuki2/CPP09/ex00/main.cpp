@@ -9,9 +9,9 @@ void	checkMap(const T& cur_map) {
 	}
 }
 
-
 int main(int argc, char *argv[]) {
-	if (argc == 1) {
+	/* argc 2, 3 제외 모두 차단 */
+	if (argc < 2) {
 		std::cout << "Error: could not open file." << std::endl;
 		return 1;
 	} else if (argc > 3) {
@@ -19,22 +19,23 @@ int main(int argc, char *argv[]) {
 		return 1;
 	}
 
-	try {
-		const std::string& file_name(argv[1]);
-		if (argc == 2) {
-			const std::string&	data_csv_path(PATH);
-			BitcoinExchange		bitco(data_csv_path);
-			bitco.calculateInput(file_name);
-		}
-		else if (argc == 3) {
-			BitcoinExchange		bitco(argv[2]);
-			bitco.calculateInput(file_name);
-		}
-		// checkMap(BitcoinExchange::getDatabase());
+	const std::string&	origin_data_csv(BitcoinExchange::getPath() + "data.csv");
+	const char*			cur_data_csv = (argc == 2) ? origin_data_csv.c_str() : argv[2];
 
-	} catch (const std::exception& e) {
-		std::cout << e.what() << std::endl;
+	/* ifstream c++98에서는 const char*을 parameter으로 받음 */
+	std::ifstream	data_file(cur_data_csv);
+	if (data_file.fail()) {
+		std::cout << "Error: Unable to open file" << std::endl;
 		return 1;
 	}
+	try {
+		BitcoinExchange		bitco(data_file);
+		bitco.calculateInput(argv[1]);
+	} catch (const std::exception& e) {
+		std::cout << e.what() << std::endl;
+	} catch (const std::string& s) {
+		std::cout << s << std::endl;
+	}
+	data_file.close();
 	return 0;
 }
