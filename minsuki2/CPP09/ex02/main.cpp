@@ -1,13 +1,5 @@
 
 #include "PmergeMe.hpp"
-// #include <chrono> // C++11
-
-// static void		char2ArrayToStringArray(char* argv[], std::string strArray[]) {
-	// std::size_t	i = 0;
-	// while (argv[i + 1]) {
-		// ++i;
-	// }
-// }
 
 int	main(int argc, char* argv[]) {
 	if (argc < 2) {
@@ -15,7 +7,6 @@ int	main(int argc, char* argv[]) {
 		return 1;
 	}
 	std::string str_array[argc];
-	// char2ArrayToStringArray(argv, strArray);
 	try {
 		struct timespec  begin_ts, end_ts;
 		PmergeMe pm(argv, str_array);
@@ -25,18 +16,9 @@ int	main(int argc, char* argv[]) {
 
 		/* list Sort */
 		clock_gettime(CLOCK_MONOTONIC, &begin_ts);
-		pm.sortSequnceList(str_array);
+		pm.sortSequnceDeque(str_array);
 		clock_gettime(CLOCK_MONOTONIC, &end_ts);
-		pm.setPeriod(begin_ts, end_ts, "lst");
-
-		/* After 출력 */
-		pm.printSequnce(NULL);
-
-		/* vector Sort */
-		clock_gettime(CLOCK_MONOTONIC, &begin_ts);
-		pm.sortSequnceList(str_array);
-		clock_gettime(CLOCK_MONOTONIC, &end_ts);
-		pm.setPeriod(begin_ts, end_ts, "lst");
+		pm.setPeriodDeque(begin_ts, end_ts);
 
 		/* After 출력 */
 		pm.printSequnce(NULL);
@@ -45,7 +27,7 @@ int	main(int argc, char* argv[]) {
 		clock_gettime(CLOCK_MONOTONIC, &begin_ts);
 		pm.sortSequnceVector(str_array);
 		clock_gettime(CLOCK_MONOTONIC, &end_ts);
-		pm.setPeriod(begin_ts, end_ts, "vec");
+		pm.setPeriodVector(begin_ts, end_ts);
 
 		pm.printPeriod();
 	} catch (const std::exception& e) {

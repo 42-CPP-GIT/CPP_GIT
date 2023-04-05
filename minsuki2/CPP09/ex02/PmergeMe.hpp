@@ -7,8 +7,9 @@
 #include <iostream>
 #include <sstream>
 #include <vector>
-#include <list>
+#include <deque>
 #define MAX 100000
+#define	K	5
 enum e_container { LST, VEC };
 
 class PmergeMe {
@@ -20,12 +21,12 @@ class PmergeMe {
 
 		PmergeMe&		operator=(const PmergeMe& obj);
 		void			printSequnce(const std::string str_array[]) const;
-		void			sortSequnceList(const std::string str_array[]);
+		void			sortSequnceDeque(const std::string str_array[]);
 		void			sortSequnceVector(const std::string str_array[]);
 		std::size_t 	calculateNanoPeriod(timespec& begin_ts, timespec& end_ts);
-		void			setPeriodList(timespec& begin_ts, timespec& end_ts, const std::string& which);
-		void			setPeriodVector(timespec& begin_ts, timespec& end_ts, const std::string& which);
-		void			pushDataList(const std::string str_array[]);
+		void			setPeriodDeque(timespec& begin_ts, timespec& end_ts);
+		void			setPeriodVector(timespec& begin_ts, timespec& end_ts);
+		void			pushDataDeque(const std::string str_array[]);
 		void			pushDataVector(const std::string str_array[]);
 		void			printPeriod(void);
 
@@ -38,11 +39,18 @@ class PmergeMe {
 
 
 	private:
-		std::list<unsigned int>			seq_lst_;
-		std::vector<unsigned int>		seq_vec_;
+		std::deque<unsigned int>			seq_deque_;
+		std::vector<unsigned int>		seq_vector_;
 		double							lst_period_;
 		double							vec_period_;
 		std::size_t						n_element;
+
+		void			mergeInsertionSortDeque(std::size_t p1, std::size_t p3);
+		void			mergeInsertionSortVector(std::size_t p1, std::size_t p3);
+		void			InsertionSortDeque(std::size_t p1, std::size_t p2);
+		void			InsertionSortVector(std::size_t p1, std::size_t p2);
+		void			mergePartDeque(std::size_t p1, std::size_t p2, std::size_t p3);
+		void			mergePartVector(std::size_t p1, std::size_t p2, std::size_t p3);
 };
 
 
