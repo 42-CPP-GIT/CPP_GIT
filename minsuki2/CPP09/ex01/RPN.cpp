@@ -37,6 +37,7 @@ RPN::RPN(const std::string& eqn) {
 			last = (last == ' ') ? eqn.at(len - 1) : last;
 		} else if (RPN::operator_symbol_.find(eqn.at(len - 1)) != std::string::npos) {
 			this->pocket_.push(eqn.at(len - 1)); --count;
+			// count == 0 ? throw WrongEquation() : false;	-> 이론적으로 이해 X
 			last = (last == ' ') ? eqn.at(len - 1) : last;
 		} else {
 			throw WrongSymbol();
@@ -47,7 +48,9 @@ RPN::RPN(const std::string& eqn) {
 	isDigit(last) ? throw WrongEquation() : false;
 }
 
-RPN::RPN(const RPN& obj) { *this = obj; }
+RPN::RPN(const RPN& obj) {
+	static_cast<void>(obj);
+}
 
 RPN::~RPN(void) { }
 
@@ -58,11 +61,14 @@ RPN&	RPN::operator=(const RPN& obj) {
 
 int		RPN::calculate() {
 	std::stack<int>	cal; // stackPrint(pocket_);
-	int res;
+	int res, flag = 0;
 	while (!pocket_.empty()) {
 		if (isDigit(pocket_.top())) {
 			cal.push(pocket_.top() - '0'); // stackPrint(cal);
+			++flag;
 		} else {
+			--flag;
+			flag == 0 ? throw WrongEquation() : false;
 			const int x = cal.top(); cal.pop();
 			const int y = cal.top(); cal.pop();
 			switch (pocket_.top()) {
@@ -73,6 +79,7 @@ int		RPN::calculate() {
 					res = y - x; // std::cerr << "y - x = " << y << " - " << x << " = " << res << "\n\n";
 					break;
 				case '/':
+					x == 0 ? throw std::out_of_range("Error(div)") : false;
 					res = y / x; // std::cerr << "y / x = " << y << " / " << x << " = " << res << "\n\n";
 					break;
 				case '*':
@@ -99,4 +106,7 @@ const char*		RPN::WrongEquation::what(void) const throw() {
 }
 const char*		RPN::EmptyEquation::what(void) const throw() {
 	return "Error(emt)";
+}
+const char*		RPN::EncounterFlag::what(void) const throw() {
+	return "Error(flg)";
 }

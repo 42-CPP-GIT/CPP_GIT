@@ -24,6 +24,9 @@ class RPN {
 		class EmptyEquation : public std::exception {
 			const char*		what(void) const throw();
 		};
+		class EncounterFlag : public std::exception {
+			const char*		what(void) const throw();
+		};
 
 	private:
 		std::stack<char>			pocket_;
