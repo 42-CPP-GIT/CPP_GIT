@@ -151,7 +151,6 @@ void	BitcoinExchange::calculateInput(const char* input_name) {
 			std::cout << "Error: no lower date => " << date << std::endl;
 			continue;
 		}
-
 		std::map<const std::string, float>::const_iterator it_low = BitcoinExchange::database_.lower_bound(date);
 		if (BitcoinExchange::database_.begin() != it_low) {
 			/* iterator lower_bound 설정 */
@@ -161,7 +160,7 @@ void	BitcoinExchange::calculateInput(const char* input_name) {
 			/* value 검사 */
 			continue;
 		}
-		std::cout << date << " => " << value << " = " << std::setprecision(2) << value * it_low->second << std::endl;
+		std::cout << date.substr(0, 10) << " => " << value << " = " << std::setprecision(2) << value * it_low->second << std::endl;
 		old_date = date;
 	}
 	input_file.close();
