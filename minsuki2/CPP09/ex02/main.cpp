@@ -21,7 +21,6 @@ int	main(int argc, char* argv[]) {
 		pm.setPeriodDeque(begin_ts, end_ts);
 
 		/* After 출력 */
-		pm.printSequnce(NULL);
 
 		/* vector Sort */
 		clock_gettime(CLOCK_MONOTONIC, &begin_ts);
@@ -29,7 +28,9 @@ int	main(int argc, char* argv[]) {
 		clock_gettime(CLOCK_MONOTONIC, &end_ts);
 		pm.setPeriodVector(begin_ts, end_ts);
 
+		pm.printSequnce(NULL);
 		pm.printPeriod();
+
 	} catch (const std::exception& e) {
 		std::cout << e.what() << std::endl;
 	}

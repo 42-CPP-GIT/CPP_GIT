@@ -1,5 +1,16 @@
 #include "RPN.hpp"
 
+// template<typename T>
+// void stackPrint(T cal) {
+//     std::cerr << "Top | ";
+//     while (!cal.empty()) {
+//         std::cout << '\'' << cal.top() << '\'' << " ↔ ";
+//         cal.pop();
+//     }
+//     std::cerr << "| Bottom " << "\n\n";
+// }
+//
+
 const std::string&	RPN::operator_symbol_("+-/*");
 
 bool	RPN::isVaildPocket(void) {
@@ -17,8 +28,8 @@ RPN::RPN(const std::string& eqn) {
 	unsigned int	count = 0;
 	size_t len(eqn.length());
 	char	last = ' ';
-	eqn.find_first_of("0123456789" + RPN::operator_symbol_) == std::string::npos ?
-												throw EmptyEquation() : false;
+	eqn.find_first_of("0123456789" + RPN::operator_symbol_) == std::string::npos
+												? throw EmptyEquation() : false;
 	for (; len > 0; --len) {
 		if (eqn.at(len - 1) == ' ') {
 			continue;
@@ -46,35 +57,27 @@ RPN&	RPN::operator=(const RPN& obj) {
 	return *this;
 }
 
-
 int		RPN::calculate() {
-	std::stack<int>	cal; // 중간 과정에서 십진수 이상으로 나옴
-	// stackPrint(pocket_);
+	std::stack<int>	cal; // stackPrint(pocket_);
 	int res;
 	while (!pocket_.empty()) {
-		// std::cout << pocket_.top() << std::endl;
 		if (isDigit(pocket_.top())) {
-			cal.push(pocket_.top() - '0');
-			// stackPrint(cal);
+			cal.push(pocket_.top() - '0'); // stackPrint(cal);
 		} else {
 			const int x = cal.top(); cal.pop();
 			const int y = cal.top(); cal.pop();
 			switch (pocket_.top()) {
 				case '+':
-					res = y + x;
-					// std::cerr << "y + x = " << y << " + " << x << " = " << res << "\n\n";
+					res = y + x; // std::cerr << "y + x = " << y << " + " << x << " = " << res << "\n\n";
 					break;
 				case '-':
-					res = y - x;
-					// std::cerr << "y - x = " << y << " - " << x << " = " << res << "\n\n";
+					res = y - x; // std::cerr << "y - x = " << y << " - " << x << " = " << res << "\n\n";
 					break;
 				case '/':
-					res = y / x;
-					// std::cerr << "y / x = " << y << " / " << x << " = " << res << "\n\n";
+					res = y / x; // std::cerr << "y / x = " << y << " / " << x << " = " << res << "\n\n";
 					break;
 				case '*':
-					res = y * x;
-					// std::cerr << "y * x = " << y << " * " << x << " = " << res << "\n\n";
+					res = y * x; // std::cerr << "y * x = " << y << " * " << x << " = " << res << "\n\n";
 					break;
 			}
 			cal.push(res);

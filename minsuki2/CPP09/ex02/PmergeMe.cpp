@@ -2,14 +2,14 @@
 
 // template<typename T>
 // static void	printContainer(T& target) {
-	// std::cerr << "-> ";
-	// for (typename T::iterator it(target.begin())
-			// ; it != target.end(); ++it) {
-		// std::cerr << std::setw(2) << *it << ' ';
-	// }
-	// std::cerr << '\n';
+//     std::cerr << "-> ";
+//     for (typename T::iterator it(target.begin())
+//             ; it != target.end(); ++it) {
+//         std::cerr << std::setw(2) << *it << ' ';
+//     }
+//     std::cerr << '\n';
 // }
-
+//
 
 PmergeMe::PmergeMe(const char* const argv[], std::string strArray[]) {
 	int	i = 0;
@@ -53,7 +53,7 @@ void	PmergeMe::printSequnce(const std::string str_array[]) const {
 		for (std::deque<unsigned int>::const_iterator it(this->seq_deque_.begin())
 				; it != this->seq_deque_.end(); ++it) {
 		// for (std::vector<unsigned int>::const_iterator it(this->seq_vector_.begin())
-				// ; it != this->seq_vector_.end(); ++it) {
+		//         ; it != this->seq_vector_.end(); ++it) {
 			std::cout << std::fixed << std::setprecision(5) << *it << ' ';
 		}
 	}
@@ -78,7 +78,7 @@ void	PmergeMe::setPeriodVector(timespec& begin_ts, timespec& end_ts) {
 void	PmergeMe::printPeriod(void) {
 	std::stringstream ss;
 	ss << this->n_element;
-	const std::size_t space = ss.str().size() <= 4 ? 5 : ss.str().size() + 1;
+	const std::size_t space = ss.str().size() < 5 ? 5 : ss.str().size() + 1;
 	std::cout << "Time to process a range of" << std::setw(space) << this->n_element
 				<< " elemnts with std::deque : " << this->lst_period_<< " ms" << std::endl;
 	std::cout << "Time to process a range of" << std::setw(space) << this->n_element
@@ -90,7 +90,7 @@ void	PmergeMe::InsertionSortDeque(std::size_t p1, std::size_t p2) {
 	std::size_t  j;
 	unsigned int key;
 	for (std::size_t i = p1; i < p2; ++i) {
-		key = this->seq_deque_.at(i + 1);// 현재 삽입될 숫자인 i번째 정수를 key 변수로 복사
+		key = this->seq_deque_.at(i + 1);
 		for (j = i + 1
 			; j > p1 && this->seq_deque_.at(j - 1) > key; --j) {
 		  this->seq_deque_.at(j) = this->seq_deque_.at(j - 1);
@@ -112,9 +112,9 @@ void	PmergeMe::mergePartDeque(std::size_t p1, std::size_t p2, std::size_t p3) {
 	r_deq.insert(r_deq.begin(), this->seq_deque_.begin() + p2 + 1
 							  , this->seq_deque_.begin() + p2 + 1 + right_len);
 	for (std::size_t i = p1; i < p3 + 1; ++i) {
-		if (r_idx == right_len) {	// 오른쪽 다 채웠으면
+		if (r_idx == right_len) {					// 오른쪽 다 채웠으면
 			this->seq_deque_.at(i) = l_deq.at(l_idx++);
-		} else if (l_idx == left_mid_len) { // 왼쪽 다 채웠으면
+		} else if (l_idx == left_mid_len) {			// 왼쪽 다 채웠으면
 			this->seq_deque_.at(i) = r_deq.at(r_idx++);
 		} else if (r_deq.at(r_idx) > l_deq.at(l_idx)) {
 			this->seq_deque_.at(i) = l_deq.at(l_idx++);
@@ -155,7 +155,7 @@ void	PmergeMe::InsertionSortVector(std::size_t p1, std::size_t p2) {
 	std::size_t  j;
 	unsigned int key;
 	for (std::size_t i = p1; i < p2; ++i) {
-		key = this->seq_vector_.at(i + 1);// 현재 삽입될 숫자인 i번째 정수를 key 변수로 복사
+		key = this->seq_vector_.at(i + 1);
 		for (j = i + 1
 			; j > p1 && this->seq_vector_.at(j - 1) > key; --j) {
 		  this->seq_vector_.at(j) = this->seq_vector_.at(j - 1);
@@ -169,21 +169,21 @@ void	PmergeMe::mergePartVector(std::size_t p1, std::size_t p2, std::size_t p3) {
 	const std::size_t right_len = p3 - p2;
 	std::size_t l_idx = 0;
 	std::size_t r_idx = 0;
-	std::deque<unsigned int>	l_deq;
-	std::deque<unsigned int>	r_deq;
-	l_deq.insert(l_deq.begin(), this->seq_vector_.begin() + p1
+	std::deque<unsigned int>	l_vec;
+	std::deque<unsigned int>	r_vec;
+	l_vec.insert(l_vec.begin(), this->seq_vector_.begin() + p1
 							  , this->seq_vector_.begin() + p1 + left_mid_len);
-	r_deq.insert(r_deq.begin(), this->seq_vector_.begin() + p2 + 1
+	r_vec.insert(r_vec.begin(), this->seq_vector_.begin() + p2 + 1
 							  , this->seq_vector_.begin() + p2 + 1 + right_len);
 	for (std::size_t i = p1; i < p3 + 1; ++i) {
 		if (r_idx == right_len) {	// 오른쪽 다 채웠으면
-			this->seq_vector_.at(i) = l_deq.at(l_idx++);
+			this->seq_vector_.at(i) = l_vec.at(l_idx++);
 		} else if (l_idx == left_mid_len) { // 왼쪽 다 채웠으면
-			this->seq_vector_.at(i) = r_deq.at(r_idx++);
-		} else if (r_deq.at(r_idx) > l_deq.at(l_idx)) {
-			this->seq_vector_.at(i) = l_deq.at(l_idx++);
-		} else {// r_deq.at(r_idx) <= l_deq[l_idx])
-			this->seq_vector_.at(i) = r_deq.at(r_idx++);
+			this->seq_vector_.at(i) = r_vec.at(r_idx++);
+		} else if (r_vec.at(r_idx) > l_vec.at(l_idx)) {
+			this->seq_vector_.at(i) = l_vec.at(l_idx++);
+		} else {	// r_vec.at(r_idx) <= l_vec[l_idx])
+			this->seq_vector_.at(i) = r_vec.at(r_idx++);
 		}
 	}
 }

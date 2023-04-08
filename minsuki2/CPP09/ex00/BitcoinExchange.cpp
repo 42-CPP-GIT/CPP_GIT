@@ -39,10 +39,12 @@ BitcoinExchange::BitcoinExchange(std::ifstream& data_file) {
 }
 
 BitcoinExchange::BitcoinExchange(const BitcoinExchange& obj) {
-	*this = obj;
+	static_cast<void>(obj);
 }
 
-BitcoinExchange::~BitcoinExchange(void) { }
+BitcoinExchange::~BitcoinExchange(void) {
+	this->database_.clear();
+}
 
 BitcoinExchange&	BitcoinExchange::operator=(const BitcoinExchange& obj) {
 	static_cast<void>(obj);

@@ -1,7 +1,8 @@
 #pragma once
+#ifndef RPN_hpp
 
-#include <iostream>
-#include <stack>
+# include <iostream>
+# include <stack>
 
 class RPN {
 	public:
@@ -30,6 +31,5 @@ class RPN {
 
 		bool		isDigit(char c) const;
 		bool		isVaildPocket(void);
-
 };
-
+#endif

@@ -49,9 +49,7 @@ class BitcoinExchange {
 	private:
 		static const std::string						path_;
 		static std::map<const std::string, float>		database_;
-		// std::map<const std::string, float>				input_;
-		// < <Y-M, D>, val >
-		//
+
 		bool		isInvaildDate(const std::string& date, const std::string& old_date);
 		bool		isInvaildValue(float value, float price);
 		bool		isLeapYear(int y);
