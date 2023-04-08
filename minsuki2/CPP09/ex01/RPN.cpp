@@ -16,7 +16,7 @@ const std::string&	RPN::operator_symbol_("+-/*");
 bool	RPN::isVaildPocket(void) {
 	const char backup = this->pocket_.top();
 	this->pocket_.pop();
-	if (!isDigit(this->pocket_.top()))
+	if (this->pocket_.size() && !isDigit(this->pocket_.top()))
 		return false;
 	this->pocket_.push(backup);
 	if (!isDigit(this->pocket_.top()))
@@ -26,11 +26,10 @@ bool	RPN::isVaildPocket(void) {
 
 RPN::RPN(const std::string& eqn) {
 	unsigned int	count = 0;
-	size_t len(eqn.length());
 	char	last = ' ';
 	eqn.find_first_of("0123456789" + RPN::operator_symbol_) == std::string::npos
 												? throw EmptyEquation() : false;
-	for (; len > 0; --len) {
+	for (size_t len(eqn.length()); len > 0; --len) {
 		if (eqn.at(len - 1) == ' ') {
 			continue;
 		} else if (isDigit(eqn.at(len - 1))) {
