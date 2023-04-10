@@ -6,11 +6,11 @@
 #    By: minsuki2 <minsuki2@student.42seoul.kr      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/29 18:32:08 by minsuki2          #+#    #+#              #
-#    Updated: 2023/04/04 20:42:13 by minsuki2         ###   ########.fr        #
+#    Updated: 2023/04/10 18:42:32 by minsuki2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CXXFLAGS	=		-Wall -Werror -Wextra  -Wno-shadow -std=c++98 -g3
+CXXFLAGS	=		-Wall -Werror -Wextra  -Wno-shadow -std=c++98
 RM 			=		rm -rvf
 
 # Directory

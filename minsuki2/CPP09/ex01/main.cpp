@@ -1,13 +1,5 @@
 #include "RPN.hpp"
 
-/*
- * 1. 기호 앞에 숫자가 2개보다 많아야 함
- * ex) 1 + 1	=> Error!
- *
- * 2. 부호 개수가 서로 하나 차이가 나야함
- * ex) 11++		=> Error!
- */
-
 int main(int argc, char *argv[]) {
 	if (argc != 2) {
 		std::cout << "Error" << std::endl;

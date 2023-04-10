@@ -24,6 +24,8 @@ class BitcoinExchange {
 		void	calculateInput(const char* input_name);
 
 		const std::string		badInput(const std::string& date) const;
+		const std::string		noLowerDate(const std::string& date) const;
+		const std::string		wrongInput(const std::string& input) const;
 		class FaildConvertNumber : public std::exception {
 			const char*		what(void) const throw();
 		};
@@ -31,9 +33,6 @@ class BitcoinExchange {
 			const char*		what(void) const throw();
 		};
 		class FomatIsWrong : public std::exception {
-			const char*		what(void) const throw();
-		};
-		class WrongInput : public std::exception {
 			const char*		what(void) const throw();
 		};
 		class EmptyDatabase : public std::exception {
@@ -45,13 +44,16 @@ class BitcoinExchange {
 		class InvaildExtension : public std::exception {
 			const char*		what(void) const throw();
 		};
+		class TooLargeNumber : public std::exception {
+			const char*		what(void) const throw();
+		};
 
 	private:
 		static const std::string						path_;
 		static std::map<const std::string, float>		database_;
 
 		bool		isInvaildDate(const std::string& date, const std::string& old_date);
-		bool		isInvaildValue(float value, float price);
+		void		invaildValueChecker(float value);
 		bool		isLeapYear(int y);
 		void		checkTitle(std::ifstream& input_file, std::string& line
 								, const std::string& target, const char delimiter) const;

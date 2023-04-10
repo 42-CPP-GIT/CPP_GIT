@@ -4,6 +4,39 @@
 std::map<const std::string, float>		BitcoinExchange::database_;
 const std::string						BitcoinExchange::path_ = PATH;
 
+bool	BitcoinExchange::isInvaildDate(const std::string& date, const std::string& old_date) {
+	std::istringstream	ss_date(date);
+
+	std::string			year, month, day;
+	int					y;
+
+	static_cast<void>(old_date);
+	if (date < old_date)
+		return true;
+	std::getline(ss_date, year, '-');
+	if (year.length() != 4)
+		return true;
+
+	std::getline(ss_date, month, '-');
+	if (month.length() != 2 || (month < "01" || "12" < month))
+		return true;
+
+	std::getline(ss_date, day, ' ');
+	if ((day.length() != 2
+		|| ((day < "01" || "31" < day))
+		|| ((month == "02") && day > "29"))
+		|| ((month == "04" || month == "06" || month == "09" || month == "11") && day == "31"))
+		return true;
+	if (month == "02" && day == "29") { // 윤년 2월 29일 가능
+		std::istringstream	ss(year);
+		ss >> y;
+		if (!isLeapYear(y)) {
+			return true;
+		}
+	}
+	return false;
+}
+
 BitcoinExchange::BitcoinExchange(std::ifstream& data_file) {
 	/* makeDatabaseCSV */
 	std::string			line;
@@ -22,7 +55,7 @@ BitcoinExchange::BitcoinExchange(std::ifstream& data_file) {
 		if (isInvaildDate(date, old_date)) {
 			throw badInput(date);
 		} else if (line.find(',') == std::string::npos) {
-			throw WrongInput();
+			throw wrongInput("','");
 		}
 		ss >> price;
 		if(ss.fail()) {
@@ -62,52 +95,13 @@ bool	BitcoinExchange::isLeapYear(int y) {
 	return (y % 4 == 0 && y % 100 != 0) || (y % 400) == 0;
 }
 
-bool	BitcoinExchange::isInvaildDate(const std::string& date, const std::string& old_date) {
-	std::istringstream	ss_date(date);
 
-	std::string			year, month, day;
-	int					y;
-
-	static_cast<void>(old_date);
-	if (date < old_date)
-		return true;
-	std::getline(ss_date, year, '-');
-	if (year.length() != 4)
-		return true;
-
-	std::getline(ss_date, month, '-');
-	if (month.length() != 2 || (month < "01" || "12" < month))
-		return true;
-
-	std::getline(ss_date, day, ' ');
-	if ((day.length() != 2
-		|| ((day < "01" || "31" < day))
-		|| ((month == "02") && day > "29"))
-		|| ((month == "04" || month == "06" || month == "09" || month == "11") && day == "31"))
-		return true;
-	if (month == "02" && day == "29") { // 윤년 2월 29일 가능
-		std::istringstream	ss(year);
-		ss >> y;
-		if (!isLeapYear(y)) {
-			return true;
-		}
+void	BitcoinExchange::invaildValueChecker(float value) {
+	if (value <= 0.0f) {
+		throw NegativeNumber();
+	} else if (value >= 1000.0f) {
+		throw TooLargeNumber();
 	}
-	return false;
-}
-
-bool	BitcoinExchange::isInvaildValue(float value, float price) {
-	if (value <= 0) {
-		std::cout << "Error: not a positive number." << std::endl;
-		return true;
-	} else if (value >= 1000) {
-		std::cout << "Error: too large a number." << std::endl;
-		return true;
-	} else if (value * price < 0) {
-		/* 곱해서 음수가 되는 경우도 제외 => overflow */
-		std::cout << "Error: overflow"<< std::endl;
-		return true;
-	}
-	return false;
 }
 
 void	BitcoinExchange::checkTitle(std::ifstream& input_file, std::string& line
@@ -133,35 +127,36 @@ void	BitcoinExchange::calculateInput(const char* input_name) {
 		std::string			date;
 		float				value;
 		std::getline(ss, date, '|');
-
-		if (isInvaildDate(date, old_date)) {				/* 날짜 검사 */
-			std::cout << "Error: bad input => " << date << std::endl;
-			continue;
-		} else if (line.find(" | ") == std::string::npos) { /* 포맷 검사 */
-			std::cout << "Error: wrong input => \" | \" " << std::endl;
-			continue;
-		}
-		ss >> value;
-		if(ss.fail()) {
-			std::cout << "Error: stringstream -> float was failed" << std::endl;
-			continue;
-		} else if (BitcoinExchange::database_.size() == 1
+		try {
+			if (isInvaildDate(date, old_date)) {				/* 날짜 검사 */
+				throw badInput(date);
+			} else if (line.find(" | ") == std::string::npos) { /* 포맷 검사 */
+				throw wrongInput("\" | \"");
+			}
+			ss >> value;
+			if (ss.fail()) {
+				std::cout << "Error: stringstream -> float was failed" << std::endl;
+				continue;
+			} else if (BitcoinExchange::database_.size() == 1
 					&& BitcoinExchange::database_.begin()->first > date) {
-			/* database_ 비어있거나 더 작은 데이터가 없을 때 */
-			std::cout << "Error: no lower date => " << date << std::endl;
-			continue;
-		}
-		std::map<const std::string, float>::const_iterator it_low = BitcoinExchange::database_.lower_bound(date);
-		if (BitcoinExchange::database_.begin() != it_low) {
-			/* iterator lower_bound 설정 */
+				throw noLowerDate(date);
+			}
+			std::map<const std::string, float>::const_iterator it_low = BitcoinExchange::database_.lower_bound(date);
+			if (BitcoinExchange::database_.begin() == it_low) {
+				throw noLowerDate(date);
+			}
 			--it_low;
-		}
-		if (isInvaildValue(value, it_low->second)) {
-			/* value 검사 */
+			invaildValueChecker(value);
+			std::cout << date.substr(0, 10) << " => " << value << " = "
+					  << std::setprecision(2) << value * it_low->second << std::endl;
+			old_date = date;
+		} catch (const std::exception& e) {
+			std::cout << e.what() << std::endl;
+			continue;
+		} catch (const std::string& s) {
+			std::cout << s << std::endl;
 			continue;
 		}
-		std::cout << date.substr(0, 10) << " => " << value << " = " << std::setprecision(2) << value * it_low->second << std::endl;
-		old_date = date;
 	}
 	input_file.close();
 }
@@ -170,24 +165,30 @@ void	BitcoinExchange::calculateInput(const char* input_name) {
 const std::string		BitcoinExchange::badInput(const std::string& date) const {
 	return "Error: bad input => " + date;
 }
+const std::string		BitcoinExchange::noLowerDate(const std::string& date) const {
+	return "Error: no lower date => " + date;
+}
+const std::string		BitcoinExchange::wrongInput(const std::string& input) const {
+	return "Error: wrong input => " + input;
+}
 const char*		BitcoinExchange::FaildConvertNumber::what(void) const throw() {
-	return "Error: stringstream -> float was failed";
+	return "Error: stringstream -> float was failed.";
 }
 const char*		BitcoinExchange::FaildOpenFile::what(void) const throw() {
-	return "Error: Unable to open file";
+	return "Error: Unable to open file.";
 }
 const char*		BitcoinExchange::FomatIsWrong::what(void) const throw() {
-	return "Error: fomat of file is wrong";
-}
-const char*		BitcoinExchange::WrongInput::what(void) const throw() {
-	return "Error: wrong input => \',\' ";
+	return "Error: fomat of file is wrong.";
 }
 const char*		BitcoinExchange::EmptyDatabase::what(void) const throw() {
 	return "Error: Database is Empty";
 }
 const char*		BitcoinExchange::NegativeNumber::what(void) const throw() {
-	return "Error: price is negative number";
+	return "Error: not a positive number.";
 }
 const char*		BitcoinExchange::InvaildExtension::what(void) const throw() {
 	return "Error: The extension is not .csv";
+}
+const char*		BitcoinExchange::TooLargeNumber::what(void) const throw() {
+	return "Error: too large a number." ;
 }

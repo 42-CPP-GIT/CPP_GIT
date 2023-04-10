@@ -10,19 +10,7 @@ void stackPrint(T cal) {
 	std::cerr << "| Bottom " << "\n\n";
 }
 
-
 const std::string&	RPN::operator_symbol_("+-/*");
-
-// bool	RPN::isVaildPocket(void) {
-//     const char backup = this->pocket_.top();
-//     this->pocket_.pop();
-//     if (this->pocket_.size() && !isDigit(this->pocket_.top()))
-//         return false;
-//     this->pocket_.push(backup);
-//     if (!isDigit(this->pocket_.top()))
-//         return false;
-//     return true;
-// }
 
 RPN::RPN(const std::string& eqn) {
 	unsigned int	count = 0;
@@ -34,17 +22,13 @@ RPN::RPN(const std::string& eqn) {
 			continue;
 		} else if (isDigit(eqn.at(len - 1))) {
 			this->pocket_.push(eqn.at(len - 1)); ++count;
-			// last = (last == ' ') ? eqn.at(len - 1) : last;
 		} else if (RPN::operator_symbol_.find(eqn.at(len - 1)) != std::string::npos) {
 			this->pocket_.push(eqn.at(len - 1)); --count;
-			// last = (last == ' ') ? eqn.at(len - 1) : last;
 		} else {
 			throw WrongSymbol();
 		}
 	}
 	count == 1 ? true : throw NotMatchCount();
-	// isVaildPocket() ?  true : throw WrongEquation();
-	// isDigit(last) ? throw WrongEquation() : false;
 }
 
 RPN::RPN(const RPN& obj) {
@@ -59,9 +43,10 @@ RPN&	RPN::operator=(const RPN& obj) {
 }
 
 int		RPN::calculate() {
-	std::stack<int>	cal; // stackPrint(pocket_);
+	std::stack<int>	cal;
 	int res;
 	while (!pocket_.empty()) {
+		// stackPrint(pocket_); stackPrint(cal);
 		if (isDigit(pocket_.top())) {
 			res = pocket_.top() - '0';
 		} else {
