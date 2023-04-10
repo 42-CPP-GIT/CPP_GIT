@@ -7,7 +7,7 @@ int main(int argc, char *argv[]) {
 	}
 	const std::string& eqn(argv[1]);
 	if (eqn.empty()) {
-		std::cout << "Error(emtpy)" <<std::endl;
+		std::cout << "Error(emt)" <<std::endl;
 		return 1;
 	}
 	try {

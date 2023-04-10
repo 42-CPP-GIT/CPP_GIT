@@ -1,6 +1,12 @@
 
 #include "PmergeMe.hpp"
 
+/*
+ * < Feed Back >
+ * 1. Outer 가서는 Templete 키워드 활용해서 hpp으로 작성해보기
+ *
+ */
+
 int	main(int argc, char* argv[]) {
 	if (argc < 2) {
 		std::cout << "Error" << std::endl;

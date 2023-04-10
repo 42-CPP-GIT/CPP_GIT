@@ -1,20 +1,19 @@
 #include "RPN.hpp"
 
-template<typename T>
-void stackPrint(T cal) {
-	std::cerr << "Top | ";
-	while (!cal.empty()) {
-		std::cout << '\'' << cal.top() << '\'' << " ↔ ";
-		cal.pop();
-	}
-	std::cerr << "| Bottom " << "\n\n";
-}
+// template<typename T>
+// void stackPrint(T cal) {
+//     std::cerr << "Top | ";
+//     while (!cal.empty()) {
+//         std::cout << '\'' << cal.top() << '\'' << " ↔ ";
+//         cal.pop();
+//     }
+//     std::cerr << "| Bottom " << "\n\n";
+// }
 
 const std::string&	RPN::operator_symbol_("+-/*");
 
 RPN::RPN(const std::string& eqn) {
 	unsigned int	count = 0;
-	// char	last = ' ';
 	eqn.find_first_of("0123456789" + RPN::operator_symbol_) == std::string::npos
 												? throw EmptyEquation() : false;
 	for (size_t len(eqn.length()); len > 0; --len) {
@@ -50,7 +49,7 @@ int		RPN::calculate() {
 		if (isDigit(pocket_.top())) {
 			res = pocket_.top() - '0';
 		} else {
-			cal.size() == 2 ? true : throw WrongEquation();
+			cal.size() > 1 ? true : throw WrongEquation();
 			const int x = cal.top(); cal.pop();
 			const int y = cal.top(); cal.pop();
 			switch (pocket_.top()) {

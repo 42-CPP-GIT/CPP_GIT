@@ -14,12 +14,15 @@ bool	BitcoinExchange::isInvaildDate(const std::string& date, const std::string& 
 	if (date < old_date)
 		return true;
 	std::getline(ss_date, year, '-');
-	if (year.length() != 4)
+	if ((year.find_first_not_of("0123456789") == std::string::npos)
+				|| (year.length() != 4)) {
 		return true;
+	}
 
 	std::getline(ss_date, month, '-');
-	if (month.length() != 2 || (month < "01" || "12" < month))
+	if (month.length() != 2 || (month < "01" || "12" < month)) {
 		return true;
+	}
 
 	std::getline(ss_date, day, ' ');
 	if ((day.length() != 2
