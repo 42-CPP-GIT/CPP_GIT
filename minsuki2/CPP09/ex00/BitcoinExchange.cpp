@@ -4,33 +4,48 @@
 std::map<const std::string, float>		BitcoinExchange::database_;
 const std::string						BitcoinExchange::path_ = PATH;
 
+void	BitcoinExchange::invaildValueChecker(float value) {
+	if (value <= 0.0f) {
+		throw NegativeNumber();
+	} else if (value >= 1000.0f) {
+		throw TooLargeNumber();
+	}
+}
+
+bool	BitcoinExchange::isLeapYear(int y) {
+	return (y % 4 == 0 && y % 100 != 0) || (y % 400) == 0;
+}
+
+bool BitcoinExchange::isOnlyNumber(const std::string& target) {
+	return target.size() && target.find_first_not_of("0123456789") == std::string::npos;
+}
+
 bool	BitcoinExchange::isInvaildDate(const std::string& date, const std::string& old_date) {
 	std::istringstream	ss_date(date);
 
 	std::string			year, month, day;
 	int					y;
 
-	static_cast<void>(old_date);
 	if (date < old_date)
 		return true;
 	std::getline(ss_date, year, '-');
-	if ((year.find_first_not_of("0123456789") == std::string::npos)
-				|| (year.length() != 4)) {
+	if (!isOnlyNumber(year) || (year.length() != 4)) {
 		return true;
 	}
-
 	std::getline(ss_date, month, '-');
-	if (month.length() != 2 || (month < "01" || "12" < month)) {
+	if (!isOnlyNumber(month) || month.length() != 2
+							 || (month < "01" || "12" < month)) {
 		return true;
 	}
-
 	std::getline(ss_date, day, ' ');
-	if ((day.length() != 2
-		|| ((day < "01" || "31" < day))
-		|| ((month == "02") && day > "29"))
-		|| ((month == "04" || month == "06" || month == "09" || month == "11") && day == "31"))
+	if (!isOnlyNumber(day) || day.length() != 2
+						   || (day < "01" || "31" < day)) {
 		return true;
-	if (month == "02" && day == "29") { // 윤년 2월 29일 가능
+	} else if ((month == "02" && day > "29")
+				|| ((month == "04" || month == "06"
+						|| month == "09" || month == "11") && day == "31")) {
+		return true;
+	} else if (month == "02" && day == "29") { // 윤년 2월 29일 가능
 		std::istringstream	ss(year);
 		ss >> y;
 		if (!isLeapYear(y)) {
@@ -94,19 +109,6 @@ const std::string&								BitcoinExchange::getPath(void) {
 	return BitcoinExchange::path_;
 }
 
-bool	BitcoinExchange::isLeapYear(int y) {
-	return (y % 4 == 0 && y % 100 != 0) || (y % 400) == 0;
-}
-
-
-void	BitcoinExchange::invaildValueChecker(float value) {
-	if (value <= 0.0f) {
-		throw NegativeNumber();
-	} else if (value >= 1000.0f) {
-		throw TooLargeNumber();
-	}
-}
-
 void	BitcoinExchange::checkTitle(std::ifstream& input_file, std::string& line
 									, const std::string& target, const char delimiter) const {
 	std::getline(input_file, line, delimiter);
@@ -123,7 +125,7 @@ void	BitcoinExchange::calculateInput(const char* input_name) {
 	}
 	std::string		line;
 	checkTitle(input_file, line, "date ", '|');
-	checkTitle(input_file, line, " value",'\n');
+	checkTitle(input_file, line, " value", '\n');
 	std::string			old_date = "0000-01-01";
 	while(std::getline(input_file, line, '\n')) {
 		std::istringstream	ss(line);
@@ -181,7 +183,7 @@ const char*		BitcoinExchange::FaildOpenFile::what(void) const throw() {
 	return "Error: Unable to open file.";
 }
 const char*		BitcoinExchange::FomatIsWrong::what(void) const throw() {
-	return "Error: fomat of file is wrong.";
+	return "Error: format of file is wrong.";
 }
 const char*		BitcoinExchange::EmptyDatabase::what(void) const throw() {
 	return "Error: Database is Empty";

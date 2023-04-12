@@ -55,6 +55,7 @@ class BitcoinExchange {
 		bool		isInvaildDate(const std::string& date, const std::string& old_date);
 		void		invaildValueChecker(float value);
 		bool		isLeapYear(int y);
+		bool		isOnlyNumber(const std::string& target);
 		void		checkTitle(std::ifstream& input_file, std::string& line
 								, const std::string& target, const char delimiter) const;
 

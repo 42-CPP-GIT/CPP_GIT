@@ -10,12 +10,22 @@ echo "< Self Test >"
 ./RPN "1   "
 ./RPN "   2"
 ./RPN "   3   "
+./RPN "111++"
+./RPN "1111+++"
+./RPN "111++1+"
+./RPN "12/11++1+"
 echo
 
 
 echo "< Empty >"
 ./RPN ""
 ./RPN "                     "
+echo
+
+echo "< Wrong >"
+./RPN "1?+"
+./RPN "1+!"
+./RPN "a1+"
 echo
 
 echo "< Wrong cnt >"

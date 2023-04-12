@@ -1,19 +1,13 @@
 
 #include "BitcoinExchange.hpp"
 
-
-/*
- * <TODO>
- * 1. 길이 맞는 날짜 숫자 체크하기
- */
-
-template<typename T>
-void	checkMap(const T& cur_map) {
-	for (typename T::const_iterator it(cur_map.begin())
-		; it != cur_map.end(); ++it) {
-		std::cout << it->first << "\t" << std::setprecision(10) << it->second << std::endl;
-	}
-}
+// template<typename T>
+// void	checkMap(const T& cur_map) {
+//     for (typename T::const_iterator it(cur_map.begin())
+//         ; it != cur_map.end(); ++it) {
+//         std::cout << it->first << "\t" << std::setprecision(10) << it->second << std::endl;
+//     }
+// }
 
 int main(int argc, char *argv[]) {
 	/* argc 2, 3 제외 모두 차단 */

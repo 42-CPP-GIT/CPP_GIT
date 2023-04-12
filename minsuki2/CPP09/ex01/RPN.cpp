@@ -68,7 +68,7 @@ int		RPN::calculate() {
 					break;
 			}
 		}
-		cal.push(res); // stackPrint(pocket_);
+		cal.push(res);
 		pocket_.pop();
 	}
 	cal.size() != 1 ? throw WrongEquation() : false;
