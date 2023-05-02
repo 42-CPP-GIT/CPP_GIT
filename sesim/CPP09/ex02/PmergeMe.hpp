@@ -21,6 +21,10 @@ class PmergeMe
 	};
 
 private:
+	vec_int				_run_base;
+	vec_int				_run_len;
+	int					_run_stack_size;
+
 	vec_int				_sort_vec;
 	deq_int				_sort_deque;
 	double				_vector_time;
@@ -38,27 +42,40 @@ private:
 	void	_printContainer(const deq_int& vec);
 
 	/**
-	 * Timsort
+	 *  Vector Timsort
 	 */
-	int		_calMinRunLength(int size, const int min);
-	void	_InsertionSortWithIter(const vec_int::iterator& begin, const vec_int::iterator& end);
-	void	_timMergeWithIter(const vec_int::iterator& begin, const vec_int::iterator& mid, const vec_int::iterator& end);
-	void	_timSortwithIter(const vec_int::iterator& begin, const vec_int::iterator& end);
-
-	void	_timInsertionSortWithRef(vec_int& arr, const int& left, const int& right);
-	void	_timMergeWithRef(vec_int& arr, const int& left, const int& mid, const int& right);
-	void	_timSortWithRef(vec_int& arr);
+	int		_calMinRunLength(int size);
+	void	_reverse(vec_int& arr, int left, int right);
+	int		_getAscending(vec_int& arr, const int& left, const int& right);
+	int		_binarySearch(const vec_int& a, const int& key, int left, int right);
+	void	_BinaryInsertionSort(vec_int& arr, const int& left, const int& right, int start);
+	void	_binaryInsertionSortSetter(vec_int& arr);
+	int		_gallopRight(vec_int& arr, const int& key, const int& pos, const int& a_len);
+	int		_gallopLeft(vec_int& arr, const int& key, const int& pos, const int& b_len);
+	void	_mergeForce(vec_int& arr);
+	void	_mergeLeft(vec_int& arr, const int& a_stack_pos, const int& a_stack_len, const int& b_stack_pos, const int& b_stack_len);
+	void	_mergeRight(vec_int& arr, const int& a_stack_pos, const int& a_stack_len, const int& b_stack_pos, const int& b_stack_len);
+	void	_merge(vec_int& arr, const int& idx);
+	void	_merge(vec_int& arr);
+	void	_pushRun(const int& runBase, const int& runLen);
+	void	_timSort(vec_int& arr);
 
 	/**
-	 * Ford Johnson algorithm
+	 *  Deque Timsort
 	 */
-	void	_fordMergeWithIter(const vec_int::iterator& begin, const vec_int::iterator& mid, const vec_int::iterator& end);
-	void	_fordInsertionSortWithIter(const vec_int::iterator& left, const vec_int::iterator& right);
-	void	_fordJohnsonSortWithIter(const vec_int::iterator& begin, const vec_int::iterator& end);
-
-	void	_fordMergeWithRef(std::vector<int>& arr, int left, int mid, int right);
-	void	_fordInsertionSortWithRef(std::vector<int>& arr, int left, int right);
-	void	_fordJohnsonSortWithRef(std::vector<int>& arr);
+	void	_reverse(deq_int& arr, int left, int right);
+	int		_getAscending(deq_int& arr, const int& left, const int& right);
+	int		_binarySearch(const deq_int& a, const int& key, int left, int right);
+	void	_BinaryInsertionSort(deq_int& arr, const int& left, const int& right, int start);
+	void	_binaryInsertionSortSetter(deq_int& arr);
+	int		_gallopRight(deq_int& arr, const int& key, const int& pos, const int& a_len);
+	int		_gallopLeft(deq_int& arr, const int& key, const int& pos, const int& b_len);
+	void	_mergeForce(deq_int& arr);
+	void	_mergeLeft(deq_int& arr, const int& a_stack_pos, const int& a_stack_len, const int& b_stack_pos, const int& b_stack_len);
+	void	_mergeRight(deq_int& arr, const int& a_stack_pos, const int& a_stack_len, const int& b_stack_pos, const int& b_stack_len);
+	void	_merge(deq_int& arr, const int& idx);
+	void	_merge(deq_int& arr);
+	void	_timSort(deq_int& arr);
 
 public:
 	PmergeMe(const int& argc, char** argv);

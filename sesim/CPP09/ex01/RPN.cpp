@@ -6,7 +6,7 @@ const char*	RPN::CouldNotCalculate::what() const throw()
 	return ("Error");
 }
 
-bool	RPN::isfourArith(char c)
+bool	RPN::isfourArith(const char c)
 {
 	if (c != '+' && c != '-' && c != '*' && c != '/')
 		return false;
@@ -51,7 +51,7 @@ RPN::~RPN()
 {
 }
 
-int	RPN::switchCalculate(char c)
+int	RPN::switchCalculate(const char c)
 {
 	int num1;
 	int num2;

@@ -1,7 +1,4 @@
 #include "PmergeMe.hpp"
-#include <cstddef>
-#include <iterator>
-#include <utility>
 
 const char*	PmergeMe::InvalidArgument::what() const throw()
 {
@@ -70,10 +67,12 @@ bool	PmergeMe::_argumentCheckWithInit(const int& argc, char** argv)
 }
 
 PmergeMe::PmergeMe(const int& argc, char** argv)
-: _ac(argc), _min_run(0)
+: _run_stack_size(0), _ac(argc), _min_run(0)
 {
 	if (!_argumentCheckWithInit(argc, argv))
 		throw InvalidArgument();
+	_run_base.assign(36, 0);
+	_run_len.assign(36, 0);
 	std::cout << "Before:	"; 
 	_printContainer(this->_sort_vec);
 }
@@ -84,13 +83,13 @@ PmergeMe::~PmergeMe()
 }
 
 /**
-* Timsort with Iterator
+*  Calculate the Run Length
 */
 
-int	PmergeMe::_calMinRunLength(int size, const int min)
+int	PmergeMe::_calMinRunLength(int size)
 {
 	int	run(0);
-	while (size >= min)
+	while (size >= 64)
 	{
 		run |= size & 1;
 		size >>= 1;
@@ -98,385 +97,816 @@ int	PmergeMe::_calMinRunLength(int size, const int min)
 	return (run + size);
 }
 
-void	PmergeMe::_InsertionSortWithIter(const vec_int::iterator& left, const vec_int::iterator& right)
-{
-	int	key;
-	vec_int::iterator j;
-	for (vec_int::iterator it = left + 1; it != right; ++it)
-	{
-		key = *it;
-		j = it - 1;
-		while (j >= left && *j > key)
-		{
-			*(j + 1) = *j;
-			j--;
-		}
-		*(j + 1) = key;
-	}
-}
-
-void	PmergeMe::_timMergeWithIter(const vec_int::iterator& begin, const vec_int::iterator& mid, const vec_int::iterator& end)
-{
-	std::vector<int>	tmp;
-
-	vec_int::iterator	left = begin;
-	vec_int::iterator	right = mid;
-
-	while (left != mid && right != end)
-	{
-		if (*left <= *right)
-		{
-			tmp.push_back(*left);
-			++left;
-		}
-		else
-		{
-			tmp.push_back(*right);
-			++right;
-		}
-	}
-
-	while (left != mid)
-	{
-		tmp.push_back(*left);
-		++left;
-	}
-	while (right != end)
-	{
-		tmp.push_back(*right);
-		right++;
-	}
-	std::copy(tmp.begin(), tmp.end(), begin);
-}
-
-void	PmergeMe::_timSortwithIter(const vec_int::iterator& begin, const vec_int::iterator& end)
-{
-	int	size = std::distance(begin, end);
-	// if (size <= 32)
-	if (size <= _calMinRunLength(size, 32))
-	{
-		_InsertionSortWithIter(begin, end);
-		return ;
-	}
-	const vec_int::iterator	mid = begin + std::distance(begin, end) / 2;
-	_timSortwithIter(begin, mid);
-	_timSortwithIter(mid, end);
-	_timMergeWithIter(begin, mid, end);
-}
-
 /**
-* Timsort with vector
-*/
+ * ========================== Vector Tim Sort ========================== 
+ */
 
-void	PmergeMe::_timInsertionSortWithRef(vec_int& arr, const int& left, const int& right)
+void	PmergeMe::_reverse(vec_int& arr, int left, int right)
 {
-	int	key;
-	int	j;
-	for (int i = left + 1; i <= right; ++i)
+	int	tmp;
+	while (left < right)
 	{
-		key = arr[i];
-		j = i - 1;
-		while (j >= left && arr[j] > key)
-		{
-			arr[j + 1] = arr[j];
-			--j;
-		}
-		arr[j + 1] = key;
+		tmp = arr[left];
+		arr[left++] = arr[right];
+		arr[right--] = tmp;
 	}
 }
 
-void	PmergeMe::_timMergeWithRef(vec_int& arr, const int& left, const int& mid, const int& right)
+int	PmergeMe::_getAscending(vec_int& arr, const int& left, const int& right)
 {
-	int	i(left);
-	int	j(mid + 1);
-	vec_int	tmp(right - left + 1);
-
-	for (size_t k(0); k < tmp.size(); ++k)
+	int	ordered_pos = left + 1;
+	if (ordered_pos == right)
 	{
-		if (i > mid)
+		return (1);
+	}
+
+	if (arr[left] <= arr[ordered_pos])
+	{
+		while (ordered_pos < right && arr[ordered_pos - 1] <= arr[ordered_pos])
 		{
-			tmp[k] = arr[j++];
+			ordered_pos++;
 		}
-		else if (j > right)
+	}
+	else
+	{
+		while (ordered_pos < right && arr[ordered_pos - 1] > arr[ordered_pos])
 		{
-			tmp[k] = arr[i++];
+			ordered_pos++;
 		}
-		else if (arr[i] <= arr[j])
+		_reverse(arr, left, ordered_pos - 1);
+	}
+	return (ordered_pos - left);
+}
+
+int	PmergeMe::_binarySearch(const vec_int& arr, const int& key, int left, int right)
+{
+	int	mid;
+
+	while (left < right)
+	{
+		mid = left + ((right - left) / 2);
+		if (key < arr[mid])
 		{
-			tmp[k] = arr[i++];
+			right = mid;
 		}
 		else
 		{
-			tmp[k] = arr[j++]; 
+			left = mid + 1;
 		}
 	}
-	std::copy(tmp.begin(), tmp.end(), arr.begin() + left);
+	return (left);
 }
 
-void	PmergeMe::_timSortWithRef(vec_int& arr)
+void	PmergeMe::_BinaryInsertionSort(vec_int& arr, const int& left, const int& right, int start)
 {
-	// const int	size = arr.size();
-	// const int	run = _calMinRunLength(size, 32);
+	if (left == start)
+	{
+		start++;
+	}
 
-	// for (int i(0); i < size; i += run)
-	// {
-	// 	_timInsertionSortWithRef(arr, i, std::min<int>(i + run - 1, size - 1));
-	// }
+	int	key;
+	int	binary_pos;
+	int	insert_pos;
+	for (; start < right; ++start)
+	{
+		key = arr[start];
+		binary_pos = _binarySearch(arr, key, left, start);
 
-	// int	mid;
-	// int	right;
-	// for (int n(run); n < size; n *= 2)
-	// {
-	// 	for (int left(0); left < size; left += 2 * n)
-	// 	{
-	// 		mid = left + n - 1;
-	// 		right = std::min<int>(left + 2 * n - 1, size - 1);
-	// 		_timMergeWithRef(arr, left, mid, right);
-	// 	}
-	// }
+		insert_pos = start - 1;
+		while (insert_pos >= binary_pos)
+		{
+			arr[insert_pos + 1] = arr[insert_pos];
+			--insert_pos;
+		}
+		arr[binary_pos] = key;
+	}
+}
 
-	const int	size = arr.size();
-	const int	run = _calMinRunLength(size, 32);
-	// const int	run = 32;
+int	PmergeMe::_gallopRight(vec_int& arr, const int& key, const int& b_pos, const int& a_len)
+{
+	int	left(0);
+	int	right(1);
 
-	for (int i = 0; i < size; i += run)
-		_timInsertionSortWithRef(arr, i, std::min(i + run - 1, size - 1));
+	if (key < arr[b_pos])
+	{
+		return (0);
+	}
+	else
+	{
+		while (right < a_len && arr[b_pos + right] <= key)
+		{
+			left = right;
+			right = (right << 1) + 1;
+
+			if (right <= 0)
+			{
+				right = a_len;
+			}
+		}
+		if (right > a_len)
+		{
+			right = a_len;
+		}
+	}
+
+	++left;
 
 	int	mid;
-	int	right;
-	for (int n = run; n < size; n *= 2)
+	while (left < right)
 	{
-		for (int left = 0; left < size; left += 2 * n)
+		mid = left + ((right - left) >> 1);
+
+		if (key < arr[b_pos + mid])
 		{
-			mid = left + n - 1;
-			right = std::min(left + 2 * n - 1, size - 1);
-			_timMergeWithRef(arr, left, mid, right);
-		}
-	}
-}
-
-
-/**
- * Ford Johnson Sort with iterator
- */
-
-void	PmergeMe::_fordMergeWithIter(const vec_int::iterator& begin, const vec_int::iterator& mid, const vec_int::iterator& end)
-{
-	vec_int::iterator	left = begin;
-	vec_int::iterator	right = mid + 1;
-	vec_int				tmp;
-
-	while (left <= mid && right <= end)
-	{
-		if (*left < *right)
-		{
-			tmp.push_back(*left);
-			++left;
+			right = mid;
 		}
 		else
 		{
-			tmp.push_back(*right);
-			++right;
+			left = mid + 1;
 		}
 	}
-	while (left <= mid)
-	{
-		tmp.push_back(*left);
-		++left;
-	}
-	while (right <= end)
-	{
-		tmp.push_back(*right);
-		++right;
-	}
-	for (size_t	i(0); i < tmp.size(); ++i)
-	{
-		*(begin + i) = tmp[i];
-	}
+	return (right);
 }
 
-void	PmergeMe::_fordInsertionSortWithIter(const vec_int::iterator& left, const vec_int::iterator& right)
+int	PmergeMe::_gallopLeft(vec_int& arr, const int& key, const int& pos, const int& b_len)
 {
-	int	key;
-	vec_int::iterator	j;
-    for (vec_int::iterator it = left + 1; it < right; ++it)
+	int	left(0);
+	int	right(1);
+
+	if (key > arr[pos + b_len - 1])
 	{
-		key = *it;
-		j = it - 1;
-		while (j >= left && *j > key)
-		{
-			*(j + 1) = *j;
-			--j;
-		}
-		*(j + 1) = key;
+		return (b_len);
 	}
-}
-
-void	PmergeMe::_fordJohnsonSortWithIter(const vec_int::iterator& begin, const vec_int::iterator& end)
-{
-	vec_int::iterator	it = begin;
-	vec_pair			pairs;
-
-	// Divide the array into pairs
-	for (; it < end - 1; it += 2)
+	else
 	{
-		if (*it > *(it + 1))
-		{
-			pairs.push_back(std::make_pair(*(it + 1), *it));
-		}
-		else
-		{
-			pairs.push_back(std::make_pair(*it, *(it + 1)));
-		}
-	}
+		const int	start_pos = pos + b_len -1;
 
-	// Handle the last element if the size is odd
-	if (it == end - 1)
-	{
-		pairs.push_back(std::make_pair(*(end - 1), *(end - 1)));
-	}
-
-	// Sort the pairs
-	std::pair<int, int>	tmp;
-	size_t				j;
-	for (size_t gap = pairs.size() / 2; gap > 0; gap /= 2)
-	{
-		for (size_t i = gap; i < pairs.size(); ++i)
+		while (right < b_len && key <= arr[start_pos - right])
 		{
-			tmp = pairs[i];
-			for (j = i; j >= gap && tmp < pairs[j - gap]; j -= gap)
+			left = right;
+			right = (right << 1) + 1;
+
+			if (right <= 0)
 			{
-				pairs[j] = pairs[j - gap];
+				right = b_len;
 			}
-			pairs[j] = tmp;
 		}
-	}
-
-	// Merge the pairs
-	int	left;
-	int	right;
-	while (pairs.size() > 1)
-	{
-		tmp = pairs.back();
-		pairs.pop_back();
-		left = std::lower_bound(begin, end, tmp.first) - begin;
-		right = std::upper_bound(begin, end, tmp.second) - begin - 1;
-		_fordMergeWithIter(begin + left, begin + (left + right) / 2, begin + right);
-	}
-
-	// Handle the last element if the size is odd
-	int	last;
-	if ((end - begin) % 2 == 1)
-	{
-		last = *(end - 1);
-		for (it = end - 2; it >= begin && *it > last; --it)
+		if (right > b_len)
 		{
-			*(it + 1) = *it;
+			right = b_len;
 		}
-		*(it + 1) = last;
+
+		int	tmp = left;
+		left = b_len - 1 - right;
+		right = b_len - 1 - tmp;
 	}
 
-	// Run insertion sort on remaining unsorted part
-	_fordInsertionSortWithIter(begin, end);
+	++left;
+	int	mid;
+	while (left < right)
+	{
+		mid = left + ((right - left) >> 1);
+
+		if (key <= arr[pos + mid])
+		{
+			right = mid;
+		}
+		else
+		{
+			left = mid + 1;
+		}
+	}
+	return right;
 }
 
+void	PmergeMe::_mergeLeft(vec_int& arr, const int& start1, const int& len1, const int& start2, const int& len2)
+{
+	vec_int	tmp(len1);
+	for (int i(0); i < len1; ++i)
+	{
+		tmp.at(i) = arr.at(start1 + i);
+	}
+
+	int	insert_idx = start1;
+	int	run_b_idx = start2;
+	int	tmp_idx = 0;
+
+	int left_run_len = len1;
+	int	right_run_len = len2;
+
+	while (left_run_len != 0 && right_run_len != 0)
+	{
+		if (arr[run_b_idx] < tmp[tmp_idx])
+		{
+			arr[insert_idx++] = arr[run_b_idx++];
+			right_run_len--;
+		}
+		else
+		{
+			arr[insert_idx++] = tmp[tmp_idx++];
+			left_run_len--;
+		}
+	}
+	if (left_run_len != 0)
+	{
+		for (int i(0); i < left_run_len; ++i)
+		{
+			arr[insert_idx + i] = tmp[tmp_idx + i];
+		}
+	}
+	else
+	{
+		for (int i(0); i < right_run_len; ++i)
+		{
+			arr[insert_idx + i] = arr[run_b_idx + i];
+		}
+	}
+}
+
+void	PmergeMe::_mergeRight(vec_int& arr, const int& start1, const int& len1, const int& start2, const int& len2)
+{
+	vec_int	tmp(len2);
+	for (int i(0); i < len2; ++i)
+	{
+		tmp.at(i) = arr.at(start2 + i);
+	}
+
+	int	insert_idx = start2 + len2 - 1;
+	int run_a_idx = start1 + len1 - 1;
+	int	tmp_idx = len2 - 1;
+
+	int	left_run_len(len1);
+	int right_run_len(len2);
+
+	while (left_run_len != 0 && right_run_len != 0)
+	{
+		if (arr[run_a_idx] > tmp[tmp_idx])
+		{
+			arr[insert_idx--] = arr[run_a_idx--];
+			left_run_len--;
+		}
+		else
+		{
+			arr[insert_idx--] = tmp[tmp_idx--];
+			right_run_len--;
+		}
+	}
+
+	if (right_run_len != 0)
+	{
+		for (int i(0); i < right_run_len; ++i)
+		{
+			arr[start1 + i] = tmp[i];
+		}
+	}
+}
+
+void	PmergeMe::_merge(vec_int& arr, const int& idx)
+{
+	int	a_stack_pos = _run_base[idx];
+	int a_stack_len = _run_len[idx];
+	int	b_stack_pos = _run_base[idx + 1];
+	int b_stack_len = _run_len[idx + 1];
+
+	_run_len[idx] = a_stack_len + b_stack_len;
+
+	if (idx == (_run_stack_size - 3))
+	{
+		_run_base[idx + 1] = _run_base[idx + 2];
+		_run_len[idx + 1] = _run_len[idx + 2];
+	}
+	--_run_stack_size;
+
+	int left(0);
+	while (left < 7 && arr[a_stack_pos + left] <= arr[b_stack_pos])
+	{
+		left++;
+	}
+	if (arr[a_stack_pos + left] <= arr[b_stack_pos])
+	{
+		left = _gallopRight(arr, arr[b_stack_pos], a_stack_pos + left, a_stack_len - left);
+	}
+
+	if (a_stack_len == left)
+	{
+		return ;
+	}
+	a_stack_pos += left;
+	a_stack_len -= left;
+
+	int right(0);
+	const int right_pos = b_stack_pos + b_stack_len - 1;
+	const int left_key_pos = a_stack_pos + a_stack_len - 1;
+	while (right < 7 && arr[left_key_pos] <= arr[right_pos - right])
+	{
+		right++;
+	}
+	if (arr[left_key_pos] <= arr[right_pos - right])
+	{
+		right = _gallopLeft(arr, arr[left_key_pos], b_stack_pos, b_stack_len - right);
+	}
+	else
+	{
+		right = b_stack_len - right;
+	}
+
+	if (right == 0)
+	{
+		return ;
+	}
+
+	b_stack_len = right;
+	if (a_stack_len <= b_stack_len)
+	{
+		_mergeLeft(arr, a_stack_pos, a_stack_len, b_stack_pos, b_stack_len);
+	}
+	else
+	{
+		_mergeRight(arr, a_stack_pos, a_stack_len, b_stack_pos, b_stack_len);
+	}
+}
+
+void	PmergeMe::_mergeForce(vec_int& arr)
+{
+	while (_run_stack_size > 1)
+	{
+		if (_run_stack_size > 2 && _run_len[_run_stack_size - 3] < _run_len[_run_stack_size - 1])
+		{
+			_merge(arr, _run_stack_size - 3);
+		}
+		else
+		{
+			_merge(arr, _run_stack_size - 2);
+		}
+	}
+}
+
+void	PmergeMe::_merge(vec_int& arr)
+{
+	while (_run_stack_size > 1)
+	{
+		if ((_run_stack_size > 2 && (_run_len[_run_stack_size - 3] <= _run_len[_run_stack_size - 2] + _run_len[_run_stack_size - 1]))\
+			|| (_run_stack_size > 3 && (_run_len[_run_stack_size - 4] <= _run_len[_run_stack_size - 3] + _run_len[_run_stack_size - 2])))
+		{
+			if (_run_len[_run_stack_size - 3] < _run_len[_run_stack_size - 1])
+			{
+				_merge(arr, _run_stack_size - 3);
+			}
+			else
+			{
+				_merge(arr, _run_stack_size - 2);
+			}
+		}
+		else if (_run_len[_run_stack_size - 2] <= _run_len[_run_stack_size - 1])
+		{
+			_merge(arr, _run_stack_size - 2);
+		}
+		else
+		{
+			break ;
+		}
+	}
+}
+
+void	PmergeMe::_pushRun(const int& runBase, const int& runLen)
+{
+	_run_base.at(_run_stack_size) = runBase;
+	_run_len.at(_run_stack_size) = runLen;
+	++_run_stack_size;
+}
+
+void	PmergeMe::_timSort(vec_int& arr)
+{
+	int	left(0);
+	int right(arr.size());
+	int	size(right);
+	if (size < 2)
+	{
+		return ;
+	}
+
+	int	increaseRange;
+	if (size < 32)
+	{
+		increaseRange = _getAscending(arr, left, right);
+		_BinaryInsertionSort(arr, left, right, increaseRange);
+		return ;
+	}
+
+	int	minRun = _calMinRunLength(size);
+	do
+	{
+		increaseRange = _getAscending(arr, left, right);
+
+		if (increaseRange < minRun)
+		{
+			const int	runLen = size < minRun ? size : minRun;
+
+			_BinaryInsertionSort(arr, left, left + runLen, left + increaseRange);
+			increaseRange = runLen;
+		}
+		_pushRun(left, increaseRange);
+		_merge(arr);
+
+		left += increaseRange;
+		size -= increaseRange;
+	}
+	while (size != 0)
+		;
+	_mergeForce(arr);
+}
 /**
- Ford Johnson Algorithm with vector
+ * ========================== Deque Tim Sort ========================== 
  */
-void	PmergeMe::_fordMergeWithRef(vec_int& arr, int left, int mid, int right)
+
+void	PmergeMe::_reverse(deq_int& arr, int left, int right)
 {
-	int i = left, j = mid + 1;
-	vec_int tmp;
-
-	while (i <= mid && j <= right) {
-		if (arr[i] < arr[j]) {
-			tmp.push_back(arr[i++]);
-		} else {
-			tmp.push_back(arr[j++]);
-		}
-	}
-	while (i <= mid) tmp.push_back(arr[i++]);
-	while (j <= right) tmp.push_back(arr[j++]);
-
-	for (size_t k = 0; k < tmp.size(); ++k) {
-		arr[left + k] = tmp[k];
-	}
-}
-
-void	PmergeMe::_fordInsertionSortWithRef(vec_int& arr, int left, int right)
-{
-	int	key;
-	int	j;
-	for (int i = left + 1; i <= right; ++i)
+	int	tmp;
+	while (left < right)
 	{
-		key = arr[i];
-		j = i - 1;
-		while (j >= left && arr[j] > key)
-		{
-			arr[j + 1] = arr[j];
-			--j;
-		}
-		arr[j + 1] = key;
+		tmp = arr[left];
+		arr[left++] = arr[right];
+		arr[right--] = tmp;
 	}
 }
 
-void	PmergeMe::_fordJohnsonSortWithRef(vec_int& arr)
+int	PmergeMe::_getAscending(deq_int& arr, const int& left, const int& right)
 {
-	std::vector<std::pair<int, int> > pairs;
+	int	ordered_pos = left + 1;
+	if (ordered_pos == right)
+	{
+		return (1);
+	}
 
-	// Divide the array into pairs
-	int i = 0, n = arr.size();
-	for (; i < n - 1; i += 2) {
-		if (arr[i] > arr[i+1]) {
-			pairs.push_back(std::make_pair(arr[i+1], arr[i]));
-		} else {
-			pairs.push_back(std::make_pair(arr[i], arr[i+1]));
+	if (arr[left] <= arr[ordered_pos])
+	{
+		while (ordered_pos < right && arr[ordered_pos - 1] <= arr[ordered_pos])
+		{
+			ordered_pos++;
 		}
 	}
-
-	// Handle the last element if the size is odd
-	if (i == n - 1) {
-		pairs.push_back(std::make_pair(arr[n-1], arr[n-1]));
-	}
-
-	// Sort the pairs
-	for (size_t gap = pairs.size() / 2; gap > 0; gap /= 2) {
-		for (size_t i = gap; i < pairs.size(); ++i) {
-			std::pair<int, int> tmp = pairs[i];
-			size_t j;
-			for (j = i; j >= gap && tmp < pairs[j-gap]; j -= gap) {
-				pairs[j] = pairs[j-gap];
-			}
-			pairs[j] = tmp;
+	else
+	{
+		while (ordered_pos < right && arr[ordered_pos - 1] > arr[ordered_pos])
+		{
+			ordered_pos++;
 		}
+		_reverse(arr, left, ordered_pos - 1);
 	}
-
-	// Merge the pairs
-	while (pairs.size() > 1) {
-		std::pair<int, int> p = pairs.back();
-		pairs.pop_back();
-		int left = std::lower_bound(arr.begin(), arr.end(), p.first) - arr.begin();
-		int right = std::upper_bound(arr.begin(), arr.end(), p.second) - arr.begin() - 1;
-		_fordMergeWithRef(arr, left, (left + right) / 2, right);
-	}
-
-	// Handle the last element if the size is odd
-	if (n % 2 == 1) {
-		int last = arr[n-1];
-		int i;
-		for (i = n-2; i >= 0 && arr[i] > last; --i) {
-			arr[i+1] = arr[i];
-		}
-		arr[i+1] = last;
-	}
-
-	// Run insertion sort on remaining unsorted part
-	_fordInsertionSortWithRef(arr, 0, n-1);
+	return (ordered_pos - left);
 }
 
+int	PmergeMe::_binarySearch(const deq_int& arr, const int& key, int left, int right)
+{
+	int	mid;
 
+	while (left < right)
+	{
+		mid = left + ((right - left) / 2);
+		if (key < arr[mid])
+		{
+			right = mid;
+		}
+		else
+		{
+			left = mid + 1;
+		}
+	}
+	return (left);
+}
 
+void	PmergeMe::_BinaryInsertionSort(deq_int& arr, const int& left, const int& right, int start)
+{
+	if (left == start)
+	{
+		start++;
+	}
 
+	int	key;
+	int	binary_pos;
+	int	insert_pos;
+	for (; start < right; ++start)
+	{
+		key = arr[start];
+		binary_pos = _binarySearch(arr, key, left, start);
+
+		insert_pos = start - 1;
+		while (insert_pos >= binary_pos)
+		{
+			arr[insert_pos + 1] = arr[insert_pos];
+			--insert_pos;
+		}
+		arr[binary_pos] = key;
+	}
+}
+
+int	PmergeMe::_gallopRight(deq_int& arr, const int& key, const int& b_pos, const int& a_len)
+{
+	int	left(0);
+	int	right(1);
+
+	if (key < arr[b_pos])
+	{
+		return (0);
+	}
+	else
+	{
+		while (right < a_len && arr[b_pos + right] <= key)
+		{
+			left = right;
+			right = (right << 1) + 1;
+
+			if (right <= 0)
+			{
+				right = a_len;
+			}
+		}
+		if (right > a_len)
+		{
+			right = a_len;
+		}
+	}
+
+	++left;
+
+	int	mid;
+	while (left < right)
+	{
+		mid = left + ((right - left) >> 1);
+
+		if (key < arr[b_pos + mid])
+		{
+			right = mid;
+		}
+		else
+		{
+			left = mid + 1;
+		}
+	}
+	return (right);
+}
+
+int	PmergeMe::_gallopLeft(deq_int& arr, const int& key, const int& pos, const int& b_len)
+{
+	int	left(0);
+	int	right(1);
+
+	if (key > arr[pos + b_len - 1])
+	{
+		return (b_len);
+	}
+	else
+	{
+		const int	start_pos = pos + b_len - 1;
+		
+		while (right < b_len && key <= arr[start_pos - right])
+		{
+			left = right;
+			right = (right << 1) + 1;
+
+			if (right <= 0)
+			{
+				right = b_len;
+			}
+		}
+		if (right > b_len)
+		{
+			right = b_len;
+		}
+
+		int	tmp = left;
+		left = b_len - 1 - right;
+		right = b_len - 1 - tmp;
+	}
+
+	++left;
+	int	mid;
+	while (left < right)
+	{
+		mid = left + ((right - left) >> 1);
+
+		if (key <= arr[pos + mid])
+		{
+			right = mid;
+		}
+		else
+		{
+			left = mid + 1;
+		}
+	}
+	return right;
+}
+
+void	PmergeMe::_mergeLeft(deq_int& arr, const int& start1, const int& len1, const int& start2, const int& len2)
+{
+	deq_int	tmp(len1);
+	for (int i(0); i < len1; ++i)
+	{
+		tmp.at(i) = arr.at(start1 + i);
+	}
+
+	int	insert_idx = start1;
+	int	run_b_idx = start2;
+	int	tmp_idx = 0;
+
+	int left_run_len = len1;
+	int	right_run_len = len2;
+
+	while (left_run_len != 0 && right_run_len != 0)
+	{
+		if (arr[run_b_idx] < tmp[tmp_idx])
+		{
+			arr[insert_idx++] = arr[run_b_idx++];
+			right_run_len--;
+		}
+		else
+		{
+			arr[insert_idx++] = tmp[tmp_idx++];
+			left_run_len--;
+		}
+	}
+	if (left_run_len != 0)
+	{
+		for (int i(0); i < left_run_len; ++i)
+		{
+			arr[insert_idx + i] = tmp[tmp_idx + i];
+		}
+	}
+	else
+	{
+		for (int i(0); i < right_run_len; ++i)
+		{
+			arr[insert_idx + i] = arr[run_b_idx + i];
+		}
+	}
+}
+
+void	PmergeMe::_mergeRight(deq_int& arr, const int& start1, const int& len1, const int& start2, const int& len2)
+{
+	deq_int	tmp(len2);
+	for (int i(0); i < len2; ++i)
+	{
+		tmp.at(i) = arr.at(start2 + i);
+	}
+
+	int	insert_idx = start2 + len2 - 1;
+	int run_a_idx = start1 + len1 - 1;
+	int	tmp_idx = len2 - 1;
+
+	int	left_run_len(len1);
+	int right_run_len(len2);
+
+	while (left_run_len != 0 && right_run_len != 0)
+	{
+		if (arr[run_a_idx] > tmp[tmp_idx])
+		{
+			arr[insert_idx--] = arr[run_a_idx--];
+			left_run_len--;
+		}
+		else
+		{
+			arr[insert_idx--] = tmp[tmp_idx--];
+			right_run_len--;
+		}
+	}
+
+	if (right_run_len != 0)
+	{
+		for (int i(0); i < right_run_len; ++i)
+		{
+			arr[start1 + i] = tmp[i];
+		}
+	}
+}
+
+void	PmergeMe::_merge(deq_int& arr, const int& idx)
+{
+	int	a_stack_pos = _run_base[idx];
+	int a_stack_len = _run_len[idx];
+	int	b_stack_pos = _run_base[idx + 1];
+	int b_stack_len = _run_len[idx + 1];
+
+	_run_len[idx] = a_stack_len + b_stack_len;
+
+	if (idx == (_run_stack_size - 3))
+	{
+		_run_base[idx + 1] = _run_base[idx + 2];
+		_run_len[idx + 1] = _run_len[idx + 2];
+	}
+	--_run_stack_size;
+
+	int	left = _gallopRight(arr, arr[b_stack_pos], a_stack_pos, a_stack_len);
+
+	if (a_stack_len == left)
+	{
+		return ;
+	}
+	a_stack_pos += left;
+	a_stack_len -= left;
+
+	int	right = _gallopLeft(arr, arr[a_stack_pos + a_stack_len - 1], b_stack_pos, b_stack_len);
+
+	if (right == 0)
+	{
+		return ;
+	}
+
+	b_stack_len = right;
+	if (a_stack_len <= b_stack_len)
+	{
+		_mergeLeft(arr, a_stack_pos, a_stack_len, b_stack_pos, b_stack_len);
+	}
+	else
+	{
+		_mergeRight(arr, a_stack_pos, a_stack_len, b_stack_pos, b_stack_len);
+	}
+}
+
+void	PmergeMe::_mergeForce(deq_int& arr)
+{
+	while (_run_stack_size > 1)
+	{
+		if (_run_stack_size > 2 && _run_len[_run_stack_size - 3] < _run_len[_run_stack_size - 1])
+		{
+			_merge(arr, _run_stack_size - 3);
+		}
+		else
+		{
+			_merge(arr, _run_stack_size - 2);
+		}
+	}
+}
+
+void	PmergeMe::_merge(deq_int& arr)
+{
+	while (_run_stack_size > 1)
+	{
+		if ((_run_stack_size > 2 && (_run_len[_run_stack_size - 3] <= _run_len[_run_stack_size - 2] + _run_len[_run_stack_size - 1]))\
+			|| (_run_stack_size > 3 && (_run_len[_run_stack_size - 4] <= _run_len[_run_stack_size - 3] + _run_len[_run_stack_size - 2])))
+		{
+			if (_run_len[_run_stack_size - 3] < _run_len[_run_stack_size - 1])
+			{
+				_merge(arr, _run_stack_size - 3);
+			}
+			else
+			{
+				_merge(arr, _run_stack_size - 2);
+			}
+		}
+		else if (_run_len[_run_stack_size - 2] <= _run_len[_run_stack_size - 1])
+		{
+			_merge(arr, _run_stack_size - 2);
+		}
+		else
+		{
+			break ;
+		}
+	}
+}
+
+void	PmergeMe::_timSort(deq_int& arr)
+{
+	int	left(0);
+	int right(arr.size());
+	int	size(right);
+	if (size < 2)
+	{
+		return ;
+	}
+
+	int	increaseRange;
+	if (size < 32)
+	{
+		increaseRange = _getAscending(arr, left, right);
+		_BinaryInsertionSort(arr, left, right, increaseRange);
+		return ;
+	}
+
+	int	minRun = _calMinRunLength(size);
+	std::cout << "--------------------------\n";
+	std::cout << minRun << std::endl;
+
+	do
+	{
+		increaseRange = _getAscending(arr, left, right);
+
+		if (increaseRange < minRun)
+		{
+			const int	runLen = size < minRun ? size : minRun;
+
+			_BinaryInsertionSort(arr, left, left + runLen, left + increaseRange);
+			increaseRange = runLen;
+		}
+		_pushRun(left, increaseRange);
+		_merge(arr);
+
+		left += increaseRange;
+		size -= increaseRange;
+	}
+	while (size != 0)
+		;
+	_mergeForce(arr);
+}
 /**
  * Print Containers Functions
  */
@@ -503,34 +933,43 @@ void	PmergeMe::_printContainer(const deq_int& vec)
 
 void	PmergeMe::ftSort()
 {
+	/*
+	 *  Vector Sorting 
+	 */
 	clock_t	start = std::clock();
-	// _timSortwithIter(this->_sort_vec.begin(), this->_sort_vec.end());
-	_timSortWithRef(this->_sort_vec);
-	// _fordJohnsonSortWithIter(this->_sort_vec.begin(), this->_sort_vec.end());
-	// _fordJohnsonSortWithRef(this->_sort_vec);
+	_timSort(this->_sort_vec);
 	// std::sort(this->_sort_vec.begin(), this->_sort_vec.end());
 	clock_t	end = std::clock();
+
+	/*
+	 *  Run re-initialize 
+	 */
+	this->_run_base.assign(36, 0);
+	this->_run_len.assign(36, 0);
+
 	this->_vector_time = static_cast<double>(end - start) / (double)1000;
-	// start = std::clock();
-	// mergeInsertionSort(this->_sort_deque.begin(), this->_sort_deque.end(), 32);
-	// end = std::clock();
-	// this->_deque_time = static_cast<double>(end - start) / (double)1000;
+
+	/*
+	 *  Deque Sorting 
+	 */
+	start = std::clock();
+	_timSort(this->_sort_deque);
+	end = std::clock();
+
+	this->_deque_time = static_cast<double>(end - start) / (double)1000;
 }
 
 void	PmergeMe::printRes()
 {
 	std::cout << "After:	"; 
 	_printContainer(this->_sort_vec);
-	/**
-	* for debug
-	*/
-	std::cout << "=======================\n";
-	std::cout << ((std::is_sorted(_sort_vec.begin(), _sort_vec.end()) == true) ?  "Vec Sorted" : "Not sorted") << std::endl;
-	std::cout << ((std::is_sorted(_sort_deque.begin(), _sort_deque.end()) == true) ? "Deque Sorted" : "Not sorted") << std::endl;
-	std::cout << "=======================\n";
 	/*
-	*
-	*/
+	 *  For Debug
+	 */
+	std::cout << "=======================\n";
+	std::cout << ((std::is_sorted(_sort_vec.begin(), _sort_vec.end()) == true) ?  "Vector Sorted" : "Vector Not sorted") << std::endl;
+	std::cout << ((std::is_sorted(_sort_deque.begin(), _sort_deque.end()) == true) ? "Deque Sorted" : "Deque Not sorted") << std::endl;
+	std::cout << "=======================\n";
 	std::cout << "Time to process a range of " << this->_ac << " elements with std::vector : " << this->_vector_time << " us" << std::endl;
 	std::cout << "Time to process a range of " << this->_ac << " elements with std::deque  : " << this->_deque_time << " us" << std::endl;
 }

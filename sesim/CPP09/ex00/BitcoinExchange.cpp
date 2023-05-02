@@ -1,11 +1,4 @@
 #include "BitcoinExchange.hpp"
-#include <cctype>
-#include <cstddef>
-#include <cstdio>
-#include <ctime>
-#include <sstream>
-#include <string>
-#include <cstring>
 
 const char*	BitcoinExchange::CouldNotOpenFileException::what() const throw()
 {
@@ -31,7 +24,7 @@ BitcoinExchange::BitcoinExchange(const char* input_file)
 	currency.close();
 }
 
-BitcoinExchange::BitcoinExchange(const char* input_file, const char* data_file)
+BitcoinExchange::BitcoinExchange(const char* data_file, const char* input_file)
 : _input_data(input_file)
 {
 	if (!_isValidFileFormat(data_file))
@@ -90,6 +83,7 @@ void	BitcoinExchange::_storeCurrency(std::ifstream& currency)
 	std::string	val[2];
 	double		btc_price;
 	char		*end;
+
 	while (std::getline(currency, line))
 	{
 		std::size_t	pos = line.find(',');
@@ -112,10 +106,6 @@ void	BitcoinExchange::_storeCurrency(std::ifstream& currency)
 	}
 }
 
-/*
-	=========================
-	TODO: Is this really need?
-*/
 bool	BitcoinExchange::_checkTitle(const std::string& title1, const std::string& title2)
 {
 	if (title1.empty() || title2.empty())
@@ -127,13 +117,13 @@ bool	BitcoinExchange::_checkTitle(const std::string& title1, const std::string& 
 
 void	BitcoinExchange::_getCurTime()
 {
-	char		s[10];
+	char		cur_time[10];
 	time_t		temp;
 	struct tm	*timeptr;
 
 	temp = time(NULL);
 	timeptr = localtime(&temp);
-	if (!strftime(s, sizeof(s), "%F", timeptr))
+	if (!strftime(cur_time, sizeof(cur_time), "%F", timeptr))
 	{
 		_year = 2023;
 		_month = 0;
@@ -141,7 +131,7 @@ void	BitcoinExchange::_getCurTime()
 		return ;
 	}
 
-	std::stringstream	ss(s);
+	std::stringstream	ss(cur_time);
 	char				sep_slash;
 	ss >> _year >> sep_slash >> _month >> sep_slash >> _day;
 }
@@ -155,7 +145,7 @@ bool	BitcoinExchange::_isValidDate(const unsigned int& year, const unsigned int&
 	}
 	if (month == 2)
 	{
-		if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0))
+		if (year % 4 == 0 && year % 100 != 0)
 		{
 			return (day <= 29);
 		}
@@ -207,7 +197,7 @@ float	BitcoinExchange::_getClosetData(const std::string& date)
 {
 	btc_currency::const_iterator it;
 
-	it  = _data.find(date);
+	it = _data.find(date);
 	if (it != _data.end())
 	{
 		return (it->second);
@@ -256,7 +246,7 @@ void	BitcoinExchange::_checkInputFile(std::ifstream& input_file)
 		{
 			std::cerr << "Error: not a postive number." << std::endl;
 		}
-		else if (mount > 1000 || (std::floor(mount) == 10000 && (mount - std::floor(mount) < 0.0001)))
+		else if (mount > 1000 || (std::floor(mount) == 1000 && (mount - std::floor(mount) < 0.0001)))
 		{
 			std::cout << "Error: too large a number." << std::endl;
 		}

@@ -4,14 +4,6 @@
 #include <stack>
 #include <string>
 
-enum	fourArith
-{
-	PLUS,
-	MINUS,
-	MULTI,
-	DIVIDE,
-};
-
 class RPN
 {
 	class	CouldNotCalculate : public std::exception
@@ -25,8 +17,8 @@ class RPN
 		bool			_can_calculate_flag;
 
 		bool	isValidArgument();
-		bool	isfourArith(char c);
-		int		switchCalculate(char c);
+		bool	isfourArith(const char c);
+		int		switchCalculate(const char c);
 
 	public:
 		RPN(const char* argv);
